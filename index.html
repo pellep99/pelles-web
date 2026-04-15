@@ -1,1 +1,281 @@
-TBD
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Per Persson – Ph.D., publikationer och blogg</title>
+  <meta name="description" content="Hemsidan för Ph.D. Per Persson. Publikationer, blogg-poster och tjänster.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Per Persson – Ph.D., publikationer och blogg">
+  <meta property="og:description" content="Hemsidan för Ph.D. Per Persson. Publikationer, blogg-poster och tjänster.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://phd-persson.se/">
+  <meta property="og:locale" content="sv_SE">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* Hoppa-till-innehåll-länk för skärmläsare/tangentbord */
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Hjälte */
+    .hero {
+      padding: var(--space-2xl) 0;
+      background: var(--color-surface);
+    }
+    .hero h1 {
+      margin: 0 0 var(--space-md);
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    .hero p {
+      margin: 0;
+      max-width: 42rem;
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+    }
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .hero h1 { font-size: 3rem; }
+    }
+
+    /* Sektioner */
+    main section { padding: var(--space-xl) 0; }
+    main h2 {
+      margin: 0 0 var(--space-lg);
+      font-size: 1.5rem;
+    }
+
+    /* Kort */
+    .card-grid {
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .card-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      text-decoration: none;
+      color: inherit;
+      min-height: var(--touch-target);
+    }
+    .card:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+    .card h3 {
+      margin: 0;
+      font-size: 1.125rem;
+      color: var(--color-primary);
+    }
+    .card p {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="./" aria-label="Per Persson – startsida">Per Persson</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="./">Hem</a></li>
+          <li><a href="./publikationer/">Publikationer</a></li>
+          <li><a href="./blogg/">Blogg</a></li>
+          <li><a href="./tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <h1 id="hero-title">Per Persson, Ph.D.</h1>
+        <p>Forskning, publikationer och tankar i bloggform. Här samlas mitt arbete och de tjänster jag erbjuder.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="utforska-title">
+      <div class="container">
+        <h2 id="utforska-title">Utforska</h2>
+        <div class="card-grid">
+          <a class="card" href="./publikationer/">
+            <h3>Publikationer</h3>
+            <p>Vetenskapliga artiklar, rapporter och presentationer.</p>
+          </a>
+          <a class="card" href="./blogg/">
+            <h3>Blogg</h3>
+            <p>Reflektioner och kortare texter om aktuella ämnen.</p>
+          </a>
+          <a class="card" href="./tjanster/">
+            <h3>Tjänster</h3>
+            <p>Uppdrag, föreläsningar och samarbeten.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
