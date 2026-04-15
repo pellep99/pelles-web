@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tjänster – Per Persson, Ph.D.</title>
+  <meta name="description" content="Tjänster av Ph.D. Per Persson: föreläsningar, workshops, teknisk skuld-analys, arkitekturrådgivning, upphandlingsstöd, AI-rådgivning, förändringsledning och utbildningar.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Tjänster – Per Persson, Ph.D.">
+  <meta property="og:description" content="Tjänster av Ph.D. Per Persson: föreläsningar, workshops, teknisk skuld-analys, arkitekturrådgivning, upphandlingsstöd, AI-rådgivning, förändringsledning och utbildningar.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://phd-persson.se/tjanster/">
+  <meta property="og:locale" content="sv_SE">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* Hoppa-till-innehåll-länk för skärmläsare/tangentbord */
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Hjälte */
+    .hero {
+      padding: var(--space-2xl) 0;
+      background: var(--color-surface);
+    }
+    .hero h1 {
+      margin: 0 0 var(--space-md);
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    .hero p {
+      margin: 0;
+      max-width: 48rem;
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+    }
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .hero h1 { font-size: 3rem; }
+    }
+
+    /* Sektioner */
+    main section { padding: var(--space-xl) 0; }
+    main h2 {
+      margin: 0 0 var(--space-lg);
+      font-size: 1.5rem;
+    }
+
+    /* Tjänstelista */
+    .services {
+      list-style: none;
+      counter-reset: services;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .services { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .services { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .service {
+      counter-increment: services;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+
+    .service-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9375rem;
+    }
+    .service-number::before { content: counter(services); }
+
+    .service h3 {
+      margin: 0;
+      font-size: 1.125rem;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+
+    .service p {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+
+    /* Kontaktsektion */
+    .contact {
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      padding: var(--space-lg);
+    }
+    .contact h2 {
+      margin: 0 0 var(--space-sm);
+    }
+    .contact p {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../">Hem</a></li>
+          <li><a href="../publikationer/">Publikationer</a></li>
+          <li><a href="../blogg/">Blogg</a></li>
+          <li><a href="../tjanster/" aria-current="page">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <h1 id="hero-title">Tjänster</h1>
+        <p>Jag hjälper offentlig sektor att förstå, minska och förebygga socio-teknisk skuld – så att digitalisering leder till verklig verksamhetsnytta, minskad inlåsning och bättre tjänster för medborgarna.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="services-title">
+      <div class="container">
+        <h2 id="services-title">Vad jag erbjuder</h2>
+        <ol class="services">
+
+          <li class="service">
+            <span class="service-number" aria-hidden="true"></span>
+            <h3>Föreläsningar och inspirationspass</h3>
+            <p>Om teknisk skuld, leverantörsinlåsning, digital transformation, AI i offentlig sektor, öppen källkod och varför kommuner fastnar i gamla system.</p>
+          </li>
+
+          <li class="service">
+            <span class="service-number" aria-hidden="true"></span>
+            <h3>Strategiska workshops</h3>
+            <p>Hjälpa ledningsgrupper, digitaliseringsråd eller IT-avdelningar att förstå nuläge, hinder och vägval.</p>
+          </li>
+
+          <li class="service">
+            <span class="service-number" aria-hidden="true"></span>
+            <h3>Teknisk skuld-analys</h3>
+            <p>Genomlysning av IT-landskap, systemberoenden, integrationsproblem, inlåsningar och organisatoriska orsaker.</p>
+          </li>
+
+          <li class="service">
+            <span class="service-number" aria-hidden="true"></span>
+            <h3>Rådgivning kring digital arkitektur</h3>
+            <p>Stöd kring API-strategi, mikrotjänster, modularitet, öppen källkod, interoperabilitet och långsiktigt hållbar arkitektur.</p>
+          </li>
+
+          <li class="service">
+            <span class="service-number" aria-hidden="true"></span>
+            <h3>Leverantörs- och upphandlingsstöd</h3>
+            <p>Hjälp att formulera krav som minskar inlåsning, stärker öppenhet och gör framtida vidareutveckling möjlig.</p>
+          </li>
+
+          <li class="service">
+            <span class="service-number" aria-hidden="true"></span>
+            <h3>Stöd vid AI-initiativ</h3>
+            <p>Rådgivning kring öppen, transparent och kontrollerbar AI-plattform i offentlig sektor.</p>
+          </li>
+
+          <li class="service">
+            <span class="service-number" aria-hidden="true"></span>
+            <h3>Förändringsledning kopplat till digitalisering</h3>
+            <p>Stöd i att hantera kultur, styrning, ansvar, kompetens och organisatoriska hinder.</p>
+          </li>
+
+          <li class="service">
+            <span class="service-number" aria-hidden="true"></span>
+            <h3>Utbildningar för politiker och chefer</h3>
+            <p>Kortare utbildningar om vad digital transformation faktiskt kräver bortom &rdquo;nya system&rdquo;.</p>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
