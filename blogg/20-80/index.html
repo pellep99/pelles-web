@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20/80-tumregeln i digital transformation – Per Persson, Ph.D.</title>
+  <meta name="description" content="Om 20/80-tumregeln i digital transformation: digitala lösningar utgör en mindre del, medan människor, processer och organisation står för den större delen av förändringsarbetet.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="20/80-tumregeln i digital transformation">
+  <meta property="og:description" content="Om 20/80-tumregeln i digital transformation: digitala lösningar utgör en mindre del, medan människor, processer och organisation står för den större delen av förändringsarbetet.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/20-80/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-04-16">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Digital transformation">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Digital transformation</span>
+            <span><time datetime="2026-04-16">16 april 2026</time></span>
+          </p>
+          <h1>20/80-tumregeln i digital transformation</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+          <h2>Inledning</h2>
+          <p>
+            Digital transformation – när man använder digital teknik för att förändra och förbättra hur en verksamhet fungerar och hur den möter intressenters behov – inom offentlig sektor är svårt, vilket bland annat Riksrevisionen visar i sin rapport ”Statliga strategiska digitaliseringsprojekt – stora gemensamma utmaningar” (Riksrevisionen, 2025).
+          </p>
+          <p>
+            En orsak till att digital transformation är särskilt svårt i Sverige är vår generellt låga digitala mognad inom offentlig sektor. I ett underlag till Produktivitetskommissionen visas att vi presterar ”påfallande dåligt” i internationella jämförelser, och man landar där i slutsatsen att en djupt rotad ”förvaltningskultur och feg förvaltning” är grundorsaken till den låga digitala mognaden i svensk offentlig sektor (Ekholm &amp; Caesar, 2024).
+          </p>
+          <p>
+            En vanlig tumregel i arbetet med digital transformation är att det handlar om ”20 procent digitala lösningar och 80 procent människor, processer och organisation” (Ruud, 2017). Det ska inte förstås som en exakt siffra, utan som ett sätt att beskriva en återkommande erfarenhet, att digitala lösningar är nödvändig men att det oftast inte är dessa som avgör om en transformation lyckas. Det avgörande är i stället om verksamheten klarar att ställa om arbetssätt, ansvar, styrning och kompetens.
+          </p>
+          <p>
+            Det här synsättet har starkt stöd i både forskning och praktik. Kärnan är att digital transformation inte främst är ett teknikprojekt, utan ett förändringsarbete där digitala lösningar är ett verktyg. Givet svensk offentlig sektors utmaningar i att digitalt transformera sina verksamheter är 20/80-tumregeln bra att förstå och ta till sig.
+          </p>
+
+          <h2>Bakgrund</h2>
+          <p>
+            Idén bakom tumregeln är inte ny. Redan inom arbetet med processutveckling och införande av affärssystem var budskapet tydligt: IT kan möjliggöra förändring, men digitala lösningar i sig skapar inte effekterna. För att få resultat krävs också förändrade processer, tydligt ledarskap, förankring i organisationen och förmåga att driva förändring över tid (Hammer &amp; Champy, 1993; Nah et al., 2001; Somers &amp; Nelson, 2001; Finney &amp; Corbett, 2007).
+          </p>
+          <p>
+            Det var också i sådana sammanhang som formuleringar som ”20 procent digitala lösningar, 80 procent människor” började användas. Det tyder på att 20/80-tänket först växte fram i praktiskt förändringsarbete och senare blev en del av språket kring digital transformation.
+          </p>
+          <p>
+            I grunden bygger detta på ett socio-tekniskt synsätt, att verksamhetsutveckling fungerar bäst när digitala lösningar, organisation, styrning och arbetssätt utvecklas tillsammans. Om man bara byter system, men låter ansvarsfördelning, arbetssätt och incitament vara oförändrade, blir resultaten ofta begränsade.
+          </p>
+
+          <h2>Vad säger forskningen?</h2>
+          <p>
+            Modern forskning beskriver digital transformation som något betydligt större än att införa nya digitala lösningar. Det handlar om att förändra hur organisationen skapar värde, hur arbetet styrs och samordnas, och hur olika delar av verksamheten samverkar. Digitala lösningar är viktiga, men den är sällan den huvudsakliga förklaringen till varför ett initiativ lyckas eller misslyckas (Hanelt et al., 2021; Nadkarni &amp; Prügl, 2021; Wessel et al., 2021; Vial, 2019).
+          </p>
+          <p>Forskningen pekar särskilt på dessa återkommande framgångsfaktorer:</p>
+          <ul>
+            <li>tydligt ledarskap och uthållig styrning</li>
+            <li>förmåga till förändringsledning</li>
+            <li>anpassning av processer, roller och ansvar</li>
+            <li>samverkan mellan funktioner och verksamhetsdelar</li>
+            <li>kultur, kompetens och förändringsberedskap</li>
+          </ul>
+          <p>
+            Det innebär i praktiken att digitaliseringsinitiativ inte fallerar för att de digitala lösningarna är för dåliga, utan för att organisationen inte ändrar sitt sätt att arbeta.
+          </p>
+          <p>
+            Det finns också kvantitativa studier som stödjer detta. Exempelvis visar Ilmudeen &amp; Bao (2019) att det inte är nivån på IT-investeringar i sig som förklarar verksamhetsresultat, utan hur väl organisationen kan styra, använda och omsätta potentialen med digitala lösningar i praktiken. Med andra ord, nyttan uppstår genom ledning, arbetssätt och organisatorisk förmåga.
+          </p>
+          <p>
+            Nyare studier visar också att förmåga till förändringsledning har stor betydelse för digital anpassning och teknikdriven utveckling, inklusive AI-användning (Susilowati et al., 2025; Mohd Suki, 2024).
+          </p>
+          <p>
+            Det betyder inte att 20/80-fördelningen är vetenskapligt bevisad som exakt tal. Däremot finns ett tydligt stöd för grundidén bakom den: organisatoriska faktorer förklarar ofta en större del av utfallet än de faktiska digitala lösningarna.
+          </p>
+
+          <h2>Praktikperspektivet</h2>
+          <p>
+            I praktiken har 20/80-tumregeln blivit populär eftersom den sätter fingret på ett vanligt problem, att organisationer underskattar det förändringsarbete som krävs runt tekniken. Det är ofta enklare att fatta beslut om nya plattformar, system eller AI-lösningar än att hantera frågor om ansvar, prioriteringar, kompetens, processförändring och samordning.
+          </p>
+          <p>
+            Rapporter från bland annat MIT Sloan och Deloitte pekar i samma riktning – digital mognad och lyckad transformation bygger mindre på anskaffning av digitala lösningar och mer på ledarskap, kultur och organisatorisk kapacitet (Kane et al., 2015; 2017; 2019).
+          </p>
+          <p>
+            Ruud (2017) är särskilt intressant eftersom 20/80-formuleringen där också dokumenteras i en akademisk kontext, med fokus på offentlig sektor och kommuner. Det tyder på att tumregeln redan då var etablerad i diskussioner om offentlig digitalisering.
+          </p>
+
+          <h2>Rekommendationer</h2>
+          <p>
+            Baserat på 20/80-tumregelns innebörd, att digital transformation handlar om ”80 procent människor, processer och organisation”, rekommenderas följande (det här är egentligen inga nyheter, men med tanke på vår transformationsförmåga idag kan det vara väl värt att påminna om).
+          </p>
+          <p>
+            Acceptera att potentialen inte realiseras automatiskt. Det viktigaste insikten är att digitalisering inte sparar pengar eller tid av sig självt. Det krävs aktivt arbete med att omorganisera processer, utbilda personal och faktiskt minska bemanningen eller omfördela tid till kärnuppdraget. Om den frigjorda tiden bara absorberas av andra uppgifter utan att organisation och budget justeras, realiseras aldrig den ekonomiska nyttan. För att nå dit krävs nyttorealisering i budgetprocessen. Det vanligaste felet i digitaliseringsstyrning är att besluta om att ”införa system X” (exempel; Millenium) i stället för att kräva att ”handläggningstiden ska minska med Y procent” eller ”dokumentationstiden per anställd ska minska med Z timmar per vecka”. Utan effektmål finns inget att följa upp och inget politiskt ansvar att utkräva. Riksrevisionen (2025) visar att mer än hälften av digitaliseringsprojekten aldrig utvärderas alls. Digitala investeringar ska alltså behandlas som alla andra investeringar, med kalkyl, uppföljning och återrapportering om faktiskt effektuttag. I dag läggs pengar på digitalisering utan att budgetprocessen ställer krav på att besparingen eller kvalitetsförbättringen faktiskt realiseras och redovisas.
+          </p>
+          <p>
+            Riksrevisionen (2025) noterar också att samma slutsatser gällande genomförandeförmåga i offentlig sektor upprepats i utredningar sedan 1990-talet – man utreder, för-studerar och bygger piloter men kommer aldrig till en faktisk transformation. I ”Förlamad förvaltning” (Ekholm &amp; Caesar, 2024) konstateras problemet är offentlig sektors genomförandekultur, inte brist på kunskap om vad som behöver göras. Vad som däremot saknas är kunskap om hur – Ekholm &amp; Caesar, samt ESO´s rapport om produktivitet (ESO, 2025), är tydliga; den begränsande faktorn är inte pengar eller digitala lösningar, utan kompetens att implementera och förvalta. Det gäller särskilt den verksamhetskompetens som behövs för att beskriva verksamhetens behov. Kompetensutveckling måste budgeteras och genomföras innan eller parallellt med investeringar i digitala förmågor, inte efteråt.
+          </p>
+
+          <h2>Slutord</h2>
+          <p>
+            20/80 ska alltså inte ses som en exakt mätning, utan som en användbar tumregel. Den fångar en central erfarenhet från både forskning och praktik, att digital transformation framför allt är ett verksamhets- och förändringsarbete. Digitala lösningar är viktiga möjliggörare, men den skapar sällan effekt på egen hand.
+          </p>
+          <p>
+            För organisationer innebär detta att fokus inte bör ligga på val av digitala lösningar, fokus bör i stället ligga mer på styrning, ledarskap, processutveckling, ansvarsfördelning, kompetens och genomförandeförmåga. Det är där en stor del av transformationsarbetet faktiskt avgörs, och för att lyckas behöver politisk styrning och förvaltningschefer ta sitt ansvar i att driva förändringen!
+          </p>
+
+          <h2>Referenser</h2>
+          <ul class="references">
+            <li>Ekholm, A., Caesar, I. (2024). Förlamad förvaltning – Om digitaliseringsmisslyckandet och dess lösning. En underlagsrapport till Produktivitetskommissionen.</li>
+            <li>ESO. (2025). 2025:2 Algoritmer för allmän nytta – en ESO-rapport om AI, produktivitet och arbetskraftsbehovet i offentlig sektor. https://eso.expertgrupp.se/rapporter/2025_2_-algoritmer-for-allman-nytta/</li>
+            <li>Finney, S., &amp; Corbett, M. (2007). ERP implementation: A compilation and analysis of critical success factors. Business Process Management Journal, 13(3), 329–347.</li>
+            <li>Hammer, M., &amp; Champy, J. (1993). Reengineering the corporation: A manifesto for business revolution. Harper Business.</li>
+            <li>Hanelt, A., Bohnsack, R., Marz, D., &amp; Antunes Marante, C. (2021). A systematic review of the literature on digital transformation: Insights and implications for strategy and organizational change. Journal of Management Studies, 58(5), 1159–1197.</li>
+            <li>Ilmudeen, A., &amp; Bao, Y. (2019). Mediating role of managing information technology and its impact on firm performance: Insight from China. Industrial Management &amp; Data Systems, 118(4), 912–929.</li>
+            <li>Kane, G. C., Palmer, D., Phillips, A. N., Kiron, D., &amp; Buckley, N. (2015). Strategy, not technology, drives digital transformation. MIT Sloan Management Review and Deloitte University Press.</li>
+            <li>Kane, G. C., Palmer, D., Phillips, A. N., Kiron, D., &amp; Buckley, N. (2017). Achieving digital maturity. MIT Sloan Management Review and Deloitte.</li>
+            <li>Kane, G. C., Palmer, D., Phillips, A. N., Kiron, D., &amp; Buckley, N. (2019). Accelerating digital innovation inside and out. MIT Sloan Management Review.</li>
+            <li>Mohd Suki, N. (2024). Mediating role of AI adoption between the relationship of leadership vision, change management capability, competitive pressure, trading partnerships and SME performance. Pakistan Journal of Commerce and Social Sciences, 18(4), 872–892.</li>
+            <li>Nah, F. F.-H., Lau, J. L.-S., &amp; Kuang, J. (2001). Critical factors for successful implementation of enterprise systems. Business Process Management Journal, 7(3), 285–296.</li>
+            <li>Nadkarni, S., &amp; Prügl, R. (2021). Digital transformation: A review, synthesis and opportunities for future research. Management Review Quarterly, 71(2), 233–341.</li>
+            <li>Riksrevisionen. (2025). Statliga strategiska digitaliseringsprojekt (RiR 2025:8). https://www.riksrevisionen.se/granskningar/granskningsrapporter/2025/statliga-strategiska-digitaliseringsprojekt---stora-gemensamma-utmaningar.html</li>
+            <li>Ruud, A. J. (2017). Successful digital transformation projects in public sector with focus on municipalities (research in progress). In Proceedings of the Central and Eastern European e|Dem and e|Gov Days 2017 (pp. 4–5). Danube University Krems.</li>
+            <li>Socialstyrelsen. (2025). E-hälsa och välfärdsteknik i kommunerna 2025 – Uppföljning av den digitala utvecklingen i socialtjänst och kommunal hälso- och sjukvård. https://www.socialstyrelsen.se/publikationer/e-halsa-och-valfardsteknik-i-kommunerna-2025--uppfoljning-av-den-digitala-utvecklingen-i-socialtjanst-och-kommunal-halso--och-sjukvard-2025-5-9625/</li>
+            <li>Somers, T. M., &amp; Nelson, K. G. (2001). The impact of critical success factors across the stages of enterprise resource planning implementations. In Proceedings of the 34th Annual Hawaii International Conference on System Sciences (HICSS-34).</li>
+            <li>Susilowati, Y. T., Nurcahyanti, A., &amp; Sugiyarti, G. (2025). Digital transformation maturity and digital change management effects on work-life integration through digital work adaptation of Semarang City Government ASN. Saudi Journal of Business and Management Studies, 10(1), 10–21.</li>
+            <li>Vial, G. (2019). Understanding digital transformation: A review and a research agenda. MIS Quarterly Executive, 18(2), 118–144.</li>
+            <li>Wessel, L., Baiyere, A., Ologeanu-Taddei, R., Cha, J., &amp; Jensen, T. (2021). Unpacking the difference between digital transformation and IT-enabled organizational transformation. Journal of the Association for Information Systems, 22(1), 102–129.</li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
