@@ -227,6 +227,30 @@
       margin-bottom: 0;
     }
 
+    /* Illustration */
+    .article-figure {
+      margin: 0 0 var(--space-md);
+    }
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+    .article-figure figcaption {
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    @media (min-width: 640px) {
+      .article-figure-right {
+        float: right;
+        width: 18rem;
+        max-width: 50%;
+        margin: 0 0 var(--space-md) var(--space-lg);
+      }
+    }
+
     /* Referenser */
     .references {
       list-style: none;
@@ -330,6 +354,9 @@
       <div class="article-body">
         <div class="container">
           <h2>Inledning</h2>
+          <figure class="article-figure article-figure-right">
+            <img src="../../images/20-80.jpg" alt="Illustration av 20/80-tumregeln: 80 procent effekthemtagning (styrning, verksamhets- och kulturförändring) och 20 procent möjliggörande digital infrastruktur." width="660" height="660" loading="lazy">
+          </figure>
           <p>
             Digital transformation – när man använder digital teknik för att förändra och förbättra hur en verksamhet fungerar och hur den möter intressenters behov – inom offentlig sektor är svårt, vilket bland annat Riksrevisionen visar i sin rapport ”Statliga strategiska digitaliseringsprojekt – stora gemensamma utmaningar” (Riksrevisionen, 2025).
           </p>
