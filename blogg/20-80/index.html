@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20/80-tumregeln i digital transformation – Per Persson, Ph.D.</title>
+  <meta name="description" content="Om 20/80-tumregeln i digital transformation: digitala lösningar utgör en mindre del, medan människor, processer och organisation står för den större delen av förändringsarbetet.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="20/80-tumregeln i digital transformation">
+  <meta property="og:description" content="Om 20/80-tumregeln i digital transformation: digitala lösningar utgör en mindre del, medan människor, processer och organisation står för den större delen av förändringsarbetet.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/20-80/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-04-16">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Digital transformation">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Digital transformation</span>
+            <span><time datetime="2026-04-16">16 april 2026</time></span>
+          </p>
+          <h1>20/80-tumregeln i digital transformation</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+          <h2>Inledning</h2>
+          <p>
+            Digital transformation – när man använder digital teknik för att förändra och förbättra hur en verksamhet fungerar och hur den möter intressenters behov – inom offentlig sektor är svårt, vilket bland annat Riksrevisionen visar i sin rapport ”Statliga strategiska digitaliseringsprojekt – stora gemensamma utmaningar” (Riksrevisionen, 2025).
+          </p>
+          <p>
+            En orsak till att digital transformation är särskilt svårt i Sverige är vår generellt låga digitala mognad inom offentlig sektor. I ett underlag till Produktivitetskommissionen visas att vi presterar ”påfallande dåligt” i internationella jämförelser, och man landar där i slutsatsen att en djupt rotad ”förvaltningskultur och feg förvaltning” är grundorsaken till den låga digitala mognaden i svensk offentlig sektor (Ekholm &amp; Caesar, 2024).
+          </p>
+          <p>
+            En vanlig tumregel i arbetet med digital transformation är att det handlar om ”20 procent digitala lösningar och 80 procent människor, processer och organisation” (Ruud, 2017). Det ska inte förstås som en exakt siffra, utan som ett sätt att beskriva en återkommande erfarenhet, att digitala lösningar är nödvändig men att det oftast inte är dessa som avgör om en transformation lyckas. Det avgörande är i stället om verksamheten klarar att ställa om arbetssätt, ansvar, styrning och kompetens.
+          </p>
+          <p>
+            Det här synsättet har starkt stöd i både forskning och praktik. Kärnan är att digital transformation inte främst är ett teknikprojekt, utan ett förändringsarbete där digitala lösningar är ett verktyg. Givet svensk offentlig sektors utmaningar i att digitalt transformera sina verksamheter är 20/80-tumregeln bra att förstå och ta till sig.
+          </p>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
