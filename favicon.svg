@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Grå bakgrund -->
+  <rect width="64" height="64" fill="#9CA3AF"/>
+  
+  <!-- Doktorshattens mortarboard (den platta fyrkantiga toppen) -->
+  <polygon points="32,20 58,28 32,36 6,28" fill="#000000"/>
+  
+  <!-- Hattens krona/basdel under mortarboarden -->
+  <path d="M 17,30 L 17,40 Q 17,47 32,47 Q 47,47 47,40 L 47,30 L 32,35 Z" fill="#000000"/>
+  
+  <!-- Liten knapp i mitten av mortarboarden -->
+  <circle cx="32" cy="28" r="2" fill="#000000"/>
+  
+  <!-- Tofs-snöre: startar vid knappen, hänger ner över hattens kant -->
+  <path d="M 32,28 Q 46,30 48,34 L 50,46" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Tofs (bollen i änden) -->
+  <circle cx="50" cy="48" r="3" fill="#000000"/>
+</svg>
