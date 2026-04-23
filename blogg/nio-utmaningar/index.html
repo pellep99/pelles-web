@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nio utmaningar som bromsar kommunernas digitala transformation – Per Persson, Ph.D.</title>
+  <meta name="description" content="Nio utmaningar som hindrar kommuner från att komma ur sitt digitala arv: gamla system, invanda arbetssätt, organisatoriska stuprör, upphandlingsmönster och leverantörsberoenden.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Nio utmaningar som bromsar kommunernas digitala transformation">
+  <meta property="og:description" content="Nio utmaningar som hindrar kommuner från att komma ur sitt digitala arv: gamla system, invanda arbetssätt, organisatoriska stuprör, upphandlingsmönster och leverantörsberoenden.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/nio-utmaningar/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-04-23">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Digital transformation">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body .challenge-core {
+      margin: 0 0 var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Illustration */
+    .article-figure {
+      margin: 0 0 var(--space-md);
+    }
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+    .article-figure figcaption {
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    @media (min-width: 640px) {
+      .article-figure-right {
+        float: right;
+        width: 18rem;
+        max-width: 50%;
+        margin: 0 0 var(--space-md) var(--space-lg);
+      }
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Digital transformation</span>
+            <span><time datetime="2026-04-23">23 april 2026</time></span>
+          </p>
+          <h1>Nio utmaningar som bromsar kommunernas digitala transformation</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+          <h2>Inledning</h2>
+          <p>
+            Om ni någonsin funderat på varför er digitaliseringsresa går trögt, varför effekter inte hämtas hem eller varför ni tenderar fastna i gamla lösningar och ineffektiva arbetssätt trots goda intentioner, då är detta inlägg relevant för just er.
+          </p>
+          <p>
+            Många kommuner ser behovet av att erbjuda digitala tjänster som är enkla, sammanhängande och utgår från invånarens behov. Ändå ser verkligenheten i regel annorlunda ut; splittrade e-tjänster, manuella omvägar, dubbelregistrering av uppgifter, svåråtkomliga data och system som är dyra att förändra. Det största problemet är inte att en enskild lösning är dålig, det handlar snarare om att kommuner under lång tid har byggt upp ett hindrande digitalt arv – en kombination av gamla system, invanda arbetssätt, organisatoriska stuprör, upphandlingsmönster och leverantörsberoenden.
+          </p>
+          <p>
+            Ovan kan paketeras som nio utmaningar som måste hanteras om man vill komma ur det hindrande digitala arvet och möjliggöra utveckling av medborgarcentrerade tjänster samtidigt som verksamheten effektiviseras. Dessa utmaningar presenteras nedan.
+          </p>
+
+          <h2>Bakgrund</h2>
+          <p>
+            Digital transformation har blivit nödvändig eftersom organisationers omvärld, uppdrag och tekniska förutsättningar har förändrats. Medborgare förväntar sig i dag offentliga tjänster som är lika enkla, snabba och tydliga som de digitala tjänster de möter i privat sektor. Forskning om digital transformation betonar därför att utvecklingen inte bara handlar om att införa nya digitala lösningar, utan om att förändra hur organisationer skapar värde, organiserar sitt arbete och möter användarnas behov (Vial, 2019; Mergel et al., 2019).
+          </p>
+          <p>
+            Det räcker därför inte att bara datorisera gamla arbetssätt, till exempel genom att göra en pappersblankett till en e-tjänst. Sådana lösningar kan ge kortsiktiga effektiviseringsvinster, men bevarar samma gamla logik under en digital yta. För verklig transformation behöver organisationer tänka om kring processer, styrning, samverkan och ansvar. Detta är särskilt viktigt i offentlig sektor, där tjänster ofta behöver hänga ihop över förvaltningsgränser och ibland även mellan flera organisationer, och detta kräver interoperabla lösningar, datadelning, öppenhet och medborgarcentrerad tjänsteutveckling som centrala förutsättningar (Janowski, 2015; OECD, 2021).
+          </p>
+          <p>
+            Transformationen hindras dock av gamla IT-system, inlåst data, bristande möjlighet till integrationer och invanda organisatoriska strukturer. I min avhandling (Persson, 2025) beskriver jag detta som en form av socio-teknisk skuld där brister rörande digitala lösningar, arbetssätt, kultur, upphandling och styrning förstärker varandra. Fragmenterade digitala miljöer gör förändring dyr, långsam och riskfylld, och problemen lever ofta kvar eftersom organisationen också har anpassat sina rutiner, roller och beslut till dessa. Därför behöver kommuner och andra offentliga organisationer transformera inte bara för att bli mer effektiva, utan för att kunna bli mer flexibla, transparenta, öppna för samverkan och medborgarcentrerade över tid.
+          </p>
+          <p>
+            Digital transformation kan sålunda förstås som ett svar på flera samtidiga förändringstryck; ökade förväntningar från medborgare, krav på bättre kvalitet och effektivitet, behov av samverkan över organisatoriska gränser, snabb teknikutveckling och ett växande behov av insyn och delaktighet. Organisationer som inte hanterar dessa förändringar, och beaktar de utmaningar som måste hanteras för att nå önskade mål, riskerar att fastna i gamla strukturer där nya digitala lösningar bara läggs ovanpå ett redan hindrande digitalt arv.
+          </p>
+
+          <h2>De nio utmaningarna</h2>
+          <p>
+            Nedan listas de nio utmaningarna som hindrar digital transformation i Sveriges kommuner – en och en är de nog alla redan mer eller mindre kända, men hur de hänger ihop och föder varandra är inte lika utforskat.
+          </p>
+          <p>Utmaningarna kan grupperas i tre teman som speglar varifrån hindren kommer:</p>
+          <ul>
+            <li><strong>Interna utmaningar</strong> – ärendecentrering, organisatoriska silos, IT som servicefunktion och olika syn på digitalisering.</li>
+            <li><strong>Kulturella och strukturella utmaningar</strong> – kultur samt det kommunala självstyret.</li>
+            <li><strong>Externa och relationella utmaningar</strong> – leverantörsinlåsning, upphandlingar och nationella projekt.</li>
+          </ul>
+
+          <h3>Ärendecentrering</h3>
+          <p class="challenge-core">Kärnan: Kommunen organiserar tjänster utifrån interna ärenden i stället för invånarens livssituation.</p>
+          <p>
+            Verksamheten utgår från ärenden i stället för människors behov. Detta innebär att kommunen organiserar sina digitala tjänster utifrån intern handläggning, förvaltningsgränser och administrativa steg, snarare än utifrån hur invånare faktiskt upplever sina behov. För medborgaren handlar kontakten med kommunen ofta om en sammanhängande livssituation, men kommunen delar i stället upp den i flera separata ärenden. Det gör tjänsterna splittrade, svåra att överblicka och leder ofta till att användaren själv måste hålla ihop processen. Samtidigt riskerar kommunen att bara datorisera gamla arbetssätt i stället för att digitalt transformera dem, vilket gör att gamla strukturer lever vidare i ny form och försvårar verkligt medborgarcentrerad och långsiktigt hållbar digital utveckling. Denna utmaning hänger nära samman med nästa.
+          </p>
+
+          <h3>Organisatoriska silos</h3>
+          <p class="challenge-core">Kärnan: Förvaltningarna optimerar för sin egen verksamhet i stället för kommunens gemensamma uppdrag.</p>
+          <p>
+            Olika delar av kommunen utvecklar egna arbetssätt, mål, budgetar och system. Det sker utifrån den egna verksamhetens behov, inte utifrån kommunens gemensamma uppdrag. Det gör att samarbete över förvaltningsgränser blir svårt, eftersom varje del optimerar sin egen verksamhet i stället för att bidra till en sammanhållen helhet. För invånaren spelar det ingen roll hur kommunen är organiserad internt, men i praktiken tvingas medborgaren ofta möta flera olika kontaktvägar, system och processer för att lösa ett och samma behov. Konsekvensen blir splittrade tjänster, dubbelarbete, svårigheter att dela information och en digital utveckling där helhetsperspektivet lätt går förlorat. I avhandlingen beskrivs detta som en central del av kommuners socio-tekniska skuld – organisatorisk uppdelning och fragmenterad digital infrastruktur förstärker varandra och gör det svårare att bygga sammanhängande, medborgarcentrerade digitala tjänster.
+          </p>
+
+          <h3>Digitalisering och IT som en servicefunktion</h3>
+          <p class="challenge-core">Kärnan: Digitalisering och IT ses som tekniskt stöd, inte som strategisk motor för verksamhetsutveckling.</p>
+          <p>
+            I många kommuner ses digitalisering och IT fortfarande som servicefunktion i stället för strategisk motor. Detta innebär att digitalisering och IT ofta får en begränsad roll som tekniskt stöd för drift, förvaltning och felsökning, snarare än att vara en aktiv part i verksamhetsutveckling och förändringsarbete. När IT främst förväntas hålla systemen i gång hamnar fokus lätt på stabilitet, support och kortsiktiga lösningar, medan frågor om tjänstedesign, processutveckling, informationsdelning och långsiktigt hållbar arkitektur får mindre utrymme. Det gör att digitalisering behandlas som en separat teknikfråga i stället för som en central del av hur kommunen utvecklar sin verksamhet (med stöd av sina digitala lösningar) och möter invånarnas behov. Följden blir ofta att nya digitala initiativ läggs på gamla strukturer i stället för att användas för att omforma arbetssätt och skapa bättre helhetslösningar. På så sätt försvagas kommunens förmåga att arbeta strategiskt med digital transformation, och digitalisering och IT:s potential som drivkraft för innovation, samverkan och medborgarcentrerad utveckling tas inte till vara.
+          </p>
+
+          <h3>Det kommunala självstyret</h3>
+          <p class="challenge-core">Kärnan: När varje kommun gör på sitt eget sätt blir gemensamma standarder och tjänster svårare att bygga.</p>
+          <p>
+            Det kommunala självstyret försvårar gemensamma lösningar. Varje kommun utvecklar ofta sina arbetssätt, prioriteringar och digitala lösningar utifrån sina egna lokala behov, förutsättningar och beslut. Det ger handlingsfrihet, men gör det också svårare att enas om gemensamma standarder, informationsmodeller och tekniska gränssnitt. När många kommuner väljer olika vägar uppstår lätt en situation där liknande problem löses på många olika sätt, vilket försvårar återanvändning, samarbete och erfarenhetsutbyte, och i de fåtal exempel på större samarbeten som ändå finns så sker dessa i lagren utanpå kärnverksamheten (lösningar som "sminkar grisen", inte som driver digital transformation på riktigt). Det blir också svårare att bygga sammanhängande digitala tjänster som fungerar över organisationsgränser, eftersom systemen inte är utformade för att fungera ihop. Konsekvensen blir att utvecklingen blir mer splittrad, att resurser används mindre effektivt och att både kommuner och invånare får svårare att dra nytta av gemensamma digitala lösningar.
+          </p>
+
+          <h3>Olika syn på digitalisering</h3>
+          <p class="challenge-core">Kärnan: Medarbetare och chefer lägger olika innebörd i samma ord, och drar därför åt olika håll.</p>
+          <p>
+            Olika syn på vad digitalisering egentligen betyder innebär att medarbetare, chefer och digitalisering- och IT-funktioner ofta lägger olika innebörd i samma ord. För vissa handlar digitalisering främst om att ersätta papper med e-tjänster eller införa nya system, medan andra ser det som en bredare förändring av arbetssätt, ansvar, samverkan och hur kommunen skapar värde för invånare. När dessa perspektiv inte är tydligt förankrade uppstår lätt missförstånd om mål, prioriteringar och förväntningar. Detta kan leda till att olika delar av organisationen driver utveckling åt olika håll, att förändringsinitiativ möter motstånd och att digitalisering reduceras till en teknikfråga i stället för verksamhetsutveckling. På så sätt blir det svårare att samla organisationen kring en gemensam riktning, och kommunen riskerar att fastna i osammanhängande satsningar som inte leder till verklig omställning eller bättre tjänster för medborgarna.
+          </p>
+
+          <h3>Kulturella utmaningar</h3>
+          <p class="challenge-core">Kärnan: "Vi gör som vi alltid gjort" bromsar förändring både internt och i samarbeten med andra.</p>
+          <p>
+            En kultur som präglas av "vi gör som vi alltid gjort" innebär att invanda arbetssätt, gamla sanningar och en allmän trötthet inför nya initiativ gör det svårt att få verklig förändring att hända. När medarbetare och chefer är vana vid att arbeta på ett visst sätt uppfattas nya lösningar lätt som störande, riskabla eller onödiga, även när de skulle kunna förbättra för verksamheten. En sådan kultur kan också präglas av ursäkter som att tiden inte räcker, att systemen ändå snart ska bytas ut eller att idéer utifrån inte riktigt passar den egna verksamheten. I grund och botten beror motståndet till förändring ofta på individens rädsla att förlora sin identitet på jobbet, varför det blir lätt att ta till allehanda ursäkter för att bibehålla Status Quo. Detta gör att gamla processer och system fortsätter att användas trots att de är ineffektiva, svåra att utveckla och dåligt anpassade till dagens behov.
+          </p>
+          <p>
+            Samma kultur gör det också svårare att samarbeta utåt. När det egna arbetssättet uppfattas som det rätta blir lösningar från andra kommuner, myndigheter eller nationella initiativ lätt avfärdade som "inte riktigt passande hos oss". Gemensamma standarder, delade plattformar och återanvändning av andras erfarenheter kräver att man är beredd att anpassa sig, men just den anpassningen utmanar invanda roller och identiteter. Resultatet blir att kommunen håller fast vid egna lösningar även när samverkan vore mer effektivt, och att chansen att dra nytta av andras arbete går förlorad.
+          </p>
+          <p>
+            Följden av de kulturella utmaningarna är att förändring bromsas redan innan den hunnit få fäste – både internt och i relationerna utåt – och att kommunen får svårare att bygga en mer sammanhållen, modern och medborgarcentrerad digital verksamhet.
+          </p>
+
+          <h3>Leverantörsinlåsning</h3>
+          <p class="challenge-core">Kärnan: Slutna format och begränsade gränssnitt gör kommunen beroende av leverantörens villkor och tempo.</p>
+          <p>
+            Kommuner har över tid blivit starkt beroende av vissa systemleverantörer, inte bara tekniskt utan också organisatoriskt och ekonomiskt. När lösningar bygger på slutna format, svåråtkomliga data och begränsade gränssnitt blir det svårt att flytta information, koppla ihop systemen med andra lösningar eller stegvis byta ut delar av den digitala miljön. Det gör att kommunen får mindre handlingsutrymme och ofta måste anpassa sig till leverantörens villkor, tidplaner och utvecklingslogik. Följden blir att förändring blir både dyrare och mer riskfylld, vilket leder till att gamla system blir kvar längre än de borde. Inlåsningen försvårar också samarbete med andra kommuner och möjligheten att utveckla öppna, långsiktigt hållbara, digitala lösningar.
+          </p>
+
+          <h3>Kommuners upphandlingar</h3>
+          <p class="challenge-core">Kärnan: Upphandlingsformerna gynnar etablerade leverantörer och låser fast kommunen i gamla lösningar.</p>
+          <p>
+            Kommunala upphandlingar gynnar i regel de stora och redan etablerade leverantörerna på marknaden. Kommunernas upphandlingsformer gör det alltså lättare för leverantörer som redan finns på marknaden att vinna nya affärer, medan mindre eller nya aktörer har svårare att ta sig in. Kravställning, avtalens omfattning, långa relationer och behovet av att passa in i befintliga system gör att kommunen ofta väljer lösningar som liknar dem man redan har, snarare än att öppna för nya, mer moderna och innovativa, alternativ. Det minskar konkurrensen och gör att ett fåtal leverantörer får en stark ställning, vilket i sin tur förstärker beroenden och gör det svårare att byta spår. Följden blir att äldre lösningar lever kvar längre än de borde, inte för att de är bra, utan för att upphandlingsprocessen gör förändring svår, kostsam och osäker. Detta bidrar till att kommuner låses fast i etablerade strukturer som försvårar mer öppna, flexibla och långsiktigt hållbara digitala vägval, och hindrar digital transformation.
+          </p>
+
+          <h3>Nationella projekt</h3>
+          <p class="challenge-core">Kärnan: Nationella initiativ byggs ovanpå befintliga beroenden – och förstärker dem i större skala.</p>
+          <p>
+            Statliga och nationella digitaliseringsinitiativ skapar inte de gemensamma förutsättningar som kommunerna faktiskt behöver för att kunna utveckla moderna och sammanhängande tjänster. I stället byggs sådana satsningar ofta ovanpå redan existerande strukturer, styrmodeller och leverantörsrelationer, vilket gör att gamla beroenden följer med in i nya projekt. När etablerade aktörer, befintliga system och tidigare arbetssätt får styra utvecklingen riskerar resultatet att bli ännu ett lager ovanpå det gamla, snarare än en verklig förbättring av den gemensamma infrastrukturen. Detta gör att kommunerna fortfarande måste anpassa sig till splittrade lösningar och otydliga ansvarsförhållanden. Följden blir att grundproblemen inte löses, utan snarare förstärks i större skala. Fragmenterad styrning mellan organisationer och svaga gemensamma standarder gör det alltså svårt att bygga öppna, samordnade och långsiktigt hållbara digitala lösningar.
+          </p>
+
+          <h2>Hur allt hänger ihop</h2>
+          <p>
+            De nio utmaningarna hänger ihop som ett självförstärkande system, snarare än som nio separata. I grunden börjar det ofta inne i kommunen där verksamheten utgår från ärenden i stället för människors behov, förvaltningarna arbetar i stuprör, digitalisering och IT får en stödjande snarare än strategisk roll, och det finns olika syn på vad digitalisering egentligen innebär. Tillsammans gör detta att kommunen har svårt att formulera en gemensam riktning för digital utveckling. När varje del av organisationen optimerar sin egen vardag blir det naturligt att bygga lösningar för den egna processen i stället för medborgarens hela behov. Det leder i sin tur till att digitalisering ofta blir punktinsatser ovanpå gamla strukturer, snarare än verklig omställning.
+          </p>
+          <p>
+            Dessa interna problem förstärks sedan av kultur och historia. När organisationen präglas av "vi gör som vi alltid gjort" blir det ännu svårare att ifrågasätta varför systemen och processerna ser ut som de gör. Olika tolkningar av digitalisering skapar osäkerhet om målbilden, och när digitalisering och IT inte har en strategisk roll blir det svårt att driva mot gemensam arkitektur, datadelning och långsiktig förändring. Resultatet blir att kommunen ofta väljer lokala förbättringar, tillägg och tillfälliga lösningar i stället för att ta itu med grundproblemen. På så sätt lever gamla arbetssätt vidare i digital form. Det är just denna typ av ömsesidig förstärkning mellan teknik, organisation, kultur och styrning som Persson (2025) beskriver som socio-teknisk skuld, att tidigare val formar dagens handlingsutrymme och gör det svårare att bryta mönstret.
+          </p>
+          <p>
+            När kommunen väl befinner sig i detta läge blir den också mer sårbar i sina relationer utåt. En splittrad intern organisation har svårare att ställa gemensamma krav på leverantörer, vilket ökar risken för inlåsning. Leverantörsberoenden förstärks sedan av upphandlingar som gynnar etablerade aktörer, vilket gör att gamla lösningar lever kvar ännu längre. Samtidigt försvårar det kommunala självstyret gemensamma standarder och delade lösningar mellan kommuner, och nationella initiativ riskerar att bygga vidare på samma gamla beroenden i större skala. På så sätt föder problemen varandra i flera led – interna stuprör gör samordning svår, bristande samordning ökar beroendet av leverantörer, leverantörsberoenden låser fast tekniken, och låst teknik gör det ännu svårare att skapa medborgarcentrerade och sammanhängande tjänster. Helheten blir ett digitalt arv som inte bara består av gamla system, utan av ett helt nät av kulturella, tekniska och organisatoriska beroenden som tillsammans bromsar verklig transformation.
+          </p>
+
+          <h2>Slutord</h2>
+          <p>
+            De nio utmaningarna visar att kommuners digitala arv inte är ett enskilt teknikproblem, utan ett sammanhängande mönster där organisation, kultur, styrning, upphandling, leverantörsrelationer och teknik påverkar varandra. Därför räcker det inte att bara byta system, införa en ny e-tjänst eller göra en bättre upphandling. Om övriga delar lämnas orörda kommer samma hinder att återskapas i ny form. Min avhandling visar just detta, att kommuners hindrande digitala arv framför allt hålls vid liv av sociala och organisatoriska faktorer, inte av tekniken i sig.
+          </p>
+          <p>
+            Detta gör att det är avgörande att förstå både vilka utmaningarna är och hur de hänger ihop. Ingen enskild åtgärd löser problemet ensam – verklig förändring kräver att kommunen arbetar samtidigt med intern samordning, gemensam målbild, kultur, strategisk styrning, upphandlingsfrågor, bryta leverantörsberoenden (genom att till exempel anamma öppen källkod och att utveckla mer själv) och samverkan med andra offentliga aktörer. Först när utmaningarna hanteras tillsammans kan det hindrande digitala arvet ersättas och sammanhängande, flexibla och medborgarcentrerade tjänster bli möjliga.
+          </p>
+          <p>
+            Möjliga vägar mot målet, ett möjliggörande digitalt arv och medborgarcentrerade tjänster, kommer att avhandlas i kommande inlägg.
+          </p>
+
+          <h2>Referenser</h2>
+          <ul class="references">
+            <li>Janowski, T. (2015). Digital government evolution: From electronic government to digital government. Government Information Quarterly.</li>
+            <li>Mergel, I., Edelmann, N., &amp; Haug, N. (2019). Defining digital transformation: Results from expert interviews. Government Information Quarterly, 36(4), 101385.</li>
+            <li>OECD. (2021). The E-Leaders Handbook on the Governance of Digital Government. OECD.</li>
+            <li>Persson, P. (2025). Managing Socio-Technical Debt: Causes and Design-Science Solutions for Citizen-Centred Digital Public Services. Thesis.</li>
+            <li>Vial, G. (2019). Understanding digital transformation: A review and a research agenda. MIS Quarterly Executive, 18(2), 118–144.</li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
