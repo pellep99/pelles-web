@@ -3,23 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blogg – Per Persson, Ph.D.</title>
-  <meta name="description" content="Blogg av Ph.D. Per Persson med reflektioner om digital transformation, offentlig sektor, teknisk skuld och medborgarnära digitala tjänster.">
+  <title>Nio utmaningar som bromsar kommunernas digitala transformation – Per Persson, Ph.D.</title>
+  <meta name="description" content="Nio utmaningar som hindrar kommuner från att komma ur sitt digitala arv: gamla system, invanda arbetssätt, organisatoriska stuprör, upphandlingsmönster och leverantörsberoenden.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-180x180.png">
-  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Blogg – Per Persson, Ph.D.">
-  <meta property="og:description" content="Reflektioner om digital transformation, offentlig sektor, teknisk skuld och medborgarnära digitala tjänster.">
+  <meta property="og:title" content="Nio utmaningar som bromsar kommunernas digitala transformation">
+  <meta property="og:description" content="Nio utmaningar som hindrar kommuner från att komma ur sitt digitala arv: gamla system, invanda arbetssätt, organisatoriska stuprör, upphandlingsmönster och leverantörsberoenden.">
   <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://phd-persson.se/blogg/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/nio-utmaningar/">
   <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-04-23">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Digital transformation">
 
   <style>
     :root {
@@ -48,6 +51,7 @@
 
       /* Layout */
       --content-max-width: 72rem;
+      --article-max-width: 44rem;
       --radius: 0.5rem;
       --touch-target: 2.75rem; /* 44px */
     }
@@ -157,66 +161,27 @@
       .site-title { font-size: 1.5rem; }
     }
 
-    /* Hjälte */
-    .hero {
-      padding: var(--space-2xl) 0;
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
       background: var(--color-surface);
     }
-    .hero h1 {
-      margin: 0 0 var(--space-md);
-      font-size: 2rem;
-      line-height: 1.2;
+    .article-hero .container {
+      max-width: var(--article-max-width);
     }
-    .hero p {
-      margin: 0;
-      max-width: 48rem;
-      font-size: 1.125rem;
-      color: var(--color-text-muted);
-    }
-    @media (min-width: 640px) {
-      .hero h1 { font-size: 2.5rem; }
-    }
-    @media (min-width: 1024px) {
-      .hero h1 { font-size: 3rem; }
-    }
-
-    /* Sektioner */
-    main section { padding: var(--space-xl) 0; }
-    main h2 {
-      margin: 0 0 var(--space-lg);
-      font-size: 1.5rem;
-    }
-
-    /* Blogglistning */
-    .posts {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: var(--space-lg);
-    }
-
-    .post {
-      padding: var(--space-lg);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius);
-      background: var(--color-bg);
-    }
-
-    .post-meta {
+    .article-meta {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-xs) var(--space-md);
       align-items: center;
-      margin: 0 0 var(--space-sm);
+      margin: 0 0 var(--space-md);
       font-size: 0.875rem;
       color: var(--color-text-muted);
     }
-
-    .post-category {
+    .article-category {
       display: inline-block;
       padding: 0.125rem var(--space-sm);
-      background: var(--color-surface);
+      background: var(--color-bg);
       border: 1px solid var(--color-border);
       border-radius: var(--radius);
       font-size: 0.8125rem;
@@ -225,38 +190,110 @@
       text-transform: uppercase;
       letter-spacing: 0.02em;
     }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
 
-    .post h3 {
-      margin: 0 0 var(--space-sm);
-      font-size: 1.25rem;
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
       line-height: 1.3;
-      color: var(--color-text);
     }
-    .post h3 a {
-      color: var(--color-primary);
-      text-decoration: none;
+    .article-body h2:first-child {
+      margin-top: 0;
     }
-    .post h3 a:hover { text-decoration: underline; }
-
-    .post-excerpt {
+    .article-body p {
       margin: 0 0 var(--space-md);
-      color: var(--color-text);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
     }
 
-    .post-link {
+    /* Illustration */
+    .article-figure {
+      margin: 0 0 var(--space-md);
+    }
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+    .article-figure figcaption {
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    @media (min-width: 640px) {
+      .article-figure-right {
+        float: right;
+        width: 18rem;
+        max-width: 50%;
+        margin: 0 0 var(--space-md) var(--space-lg);
+      }
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
       display: inline-flex;
       align-items: center;
       min-height: var(--touch-target);
+      margin-top: var(--space-xl);
       padding: var(--space-xs) var(--space-md);
-      background: var(--color-primary);
-      color: #fff;
+      color: var(--color-primary);
       text-decoration: none;
+      border: 1px solid var(--color-border);
       border-radius: var(--radius);
+      background: var(--color-bg);
       font-weight: 600;
     }
-    .post-link:hover {
-      background: var(--color-primary-hover);
-      color: #fff;
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
     }
 
     /* Sidfot */
@@ -297,66 +334,47 @@
 
   <header class="site-header">
     <div class="container">
-      <p class="site-title"><a href="../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
       <nav class="site-nav" aria-label="Huvudnavigation">
         <ul>
-          <li><a href="../">Hem</a></li>
-          <li><a href="../publikationer/">Publikationer</a></li>
-          <li><a href="../blogg/" aria-current="page">Blogg</a></li>
-          <li><a href="../tjanster/">Tjänster</a></li>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container">
-        <h1 id="hero-title">Blogg</h1>
-        <p>Reflektioner och kortare texter om digital transformation, offentlig sektor, teknisk skuld och medborgarnära digitala tjänster.</p>
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Digital transformation</span>
+            <span><time datetime="2026-04-23">23 april 2026</time></span>
+          </p>
+          <h1>Nio utmaningar som bromsar kommunernas digitala transformation</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+          <h2>Inledning</h2>
+          <p>
+            Om ni någonsin funderat på varför er digitaliseringsresa går trögt, varför effekter inte hämtas hem eller varför ni tenderar fastna i gamla lösningar och ineffektiva arbetssätt trots goda intentioner, då är detta inlägg relevant för just er.
+          </p>
+          <p>
+            Många kommuner ser behovet av att erbjuda digitala tjänster som är enkla, sammanhängande och utgår från invånarens behov. Ändå ser verkligenheten i regel annorlunda ut; splittrade e-tjänster, manuella omvägar, dubbelregistrering av uppgifter, svåråtkomliga data och system som är dyra att förändra. Det största problemet är inte att en enskild lösning är dålig, det handlar snarare om att kommuner under lång tid har byggt upp ett hindrande digitalt arv – en kombination av gamla system, invanda arbetssätt, organisatoriska stuprör, upphandlingsmönster och leverantörsberoenden.
+          </p>
+          <p>
+            Ovan kan paketeras som nio utmaningar som måste hanteras om man vill komma ur det hindrande digitala arvet och möjliggöra utveckling av medborgarcentrerade tjänster samtidigt som verksamheten effektiviseras. Dessa utmaningar presenteras nedan.
+          </p>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
       </div>
-    </section>
-
-    <section aria-labelledby="list-title">
-      <div class="container">
-        <h2 id="list-title">Alla inlägg</h2>
-        <ol class="posts" reversed>
-
-          <li class="post">
-            <p class="post-meta">
-              <span class="post-category">Digital transformation</span>
-              <span><time datetime="2026-04-23">23 april 2026</time></span>
-            </p>
-            <h3>
-              <a href="./nio-utmaningar/">Nio utmaningar som bromsar kommunernas digitala transformation</a>
-            </h3>
-            <p class="post-excerpt">
-              Många kommuner har byggt upp ett hindrande digitalt arv – en kombination av gamla system, invanda arbetssätt, organisatoriska stuprör och leverantörsberoenden. Inlägget beskriver nio utmaningar som måste hanteras för att möjliggöra medborgarcentrerade tjänster och effektivisera verksamheten.
-            </p>
-            <a class="post-link" href="./nio-utmaningar/" aria-label="Läs mer: Nio utmaningar som bromsar kommunernas digitala transformation">
-              Läs mer
-            </a>
-          </li>
-
-          <li class="post">
-            <p class="post-meta">
-              <span class="post-category">Digital transformation</span>
-              <span><time datetime="2026-04-16">16 april 2026</time></span>
-            </p>
-            <h3>
-              <a href="./20-80/">20/80-tumregeln i digital transformation</a>
-            </h3>
-            <p class="post-excerpt">
-              En vanlig tumregel är att digital transformation handlar om ”20 procent digitala lösningar och 80 procent människor, processer och organisation”. Inlägget går igenom vad tumregeln innebär, vad forskningen säger och varför organisatoriska faktorer ofta väger tyngre än själva tekniken. Slutsatsen är att fokus bör ligga på styrning, ledarskap och genomförandeförmåga snarare än på valet av digitala lösningar.
-            </p>
-            <a class="post-link" href="./20-80/" aria-label="Läs mer: 20/80-tumregeln i digital transformation">
-              Läs mer
-            </a>
-          </li>
-
-        </ol>
-      </div>
-    </section>
+    </article>
   </main>
 
   <footer class="site-footer">
