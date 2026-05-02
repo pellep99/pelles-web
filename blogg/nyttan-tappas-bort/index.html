@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>När nyttan tappas bort: om Leman Isiks avhandling, digitalisering och socio-teknisk skuld – Per Persson, Ph.D.</title>
+  <meta name="description" content="Reflektion över Leman Isiks avhandling om frikoppling mellan ambition och praktik i offentlig digitalisering, och kopplingen till socio-teknisk skuld.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="När nyttan tappas bort: om Leman Isiks avhandling, digitalisering och socio-teknisk skuld">
+  <meta property="og:description" content="Reflektion över Leman Isiks avhandling om frikoppling mellan ambition och praktik i offentlig digitalisering, och kopplingen till socio-teknisk skuld.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/nyttan-tappas-bort/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-05-02">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Digital transformation">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+    .article-body blockquote {
+      margin: 0 0 var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+    .article-body blockquote p {
+      margin: 0;
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Digital transformation</span>
+            <span><time datetime="2026-05-02">2 maj 2026</time></span>
+          </p>
+          <h1>När nyttan tappas bort: om Leman Isiks avhandling, digitalisering och socio-teknisk skuld</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+          <p>
+            Det finns en återkommande scen i offentlig digitalisering. Ett projekt startar med goda intentioner. Det finns en strategi. Det finns mål. Det finns förväntade nyttor. Det finns ofta också en styrgrupp, en projektmodell, en budget, ett antal milstolpar och någon form av effektlogik. Sedan händer verkligheten. Lösningar ska anskaffas och implementeras. Verksamheter ska involveras. Juridiken ska tolkas. Budgetramar ska hållas. Befintliga lösningar ska integreras. Organisationen ska förstå vad som faktiskt förändras. Och någonstans på vägen börjar den ursprungliga nyttan glida längre och längre bort från det praktiska digitaliseringsarbetet, vilket speglar det som i Leman Isiks utmärkta doktorsavhandling (Isik, 2026) beskrivs som en frikoppling mellan ambition och praktik. Projektet kan fortfarande leverera. Nya lösningar kan införas. Slutrapporten kan skrivas. Men denna fråga kvarstår som obesvarad: blev det någon faktisk nytta?
+          </p>
+          <p>
+            Detta inlägg sammanfattar vad jag, ur ett praktikerperspektiv, tar med mig från Lemans avhandling, samt hur det hänger ihop med resultaten från min egen avhandling (Persson, 2025).
+          </p>
+
+          <h2>Nyttorealisering är inte något man gör på slutet</h2>
+          <p>
+            Ett centralt bidrag i Lemans avhandling är att nyttorealisering inte kan förstås som en aktivitet som sker efter införandet, utan som en process som är kontinuerligt sammanlänkad med digital transformation över tid. Avhandlingen visar att denna koppling inte är given, utan behöver upprätthållas över tid genom kontinuerliga processer av dialog, översättning, samordning, förhandling och omkoppling.
+          </p>
+          <p>
+            Därför menar Leman att frågan inte kan vara:
+          </p>
+          <blockquote>
+            <p>Har vi realiserat nyttan efter införandet?</p>
+          </blockquote>
+          <p>
+            Den behöver snarare vara:
+          </p>
+          <blockquote>
+            <p>Håller vi fortfarande ihop digitaliseringsarbetet med den nytta vi ville skapa från början?</p>
+          </blockquote>
+          <p>
+            Det låter kanske enkelt, men det är det inte, för i praktiken är digitalisering i offentlig sektor full av krafter som drar åt olika håll. Projekt vill bli klara. Politiken vill se resultat. Digitalisering och IT vill ha hållbar arkitektur. Verksamheten vill ha fungerande stöd. Ekonomin vill ha kontroll. Juridiken vill ha regelefterlevnad. Medborgaren vill bara att tjänsten ska fungera. Och där, i mitten av allt detta, står nyttan och försöker överleva.
+          </p>
+
+          <h2>Fyra sätt som nyttan tappas bort på</h2>
+          <p>
+            Leman beskriver fyra återkommande former av strukturell frikoppling. Det är ett bra uttryck – strukturell frikoppling – för det handlar inte alltid om att något är direkt fel. Det handlar snarare om att sådant som borde sitta ihop börjar leva separata liv. Nedan följer min fria tolkning av vad detta innebär i generiska termer – jag hoppas Leman håller med mig någorlunda.
+          </p>
+
+          <h3>Policy och praktik glider isär</h3>
+          <p>
+            Det här känner nog många igen. På strategisk nivå finns ofta tydliga ambitioner, som till exempel att vi ska bli mer digitala, mer datadrivna, mer medborgarcentrerade, mer effektiva, eller mer sammanhållna. Men i vardagen jobbar verksamheten fortfarande i gamla system, med manuella rutiner, lokala undantag och organisatoriska stuprör.
+          </p>
+          <p>
+            Strategin säger en sak, praktiken gör något annat – det uppstår ett glapp mellan vad organisationen säger att den vill göra och vad den faktiskt gör.
+          </p>
+
+          <h3>Värden och uppföljning glider isär</h3>
+          <p>
+            Offentliga organisationer säger ofta att de vill skapa medborgarnytta, kvalitet, tillgänglighet, transparens och likvärdighet. Men vad mäts? Ofta mäts budget, tidplan, leverans, antal digitaliserade processer eller projektstatus.
+          </p>
+          <p>
+            Det som är lätt att mätandet blir styrande och det som egentligen var viktigt blir mer av en ambition i bakgrunden. Då kan organisationen mycket väl säga att medborgarnyttan är central, samtidigt som den praktiska styrningen premierar helt andra saker.
+          </p>
+
+          <h3>Tidshorisonter som går i otakt</h3>
+          <p>
+            Det här är kanske ett av de mest underskattade problemen i offentlig digitalisering. Politiken har sina cykler, projekt har sina tidsplaner, upphandlingar eller utveckling har sina ledtider, verksamhetsförändring tar sin tid, förvaltning pågår i åratal och teknisk skuld byggs upp över decennier.
+          </p>
+          <p>
+            Alla dessa tidsperspektiv möts i samma digitaliseringsinitiativ, och när de inte hänger ihop får vi lösningar som kan vara rationella på kort sikt men problematiska på lång sikt. Ett projekt kan behöva leverera snabbt. Då väljer man en lösning som fungerar här och nu, men fem år senare sitter organisationen med ännu en lösning, ännu en integration, ännu ett beroende och ännu skuld i den digitala infrastrukturen. Kort sagt, det som var praktiskt då blir dyrt sedan.
+          </p>
+
+          <h3>Medel och mål blandas ihop</h3>
+          <p>
+            Det här är kanske den mest bekanta fällan. Den digitala lösningen blir målet. Plattformen blir målet. Införandet blir målet. Digitaliseringen blir målet.
+          </p>
+          <p>
+            Men digitalisering är inte målet. Digitalisering är ett medel för att skapa något annat, som bättre service, högre kvalitet, bättre arbetsmiljö, ökad tillgänglighet, snabbare handläggning, bättre beslutsstöd eller mer sammanhängande upplevelser för medborgare och företag. Men när medlet tar över från målet kan projektet lyckas på papperet men misslyckas i verkligheten. Lösningen är införd, men nyttan uteblev.
+          </p>
+
+          <h2>Frikoppling är inte slarv</h2>
+          <p>
+            Det viktiga i Lemans avhandling är att hon inte behandlar detta som enskilda misslyckanden eller som resultatet av dåliga projektledare. Hon visar i stället att frikoppling är ett återkommande styrningsproblem i offentlig digitalisering.
+          </p>
+          <p>
+            Offentliga organisationer behöver hantera många krav samtidigt. De ska vara effektiva men också rättssäkra, innovativa men också stabila, lokalt anpassade men också standardiserade, snabba men också demokratiskt förankrade, och billiga men också långsiktigt hållbara. Det är inte konstigt att det uppstår glapp. Problemet är att dessa glapp ofta normaliseras – man vänjer sig vid att strategin säger en sak och praktiken något annat. Man vänjer sig vid att nyttan formuleras i början och följs upp på slutet. Man vänjer sig vid att projekt levererar utan att verksamheten egentligen förändras. Och när man vänjer sig har frikopplingen blivit en del av styrningen.
+          </p>
+
+          <h2>Förebygga och återkoppla</h2>
+          <p>
+            Leman introducerar två begrepp som är särskilt användbara för praktiker: att förebygga frikoppling och att återkoppla när frikoppling redan har uppstått. Att förebygga handlar om att tidigt skapa gemensam förståelse mellan styrning, digitalisering och verksamhet – inte genom ännu ett dokument som ingen läser, utan genom faktisk dialog mellan olika aktörer och organisatoriska nivåer om mål, nytta, ansvar och förutsättningar. Vad är det vi försöker åstadkomma? Vem behöver förändra vad? Vilka värden ska styra? Hur vet vi att vi är på rätt väg? Vilka tekniska vägval riskerar att begränsa oss senare?
+          </p>
+          <p>
+            Att återkoppla handlar om att reparera kopplingen när den redan har gått förlorad. Det behövs när projektets mål har förändrats, när tekniken inte längre stödjer verksamheten, när nya krav dyker upp eller när det visar sig att nyttan inte alls var så självklar som man trodde. Det här är en viktig poäng – digital transformation är inte en rak linje från strategi till införande. Det är en pågående rörelse där mål, medel, värden, teknik och praktik hela tiden behöver kopplas ihop igen.
+          </p>
+
+          <h2>Styrning behöver bli mer reflekterande</h2>
+          <p>
+            Många organisationer styr digitalisering med projektmodeller, portföljer, budgetar, beslutsprocesser, effektmål och statusrapporter. Det behövs, men det räcker inte. Leman pekar mot en mer reflexiv styrning. Det betyder inte att alla ska sitta i workshoppar hela dagarna och &rdquo;reflekterar&rdquo; medan inget blir gjort. Lemans avhandling beskriver i stället detta som reflexiv styrning, där styrning inte bara handlar om kontroll eller uppföljning, utan om en kontinuerlig process av att samordna, översätta, förhandla och justera mål, värden, tidshorisonter och praktik i takt med att förutsättningar förändras, och detta betyder att styrningen återkommande måste ställa de jobbiga frågorna:
+          </p>
+          <ul>
+            <li>Leder det här fortfarande mot den nytta vi ville skapa?</li>
+            <li>Har våra antaganden förändrats?</li>
+            <li>Mäter vi det som faktiskt spelar roll?</li>
+            <li>Har tekniken blivit ett mål i sig?</li>
+            <li>Förstår verksamheten, digitalisering och ledning nyttan på samma sätt?</li>
+            <li>Finns det någon som faktiskt äger nyttan efter projektets slut?</li>
+          </ul>
+          <p>
+            Det är sådana frågor som gör att digitalisering inte bara blir leverans, utan leder till förändring.
+          </p>
+
+          <h2>Kopplingen till socio-teknisk skuld</h2>
+          <p>
+            Här blir kopplingen till min egen avhandling tydlig. Den handlar om socio-teknisk skuld i offentlig digitalisering, och med det menar jag att digitaliseringens utmaningar inte bara är tekniska – de hänger ihop med styrning, upphandling, organisation, kultur, ansvarsfördelning och gamla beslut. Ett gammalt system är inte bara ett gammalt system, det är också ett resultat av tidigare upphandlingar, tidigare prioriteringar, tidigare organisationsgränser och tidigare kompromisser. Det Leman beskriver som frikoppling kan därför, över tid, bli socio-teknisk skuld.
+          </p>
+          <p>
+            En kommun kan ha en strategi om medborgarcentrerad digital service, men i praktiken styrs utvecklingen av gamla system, stuprör, leverantörsberoenden och interna processer. Med Lemans språk är detta en frikoppling mellan policy och praktik, och mitt språk är det socio-teknisk skuld, och båda beskriver samma grundproblem från olika håll – frikoppling handlar om att saker som borde hänga ihop glider isär och socio-teknisk skuld handlar om vad som händer när dessa glapp byggs in i system, arkitektur, arbetssätt och organisation.
+          </p>
+
+          <h2>Problemet sitter inte i de digitala lösningarna</h2>
+          <p>
+            En gemensam slutsats från våra avhandlingar är att digitaliseringsproblem i offentlig sektor primärt inte handlar om digitala lösningar. Det är förstås lockande att tänka så; om bara lösningen vore modernare, om bara integrationerna fungerade, om bara plattformen byttes ut, om bara vi hade bättre API:er. Och ja, ibland behövs allt det där, men de digitala lösningarna är ofta bara den synliga delen av problemet. Bakom dessa finns styrmodeller, budgetlogiker, juridiska tolkningar, organisatoriska gränser, upphandlingspraktiker, ansvarsfördelning och kultur. Det är där många av de verkligt svåra problemen sitter.
+          </p>
+          <p>
+            Det är också därför nya digitala lösningar ofta återskapar gamla problem. Man byter lösning men behåller styrningen. Man inför nya plattformar men behåller stuprören. Man pratar om medborgarcentrering men organiserar fortfarande arbetet runt interna ärendeflöden. Då blir resultatet ungefär som tidigare, fast med nyare gränssnitt.
+          </p>
+
+          <h2>Medborgarcentrering kräver mer än god vilja</h2>
+          <p>
+            En särskilt tydlig koppling handlar om medborgarcentrering. I min avhandling lyfter jag hur offentlig digitalisering ofta blir ärendecentrerad snarare än medborgarcentrerad. Organisationen digitaliserar sina interna processer, sina ärendetyper och sina administrativa logiker, men medborgaren möter fortfarande en fragmenterad offentlig sektor.
+          </p>
+          <p>
+            Lemans begrepp medel–mål-frikoppling hjälper till att förstå varför detta händer. Organisationen inför en digital lösning, projektet levererar, processen digitaliseras, men medborgarens upplevelse blir inte nödvändigtvis bättre. Då har medlet tagit över från målet. Det är en klassisk digitaliseringsfälla – vi förbättrar organisationens sätt att hantera ärenden, men glömmer att frågan egentligen handlade om hur medborgarens behov skulle mötas på ett bättre sätt.
+          </p>
+
+          <h2>Tid är länken mellan frikoppling och skuld</h2>
+          <p>
+            Den kanske starkaste kopplingen mellan Lemans avhandling och min egen handlar om tid. Teknisk skuld är i grunden ett tidsperspektiv – något som tidigare var en rimlig lösning skapar kostnader, begränsningar eller risker senare.
+          </p>
+          <p>
+            Leman beskriver något liknande genom temporal frikoppling, att olika tidshorisonter går i otakt. Politiken vill se snabba resultat, projektet vill leverera inom budget och tid, verksamheten behöver långsiktig förändring, IT behöver hållbar arkitektur, och medborgaren vill ha enkel och sammanhängande service. När dessa tidsperspektiv inte kopplas ihop uppstår lösningar som fungerar för en tid, men som gör framtida förändring svårare. Det är precis där socio-teknisk skuld uppstår, inte nödvändigtvis genom ett dåligt beslut, utan genom ett beslut som var begripligt i ett tidsperspektiv men problematiskt i ett annat.
+          </p>
+
+          <h2>Arkitektur räcker inte utan styrning</h2>
+          <p>
+            I min avhandling föreslår jag bland annat modularitet, öppna API:er, öppna gränssnitt, bättre arkitekturprinciper, minskade leverantörsberoenden och mer medborgarcentrerade design-principer för att öka servicegraden i offentlig sektor. Lösningar som uppfyller detta räcker dock inte i sig – en modulariserad arkitektur hjälper inte om organisationen fortfarande styr i stuprör, öppna API:er skapar inte nytta om ingen tar ansvar för helheten, öppen källkod minskar inte automatiskt inlåsning om upphandling, förvaltning och ansvarsfördelning skapar nya beroenden. Lemans avhandling adderar till detta med insikten att frikoppling är en grundorsak till varför organisationer börjar glida på målen och organisationsförändringen inte sker.
+          </p>
+          <p>
+            Tekniska och arkitektoniska lösningar behöver alltså kopplas till styrning, ansvar, nytta och verksamhetsförändring, annars riskerar även goda lösningar att bli nya lager i den socio-tekniska skulden.
+          </p>
+
+          <h2>Den gemensamma lärdomen</h2>
+          <p>
+            För mig är den viktigaste gemensamma slutsatsen enkel:
+          </p>
+          <blockquote>
+            <p>Digitalisering skapar inte nytta bara för att nya digitala lösningar införs, processer digitaliseras eller projekt levereras.</p>
+          </blockquote>
+          <p>
+            Nytta uppstår alltså inte av digitalisering i sig, utan när styrning, teknik, verksamhet, arkitektur och medborgarbehov hålls samman över tid. När dessa delar glider isär uppstår frikoppling, och när frikopplingen byggs in i system, arbetssätt, upphandlingar och organisationsstrukturer utvecklas socio-teknisk skuld. Ju mer denna skuld växer, desto svårare blir det att realisera de värden som digitaliseringen från början var tänkt att skapa. Så vi behöver kontinuerligt fråga oss;
+          </p>
+          <ul>
+            <li>Vad är nyttan, egentligen?</li>
+            <li>Vem äger den över tid?</li>
+            <li>Vilka tekniska vägval riskerar att begränsa framtida nytta?</li>
+            <li>Vilka organisatoriska strukturer gör att nyttan tappas bort?</li>
+            <li>Mäter vi det vi säger att vi värderar?</li>
+            <li>Och kanske viktigast av allt, när märker vi att vi har börjat glida isär?</li>
+          </ul>
+          <p>
+            För det är nog där mycket avgörs, inte i den perfekta strategin, inte i den mest ambitiösa målbilden, inte ens i den bästa arkitekturen. Det avgörs i stället i organisationens förmåga att upptäcka när mål, medel, teknik och praktik börjar dra åt olika håll, och att koppla ihop dem igen innan frikopplingen blir en permanent socio-teknisk skuld.
+          </p>
+
+          <h2>Referenser</h2>
+          <ul class="references">
+            <li>Isik, L. (2026). In the Public Interest: The Decoupling of Digital Transformation and Benefits Realization in the Public Sector. Thesis.</li>
+            <li>Persson, P. (2025). Managing Socio-Technical Debt: Causes and Design-Science Solutions for Citizen-Centred Digital Public Services. Thesis.</li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
