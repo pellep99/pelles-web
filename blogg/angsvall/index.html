@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Två perspektiv på Ångsvall: kollektiv digitalisering och institutionellt entreprenörskap – Per Persson, Ph.D.</title>
+  <meta name="description" content="Reflektion över Fredrik Carlssons och Marcus Mattebys doktorsavhandlingar om Ångsvall-samarbetet mellan Ånge och Sundsvall – kollektiv digital transformation och institutionellt entreprenörskap.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Två perspektiv på Ångsvall: kollektiv digitalisering och institutionellt entreprenörskap">
+  <meta property="og:description" content="Reflektion över Fredrik Carlssons och Marcus Mattebys doktorsavhandlingar om Ångsvall-samarbetet mellan Ånge och Sundsvall – kollektiv digital transformation och institutionellt entreprenörskap.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/angsvall/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-05-11">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Digital transformation">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+    .article-body blockquote {
+      margin: 0 0 var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+    .article-body blockquote p {
+      margin: 0;
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Digital transformation</span>
+            <span><time datetime="2026-05-11">11 maj 2026</time></span>
+          </p>
+          <h1>Två perspektiv på Ångsvall: kollektiv digitalisering och institutionellt entreprenörskap</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+          <p>
+            Samarbetet mellan Ånge och Sundsvall (eller Ångsvall som vi kallar det) kring digitalisering och IT är ett unikt och nationellt intressant fall. Det handlar inte bara om två kommuner som försöker hitta en praktisk lösning på kompetensbrist, teknikbehov och ökade krav på digital välfärd. Det handlar om något större, om hur kommuner kan agera tillsammans när digitaliseringens utmaningar blivit för stora för att hanteras var och en för sig.
+          </p>
+          <p>
+            Som IT-chefsarkitekt för Ånge och Sundsvall är det då extra spännande att två aktuella doktorsavhandlingar tar sig an Ångsvall-samarbetet! Fredrik Carlssons avhandling <em>Collective Digital Transformation</em> (Carlsson, 2026) och Marcus Mattebys avhandling <em>Awake and Recombine: How Municipalities Engage in Inter-Organizational Digital Transformation</em> (Matteby, 2025) analyserar båda Ånge-Sundsvall-samarbetet, men de gör det med lite olika glasögon.
+          </p>
+          <p>
+            Tillsammans ger de en mycket rik bild av vad interkommunal digitalisering kan vara. Fredrik visar framför allt hur digital transformation kan byggas på en kollektiv process, och Marcus visar hur samma typ av transformation kräver institutionellt arbete för att skapa legitimitet, bygga tillit, omförhandla roller och skapa nya sätt att förstå kommunal kapacitet.
+          </p>
+
+          <h2>Fredrik Carlsson: digital transformation som kollektiv process</h2>
+          <p>
+            Fredriks huvudbudskap är att digital transformation i offentlig sektor i allt högre grad sker över organisatoriska gränser. Det räcker därför inte att studera enskilda kommuner, enskilda digitaliseringsprojekt eller enskilda digitala tjänster. I många fall handlar det centrala i stället om hur flera autonoma offentliga aktörer tillsammans försöker skapa digital förändring.
+          </p>
+          <p>
+            Det är detta Fredrik kallar kollektiv digital transformation.
+          </p>
+          <p>
+            Poängen är viktig. Samverkan är inte bara en stödstruktur runt digitaliseringen. Den är inte bara ett sätt att organisera möten, fatta gemensamma beslut eller dela kostnader. I Ångsvall-fallet är samverkan själva formen för transformationen. Digitaliseringen blir till genom kontinuerlig koordinering, förhandling och anpassning mellan Ånge och Sundsvall.
+          </p>
+          <p>
+            Fredrik beskriver därför digital transformation som något annat än ett linjärt projekt. Det är inte en process där man först formulerar mål, sedan implementerar en lösning och därefter mäter resultat. Snarare handlar det om en pågående och rekursiv rörelse där gemensamma arrangemang skapas, prövas, utmanas och förändras över tid.
+          </p>
+          <p>
+            Ångsvall blir särskilt intressant eftersom samarbetet inte bara motiveras av effektivitet. Det finns också en tydlig normativ dimension – digital jämlikhet. Invånare i mindre kommuner ska inte få sämre digital välfärd bara för att deras kommun har mindre resurser, färre specialister eller svagare digital infrastruktur.
+          </p>
+          <p>
+            Fredriks bidrag handlar därmed om att flytta blicken från den enskilda organisationen till kollektivet. Han visar hur digital transformation kan förstås som ett resultat av gemensamt handlande under distribuerad auktoritet. Ingen aktör äger ensam processen. Ingen kan fullt ut styra den. Transformationen uppstår i relationerna, beroendena och arrangemangen mellan aktörerna.
+          </p>
+
+          <h2>Marcus Matteby: digital transformation som institutionell omkonfiguration</h2>
+          <p>
+            Marcus avhandling behandlar samma övergripande fenomen, men med en annan vinkling. Hans huvudbudskap är att interorganisatorisk digital transformation inte främst bör förstås som teknisk modernisering, den bör i stället förstås som institutionell omkonfiguration.
+          </p>
+          <p>
+            Detta innebär att digitalisering inte bara handlar om system, plattformar, integrationer och IT-styrning. Det handlar också om normer, legitimitet, handlingsutrymme och maktrelationer. När kommuner börjar samarbeta på djupet förändras också föreställningar om vad en kommun är, vad den bör klara själv och vad som kan göras tillsammans med andra.
+          </p>
+          <p>
+            Marcus centrala begrepp är kollektivt institutionellt entreprenörskap. Med det menas hur offentliga aktörer tillsammans försöker förändra de institutionella villkor som formar digitalisering. De mobiliserar kompletterande förmågor, skapar gemensamma berättelser, bygger tillit och utvecklar nya styrformer.
+          </p>
+          <p>
+            I Ångsvall-fallet blir detta tydligt genom relationen mellan en större och en mindre kommun. Sundsvall har mer kapacitet, mer infrastruktur och större utvecklingsförmåga. Ånge har andra kvaliteter, som närhet, smidighet, tydliga behov och möjlighet att agera mer experimentellt. Samarbetet bygger därför inte bara på resursöverföring från den starkare till den svagare parten, det bygger också på rekombination av olika kapaciteter.
+          </p>
+          <p>
+            Men en sådan relation är inte enkel. Den rymmer spänningar mellan autonomi och beroende. Ånge behöver tillgång till Sundsvalls digitala förmåga, men vill inte reduceras till en mottagare. Sundsvall kan bidra med kapacitet, men måste samtidigt legitimera varför ett sådant ansvar är rimligt. Båda parter behöver hantera frågor om kontroll, inflytande, rättvisa och ansvar.
+          </p>
+          <p>
+            Marcus visar därmed hur digital transformation blir en institutionell resa. Den kräver att aktörer omtolkar invanda normer, bygger legitimitet för nya samarbetsformer och utvecklar tillit i en situation där rollerna inte är givna från början.
+          </p>
+
+          <h2>Vad avhandlingarna har gemensamt</h2>
+          <p>
+            Den tydligaste likheten är att båda avhandlingarna lämnar bilden av digitalisering som ett internt kommunalt projekt. De visar att kommunal digital transformation i allt högre grad behöver förstås som något som sker mellan organisationer.
+          </p>
+          <p>
+            Båda betonar också att Ångsvall inte enbart handlar om effektivitet. Det finns en stark idé om digital jämlikhet i båda analyserna, och frågan är inte bara hur kommuner kan spara pengar eller dela IT-resurser, utan hur invånare i olika kommuner kan få mer likvärdig tillgång till digital välfärd.
+          </p>
+          <p>
+            En annan viktig likhet är synen på resursasymmetri. Ånge och Sundsvall är inte jämbördiga i storlek, kapacitet eller digital mognad. Men båda avhandlingarna visar att asymmetri inte ska ses som ett problem, den kan i stället vara en källa till utveckling om relationen organiseras så att båda parters förmågor tas tillvara.
+          </p>
+          <p>
+            Båda avhandlingarna betonar dessutom att transformation sker över lång tid. Det finns ingen enkel modell, inget färdigt organisationsschema och ingen teknisk lösning som i sig skapar förändringen. Det avgörande är i stället hur aktörer successivt bygger gemensamma arrangemang, hanterar spänningar och skapar nya sätt att agera tillsammans.
+          </p>
+
+          <h2>Var de skiljer sig åt</h2>
+          <p>
+            Skillnaden mellan avhandlingarna ligger framför allt i vad de vill förklara.
+          </p>
+          <p>
+            Fredrik är mest intresserad av hur kollektiv digital transformation genomförs. Hans fokus ligger på processer, arrangemang, konfigurationer och mekanismer. Han vill förstå hur transformationen växer fram genom kollektivt handlande.
+          </p>
+          <p>
+            Marcus är mer intresserad av hur kollektiv digital transformation blir institutionellt möjlig. Hans fokus ligger på legitimitet, tillit, rättvisa, normer och aktörskap. Han vill förstå hur aktörer förändrar de institutionella villkor som gör samarbete möjligt och meningsfullt.
+          </p>
+          <p>
+            Man kan uttrycka det så här:
+          </p>
+          <ul>
+            <li>Fredrik visar transformationens form.</li>
+            <li>Marcus visar transformationens institutionella kraft.</li>
+          </ul>
+          <p>
+            Fredrik hjälper oss att förstå hur digitalisering blir en kollektiv process. Marcus hjälper oss att förstå hur denna process kräver institutionellt entreprenörskap, skapande av legitimitet och omförhandling av etablerade normer.
+          </p>
+
+          <h2>En samlad läsning</h2>
+          <p>
+            Lästa tillsammans ger Fredrik och Marcus två kompletterande perspektiv på Ångsvall.
+          </p>
+          <p>
+            Fredriks avhandling visar att digital transformation inte behöver vara bunden till en enskild organisation. Den kan skapas kollektivt, genom att flera kommuner etablerar gemensamma arrangemang och successivt lär sig att agera tillsammans. Marcus avhandling visar att detta inte sker av sig självt. För att ett sådant samarbete ska fungera krävs institutionellt arbete. Aktörer måste bygga tillit, skapa legitimitet, hantera maktasymmetrier och utveckla nya föreställningar om vad kommunal digitalisering kan vara. Detta gör Ångsvall till mer än ett lokalt IT-samarbete, det blir ett exempel på hur kommuner kan försöka möta växande krav på digitalisering genom att ompröva gränserna för kommunal kapacitet, ansvar och gemensamt handlande.
+          </p>
+          <p>
+            Tillsammans visar de att framtidens kommunala digitalisering inte bara kommer att handla om bättre teknik. Den kommer också att handla om nya kollektiva former, nya institutionella arrangemang och en mer aktiv strävan efter digital jämlikhet.
+          </p>
+
+          <h2>Referenser</h2>
+          <ul class="references">
+            <li>Carlsson, F. (2026). Collective Digital Transformation. Thesis.</li>
+            <li>Matteby, M. (2025). Awake and Recombine: How Municipalities Engage in Inter-Organizational Digital Transformation. Thesis.</li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
