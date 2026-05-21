@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Principer för hantering av det digitala arvet – Per Persson, Ph.D.</title>
+  <meta name="description" content="Fjorton design-principer i tre familjer – medborgarcentrering, överförbarhet och styrning – som tillsammans pekar ut riktningen för att vända kommunens digitala arv från börda till möjliggörare.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Principer för hantering av det digitala arvet">
+  <meta property="og:description" content="Fjorton design-principer i tre familjer – medborgarcentrering, överförbarhet och styrning – som tillsammans pekar ut riktningen för att vända kommunens digitala arv från börda till möjliggörare.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/principer-digitala-arvet/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-05-21">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Digital transformation">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Illustration */
+    .article-figure {
+      margin: var(--space-lg) 0;
+    }
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+    .article-figure figcaption {
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Digital transformation</span>
+            <span><time datetime="2026-05-21">21 maj 2026</time></span>
+          </p>
+          <h1>Principer för hantering av det digitala arvet</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+          <h2>Inledning</h2>
+          <p>
+            När jag började forska om varför det är så svårt att utveckla medborgarnära digitala tjänster i kommunen trodde jag, som många andra, att svaret till största del skulle handla om tekniken. Föråldrade system, krångliga integrationer, leverantörsberoenden, allt det vi brukar kalla teknisk skuld. Efter fem delstudier inkluderat 25 intervjuer, adderat 25 ytterligare expertintervjuer, tillsammans med mina sex års arbete i Sundsvalls kommun, har jag landat i en annan slutsats, att den skulden till största delen är social. Den uppstår och underhålls av hur vi styr, upphandlar, organiserar oss och förhåller oss till förändring, inte av kod.
+          </p>
+          <p>
+            Det är ingen liten omformulering. Det betyder att problemet inte ägs av IT-avdelningen. Det ägs av alla som fattar beslut om hur kommunen möter sina invånare och företagare.
+          </p>
+          <p>
+            Den här texten handlar om hur vi vänder vårt digitala arv från en börda till en möjliggörare. Med "digitalt arv" menar jag inte bara de gamla systemen – jag menar hela den ackumulerade väv av tekniska lösningar, avtal, processer, kompetenser och vanor som vi har byggt upp under decennier.
+          </p>
+          <p>
+            Det totala arvet kommer vi aldrig att kunna riva och från en dag till en annan bygga om helt och hållet från grunden. Men vi kan förvalta det, och stegvis förbättra det (om förutsättningar för det finns, vilket dock sällan är fallet) eller stegvis ersätta det med moderna lösningar. Detta på ett sätt som gradvis gör det möjligt att leverera de tjänster invånare och företagare faktiskt behöver, tjänster som är tillgängliga, snabba, tydliga, transparenta och anpassade efter deras situation snarare än efter våra interna ärendegångar.
+          </p>
+          <p>
+            För att göra det krävs att vi designar med avsikt, och inte bara den enskilda tjänsten, utan hela det ekosystem som tjänsten lever i. I min avhandling (Persson, 2025) har jag destillerat 14 design-principer grupperade i tre familjer som tillsammans pekar ut den riktning vi behöver gå för att hantera de identifierade nio utmaningar som bromsar kommunernas digitala transformation:
+          </p>
+          <ul>
+            <li><strong>Medborgarcentrering</strong> – tjänsterna ska utgå från invånarens och företagarens processer, inte från handläggarens ärendeprocess.</li>
+            <li><strong>Överförbarhet</strong> – det vi bygger på ett ställe ska gå att återanvända på ett annat, inom kommunen och mellan kommuner.</li>
+            <li><strong>Styrning</strong> – vi behöver behålla kontrollen över våra data, våra algoritmer och våra beslutsprocesser, och göra dem öppna och granskningsbara.</li>
+          </ul>
+          <p>
+            Principerna är inte abstrakta ideal. De är konkreta motdrag mot de mönster som idag bygger ny skuld snabbare än vi hinner betala av den gamla. Nedan går jag igenom dem en och en, med exempel från det arbete vi gjort i Sundsvall och från de andra fall som ingått i min forskning. Min förhoppning är att texten ska vara användbar för dig som arbetar med digitalisering i offentlig sektor – som chef, arkitekt, utvecklare, upphandlare eller verksamhetsutvecklare – och som vill ha något mer hanterbart än "vi måste byta allt" och något mer kraftfullt än "vi får leva med det vi har".
+          </p>
+
+          <h2>Skulden ni redan känner igen</h2>
+          <p>
+            Innan vi går in på principerna behöver vi vara konkreta om vad det egentligen är vi försöker hantera. Ni känner förmodligen igen mönstret nedan även om ni aldrig paketerat det som teknisk skuld.
+          </p>
+          <p>
+            En invånare ska söka ett tillstånd och loggar in på en e-tjänst, fyller där i ett formulär som speglar hur handläggaren tänker snarare än hur invånaren tänker, och får sedan vänta i veckor utan tydlig information om vad som händer. Parallellt arbetar handläggaren i ett system som inte pratar med det system där ärendet registreras, som i sin tur inte pratar med fakturasystemet och så vidare. Varje gång någon vill förändra något – lägga till ett fält, integrera en ny tjänst, byta leverantör – visar det sig att förändringen kostar tio gånger mer än man trodde, eller är "tekniskt omöjlig" eftersom den leverantör som byggde systemet 1997 är den enda som förstår hur det hänger ihop.
+          </p>
+          <figure class="article-figure">
+            <img src="../../images/arvet1.jpg" alt="Illustration av Sundsvalls kommuns digitala arv: handläggare inom respektive förvaltningssilo hanterar ärenden som inkommit via e-tjänst eller post, vilka registreras manuellt och hanteras i verksamhetsspecifika system med proprietära datamodeller. Kommunikation om ärendestatus till medborgaren eller företagaren hanteras i bästa fall av handläggaren, eller inte alls." width="800" height="381" loading="lazy">
+            <figcaption>Figur 1 (från Persson et al., 2023). Sundsvalls kommuns digitala arv exemplifierat vid tiden då jag började på kommunen (och som alltjämt finns kvar inom flera verksamheter). Handläggare (1) inom sina respektive silos (2) hanterar ärenden (3) som antingen inkommit via en e-tjänst eller via post. Dessa ärenden registreras manuellt och hanteras sedan i respektive verksamhetsspecifika system (4), inlåst i det specifika systemets proprietära datamodell (5). Kommunikation (3), till exempel uppdateringar av ärendestatus, till medborgaren eller företagaren som registrerat ärendet hanteras i bästa fall av handläggaren (1), eller inte alls. Någon som känner igen sig?!</figcaption>
+          </figure>
+          <p>
+            Det här är teknisk skuld i praktiken. Och om du tittar närmare ser du att den sällan beror på att någon har skrivit dålig kod. Den beror på beslut som fattades långt från systemens kodbaser, beslut som:
+          </p>
+          <ul>
+            <li>att vi upphandlade ett system per förvaltning i stället för en gemensam plattform</li>
+            <li>att vi accepterade slutna, eller helt avsaknad av, API:er samt proprietära dataformat, eftersom det stod så i offerten</li>
+            <li>att vi byggde processer kring ärendet i stället för kring invånarens hela situation</li>
+            <li>att vi lät "så här har vi alltid gjort" vinna över "så här borde vi göra"</li>
+          </ul>
+          <p>
+            I min forskning kallar jag det här för socio-teknisk skuld. Begreppet kan kännas klumpigt men poängen är desto viktigare. Skulden lever i mellanrummet mellan tekniken och organisationen. Den underhålls av styrningsmodeller, upphandlingsregler, kulturella vanor och leverantörsrelationer, och den uttrycker sig som tekniska låsningar som blir allt dyrare att frigöra sig från. Det är därför rena IT-projekt så ofta misslyckas med att leverera medborgarnytta – de byter kanske motorn men låter resten av bilen vara som den alltid har varit.
+          </p>
+          <p>
+            Den viktigaste praktiska konsekvensen av det här är att design-principerna i resten av texten inte är tekniska checklistor för IT-avdelningen. De är i stället beslutsstöd för alla som påverkar hur kommunen möter sina invånare, från digitaliseringschefen och upphandlaren till verksamhetschefen och den enskilda förvaltaren som väljer hur en process ska se ut. Om de bara läses som teknik kommer de inte att fungera. Om de läses som en gemensam riktning för hur vi bestämmer, köper, bygger och förvaltar, då kan de börja vända arvet från börda till möjliggörare.
+          </p>
+
+          <h2>Medborgarcentrering: tjänster som börjar i invånarens verklighet</h2>
+          <p>
+            Den första familjen av principer handlar om något som låter självklart men som visar sig vara svårt i praktiken, att tjänsten ska utgå från invånaren och företagaren, inte från handläggningen.
+          </p>
+          <p>
+            I de kommunala system jag har studerat ser man gång på gång samma mönster. När en e-tjänst utvecklas formuleras kraven av handläggarna. Det är fullt logiskt då det är de som kan ärendet, känner regelverket och vet vilka uppgifter som behövs. Men resultatet blir en digital spegelbild av en intern blankett. Invånaren får anpassa sig till kommunens organisation snarare än tvärtom och får logga in i flera olika tjänster för olika delar av samma livshändelse, fylla i samma uppgifter flera gånger, och vänta utan att veta var i processen ärendet befinner sig (Persson et al., 2024).
+          </p>
+          <p>
+            De fem medborgarcentrerade principerna är riktade mot just det här. De är inte fem separata saker att bocka av; de är fem vinklar på samma grundfråga: hur skulle den här tjänsten se ut om vi designade den utifrån invånarens hela situation i stället för utifrån vår interna ärendegång?
+          </p>
+
+          <h3>Tillgänglighet</h3>
+          <p>
+            Den första principen handlar om att relevant information och relevanta tjänster ska gå att nå när invånaren behöver dem, och inte fördelade på sju olika portaler, ett kontaktcenter och en pappersblankett som ska postas in. Tekniskt sett kräver det öppna API:er och realtidssynkronisering mellan system. Organisatoriskt kräver det att förvaltningarna släpper idén om att de äger "sin" data. Tillgänglighet är där medborgarcentreringen möter den sociala skulden mest direkt – så länge förvaltningsgränserna är heliga kommer invånaren att möta och begränsas av dessa.
+          </p>
+
+          <h3>Aktualitet</h3>
+          <p>
+            Den andra principen handlar om att invånaren ska få veta vad som händer, när det händer. Inte "vi återkommer inom åtta veckor", utan få löpande och automatiserad återkoppling om var ärendet befinner sig och vad nästa steg är. Det här är en av de principer som ger störst upplevd förbättring för relativt liten teknisk investering, men det förutsätter att ärendehanteringssystemen kan tala om för en utåtriktad tjänst vad som händer. Många system kan inte det idag.
+          </p>
+
+          <h3>Handlingsbarhet</h3>
+          <p>
+            Den tredje principen handlar om att invånaren ska kunna agera rätt, första gången. En komplett ansökan i stället för en halv. Ett anmälningsärende klassificerat på rätt sätt i stället för fel. Det handlar om att bygga in vägledning, kontextkänsliga hjälptexter och stegvisa flöden i tjänsten så att kommunens regelverk översätts till handling i stället för att lämnas över som ett pdf-dokument på 14 sidor. Varje ofullständigt ärende leder till extraarbete för både invånaren och handläggaren.
+          </p>
+
+          <h3>Transparens</h3>
+          <p>
+            Den fjärde principen handlar om att invånaren ska kunna förstå hur beslut fattas. Det är en juridisk fråga – rätten till insyn i myndighetsutövning är grundläggande – men den är också en designfråga. Vilka regler tillämpades? Vilka uppgifter låg till grund? Och i takt med att vi börjar använda AI i handläggningen, vilken algoritm användes, och hur? Transparens är inte ett påklistrat lager utan något som måste byggas in från start, i hur vi loggar, dokumenterar och exponerar beslutsunderlaget.
+          </p>
+
+          <h3>Personalisering</h3>
+          <p>
+            Den femte principen handlar om att tjänsten ska anpassa sig efter vem som använder den. En privatperson som söker bygglov för första gången behöver något annat än en byggherre som lämnar in sin tjugonde ansökan i år. Personalisering betyder inte att vi samlar in mer data om invånaren. Det betyder i stället att vi använder den information vi redan har, och som invånaren redan gett oss, för att slippa fråga om samma sak igen. Det är en princip som är lätt att säga ja till och svår att leva upp till, eftersom den kräver att data flödar mellan system på sätt som en "standard-arkitektur" inom kommunsektorn inte tillåter.
+          </p>
+
+          <p>
+            Sammanfattningsvis pekar de fem medborgarcentrerade principerna mot en gemensam förskjutning. Bort från ärendet som organiserande enhet och till invånarens situation som organiserande enhet. Det är en filosofisk förändring mer än en teknisk. Men, och det är poängen med resten av texten, den filosofiska förändringen kan inte realiseras utan att vi också ändrar hur vi bygger och hur vi styr. Det är därför nästa familj av principer handlar om överförbarhet.
+          </p>
+
+          <h2>Överförbarhet: bygg så att det går att återanvända</h2>
+          <p>
+            Den andra familjen handlar om hur vi bygger. Eller mer precist, hur vi bygger så att det vi gör idag inte blir morgondagens skuld.
+          </p>
+          <p>
+            Om medborgarcentrering svarar på frågan vad ska vi leverera, så svarar överförbarhet på frågan hur ska vi leverera det utan att låsa in oss för nästa generation. Det är en princip som ofta hamnar i skymundan eftersom den inte ger någon synlig medborgarnytta i sig själv. Ingen invånare märker om en lösning är modulär eller monolitisk, om API:erna är öppna eller stängda, om koden är fri eller proprietär. Men på fem års sikt avgör det här om kommunen kan utveckla nya tjänster överhuvudtaget eller om varje nytt initiativ kommer att fastna i kostnadskalkyl-steget för att integrationerna är för dyra och leverantörsberoendet för djupt.
+          </p>
+          <p>
+            Det är värt att vara konkret om vad leverantörsinlåsning faktiskt kostar. I de fall jag har studerat är det inte ovanligt att integrationen av ett befintligt system med en ny tjänst kostar mer än utvecklingen av den nya tjänsten själv. Inte för att integrationen är tekniskt komplicerad i sig, utan för att den enda som vet hur den befintliga lösningen fungerar är den leverantör som byggde den, och som därför kan sätta priset själv. Det är skuld i sin renaste form – ett tidigare beslut som idag tar ut sin ränta varje gång vi vill utvecklas.
+          </p>
+
+          <h3>Övergripande överförbarhet</h3>
+          <p>
+            Den första principen är paraplyet för hela familjen och säger något enkelt: bygg modulärt, bygg på standarder, bygg så att lösningen kan flytta från en kontext till en annan. Det betyder generaliserade datamodeller i stället för specialanpassade. Det betyder API:er på en hög abstraktionsnivå i stället för specialiserade integrationspunkter. Det betyder också att vi när vi utvecklar en lösning för bygglov ska fråga oss om den även kan användas för miljötillstånd, serveringstillstånd eller andra tillståndsprocesser. Inte för att alla tillståndsprocesser är identiska, utan för att de är tillräckligt lika för att en gemensam grund ska kunna bära dem.
+          </p>
+
+          <h3>Interoperabilitet</h3>
+          <p>
+            Den andra principen skärper kravet och blir konkret. All funktionalitet i den digitala infrastrukturen ska kunna anropas och all data ska kunna hanteras genom standardiserade, OpenAPI-kompatibla gränssnitt. Det här är en upphandlingsfråga lika mycket som en arkitekturfråga. Om vi inte ställer kravet på öppna och dokumenterade API:er när vi köper in en lösning så får vi det inte heller. Och det är just här en stor del av den socio-tekniska skulden byggs, i de upphandlingsunderlag som accepterar att leverantören "har ett API" utan att kräva att det är komplett, följer en standard och är fullt dokumenterat.
+          </p>
+
+          <h3>Öppen källkod</h3>
+          <p>
+            Den tredje principen tar steget längre. När vi som offentlig sektor finansierar utveckling av programvara med skattemedel, så bör den utvecklingen så långt det är möjligt vara öppen och tillgänglig för andra kommuner att bygga vidare på (läs mer på <a href="https://publiccode.eu/sv/" rel="noopener noreferrer" target="_blank">publiccode.eu</a>). Det är en princip som handlar om både ekonomi och kontroll. Ekonomi eftersom 290 kommuner som var och en betalar en leverantör för i grunden samma sak är ett systemfel (Koponen, 2020). Kontroll eftersom så länge koden är någon annans kan vi inte garantera transparens, anpassningsbarhet eller långsiktig förvaltning. I min forskning har jag också sett att öppen källkod inte är en mirakellösning – den kan utvecklas till nya former av leverantörsinlåsning om en enda leverantör i praktiken kontrollerar projektet, om dokumentationen är obefintlig eller om kodberoendena är ohanterbara (Persson &amp; Linåker, 2025), och det behöver vi verkligen vara uppmärksam på.
+          </p>
+
+          <h3>Det tekniska finstilta</h3>
+          <p>
+            För öppna källkodsprojekt finns dessutom fem mer specifika tekniska principer som det är värt att känna till om man ska driva eller delta i sådana projekt; ändamålsenlig beroendehantering så att inga dolda låsningar smyger sig in, en standardiserad utvecklingsmiljö så att nya bidragsgivare kan komma i gång, fullständig dokumentation om både arkitektur och bidragsprocess, automatiserad testning med hög täckning, samt automatiserad kodkvalitetsanalys vars resultat är öppna. Var och en av dessa principer är riktad mot ett konkret problem, och när någon eller något av detta saknas blir det i praktiken ogörligt för andra leverantörer eller utvecklare att ta vid, och då har vi byggt om inlåsning i en ny förpackning.
+          </p>
+
+          <p>
+            Vad de här principerna sammantaget gör är att de bryter en av de starkaste mekanismerna bakom socio-teknisk skuld. Mekanismen att varje kommun, varje förvaltning och varje projekt bygger sin egen lösning på sin egen plattform med sin egen leverantör. När det vi bygger är överförbart, från avdelning till avdelning, från kommun till kommun, och från leverantör till leverantör, då börjar arvet uppföra sig som en gemensam tillgång i stället för en isolerad skuld. Och då blir det också möjligt att styra förändring på det sätt som nästa principfamilj handlar om.
+          </p>
+
+          <h2>Styrning: behåll kontrollen över det som är ditt</h2>
+          <p>
+            Den tredje familjen handlar om vem som bestämmer. Och om vad vi behåller kontroll över när vi släpper i väg utvecklingsuppdrag, upphandlingskontrakt och driftsansvar till andra.
+          </p>
+          <p>
+            Det är här det mesta av den socio-tekniska skulden faktiskt skapas. När jag följde de fall som ingår i avhandlingen visade det sig gång på gång att de svåraste låsningarna inte hade tekniska rötter. De hade rötter i beslut som ingen längre kom ihåg vem som fattat. En avtalsformulering från 2014 som gav leverantören ensamrätt att läsa ut data ur systemet. Ett upphandlingskriterium som krävde tio års branscherfarenhet och som i praktiken stängde ute alla utom de tre största aktörerna. En algoritm som klassificerade ärenden men vars logik ingen utanför leverantörens utvecklingsteam kände till. En "så har vi alltid gjort"-kultur som gjorde att även när nya och bättre alternativ fanns, så valdes de bort.
+          </p>
+          <p>
+            Det här är inte tekniska problem. Det är styrningsproblem. Och styrningsprinciperna är ett försök att ge praktiker konkreta verktyg för att inte bygga den här typen av låsningar nästa gång, och för att stegvis frigöra sig från de som redan finns.
+          </p>
+
+          <h3>Principstadgat dataägande</h3>
+          <p>
+            Den första principen är den mest grundläggande, att kommunen ska behålla full tillgång till och fullt ägarskap över sin egen data. Det låter självklart men är det inte. I praktiken är data ofta inlåst i leverantörers proprietära format, lagrad på sätt som gör export besvärlig eller omöjlig, eller underkastad avtalsklausuler som ger leverantören veto över hur data får användas. Principen kräver att vi i avtalen är explicita om vad som gäller, att vi tekniskt säkerställer portabilitet, och att vi inte accepterar lösningar där våra egna verksamhetsdata blir en del av någon annans affärsmodell. Det är en principiell fråga mer än en praktisk – offentlig sektors data ska tillhöra det offentliga.
+          </p>
+
+          <h3>Transparens</h3>
+          <p>
+            Den andra principen säger att kommunens algoritmer, regler och processer ska vara öppna och granskningsbara. Det är delvis ett gammalt krav i ny form – offentlighetsprincipen har gällt så länge svensk förvaltning har funnits – men det får ny laddning när alltmer av handläggningen automatiseras. När en algoritm klassificerar, prioriterar eller fattar beslut, så blir frågan hur det går till en demokratisk fråga. Vi kan inte hänvisa till att "leverantören har det som affärshemlighet". Principen säger att vi behöver kunna visa fram beslutsunderlaget, redogöra för logiken, och göra det möjligt för utomstående att granska. Det stänger ute en hel del leverantörer. Det är meningen.
+          </p>
+
+          <h3>Sund upphandling</h3>
+          <p>
+            Den tredje principen riktar sig direkt till den process som annars är den största enskilda källan till ny skuld, upphandlingen. Det handlar om att skriva kvalifikationskriterier som öppnar marknaden i stället för att stänga den, att kräva öppna standarder och dokumenterade API:er, att skapa formella kommunikationskanaler under upphandlingens gång så att även mindre leverantörer kan delta, och att dokumentera diskussioner och beslut öppet. Det handlar också om att inte automatiskt förlänga avtal som rimligen borde konkurrensutsättas. Upphandling är inte en administrativ teknikalitet, det är ett av kommunens viktigaste verktyg för att forma den marknad vi själva sedan ska köpa från. Om vi upphandlar som om oligopolet är en naturlag, så kommer det fortsätta vara det.
+          </p>
+
+          <h3>Förvaltarskap för öppen källkod</h3>
+          <p>
+            Den fjärde principen tar fasta på något jag stötte på flera gånger i forskningen, att öppen källkod inte fungerar av sig själv. Bara för att koden är fri betyder det inte att projektet är välskött, att kvaliteten upprätthålls eller att en bredare gemenskap kan bidra. Principen säger att offentligt finansierade öppen källkodsprojekt behöver en oberoende förvaltningsorganisation, tydliga styrningsroller och leverantörsneutrala granskningsregler. Utan detta riskerar projektet att i praktiken kontrolleras av en enda leverantör, och då har vi byggt om inlåsning till en öppen förpackning. Det är en princip som kräver att flera kommuner samarbetar eller att en nationell aktör tar ansvaret. Den enskilda kommunen är för liten för att över tid bära ett öppet källkodsprojekt av betydelse på egen hand.
+          </p>
+
+          <h3>Att motverka Status Quo</h3>
+          <p>
+            Den femte och sista styrningsprincipen är på många sätt den jobbigaste, eftersom den handlar om kulturen. Den säger att kommunens ledning och digitaliseringsfunktion aktivt behöver motverka den riskaversion, den bekvämlighet och den uppgivenhet som annars är de starkaste krafterna för att behålla Status Quo. Detta kan göras genom utbildning, genom utrymme att experimentera, genom incitament som premierar förändring och genom att tydligt prata om att det är farligare att stå still än att röra sig. Det är den principen jag själv har funnit svårast att leva upp till i praktiken. Tekniken finns. Oftast finns pengarna. Det som saknas är modet i verksamheten att utmana det bestående och tålamodet i digitaliseringsavdelningen att stå kvar när motståndet kommer.
+          </p>
+
+          <p>
+            Tillsammans formar de fem styrningsprinciperna en strategisk grund för allt annat. Du kan ha världens bästa medborgarcentrerade design och världens mest överförbara arkitektur, men om styrningen är otydlig och kulturen riskovillig så kommer skulden att fortsätta byggas. Det är därför styrning inte är en sidofråga utan kärnan. Och det är därför den här texten handlar om design-principer i bred mening – inte bara om hur vi designar tjänster och system, utan om hur vi designar hela det sätt som kommunen organiserar sin digitalisering på.
+          </p>
+
+          <h2>Att vända arvet: var kan du börja redan imorgon?</h2>
+          <p>
+            Om jag skulle sammanfatta hela den här texten i en mening så skulle den lyda: medborgarcentreringen säger vad vi ska leverera, överförbarheten säger hur vi ska bygga, styrningen säger hur vi ska bestämma, och ingen av de tre fungerar utan de andra två.
+          </p>
+          <figure class="article-figure">
+            <img src="../../images/arvet2.jpg" alt="Illustration som visar hur de tre principfamiljerna – medborgarcentrering, överförbarhet och styrning – hänger ihop och tillsammans pekar ut riktningen för att vända det digitala arvet från börda till möjliggörare." width="800" height="463" loading="lazy">
+            <figcaption>Figur 2 (från Persson, 2025). Hur principerna hänger ihop.</figcaption>
+          </figure>
+          <p>
+            Det är poängen med att tala om design-principer i tre familjer i stället för fjorton enskilda regler. Familjerna förstärker varandra. En vacker webbaserad tjänst som är medborgarcentrerad i sitt gränssnitt men byggd på en monolitisk plattform med stängda API:er är en framtida skuld i fin förpackning, en sminkad gris som man brukar säga. En öppen och modulär arkitektur som inte ägs av kommunen utan av leverantören är teknisk frihet utan praktisk frihet. Och starka styrningsprinciper utan tekniska lösningar att luta sig mot blir tomma policyer på pappret. Det är när de tre familjerna arbetar tillsammans som arvet börjar förvandlas från börda till möjliggörare.
+          </p>
+          <p>
+            Det betyder också att det inte finns något enskilt projekt som löser problemet. Skulden har byggts upp under decennier, från tusentals små beslut, och kommer att behöva betas av på samma sätt, alltså långsamt, genom medvetna val varje gång ett nytt beslut ska fattas. Det är inte heller digitaliserings- eller IT-avdelningens uppdrag att göra det ensam. Det krävs att digitaliseringschefen, upphandlingschefen, verksamhetscheferna och den politiska ledningen drar åt samma håll. Inte i form av en ny styrgrupp eller ett nytt strategidokument, utan i form av en gemensam förståelse för vad varje beslut faktiskt bygger eller löser upp.
+          </p>
+          <p>
+            Så vad kan du göra redan imorgon? Jag skulle peka ut tre saker.
+          </p>
+
+          <h3>1. Granska nästa upphandling</h3>
+          <p>
+            Börja med att titta på nästa upphandling som ligger på ditt bord. Vilken som helst. Ställ tre frågor om den:
+          </p>
+          <ul>
+            <li>Kräver vi att leverantörens lösning exponerar all funktionalitet och all data genom dokumenterade, standardiserade API:er?</li>
+            <li>Säkerställer avtalet att vi behåller fullt ägarskap över vår egna data, i ett format som tillåter åtkomst, export och migration?</li>
+            <li>Är kvalifikationskriterierna formulerade så att även mindre och nyare leverantörer (inte bara de tre stora gamla drakarna) kan delta?</li>
+          </ul>
+          <p>
+            Om svaret på någon av frågorna är nej, ändra det innan upphandlingen går ut. Upphandlingen är, för den absoluta merparten av alla svenska kommuner, den enskilda punkt där ny skuld byggs eller undviks, och den är också den punkt där förändringen är billigast att göra.
+          </p>
+
+          <h3>2. Se en process från invånarens sida</h3>
+          <p>
+            Identifiera en process som idag är ärendecentrerad och börja se den från invånarens sida. Ta en specifik tjänst – bygglov, anmälan av missförhållande, eller en livshändelse där flera förvaltningar är inblandade – och rita upp hela invånarens resa, från första kontakt till avslutat ärende. Var blir invånaren ombedd att fylla i samma uppgifter två gånger? Var saknas återkoppling? Var måste invånaren själv hålla reda på vilken förvaltning denne ska prata med? Var lämnas invånaren ensam med ett regelverk som inte går att förstå? Det hanterar inte all förändring som måste göras, men det är där du ser exakt var de fem medborgarcentrerade principerna behöver översättas till konkret lösningsdesign.
+          </p>
+
+          <h3>3. Ställ frågan om data och algoritmer öppet</h3>
+          <p>
+            Ställ frågan om data och algoritmer öppet, även när svaret är obekvämt. I varje beslut som rör digitalisering, fråga:
+          </p>
+          <ul>
+            <li>Vem äger den data som detta system skapar och bearbetar?</li>
+            <li>Vem kan i framtiden förändra logiken i systemet, och vem kan inte?</li>
+            <li>Vem skulle vi vara beroende av om leverantören ändrade sina villkor imorgon?</li>
+          </ul>
+          <p>
+            Det är frågor som ofta inte ställs, dels för att svaret är obekvämt, dels för att det redan känns för sent. Men just därför är de viktiga att ställa. Varje gång de ställs förskjuts kulturen lite. Och det är kulturförskjutningen som i längden bestämmer om styrningsprinciperna får genomslag eller stannar på pappret.
+          </p>
+
+          <h2>Slutord</h2>
+          <p>
+            Det finns ingen genväg och det finns ingen färdig lösning att köpa in. Det offentliga digitala arvet är för stort, för sammanflätat och för dyrt köpt för att kunna kastas om och börjas på nytt. Det vi däremot kan göra är att från och med idag fatta varje nytt beslut med arvet i åtanke, ett arv som inte är något vi är offer för, utan som något vi har ansvar för att förvalta så att det möjliggör snarare än hindrar. Det är så det vänder. Inte i en stor reform, utan i tusen små beslut, fattade av människor som vet vad de håller på med och varför.
+          </p>
+          <p>
+            Det är min förhoppning att den här texten har gett dig några av de begrepp, några av de frågorna och några av de principerna du kan luta dig mot när du fattar nästa beslut.
+          </p>
+
+          <h2>Referenser</h2>
+          <ul class="references">
+            <li>Koponen, J. (2020). Ett systemfel inom kommunsektorn hindrar digitaliseringen. <a href="https://utveckling.sundsvall.se/inlagg/inlagg/2020-12-29-ett-systemfel-inom-kommunsektorn-hindrar-digitaliseringen" rel="noopener noreferrer" target="_blank">utveckling.sundsvall.se</a></li>
+            <li>Persson, P. (2025). Managing Socio-Technical Debt: Causes and Design-Science Solutions for Citizen-Centred Digital Public Services. Thesis.</li>
+            <li>Persson, P., &amp; Linåker, J. (2025). Soft lock-ins in public sector acquisitions of open-source software solutions: A case study on a municipal e-service platform. In Proceedings of the 58th Annual Hawaii International Conference on System Sciences (HICSS) (pp. 1926–1935).</li>
+            <li>Persson, P., Zhang, Y., Asatiani, A., Lindman, J., &amp; Rudmark, D. (2023). Technical debt in the municipality sector: The missing link with citizens and silofication. In Proceedings of the 14th Scandinavian Conference on Information Systems (pp. 1–15).</li>
+            <li>Persson, P., Zhang, Y., Asatiani, A., Lindman, J., &amp; Rudmark, D. (2024). Toward citizen-centered digital government: Design principles guided legacy system renewal in a Swedish municipality. In Proceedings of the 57th Annual Hawaii International Conference on System Sciences (HICSS) (pp. 1963–1972).</li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
