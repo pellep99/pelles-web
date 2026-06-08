@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>När delaktighet inte räcker: vad Mäjt Wiks avhandling lär oss om digitalisering i praktiken – Per Persson, Ph.D.</title>
+  <meta name="description" content="Reflektion över Mäjt Wiks avhandling och begreppen infrastrukturell förtjockning och responsivitet – och hur de kopplar till socio-teknisk skuld i offentlig digitalisering.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="När delaktighet inte räcker: vad Mäjt Wiks avhandling lär oss om digitalisering i praktiken">
+  <meta property="og:description" content="Reflektion över Mäjt Wiks avhandling och begreppen infrastrukturell förtjockning och responsivitet – och hur de kopplar till socio-teknisk skuld i offentlig digitalisering.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/delaktighet-racker-inte/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-06-08">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Digital transformation">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Illustration */
+    .article-figure {
+      margin: var(--space-lg) 0;
+    }
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+    .article-figure figcaption {
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Digital transformation</span>
+            <span><time datetime="2026-06-08">8 juni 2026</time></span>
+          </p>
+          <h1>När delaktighet inte räcker: vad Mäjt Wiks avhandling lär oss om digitalisering i praktiken</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+          <p>
+            Det finns en välbekant scen i många digitaliseringsprojekt inom vården. Vårdpersonal bjuds in till workshop. Behov samlas in. Referensgrupper tillsätts. Synpunkter dokumenteras. Alla kan säga att "verksamheten har varit delaktig". Och ändå händer det så förvånansvärt lite och går så förvånansvärt ofta fel!
+          </p>
+          <p>
+            Mäjt Wiks utmärkta doktorsavhandling (Wik, 2026) sätter fingret på just detta glapp. Hennes huvudpoäng är enkel men obekväm, och problemet handlar sällan om att vi organiserar delaktighet för dåligt. Problemet handlar i regel i stället om att delaktigheten kommer för sent, verkar i fel tempo eller saknar verkliga möjligheter att påverka den digitala infrastruktur den förväntas forma.
+          </p>
+          <p>
+            Frågan är inte:
+          </p>
+          <p>
+            <em>Har vi haft delaktighet?</em>
+          </p>
+          <p>
+            Frågan är:
+          </p>
+          <p>
+            <em>Kan delaktigheten fortfarande göra skillnad?</em>
+          </p>
+          <p>
+            I många organisationer behandlas digitalisering fortfarande som projekt enligt mallen; start, införande, utbildning, avslut. Men de system som ska förändras kan inte hanteras i projekt enligt denna mall. De är infrastrukturer byggda på gamla beslut, med integrationer, styrmodeller, beroenden, undantag och lokala arbetssätt som byggts upp under lång tid, och det är här Mäjts viktigaste begrepp kommer in: <em>infrastrukturell förtjockning</em>. Det beskriver hur tidigare beslut, tekniska beroenden, styrformer och sådant som aldrig togs tag i gradvis "tjocknar" till ett handlingsutrymme där framtida förändring blir svårare och svårare att genomföra. Det andra begreppet Mäjt avhandlar är <em>responsivitet</em>: i vilken grad vardagliga handlingar faktiskt kan ändra riktningen på utvecklingen av infrastrukturen.
+          </p>
+          <p>
+            För praktiker innebär det här en viktig förskjutning. Sluta mäta delaktighet i antal workshops, intervjuer eller referensgrupper. Börja i stället undersöka om organisationen har skapat villkor där återkoppling kan påverka prioriteringar, avtal, arkitektur, integrationer och styrning.
+          </p>
+
+          <h2>När infrastrukturen "lyssnar" men inte hör</h2>
+          <p>
+            Ett av avhandlingens tydligaste exempel kommer från arbetet med 1177 Direkt. Där fanns möten, projektplaner, arbetsgrupper, återkoppling och samordning. Men Mäjt visar hur deltagandet ofta blev inramat av redan satta tekniska, organisatoriska och upphandlingsmässiga villkor. Återkoppling rörde sig genom formella kanaler, men återkom sällan som faktisk förändring. Det här är en träffande beskrivning av många offentliga digitaliseringsmiljöer, att infrastrukturen kan ta emot synpunkter utan att vara kapabel att förändras av dem.
+          </p>
+          <p>
+            Här finns en stark koppling till min egen avhandling (Persson, 2025) där jag beskriver hur offentlig digitalisering bromsas av <em>socio-teknisk skuld</em>, vilket i korthet betyder att gamla system, fragmenterad styrning, leverantörsberoenden, silos, upphandlingslogiker och organisatorisk tröghet tillsammans gör förändring dyr, långsam eller nästan omöjlig. Man kan säga att <em>infrastrukturell förtjockning</em> är den temporala och processuella sidan av <em>socio-teknisk skuld</em>. Den visar hur skuld inte bara existerar som en samling problem, utan blir till ett förändrat tidslandskap med längre ledtider, fler beroenden, svagare feedbackloopar, mer kompensatoriskt arbete och färre tillfällen där delaktighet kan påverka riktningen.
+          </p>
+          <p>
+            Begreppen är inte identiska. <em>Socio-teknisk skuld</em> är mer diagnostiskt och åtgärdsorienterat. <em>Infrastrukturell förtjockning</em> är mer analytiskt och temporalt då det hjälper oss förstå varför även välmenande delaktighet, bra workshops och tydliga behovsbilder kan bli verkningslösa när infrastrukturen har blivit för tät, för långsam och för svår att rubba.
+          </p>
+          <p>
+            Sagt på ett annat sätt – Mäjt visar hur delaktighet tappar kraft när infrastrukturen har tjocknat, och jag visar varför infrastrukturen har tjocknat för att skuld har byggts upp över tid, både tekniskt och socialt.
+          </p>
+
+          <h2>Provisoriska lösningar är också delaktighet – men inte alltid bra delaktighet</h2>
+          <p>
+            En av de mest praktiskt användbara delarna i Mäjts avhandling handlar om teknikrelaterat knåpande (tinkering), alltså om vårdpersonalens dagliga anpassningar, improvisationer och omvägar. Det kan handla om att dubbelregistrera information, flytta information manuellt, skapa egna rutiner, använda papper vid sidan av digitala system eller koordinera sådant som systemen inte klarar.
+          </p>
+          <p>
+            Mäjt skiljer mellan två former:
+          </p>
+          <ul>
+            <li><em>Innovativt knåpande</em> som uppstår när lokala anpassningar kan öppna för nya sätt att arbeta och påverka infrastrukturen framåt</li>
+            <li><em>Kompensatoriskt knåpande</em> som uppstår när personalen bara kompenserar för brister, utan att bristerna leder till förändring</li>
+          </ul>
+          <p>
+            Det senare är särskilt farligt då det får systemen att fortsätta fungera på ytan, men döljer kostnaden för att hantera dess brister i vardagen. När vårdpersonal "löser det ändå" riskerar organisationen att missa signalen, att systemet inte fungerar och hålls ihop av människors extraarbete.
+          </p>
+          <p>
+            Den bilden förstärks i min egen avhandling som visar att teknisk skuld i hög grad har sociala rötter, som fragmenterad styrning, leverantörsinlåsning, organisatorisk tröghet och som kultur som håller kvar problemen mer än kodnivåfel gör. Det betyder att varje provisorisk lösning bör behandlas som en styrsignal, inte som en lokal effektivisering.
+          </p>
+
+          <h2>Upphandling är också delaktighetsdesign</h2>
+          <p>
+            En viktig praktisk lärdom från Mäjt är att delaktighet formas långt innan någon bjuds in till en workshop. Arkitekturval, upphandlingar, avtalsformer och styrmodeller avgör ofta i förväg vad verksamhetens synpunkter kan påverka. Avhandlingen flyttar därför fokus från "hur ska vi organisera delaktighet?" till "finns de temporala, tekniska och styrningsmässiga villkor som gör delaktigheten konsekvent?"
+          </p>
+          <p>
+            För praktiker betyder det att upphandling inte bara handlar om inköp. Upphandling är i stället ett sätt att forma framtidens handlingsutrymme. Krav på öppna API:er, modulär arkitektur, datatillgång, transparens, gemensam förvaltning och möjlighet till förändring är i praktiken krav på framtida delaktighet.
+          </p>
+
+          <h2>Fem saker praktiker bör göra annorlunda</h2>
+          <p>
+            Baserat på ovan föreslås följande att ta tag i:
+          </p>
+          <ol>
+            <li>
+              <strong>Granska handlingsutrymmet innan ni bjuder in.</strong><br>
+              Fråga: Vad kan deltagarna faktiskt påverka? Funktioner? Processer? Integrationer? Avtal? Prioriteringar? Om svaret är "nästan inget" bör ni vara ärliga med det.
+            </li>
+            <li>
+              <strong>Behandla provisoriska lösningar som skuldindikatorer.</strong><br>
+              När personalen kopierar data, gör manuella kontroller eller bygger egna sidoprocesser är det inte bara "lokal kreativitet". Det är ofta ett tecken på bristande responsivitet.
+            </li>
+            <li>
+              <strong>Flytta designmandat närmare praktiken.</strong><br>
+              Mäjt visar att kortare feedbackloopar och designauktoritet nära verksamheten kan göra anpassning generativ snarare än belastande. Det kräver mandat, inte bara dialog.
+            </li>
+            <li>
+              <strong>Bygg bort framtida inlåsning.</strong><br>
+              Min egen avhandling pekar på öppna standarder, modulära lösningar, API:er, öppen källkod där det passar och sund upphandling som praktiska sätt att minska beroenden och hålla framtida handlingsutrymme öppet.
+            </li>
+            <li>
+              <strong>Sluta förväxla koordinering med inflytande.</strong><br>
+              Projektplaner, styrgrupper och referensgrupper kan skapa en känsla av framdrift. Men om återkoppling inte kan ändra riktningen är det inte responsiv delaktighet. Det är administration av redan fattade beslut.
+            </li>
+          </ol>
+
+          <h2>Den gemensamma lärdomen</h2>
+          <p>
+            I våra respektive avhandlingar studerar vi olika delar av offentlig sektor, vård respektive kommunal digital förvaltning, men avhandlingarna pekar mot samma praktiska slutsats – digitalisering misslyckas primärt inte för att tekniken är dålig eller för att användare inte involveras, den misslyckas när tidigare beslut har byggt upp en miljö där nya insikter inte längre kan få effekt.
+          </p>
+          <p>
+            Mäjt ger oss språket för att förstå <em>när delaktighet kan göra skillnad</em>, och jag ger oss verktyg för att förstå och minska <em>den skuld som gör skillnad svår att effektuera</em>.
+          </p>
+          <p>
+            För den som leder digitalisering i offentlig sektor är det en kraftfull kombination. Men den kräver mod. Det räcker inte att bjuda in fler människor till fler möten. Man måste också öppna de delar av infrastrukturen som på riktigt kan leda till förändring, de delar som är relaterade till styrning, arkitektur, upphandling, integrationslandskapet och förvaltning. Annars får vi bara mer delaktighet på papperet, men ingen påverkan i praktiken.
+          </p>
+
+          <h2>Referenser</h2>
+          <ul class="references">
+            <li>Persson, P. (2025). Managing Socio-Technical Debt: Causes and Design-Science Solutions for Citizen-Centred Digital Public Services. Thesis.</li>
+            <li>Wik, M. (2026). A Matter of Time: Participation and Digital Infrastructures in Public Healthcare. Thesis.</li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
