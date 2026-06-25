@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API- och MCP-strategier för offentlig sektor – Per Persson, Ph.D.</title>
+  <meta name="description" content="Vad är ett API och vad är en MCP – och hur hänger de ihop för offentlig sektor? Texten reder ut grunderna och tittar närmare på hur en API-strategi kan vidareutvecklas till en MCP-strategi för agenternas tid.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="API- och MCP-strategier för offentlig sektor">
+  <meta property="og:description" content="Vad är ett API och vad är en MCP – och hur hänger de ihop för offentlig sektor? Texten reder ut grunderna och tittar närmare på hur en API-strategi kan vidareutvecklas till en MCP-strategi för agenternas tid.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/api-mcp-strategi/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-06-25">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Digital transformation">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Illustration */
+    .article-figure {
+      margin: var(--space-lg) 0;
+    }
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+    .article-figure figcaption {
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Digital transformation</span>
+            <span><time datetime="2026-06-25">25 juni 2026</time></span>
+          </p>
+          <h1>API- och MCP-strategier för offentlig sektor</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+
+          <h2>Bakgrund – vad är ett API och vad är en MCP?</h2>
+          <p>
+            När vi pratar om digitalisering och AI dyker två förkortningar upp om och om igen: API och MCP. De hänger ihop, men löser olika problem. Här reder vi ut vad de faktiskt betyder, och varför just du som arbetar med arkitektur, strategi eller beslut inom offentlig sektor behöver ha koll på dem.
+          </p>
+
+          <h3>API – språket som låter system prata med varandra</h3>
+          <p>
+            API står för Application Programming Interface, ungefär "programmeringsgränssnitt". Det enklaste sättet att tänka på ett API är som en meny på en restaurang.
+          </p>
+          <p>
+            När du sitter på restaurangen går du inte själv in i köket och börjar laga maten. Du tittar i menyn, som beskriver exakt vad du kan beställa, och säger till servitören vad du vill ha. Servitören tar med din beställning till köket och kommer tillbaka med rätten. Du behöver aldrig veta hur köket är organiserat, vilka spisar de använder eller hur kocken arbetar, du behöver bara hålla dig till menyn.
+          </p>
+          <p>
+            Ett API fungerar likadant mellan två IT-system:
+          </p>
+          <ul>
+            <li><strong>Menyn</strong> är det avtal (kontraktet) som beskriver vad du får be om och i vilken form.</li>
+            <li><strong>Servitören</strong> är API:et som tar emot förfrågan, hämtar svaret och lämnar tillbaka det.</li>
+            <li><strong>Köket</strong> är systemet bakom – databasen, affärslogiken, registret – som förblir dolt.</li>
+          </ul>
+          <p>
+            Det här ger fyra egenskaper som är värda att känna till:
+          </p>
+          <ul>
+            <li><strong>Abstraktion</strong> – den som anropar ett API slipper förstå hur systemet bakom är byggt. En webbapplikation i en kommun kan hämta en folkbokföringsuppgift via ett API utan att veta något om hur det bakomliggande registret är konstruerat.</li>
+            <li><strong>Stabilitet</strong> – så länge "menyn" är oförändrad kan köket som helhet bytas. Myndigheten kan modernisera sina bakomliggande system utan att alla anslutna tjänster går sönder, ett avgörande skäl till att API:er gör stora system förändringsbara över tid.</li>
+            <li><strong>Kontroll och säkerhet</strong> – du exponerar bara det som står på menyn, inget annat. API:et blir en kontrollerad dörr in i systemet, där man kan styra behörighet, logga anrop och begränsa vad som får hämtas.</li>
+            <li><strong>Interoperabilitet</strong> – eftersom API:er bygger på överenskomna format kan system från olika leverantörer och andra aktörer utbyta information utan att vara hårt sammankopplade. Det är hela grunden för en sammanhängande digital förvaltning, där en e-legitimation, ett register och en digital tjänst kan samverka.</li>
+          </ul>
+          <p>
+            Kort sagt, API:et är hur programvara pratar med programvara, och det har varit den bärande integrationsmekanismen i modern IT i decennier.
+          </p>
+
+          <h3>MCP – en standardiserad kontakt mellan AI och omvärlden</h3>
+          <p>
+            MCP står för Model Context Protocol. Det är en betydligt nyare företeelse, en öppen standard som beskriver hur en AI-modell eller AI-assistent ansluter till externa verktyg, datakällor och system. Den introducerades av Anthropic i november 2024 och överlämnades i december 2025 till en oberoende stiftelse under Linux Foundation, vilket gjort den leverantörsneutral. Sedan dess har den fått stöd av i princip alla stora AI-aktörer.
+          </p>
+          <p>
+            För att förstå varför MCP behövs, tänk på problemet det löser. En AI-assistent blir verkligt användbar först när den kan göra saker åt dig, som att läsa i ett ärendehanteringssystem, slå upp en uppgift, boka i en kalender, sammanställa data. Men varje sådan koppling behövde tidigare byggas specifikt, en skräddarsydd integration för varje kombination av AI-verktyg och system. Det innebär att 10 AI-tjänster som ska nå 100 olika system i värsta fall leder till 1 000 unika integrationer att bygga och underhålla.
+          </p>
+          <p>
+            MCP vänder på det. Liknelsen som ofta används är <em>USB-C för AI</em>. Förr hade varje apparat sin egen laddare och sin egen kontakt, men med USB-C räcker en standard för att koppla ihop nästan vad som helst. På samma sätt, när ett system väl erbjuder en "MCP-server", kan vilken MCP-kompatibel AI som helst använda den utan ny specialintegration. 1 000 kopplingar blir i stället 110. Var sida behöver bara byggas en gång.
+          </p>
+          <p>
+            En MCP-server exponerar tre saker för AI på ett standardiserat och självbeskrivande sätt:
+          </p>
+          <ul>
+            <li><strong>Verktyg</strong> – handlingar AI kan utföra, till exempel "skapa ärende" eller "skicka påminnelse".</li>
+            <li><strong>Resurser</strong> – data AI kan läsa, till exempel ett dokument eller en post i ett register.</li>
+            <li><strong>Promptar</strong> – färdiga mallar som hjälper AI att använda systemet rätt.</li>
+          </ul>
+          <p>
+            Det viktiga är att beskrivningarna är skrivna så att AI-modellen själv kan förstå vad ett verktyg gör och när det ska användas, något ett vanligt API inte är utformat för.
+          </p>
+
+          <h3>Hur API och MCP hänger ihop</h3>
+          <p>
+            MCP ersätter inte API:er då en MCP-server är i praktiken ofta ett lager som tar befintliga API:er och presenterar dem på ett sätt som en AI-modell kan upptäcka och använda på egen hand.
+          </p>
+          <p>
+            Skillnaden i en mening:
+          </p>
+          <p>
+            <em>Ett API är hur två system pratar med varandra. En MCP är en standardiserad väg för en AI-modell att hitta och använda de systemen oavsett vilken AI-leverantör man valt.</em>
+          </p>
+
+          <h3>Varför det här angår offentlig sektor</h3>
+          <p>
+            För dig som fattar beslut eller sätter arkitektur är poängen inte tekniken i sig, utan vad standardiseringen möjliggör och kräver:
+          </p>
+          <ul>
+            <li><strong>Minskad inlåsning</strong> – eftersom MCP är leverantörsneutralt och modellagnostiskt kan en organisation byta AI-leverantör utan att bygga om alla integrationer. Det är en strategiskt viktig egenskap för en sektor som ska undvika beroenden av enskilda leverantörer.</li>
+            <li><strong>Återanvändning</strong> – en MCP-server byggd för ett verksamhetssystem kan användas av flera olika AI-tjänster och agenter. Investeringen i en bra integration får bredare nytta.</li>
+            <li><strong>Nya säkerhetskrav</strong> – när AI-agenter kan utföra handlingar i verkliga system uppstår nya risker, där obehörig åtkomst och manipulerade verktyg ("tool poisoning") ofta nämns. Här saknar protokollet ännu inbyggda svar på allt som krävs i en hårt reglerad miljö, exempelvis fullständiga revisionsspår, dataresidens och stark behörighetsstyrning. Att amerikanska NSA i maj 2026 gav ut särskild säkerhetsvägledning för MCP säger något om hur seriöst frågan tas. För offentlig sektor betyder det att MCP bör införas planerat, med styrning, loggning och åtkomstkontroll på plats, inte som en reflex driven av branschens tempo.</li>
+          </ul>
+          <p>
+            Med andra ord, API:et är den mogna, beprövade grunden för integration och MCP är det snabbt framväxande lagret som låter AI använda den grunden, med stora möjligheter men med ansvarsfrågor som offentlig sektor behöver äga själv.
+          </p>
+
+          <h2>Från teknik till strategi – API-strategi och MCP-strategi för offentlig sektor</h2>
+          <p>
+            I förra avsnittet konstaterade vi att API:er och MCP inte bara handlar om teknik, utan något som påverkar inlåsning, återanvändning och säkerhet. Men teknik som inte styrs blir sällan till nytta. Det är därför allt fler kommuner och myndigheter formulerar strategier – dokument som beskriver inte bara hur man kopplar ihop system, utan varför och i vilken ordning. Här tittar vi närmare på vad en API-strategi för offentlig sektor faktiskt är, och vad vi i dag vet om hur en MCP-strategi kan komma att se ut.
+          </p>
+
+          <h3>Vad är en API-strategi för offentlig sektor?</h3>
+          <p>
+            En API-strategi är inte en lista över vilka API:er en organisation ska bygga. Det är ett synsätt på hur man designar och utvecklar sin digitala infrastruktur över tid. Ett av de tydligaste och mest spridda exemplen i Sverige är Sundsvalls kommuns API-strategi, som är värd att läsa i sin helhet. Den bygger på en handfull bärande idéer som är lärorika oavsett var man själv som organisation befinner sig.
+          </p>
+          <ul>
+            <li><strong>Designa utifrån och in, med processen som utgångspunkt</strong> – i stället för att börja i de system man råkar ha, börjar man i de processer där kommunen möter sina intressenter, alltså sina medborgare, företagare, föreningar, m. fl. En process kan spänna över flera förvaltningar och bolag, men ska upplevas som en sammanhängande kontakt med kommunen. Processen bryts sedan ner i information och tjänster som exponeras via API:er.</li>
+            <li><strong>Ett API är en produkt, inte ett projekt</strong> – det här är kanske den viktigaste tankevändningen. Ett projekt tar slut, men en produkt har en livscykel, en ägare och användare som ska vårdas. I Sundsvalls strategi ägs API:ets livscykel optimalt av verksamheten, inte av IT-avdelningen, och den är medvetet frikopplad från de underliggande systemen. Det betyder att man kan modernisera eller byta ut ett bakomliggande system – ta hand om sitt "digitala arv" – utan att de tjänster som använder API:et går sönder.</li>
+            <li><strong>Återanvändning före specialbyggen</strong> – en funktion ska designas så att den kan återanvändas i alla processer där samma behov dyker upp. Det är så man undviker att bygga samma sak tio gånger i tio olika förvaltningar.</li>
+            <li><strong>Federation i stället för flaskhalsar</strong> – ett centraliserat API-team som ska godkänna allt blir snabbt en propp. Strategin förespråkar i stället en federerad modell, där ansvar och kompetens finns ute i verksamheterna men inom gemensamma ramar.</li>
+          </ul>
+          <p>
+            Till detta kommer ett par framgångsfaktorer som låter självklara men sällan är det i praktiken; säkerhet som grund snarare än påklistrad i efterhand, stöd från ledningen eftersom en sådan här omställning är ett uthålligt program och inte en quick fix, och devisen <em>starta smått, skala fort, växa stort</em> – börja med de lågt hängande frukterna och visa konkret nytta innan man ger sig på det komplexa.
+          </p>
+          <p>
+            En API-strategi på kommunnivå står inte heller ensam. Den vävs ihop med regeringens digitaliseringsstrategi 2025–2030, nya lagkrav på interoperabilitet vid datadelning i offentlig förvaltning, och uppbyggnaden av Ena – Sveriges digitala infrastruktur. Poängen med en egen API-strategi är att vara redo att haka i den utvecklingen, inte att uppfinna den på egen hand.
+          </p>
+          <p>
+            En API-strategi besvarar en enkel men avgörande fråga – <em>hur gör vi vår kärnverksamhet säkert och kontrollerat åtkomlig för oss själva, för andra myndigheter och för medborgaren utan att låsa fast oss i dagens system?</em>
+          </p>
+
+          <h3>Finns det en MCP-strategi för offentlig sektor?</h3>
+          <p>
+            Det korta och ärliga svaret är; inte ännu i någon mogen form. Det finns i skrivande stund ingen publicerad MCP-strategi för svensk offentlig sektor som motsvarar Sundsvalls API-strategi. MCP är fortfarande ungt, och de flesta organisationer befinner sig i utforskande faser snarare än i förvaltning. Men konturerna av hur en sådan strategi kommer att se ut börjar bli synliga, och de ritas upp från tre håll samtidigt.
+          </p>
+          <p>
+            Från industrin kommer de första ramverken för hur man bygger en MCP-strategi i praktiken. Återkommande är en uppdelning i tre delar: 1) hur man designar de verktyg man exponerar för AI, 2) hur man driftar MCP-servrar säkert, och 3) hur man styr helheten. Just styrningen lyfts fram som det avgörande eftersom utan central styrning kan man inte svara på de frågor en granskning ställer; vilken agent kom åt vilka data, med vilken behörighet, och när. En vanlig rekommendation är ett register över godkända MCP-servrar, så att inte "skugg-servrar" smyger sig in i produktion utan granskning.
+          </p>
+          <p>
+            Från säkerhetsorganisationer har frågan börjat tas på stort allvar. Att amerikanska NSA i maj 2026 gav ut särskild säkerhetsvägledning för MCP säger något om mognadsgraden. Genomgående är slutsatsen att man inte kan luta sig mot enbart vanlig API-säkerhet, utan behöver tänka i termer av åtkomstkontroll, spårbarhet, validering av indata och en "anta ingenting"-hållning, samt koppla kontrollerna till etablerade ramverk som NIST AI RMF samt ISO/IEC 42001 och 27001.
+          </p>
+          <p>
+            Från svensk offentlig sektor finns ännu inget MCP-specifikt styrdokument, men den styrlogik en MCP-strategi måste leva inom är redan formulerad. DIGG är tydliga med att AI-agenter som agerar självständigt i en myndighets namn medför särskilda risker, inte minst när de kopplas till externa system eller får utföra åtgärder. Grundprincipen, enligt DIGG, är att agenter bara får användas när nyttan tydligt överstiger risken och när spårbarhet, ansvar och mänsklig kontroll kan säkerställas, och alltid efter en riskbedömning med fokus på rättssäkerhet, kontrollförlust och informationshantering. Statskontoret beskriver samma rörelse; utvecklingen går från AI-assistenter till självständigt arbetande agenter, vilket ställer nya krav på riktlinjer, kontroll och gemensamma standarder mellan myndigheter. Lägg därtill offentlighetsprincipen, GDPR, AI-förordningen och NIS2, och man ser konturerna av det regelverk en svensk MCP-strategi behöver förhålla sig till.
+          </p>
+
+          <h3>En MCP-strategi är API-strategin in i agenternas tid</h3>
+          <p>
+            Det fina, och kanske mest användbara, är att en MCP-strategi inte behöver uppfinnas från grunden. I mångt och mycket är den API-strategins DNA fört vidare ytterligare ett steg.
+          </p>
+          <p>
+            Tänk på likheterna. Produkt, inte projekt gäller en MCP-server lika mycket som ett API. Återanvändning är om möjligt ännu starkare här då en bra MCP-server kan användas av flera olika AI-tjänster och agenter, så investeringen får verkligt bred nytta. Federation, säkerhet som grund och stöd från ledningen är samma framgångsfaktorer. Och eftersom en MCP-server i praktiken ofta är ett lager ovanpå befintliga API:er, blir en mogen API-strategi den naturliga grunden att bygga MCP på – den som redan gjort sitt API-arbete har ett rejält försprång.
+          </p>
+          <p>
+            Skillnaderna handlar om det som är nytt när det inte längre är kontrollerat av en människa, utan en AI-agent, hur man använder gränssnittet:
+          </p>
+          <ul>
+            <li>Ett register över godkända MCP-servrar och tydlig behörighetsstyrning, så att man vet och kan visa vad agenterna får göra.</li>
+            <li>Spårbarhet och loggning byggd för granskning – vem gjorde vad, på vems uppdrag – inte minst med tanke på offentlighetsprincipen och rättssäkerheten.</li>
+            <li>Leverantörsoberoende som ett medvetet val – eftersom MCP är modellagnostiskt kan man byta AI-leverantör utan att bygga om sina integrationer, vilket går hand i hand med strävan efter digital suveränitet.</li>
+            <li>Riskbedömning före åtgärd, enligt DIGG:s princip att nyttan tydligt ska överstiga risken och att mänsklig kontroll ska kunna säkerställas.</li>
+          </ul>
+          <p>
+            Med andra ord, om API-strategin handlar om att göra kärnverksamheten säkert åtkomlig för system och människor, handlar MCP-strategin om att göra samma verksamhet säkert användbar för AI-agenter med den extra aktsamhet som följer av att något nu kan agera på egen hand. Den offentliga sektor som redan tänker i API-strategiska termer har inte bara en bra start. Den har, om man uttrycker sig så, redan skrivit första utkastet till sin MCP-strategi, det återstår bara att läsa det i ljuset av agenterna.
+          </p>
+
+          <h2>Källor</h2>
+          <ul class="references">
+            <li>Sundsvalls kommuns API-strategi: <a href="https://utveckling.sundsvall.se/malbild-och-strategi/api-strategi" rel="noopener noreferrer" target="_blank">https://utveckling.sundsvall.se/malbild-och-strategi/api-strategi</a></li>
+            <li>Model Context Protocol – 2026 års färdplan: <a href="https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/" rel="noopener noreferrer" target="_blank">https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/</a></li>
+            <li>NSA, Model Context Protocol (MCP): Security Design Considerations (maj 2026): <a href="https://www.nsa.gov/Portals/75/documents/Cybersecurity/CSI_MCP_SECURITY.pdf" rel="noopener noreferrer" target="_blank">https://www.nsa.gov/Portals/75/documents/Cybersecurity/CSI_MCP_SECURITY.pdf</a></li>
+            <li>DIGG, Inför en AI-policy: <a href="https://www.digg.se/ai-for-offentlig-forvaltning/riktlinjer-for-generativ-ai/infor-en-ai-policy" rel="noopener noreferrer" target="_blank">https://www.digg.se/ai-for-offentlig-forvaltning/riktlinjer-for-generativ-ai/infor-en-ai-policy</a></li>
+            <li>Statskontoret, Möjligheter och risker med AI (förvaltningspolitisk dag 2026): <a href="https://www.statskontoret.se/om-statskontoret/nyheter/2026/mojligheter-och-risker-med-ai-diskuterades-pa-arets-forvaltningspolitiska-dag" rel="noopener noreferrer" target="_blank">https://www.statskontoret.se/om-statskontoret/nyheter/2026/mojligheter-och-risker-med-ai-diskuterades-pa-arets-forvaltningspolitiska-dag</a></li>
+            <li>Regeringen, Digitaliseringsstrategin 2025–2030: <a href="https://www.regeringen.se/regeringens-politik/digitaliseringsstrategin-2025-2030/" rel="noopener noreferrer" target="_blank">https://www.regeringen.se/regeringens-politik/digitaliseringsstrategin-2025-2030/</a></li>
+            <li>Regeringen, Sveriges AI-strategi: <a href="https://www.regeringen.se/regeringens-politik/sveriges-ai-strategi/" rel="noopener noreferrer" target="_blank">https://www.regeringen.se/regeringens-politik/sveriges-ai-strategi/</a></li>
+            <li>AI Wiki, Sveriges digitaliseringsstrategi 2025–2030 och nationella AI-strategi: <a href="https://aiwiki.se/kunskap/kb/sveriges_digitaliseringsstrategi_2025_2030" rel="noopener noreferrer" target="_blank">https://aiwiki.se/kunskap/kb/sveriges_digitaliseringsstrategi_2025_2030</a></li>
+            <li>Ampliflow, Riktlinjer för generativ AI: vad DIGG och IMY vill att ni gör: <a href="https://www.ampliflow.se/artiklar/svenska-riktlinjer-generativ-ai/" rel="noopener noreferrer" target="_blank">https://www.ampliflow.se/artiklar/svenska-riktlinjer-generativ-ai/</a></li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
