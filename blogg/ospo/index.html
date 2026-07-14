@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vad är ett OSPO, och varför behövs det i publik sektor? – Per Persson, Ph.D.</title>
+  <meta name="description" content="En introduktion till OSPO (Open Source Program Office) för politiker, ledning och strateger i offentlig sektor. Vad ett OSPO är, varför det behövs, sex arketyper för hur det kan organiseras och vad EU-policyn och den svenska utvecklingen betyder för dig som beslutsfattare.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vad är ett OSPO, och varför behövs det i publik sektor?">
+  <meta property="og:description" content="En introduktion till OSPO (Open Source Program Office) för politiker, ledning och strateger i offentlig sektor. Vad ett OSPO är, varför det behövs, sex arketyper för hur det kan organiseras och vad EU-policyn och den svenska utvecklingen betyder för dig som beslutsfattare.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/ospo/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-07-14">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Öppen källkod">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Ingress */
+    .article-lead {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Illustration */
+    .article-figure {
+      margin: var(--space-lg) 0;
+    }
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+    .article-figure figcaption {
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Öppen källkod</span>
+            <span><time datetime="2026-07-14">14 juli 2026</time></span>
+          </p>
+          <h1>Vad är ett OSPO, och varför behövs det i publik sektor?</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+
+          <p class="article-lead">
+            En introduktion för politiker, ledning, digitaliseringsledare och strateger i offentlig sektor.
+          </p>
+          <p>
+            Öppen källkod har gått från att vara en teknikfråga för utvecklare till att bli en strategisk fråga för hela samhällets digitalisering. När EU-kommissionen i juni 2026 lade fram en strategi för öppen källkod som en del av sitt paket för teknologisk suveränitet, blev det tydligt att öppen programvara numera betraktas som ett styrmedel för digital självständighet, inte bara som ett sätt att spara licenspengar.
+          </p>
+          <p>
+            Men en strategi på papper förändrar ingenting av sig själv. Det som saknas i de flesta offentliga organisationer är en funktion som kan omsätta ambitionerna i praktik, som att bygga kompetens, ge stöd i upphandling, hantera licenser och juridik, och få olika delar av verksamheten att samverka. Den funktionen har ett namn, ett OSPO (Open Source Program Office). Det här inlägget förklarar vad ett OSPO är, varför offentlig sektor behöver det, och hur ett sådant kan se ut i praktiken.
+          </p>
+          <p>
+            Som underlag har jag främst använt en färsk studie publicerad i <em>The Journal of Systems and Software</em> av Johan Linåker (RISE) tillsammans med Astor Nummelin Carlberg och Ciarán O'Riordan (OpenForum Europe), framtagen på uppdrag av EU-kommissionens DG DIGIT (EU-kommissionens avdelning med ansvar för IT-infrastruktur och digitala tjänster). Studien bygger på intervjuer med 18 OSPO-företrädare i 16 offentliga verksamheter runt om i Europa. Jag kompletterar detta med aktuell EU-policy och den svenska utvecklingen.
+          </p>
+
+          <h2>Öppen källkod är redan ryggraden – frågan är om vi styr den</h2>
+          <p>
+            En vanlig missuppfattning är att öppen källkod är något exotiskt som offentlig sektor kanske borde börja använda. Men verkligheten är den motsatta då öppen programvara uppskattningsvis redan utgör runt 90 procent av den digitala infrastruktur som bär upp både näringsliv och offentliga digitala tjänster. Den finns i operativsystem, webbservrar, databaser, kryptobibliotek och en mängd andra byggstenar. Den holländska skattemyndigheten, till exempel, uppskattar att 80–90 procent av deras egen mjukvaruutveckling bygger på öppen källkod.
+          </p>
+          <p>
+            Frågan är alltså inte om offentlig sektor använder öppen källkod, utan hur medvetet och strategiskt den gör det. Utan struktur uppstår tre återkommande problem: 1) man saknar överblick över vad som redan används och utvecklats, 2) man missar chansen att dela och återanvända lösningar mellan organisationer, och 3) man riskerar att fastna i ohälsosamma beroenden till enskilda leverantörer. I Sverige, med 290 kommuner, blir poängen extra tydlig – samma system behöver inte köpas in och utvecklas 290 gånger om, vilket tyvärr alltjämt är det vanligaste scenariot.
+          </p>
+
+          <h2>Vad är ett OSPO?</h2>
+          <p>
+            Ett OSPO är ett kompetenscentrum för en organisations arbete med öppen källkod. Snarare än en enskild avdelning är det en samlande stödfunktion som hjälper resten av verksamheten att använda, utveckla och samarbeta kring öppen programvara i linje med organisationens övergripande mål.
+          </p>
+          <p>
+            Konceptet uppstod i näringslivet i början av 2000-talet hos stora mjukvarubolag som Sun Microsystems, Hewlett-Packard, Intel och Google. Sedan dess har det spridit sig långt utanför tech-sektorn. Idag har mer än 30 procent av Fortune 100-bolagen ett OSPO, och trenden pekar uppåt. I offentlig sektor är fenomenet nyare, men växer snabbt internationellt – i USA rekommenderar den så kallade Securing Open Source Software Act att federala myndigheter inrättar OSPO:er, och i Europa finns exempel på alla nivåer, från EU-kommissionen ner till enskilda städer.
+          </p>
+          <p>
+            En viktig sak att förstå är att det inte finns en färdig mall för ett OSPO. Den kan bestå av en enda person på deltid eller ett team på 70 personer. Det kan ligga i en IT-avdelning, hos en digitaliseringsmyndighet, eller drivas som en förening mellan kommuner. Ofta bär det inte ens etiketten "OSPO", men fyller samma funktion. Det som förenar dem är rollen, att sänka trösklarna och hantera risker så att organisationen kan dra nytta av öppen källkod på ett tryggt och strategiskt sätt.
+          </p>
+
+          <h2>Varför räcker det inte med en policy?</h2>
+          <p>
+            Om öppen källkod redan är så utbrett, varför behövs då en särskild funktion? Svaret ligger i de hinder som forskningen konsekvent pekar ut för offentlig sektor:
+          </p>
+          <ul>
+            <li><strong>Kompetensen har outsourcats bort.</strong> Offentlig sektor har under lång tid förlitat sig på att köpa in och lägga ut teknisk kapacitet till leverantörer. Det har lett till en generell brist på egen mjukvaru- och ingenjörskompetens, inte bara kring öppen källkod. Och utan intern kunskap är det svårt att ens bedöma öppna alternativ.</li>
+            <li><strong>Upphandling och juridik är komplicerat.</strong> Att navigera komplexa regelverk kring licenser och programvaruanskaffning är en erkänd utmaning. Görs det fel kan resultatet bli inlåsning, ofta i form av en "mjuk" inlåsning (Persson &amp; Linåker, 2025) där man formellt äger koden men i praktiken är beroende av en enda leverantör för att kunna ändra något.</li>
+            <li><strong>Kultur och rädsla för förändring.</strong> IT-avdelningar beskrivs ofta som skeptiska till förändring och till det stöd som öppna gemenskaper kan erbjuda. Långvariga leverantörsrelationer och osäkerhet kring kostnader och risker gör att man hellre håller sig till status quo.</li>
+            <li><strong>Små organisationer saknar resurser.</strong> Utmaningarna är särskilt påtagliga för kommuner, som på grund av sin mindre storlek och begränsade resurser har störst behov av stöd, men minst muskler att bygga det på egen hand.</li>
+          </ul>
+          <p>
+            Ett OSPO är lösningen på ovan utmaningar. Studiens författare beskriver det träffande som tre saker på en och samma gång, som en stödfunktion, en policymöjliggörare och en förändringsagent. Det hjälper organisationen att på ett jordnära och pragmatiskt sätt hantera de farhågor som öppenheten väcker, frågor kring licenser, användbarhet, anpassningsbehov, säkerhet och support, och att väga riskerna mot nyttan. Poängen är ömsesidig; ett OSPO utan en övergripande strategi är av begränsad nytta, men en strategi utan ett OSPO som kan genomföra den är precis lika verkningslös.
+          </p>
+
+          <h2>Vad gör ett OSPO konkret?</h2>
+          <p>
+            Studien identifierar nio typer av ansvarsområden. Innehållet varierar mellan olika OSPO:er, men tillsammans ger de en bra bild av vad funktionen faktiskt levererar:
+          </p>
+          <ul>
+            <li><strong>Stöd för strategi och styrning</strong> – att översätta politiska mål och lagkrav till konkreta processer och vägledning.</li>
+            <li><strong>Stöd för användning och införande</strong> – att bygga kataloger och kunskapsbanker över relevant öppen programvara, och ge stöd vid val och anskaffning.</li>
+            <li><strong>Stöd för utveckling och publicering</strong> – att erbjuda infrastruktur (som gemensamma kodplattformar) och vägledning för att släppa och bidra till öppen kod.</li>
+            <li><strong>Licensval och efterlevnad</strong> – att ge juridiskt stöd, rekommendera licenser och bevaka att skyldigheterna följs, till exempel genom att kartlägga komponenter i en programvaruförteckning (SBOM – se <a href="https://sbom.se/tracks/grundlaggande-om-sbom/vad-ar-sbom" rel="noopener noreferrer" target="_blank">sbom.se</a>).</li>
+            <li><strong>Utveckling och förvaltning av nyckelapplikationer</strong> – att i vissa fall själv driva kritiska lösningar som hela sektorn har nytta av.</li>
+            <li><strong>Stöd för intern kodsamverkan (Inner Source)</strong> – även om många offentliga OSPO:er hellre arbetar öppet från början kan intern kodsamverkan vara en bra start för den försiktige.</li>
+            <li><strong>Uppföljning och mätning</strong> – att följa upp införande, nytta och risk, ofta som underlag för att motivera fortsatt finansiering.</li>
+            <li><strong>Relationer med det öppna ekosystemet</strong> – att bygga och underhålla nätverk, communities (öppen källkod-gemenskaper) och kontakter med leverantörer och andra myndigheter.</li>
+            <li><strong>Utbildning och kompetensutveckling</strong> – att höja kunskapen hos utvecklare, upphandlare, jurister, chefer och ibland politiker.</li>
+          </ul>
+          <p>
+            Två av rollerna förtjänar en särskild kommentar för en beslutsfattare. Uppföljning och mätning är genomgående något alla anser viktigt men få hinner med i praktiken, och just brist på mätbar nytta är en vanlig orsak till att satsningar tappar politiskt stöd. Och relationer med ekosystemet understryker att ett OSPO fungerar som en brygga, både internt mellan verksamhetens olika delar, och externt mot andra offentliga aktörer, civilsamhälle och marknad.
+          </p>
+
+          <h2>En modell passar inte alla – sex arketyper</h2>
+          <p>
+            En av studiens bidrag är sex "arketyper" som visar hur ett OSPO kan organiseras beroende på nivå, resurser och mål. De ger konkreta mallar att jämföra sin egen situation med.
+          </p>
+          <ul>
+            <li><strong>Nationella myndighets-OSPO:er</strong> ligger hos digitaliseringsmyndigheter eller departement och fungerar som medlare mellan politik och praktik. De översätter nationella strategier till stöd och vägledning för resten av förvaltningen. Exempel: Frankrikes Free Software Unit vid DINUM, Italiens Developers Italia (med en community på över 10 000 deltagare) och Tysklands Centrum för digital suveränitet, som bland annat driver den öppna kontorssviten OpenDesk.</li>
+            <li><strong>Institutionscentrerade OSPO:er</strong> sitter inne i en enskild organisations IT- eller digitaliserings-avdelning med fokus på den egna verksamheten. De liknar mest näringslivets OSPO:er. Exempel: EU-kommissionens OSPO, franska Arbetsförmedlingen (Pôle emploi) och holländska skattemyndighetens Bureau Open Source Software.</li>
+            <li><strong>Lokala myndighets-OSPO:er</strong> finns i städer och regioner och driver den lokala digitala omställningen. De är ofta små och utvecklarnära, och kan förvalta plattformar som andra kommuner också får nytta av. Exempel: Paris (vars e-tjänstplattform Lutece släpptes öppen redan 2001), Bratislava och Ventspils i Lettland där staden till och med driftar lösningar åt grannkommuner. Här är det värt att nämna även Ånge &amp; Sundsvalls kommuner som via sitt kommuna-koncept (<a href="https://kommuna.se/" rel="noopener noreferrer" target="_blank">kommuna.se</a>) under hösten kommer att börja rulla ut gemensamma lösningar för tre ytterligare kommuner.</li>
+            <li><strong>Föreningsbaserade OSPO:er</strong> är sammanslutningar av offentliga organisationer som skapar en neutral juridisk och administrativ ram för att gemensamt initiera och förvalta öppna projekt och dela på kostnaderna. Det här är en särskilt intressant modell för svenska kommuner. Exempel: danska OS2 (med runt 80 av 98 kommuner som medlemmar och ett trettiotal öppna projekt), nederländska kommunförbundet VNG, tjeckiska Open Cities och den svenska ORIGO-samverkan (<a href="https://origomap.se/" rel="noopener noreferrer" target="_blank">origomap.se</a>). En finansieringslogik som återkommer är att ett projekt blir hållbart först när tillräckligt många, ofta 20–40 kommuner, delar på kostnaderna.</li>
+            <li><strong>Akademiska OSPO:er</strong> ligger vid universitet och forskningsinstitut och hjälper forskare att sprida sina resultat som öppen källkod, ofta via ett Technology Transfer Office. Exempel: Trinity College Dublin och forskningscentret Lero.</li>
+            <li><strong>Organisationer med OSPO-liknande funktioner</strong> står utanför den offentliga sektorn men stöttar den. Det tydligaste exemplet är Code for Romania, en civilsamhällesorganisation som byggt ett femtiotal applikationer åt rumänska myndigheter, och vars flyktinglösningar under kriget i Ukraina har använts av omkring 1,5 miljoner människor.</li>
+          </ul>
+          <p>
+            En röd tråd som går genom alla arketyper är att det finns en vilja att stötta varandra inom offentlig sektor. De mer resursstarka aktörerna fyller en nyckelroll genom att leda och dra med sig de mindre. Just därför framhålls föreningsmodellen som särskilt lovande på kommunal nivå.
+          </p>
+
+          <h2>Varför just nu? Omvärldstrycket har vänt!</h2>
+          <p>
+            Varför öppen källkod och OSPO:er är så hett just nu inom EU är ingen slump. Under senare år har geopolitiken och beroendet av ett fåtal utomeuropeiska teknikleverantörer flyttat frågan om digital suveränitet högt upp på den politiska dagordningen. Flera saker driver på:
+          </p>
+          <ul>
+            <li><strong>EU:s strategi för öppen källkod (juni 2026)</strong> placerar för första gången öppen källkod på högsta politiska nivå, som ett strategiskt verktyg för teknologisk suveränitet snarare än en teknisk detalj. Strategin vill uttryckligen stärka kommissionens eget OSPO och nätverket av OSPO:er i offentlig sektor. Kommissionen konstaterar samtidigt att EU lägger runt 264 miljarder euro per år på IT-produkter och digitala tjänster, till stor del proprietära, vilket ger upphov till ett farligt strukturellt beroende, inte bara en marknadsfråga.</li>
+            <li><strong>Interoperable Europe Act (trädde i kraft 2024)</strong> inför en princip om att dela och återanvända, och kräver att offentliga aktörer prioriterar lösningar utan begränsande licensvillkor, som öppen källkod alltså, när de är likvärdiga i funktion, kostnad och säkerhet.</li>
+            <li><strong>Cloud and AI Development Act (föreslagen 2026)</strong> för in en "öppen källkod först"-princip vid upphandling av moln- och AI-programvara i offentlig sektor.</li>
+          </ul>
+          <p>
+            I Sverige finns ännu inget formellt nationellt OSPO, men det byggs underifrån. Nätverket NOSAD och det informella Svenska OSPO-nätverket samlar myndigheter, kommuner och företag för kunskapsdelning, och katalogen Offentligkod.se synliggör vilken öppen programvara som redan används i offentlig sektor. Myndigheter som Digg och Arbetsförmedlingen är aktiva pådrivare. Grunden finns alltså, det som saknas är i hög grad struktur, mandat och uthållighet.
+          </p>
+
+          <h2>Vad betyder detta för dig som beslutsfattare eller strateg?</h2>
+          <p>
+            Studien landar i konkreta rekommendationer. Här är de mest relevanta, anpassade för en svensk kontext:
+          </p>
+          <ul>
+            <li><strong>För dig i politik och ledning på nationell nivå:</strong> Skriv in öppen källkod som ett grundläggande verktyg i de digitala omställningsagendorna, och överväg ett nationellt OSPO som kan samordna genomförandet. Bygg nationella nätverk för kunskapsutbyte, ta fram tydlig vägledning för när och hur öppna alternativ ska beaktas vid anskaffning, och investera i utbildning, både i den egna förvaltningen och hos leverantörerna. Låt öppenhet mätas och följas upp som en del av den bredare digitala styrningen.</li>
+            <li><strong>För dig i kommun eller region:</strong> Formulera en strategi anpassad efter era mål och resurser, och inrätta en stödfunktion, kan vara hur liten som helst till en början, som ser till att den faktiskt genomförs. Framför allt, gå inte ensam. Sök samverkan genom föreningar eller gemensamma juridiska konstruktioner för att dela på styrning, upphandling och förvaltning. Är ni en större och mer resursstark aktör, ta en ledande roll och stötta de mindre. Bjud in civilsamhället; det spelar en reell roll för både utveckling och organisering.</li>
+            <li><strong>För dig i den akademiska världen:</strong> Ge tydlig vägledning om öppen källkods roll i uppdraget, stötta forskare med infrastruktur och rådgivning, och låt Technology Transfer-funktioner se öppen källkod som en väg till både nyttiggörande och hållbara affärsmodeller.</li>
+          </ul>
+
+          <h2>En sista reflektion</h2>
+          <p>
+            I näringslivet finns en tanke om att ett OSPO på sikt ska göra sig självt överflödigt, i takt med att organisationen mognar och öppen källkod blir en självklar del av kultur, arbetssätt och organisation. I offentlig sektor är vi inte där, och lär inte bli det på länge.
+          </p>
+          <p>
+            För en beslutsfattare är slutsatsen enkel. Ett OSPO är inte en teknikinvestering, utan ett sätt att göra digital suveränitet, interoperabilitet och innovation genomförbara i praktiken. Och den som menar allvar med de målen behöver också bygga förmågan att nå dem.
+          </p>
+
+          <h2>Källor</h2>
+          <ul class="references">
+            <li>EU-kommissionens strategi för öppen källkod och Tech Sovereignty-paketet (juni 2026): <a href="https://digital-strategy.ec.europa.eu/en/policies/open-source-strategy" rel="noopener noreferrer" target="_blank">https://digital-strategy.ec.europa.eu/en/policies/open-source-strategy</a></li>
+            <li>Interoperable Europe Act (EU 2024/903): <a href="https://eur-lex.europa.eu/eli/reg/2024/903/oj/eng" rel="noopener noreferrer" target="_blank">https://eur-lex.europa.eu/eli/reg/2024/903/oj/eng</a></li>
+            <li>Kommuna: <a href="https://kommuna.se/" rel="noopener noreferrer" target="_blank">https://kommuna.se/</a></li>
+            <li>Linåker, J., Carlberg, A. N., &amp; O'Riordan, C. (2026). Public sector open source program offices-archetypes for how to grow (common) institutional capabilities. <em>Journal of Systems and Software</em>, 112998.</li>
+            <li>NOSAD: <a href="https://nosad.se/" rel="noopener noreferrer" target="_blank">https://nosad.se/</a></li>
+            <li>Origo: <a href="https://origomap.se/" rel="noopener noreferrer" target="_blank">https://origomap.se/</a></li>
+            <li>Offentligkod.se: <a href="https://offentligkod.se/" rel="noopener noreferrer" target="_blank">https://offentligkod.se/</a></li>
+            <li>Persson, P., &amp; Linåker, J. (2025). Soft lock-ins in public sector acquisitions of open-source software solutions: A case study on a municipal e-service platform. In <em>Proceedings of the 58th Annual Hawaii International Conference on System Sciences (HICSS)</em> (pp. 1926–1935).</li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
