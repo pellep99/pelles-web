@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sa ni att ni jobbade agilt?! – Per Persson, Ph.D.</title>
+  <meta name="description" content="Det agila manifestet fyller 25 år. Men går det att kalla sig agil och ändå driva ett vattenfallsprojekt? Inlägget beskriver hur agila team hamnar längst ned i en traditionell projektstyrning – där budget och tidplan blir löften, produktägaren saknar mandat och verksamheten är för långt bort – och vad som krävs för att bli agil på riktigt.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sa ni att ni jobbade agilt?!">
+  <meta property="og:description" content="Går det att kalla sig agil och ändå driva ett vattenfallsprojekt? Om hur agila team hamnar längst ned i en traditionell projektstyrning – och vad som krävs för att bli agil på riktigt.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/agilt/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-08-03">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Agila arbetssätt">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Illustration */
+    .article-figure {
+      margin: var(--space-lg) 0;
+    }
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+    .article-figure figcaption {
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Agila arbetssätt</span>
+            <span><time datetime="2026-08-03">3 augusti 2026</time></span>
+          </p>
+          <h1>Sa ni att ni jobbade agilt?!</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+
+          <p>
+            Det agila manifestet skapades 2001 och fyller i år alltså 25 år – värt att uppmärksamma. Det är en uppsättning värderingar och principer för mjukvaruutveckling som prioriterar flexibilitet, samarbete och fungerande system framför rigida processer och omfattande dokumentation.
+          </p>
+          <p>
+            Manifestet vilar på fyra huvudvärderingar:
+          </p>
+          <ul>
+            <li>Individer och interaktioner framför processer och verktyg.</li>
+            <li>Fungerande programvara framför omfattande dokumentation.</li>
+            <li>Kundsamarbete framför kontraktsförhandling.</li>
+            <li>Anpassning till förändring framför att följa en plan.</li>
+          </ul>
+          <p>
+            Dessa fyra värderingar kompletteras av 12 principer som betonar vikten av täta leveranser, nöjda kunder, hållbar utveckling och självorganiserande team.
+          </p>
+          <p>
+            För att förstå agilt arbetssätt och varför det agila manifestet skapades är det bra att känna till dess ursprung. Under slutet av 1990-talet överskred mjukvaruprojekt ofta sina budgetar och missade sina planerade leveransdatum. Dessutom levererades produkter som vid färdigställandet inte längre motsvarade kundernas faktiska behov. Det dominerande tillvägagångssättet vid den tiden, ofta kallat vattenfallsmodellen, krävde att teamen definierade alla krav i detalj innan utvecklingsarbetet ens påbörjades, och på marknader med snabb förändringstakt visade sig detta bli mer och mer opraktiskt, och därför behövde nya arbetssätt skapas.
+          </p>
+          <p>
+            Som gammal i gården jobbade jag med systemutveckling redan innan manifestet skrevs och har jobbat enligt såväl Scrum, Kanban, Scrumban, och under en kortare period till och med enligt Extreme Programming (XP). När ett utvecklingsteam (upp till 6 deltagare) efter en tid blivit samkört brukar metodiken fungera bra, egentligen oavsett vilken man väljer, så hur kommer det sig då att projekt fortfarande överskrider sina budgetar och förlänger sina tidsplaner? Det försöker jag reda i nedan.
+          </p>
+
+          <h2>När det agila rinner ut i ett vattenfall</h2>
+          <p>
+            Man kan faktiskt kalla sig agil och ändå driva ett vattenfallsprojekt. Vad menar jag med det? Jo, utvecklingsteamet arbetar i sprintar, håller dagliga avstämningar, demonstrerar fungerande programvara och prioriterar sin backlog. Men runt teamet ser allt ut som vanligt: verksamheten skriver en omfattande kravspecifikation, budgeten beslutas i förväg, en styrgrupp låser omfattning och slutdatum och därefter lämnas beställningen över till utvecklarna. Agilt på insidan. Vattenfall på utsidan.
+          </p>
+          <p>
+            Problemet är dock att dessa två delar bygger på helt olika antaganden. Det agila teamet utgår från att kunskap uppstår under arbetets gång. Behov förändras, lösningar måste prövas och återkoppling från användarna påverkar vad som bör byggas. Projektstyrningen utgår däremot ofta från att man redan från början kan veta vad som ska levereras, vad det kommer att kosta och när det ska vara färdigt. Teamet förväntas alltså anpassa sig efter ny kunskap, men samtidigt hålla fast vid en plan som skapades innan kunskapen fanns. Där börjar problemen.
+          </p>
+          <p>
+            För att få finansiering måste verksamheten ofta presentera ett business case med tydlig omfattning, budget, nytta och slutdatum. Det är begripligt att ledningen vill veta vad pengarna ska användas till, men kalkylen behandlas lätt som ett löfte i stället för som en hypotes. När teamet senare upptäcker att ett behov har missförståtts, att en funktion inte skapar någon nytta eller att en enklare lösning räcker, borde detta ses som värdefullt lärande. I stället beskrivs det ofta som en avvikelse. Planen blir viktigare än resultatet.
+          </p>
+          <p>
+            Backloggen riskerar då att bli en kravspecifikation i nya kläder. Produktägaren får flytta kraven upp och ned, men inte ifrågasätta varför de finns där. Allt har redan lovats till styrgruppen, beställaren eller kunden. Det agila handlingsutrymmet reduceras till att välja i vilken ordning en på förhand bestämd lösning ska produceras. Samtidigt får produktägaren ofta ansvar utan verkligt mandat. Personen förväntas fatta snabba beslut men måste först förankra dem med linjechefer, jurister, säkerhetsfunktioner, referensgrupper och en styrgrupp som möts en gång i månaden. Teamets återkopplingscykel är kanske två veckor. Organisationens beslutscykel är flera månader om det vill sig illa. Då spelar det mindre roll hur snabbt utvecklarna arbetar. Agilitet handlar främst inte om hur fort någon programmerar, utan om hur snabbt hela organisationen kan gå från antagande till återkoppling och från återkoppling till beslut. Ett snabbt utvecklingsteam i ett långsamt beslutssystem är inte en agil organisation.
+          </p>
+          <p>
+            Ytterligare ett problem är verksamhetens deltagande. Agila arbetssätt bygger på nära samarbete mellan dem som utvecklar lösningen och dem som känner verksamheten och användarnas behov. Men verksamhetens representanter förväntas ofta bidra vid sidan av sina ordinarie arbetsuppgifter. När tiden inte räcker delegeras kontakten till en projektledare, kravanalytiker eller produktägare. Därmed återkommer de överlämningar som det agila arbetssättet var tänkt att minska: verksamheten lämnar behov till en kravfunktion, som lämnar krav till utveckling, som lämnar resultat till test, drift eller förvaltning. Varje grupp kan vara effektiv. Helheten blir ändå långsam.
+          </p>
+          <p>
+            Ekonomistyrning, juridik och informationssäkerhet måste naturligtvis finnas kvar. Problemet uppstår när de organiseras som stora kontrollstationer där omfattande dokument ska godkännas innan arbetet får fortsätta. Då byggs ett traditionellt vattenfall runt den iterativa utvecklingen.
+          </p>
+          <p>
+            Forskningen om stora agila förändringar visar också att de största hindren sällan är teamens arbetsformer. Svårigheterna finns i styrning, ansvar, kultur, finansiering och samordning mellan organisatoriska delar (Boehm &amp; Turner, 2005; Dikert et al., 2016; Hoda et al., 2011; Stettina &amp; Hörz, 2015; Serrador &amp; Pinto, 2015). Det är betydligt enklare att införa sprintar än att förändra budgetprocesser, beslutsmandat och chefers sätt att följa upp verksamheten. Därför nöjer sig många organisationer med den enklare förändringen. Utvecklarna får nya roller, nya möten och nya tavlor. Ledningen fortsätter att efterfråga fasta besked om omfattning, kostnad och slutdatum. Resultatet blir inte agilitet utan tätare rapportering inom ett traditionellt projektsystem av klassisk vattenfallsmodell.
+          </p>
+          <p>
+            Bilden nedan beskriver just ett sådant projektsystem från verkligheten. Jag tänker inte beskriva den i detalj – den får tala för sig och visa hur komplext uppbyggt, med mängder av överlämningar, projekt kan drivas i stora organisationer (vilket jag själv sett på nära håll vid flera tillfällen).
+          </p>
+          <figure class="article-figure">
+            <img src="../../images/projExempel.png" alt="Schematisk bild av ett verkligt projektsystem i en stor organisation: en mängd roller, grupper och beslutsforum sammankopplade med ett stort antal överlämningar mellan verksamhet, kravfunktion, utveckling, test, drift och förvaltning – vilket illustrerar hur komplex och överlämningstung en projektstyrning kan bli." width="1127" height="690" loading="lazy">
+            <figcaption>Ett verkligt projektsystem i en stor organisation – med mängder av roller, forum och överlämningar.</figcaption>
+          </figure>
+          <p>
+            En mer genuint agil styrning innebär inte att planer, budgetar eller dokumentation försvinner. Det innebär att de får omprövas när verkligheten förändras. Styrgrupper behöver följa upp nytta, risker och lärande, inte bara antal levererade funktioner. Produktägare behöver mandat, inte bara ansvar. Verksamhetens experter behöver avsatt tid att arbeta tillsammans med teamet (där det enligt mina erfarenheter oftast brister mest). Finansiering behöver kunna omprövas när ny kunskap visar att organisationen bör ändra riktning. Först när även verksamheten och styrningen accepterar att lösningen växer fram under arbetets gång blir organisationen agil på riktigt. Annars har man bara gjort utvecklarna agila längst ned i ett vattenfall, och då spelar det ingen roll hur många post-it-lappar som sitter på väggen, vattnet rinner ändå åt samma håll.
+          </p>
+          <p>
+            Sammanfattningsvis, de viktigaste punkterna om varför organisationers utveckling alldeles för ofta bedrivs enligt vattenfallsmodellen förtäckt i agila termer:
+          </p>
+          <ul>
+            <li><strong>Budget och tidplan blir löften.</strong> Ny kunskap behandlas som avvikelse.</li>
+            <li><strong>Produktägaren saknar mandat.</strong> Beslut fastnar i styrgrupper och förankring.</li>
+            <li><strong>Verksamheten är för långt bort.</strong> Överlämningar ersätter nära samarbete.</li>
+            <li><strong>Styrningen förblir traditionell.</strong> Agila team arbetar längst ned i ett vattenfall.</li>
+          </ul>
+          <p>
+            Så, fråga er själva, arbetar ni agilt, egentligen?!
+          </p>
+
+          <h2>Källor</h2>
+          <ul class="references">
+            <li>Boehm, B. &amp; Turner, R. (2005). Management Challenges to Implementing Agile Processes in Traditional Development Organizations. <em>IEEE Software, 22</em>(5), 30–39.</li>
+            <li>Dikert, K., Paasivaara, M. &amp; Lassenius, C. (2016). Challenges and Success Factors for Large-Scale Agile Transformations: A Systematic Literature Review. <em>Journal of Systems and Software, 119</em>, 87–108.</li>
+            <li>Hoda, R., Noble, J. &amp; Marshall, S. (2011). The Impact of Inadequate Customer Collaboration on Self-Organizing Agile Teams. <em>Information and Software Technology, 53</em>(5), 521–534.</li>
+            <li>Manifest för Agil systemutveckling (2001). <a href="https://agilemanifesto.org/iso/sv/manifesto.html" rel="noopener noreferrer" target="_blank">https://agilemanifesto.org/iso/sv/manifesto.html</a></li>
+            <li>Stettina, C. J. &amp; Hörz, J. (2015). Agile Portfolio Management: An Empirical Perspective on the Practice in Use. <em>International Journal of Project Management, 33</em>(1), 140–152.</li>
+            <li>Serrador, P. &amp; Pinto, J. K. (2015). Does Agile Work? A Quantitative Analysis of Agile Project Success. <em>International Journal of Project Management, 33</em>(5), 1040–1051.</li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
