@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Från projekt till fokuserade sprintar: vad AI kan förändra i offentlig utveckling – Per Persson, Ph.D.</title>
+  <meta name="description" content="AI gör stora delar av utvecklingen betydligt snabbare – men det intressanta är inte snabbare kodning, utan att kostnaden för varje återkopplingsloop sjunker dramatiskt. Inlägget beskriver erfarenheter från Sundsvalls kommuns fokuserade sprintar, varför flaskhalsen flyttar från teknik till organisation, och hur AI kanske äntligen gör det möjligt att arbeta så som agil utveckling alltid velat.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Från projekt till fokuserade sprintar: vad AI kan förändra i offentlig utveckling">
+  <meta property="og:description" content="AI gör utveckling snabbare – men det intressanta är inte kodraderna, utan att kostnaden för varje återkopplingsloop sjunker dramatiskt. Om fokuserade sprintar, flyttade flaskhalsar och varför verksamhetskunskapen blir viktigare än någonsin.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/fokuserade-sprintar/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-08-19">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="AI och agila arbetssätt">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Citat */
+    .article-body blockquote {
+      margin: 0 0 var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+    .article-body blockquote p {
+      margin: 0 0 var(--space-xs);
+    }
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">AI och agila arbetssätt</span>
+            <span><time datetime="2026-08-19">19 augusti 2026</time></span>
+          </p>
+          <h1>Från projekt till fokuserade sprintar: vad AI kan förändra i offentlig utveckling</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+
+          <p>
+            I mitt förra blogginlägg, <a href="../agilt/">Sa ni att ni jobbade agilt?!</a>, resonerade jag kring en paradox som nog många i offentlig sektor känner igen – att vi säger att vi arbetar agilt, att utvecklingsteamen jobbar i sprintar, håller standups och demonstrerar lösningar, men att det runt omkring teamet fortfarande finns projektplaner, styrgrupper, låsta budgetar, långa beslutscykler, kravdokument och en verksamhet som ofta befinner sig flera organisatoriska led bort från utvecklarna. Resultatet blir lätt agilt arbete inne i teamet, men vattenfall runt omkring.
+          </p>
+          <p>
+            En av principerna bakom det agila manifestet är särskilt intressant i sammanhanget:
+          </p>
+          <blockquote>
+            <p>Verksamhetskunniga och utvecklare måste arbeta tillsammans dagligen under hela projektet.</p>
+          </blockquote>
+          <p>
+            Det är en klok princip, som dock visat sig vara snudd på omöjlig att omsätta i offentlig sektor. En socialsekreterare, bygglovshandläggare, ekonom, lärare eller brandinspektör har ett ordinarie arbete att sköta. Och om ett utvecklingsprojekt pågår i sex, nio eller tolv månader går det inte att frigöra verksamhetsexperter för ett nära och kontinuerligt samarbete under hela perioden. Det är därför vi har vi byggt modeller runt problemet. Modeller som till exempel: 1) krav samlas in, 2) någon skriver ner dem, 3) någon annan tolkar dem, 4) ett utvecklingsteam bygger, och 5) verksamheten får se resultatet först månader senare. Detta är rationellt givet de förutsättningar vi varit vana vid, men nu har en av förutsättningarna förändrats, och det är att utveckling idag kan gå mycket snabbare än för bara några år sedan, och det kan i sin tur förändra betydligt mer än bara hur snabbt vi faktiskt kan skriva kod.
+          </p>
+
+          <h2>AI gör delar av utvecklingen betydligt snabbare</h2>
+          <p>
+            Det finns vid det här laget ganska gott forskningsstöd för att generativ AI kan öka produktiviteten i utveckling. I ett kontrollerat experiment lät Peng et al. (2023) utvecklare genomföra samma programmeringsuppgift med respektive utan GitHub Copilot. Gruppen med AI-stöd slutförde uppgiften 55,8 procent snabbare. Det är en enskild och ganska avgränsad uppgift, så siffran ska inte översättas till att ”all utveckling går 55,8 procent snabbare” (och sedan 2023 har generativ AI dessutom blivit klart mycket bättre). Senare studier i verkliga organisationer pekar i samma riktning – Cui et al. (2026) till exempel genomförde tre randomiserade fältexperiment med sammanlagt 4&nbsp;867 mjukvaruutvecklare på bland annat Microsoft och Accenture, och där slutförde utvecklare som fick tillgång till generativ AI i genomsnitt 26,08 procent fler uppgifter under en given tid. Effekten varierar mellan människor, verktyg och typer av uppgifter, och AI kan också skapa nya problem kring exempelvis kvalitet, säkerhet och förståelse av genererad kod vilket måste beaktas, men det börjar bli svårt att avfärda grundfenomenet; att AI kraftigt minskar tiden som krävs för stora delar av utvecklingsprocessen. Verktygen utvecklas nu dessutom snabbt från enkel kodkomplettering mot agenter som kan genomföra betydligt större utvecklingsuppgifter vilket potentiellt kan effektivisera utvecklingen långt mycket mer än det vi ser idag. Frågan är vad som händer med resten av utvecklingsprocessen när själva byggandet plötsligt går mycket snabbare.
+          </p>
+
+          <h2>Det riktigt intressanta är kanske inte snabbare kodning</h2>
+          <p>
+            Det är lätt att fastna i diskussionen om hur mycket snabbare en utvecklare kan skriva kod med AI, men jag tror att det är fel sak att fokusera på. Det intressanta för en organisation är inte hur många kodrader som produceras, det är i stället hur lång tid det går från att ett problem är identifierat till att vi har något fungerande som går att testa, lära oss av och förändra.
+          </p>
+          <p>
+            Traditionellt har varje sådan iteration varit ganska dyr. Verksamheten har beskrivit ett behov. Behovet har analyserats och dokumenterats. Lösningen har designats. Någon har brutit ner arbetet i utvecklingsuppgifter. Utvecklingen har genomförts. Test har gjorts. Något har deployas. Verksamheten har till slut fått se resultatet. Och först då har man upptäckt att man missförstod (hela eller delar av) problemet, och då börjar nästa varv.
+          </p>
+          <p>
+            Forskningen om användarinvolvering har länge pekat på värdet av att involvera användare och verksamhet i utvecklingsprocessen. Bano &amp; Zowghi (2013) fann i en systematisk genomgång av ett antal empiriska studier att majoriteten rapporterade positiva samband mellan användarinvolvering och systemframgång, även om effekten är beroende av både form och kontext. Problemet har alltså inte varit att vi inte förstått värdet av återkoppling, problemet har varit kostnaden och tiden för varje återkopplingsloop. Nu när AI kan hjälpa till med prototyper, programmering, testning, dokumentation, felsökning och förändringar i existerande kod kan kostnaden för ett sådant varv sjunka dramatiskt, och då händer något organisatoriskt intressant – vi får äntligen möjligheten att bygga medan verksamhetskunskapen fortfarande sitter i rummet!
+          </p>
+
+          <h2>Från kravinsamling till gemensamt lärande</h2>
+          <p>
+            I traditionell utveckling försöker vi ofta kompensera för avståndet mellan verksamhet och utveckling genom att beskriva behovet så noggrant som möjligt i förväg – det är därifrån kravspecifikationen kommer. Problemet är att det är väldigt svårt att beskriva en ännu icke existerande digital tjänst exakt på papper. Verksamheten reagerar ofta annorlunda när den faktiskt kan klicka på något, se informationen, prova ett flöde och upptäcka konsekvenserna. När detta sker ska det inte ses som ett misslyckande – det är ett nödvändigt lärande.
+          </p>
+          <p>
+            Den viktiga frågan inte bara är om verksamheten har fått vara delaktig, utan om deltagandet sker vid en tidpunkt då det fortfarande går att påverka lösningen. AI-förstärkt utveckling skulle kunna flytta den tidpunkten väldigt nära själva byggandet. I stället för:
+          </p>
+          <blockquote>
+            <p>Här är våra krav. Vi ses på demon om tre veckor.</p>
+          </blockquote>
+          <p>
+            kan dialogen bli:
+          </p>
+          <blockquote>
+            <p>”Är det så här du menar?”</p>
+            <p>”Nej, det där blir fel eftersom vi egentligen gör så här.”</p>
+            <p>”Okej. Ge mig en stund.”</p>
+          </blockquote>
+          <p>
+            och sedan testar man igen. Detta är en fundamental förändring.
+          </p>
+
+          <h2>Verksamheten behöver fortfarande vara med, men tiden kan koncentreras</h2>
+          <p>
+            Här finns också en viktig nyansering, att AI inte innebär att verksamhetskunskapen blir mindre viktig, snarare tvärtom. Ju billigare det blir att generera en möjlig lösning, desto viktigare blir förmågan att avgöra om det är rätt lösning på rätt problem.
+          </p>
+          <p>
+            Verksamhetens medverkan kan idag organiseras annorlunda. Om det tidigare krävdes löpande deltagande i ett utvecklingsprojekt under sex månader, kan idag kanske en betydande del av samma lärande koncentreras till några få intensiva dagar. Det innebär inte nödvändigtvis så mycket färre timmar verksamhetsdeltagande i varje enskilt fall, men däremot blir deltagandet lättare att planera, mer fokuserat och närmare kopplat till konkreta beslut. Det såg vi tydligt i en prototypsprint kring egensotning som genomfördes tillsammans med Räddningstjänsten Medelpad och Jämtland i juni. Sprinten var två dagar lång och målet var inte att bara diskutera hur en framtida lösning skulle kunna se ut, målet var att tillsammans ta fram en körbar prototyp av hela kedjan, från medborgarens ansökan till handläggarens beslut. Redan första dagen byggdes medborgarflödet samtidigt som verksamheten kunde testa, kommentera och fatta beslut kring frågor som annars lätt hade hamnat i ett kravdokument. Andra dagen byggdes handläggarens gränssnitt och hela flödet testades från början till slut. Det viktiga var inte att lösningen efter två dagar var produktionsfärdig, för det var den inte. Det viktiga var att ett antal antaganden hade ersatts av konkret kunskap – verksamheten kunde klicka, utvecklarna kunde fråga, beslut kunde fattas, och sådant som visade sig vara fel kunde ändras medan arbetet fortfarande pågick. Retrospektiven gav dessutom en viktig lärdom, att verksamheten inte nödvändigtvis behöver sitta bredvid utvecklarna varje minut. Under vissa längre byggpass kan utvecklarna behöva arbetsro, och det avgörande är i stället att verksamhetskunskapen finns direkt tillgänglig när frågor uppstår och när något går att testa. Detta är kanske en mer praktisk tolkning av det agila manifestets krav på dagligt samarbete.
+          </p>
+          <p>
+            Den senaste tekniska sprinten kring avvikelsehantering gav ytterligare en nyansering. Där låg tyngdpunkten på tekniskt komplicerade frågor som behörighetsstyrning och datasäkerhet. Kärnteamet – processledare och utvecklare – satt tillsammans hela veckan, medan verksamhetsexperten deltog vid uppstart, standups och demos och var tillgänglig däremellan. Det stärker bilden av att ”verksamheten måste vara med” inte behöver betyda samma sak i varje sprint. När det som ska lösas är verksamhetslogik behöver domänkunskapen vara närvarande tätt och kontinuerligt; när sprinten i stället ska lösa tekniska grundproblem kan verksamheten koncentrera sin tid till de tillfällen då beslut och verifiering faktiskt behövs. Det viktiga är inte konstant fysisk närvaro, utan att avståndet till rätt kunskap och rätt beslut är så kort som möjligt.
+          </p>
+
+          <h2>Från projekt till fokuserade sprintar</h2>
+          <p>
+            Tidigare under våren genomförde Sundsvalls kommun även en två veckor lång innovationssprint kring dokumenthantering. Utgångspunkten var ett antal återkommande problem i vårt sätt att utveckla som bestod i långa ledtider, beroenden mellan olika team, flera lager mellan verksamhet och utvecklare samt en kravbild som förändras under arbetets gång. Under sprinten sattes ett tvärfunktionellt team ihop som jobbade efter ett antal ganska enkla principer; direkt kontakt mellan verksamhet och utveckling, egen förmåga att deploya allt hela vägen oavsett vad, dagliga demonstrationer och återkopplingar, hypoteser i stället för färdiga sanningar, och AI som ett aktivt verktyg genom utvecklingsprocessen. Efter tio arbetsdagar fanns en lösning på plats som verksamheten kunde använda och bedöma, och de landade i ett enhälligt ja till att gå vidare till ett senare införande.
+          </p>
+          <p>
+            Just den sprinten används också av Johan Magnusson och Marcus Matteby i ett debattinlägg i Dagens Samhälle publicerat den 13 augusti 2026. De använder den som exempel på varför kommunal kapacitet behöver förstås på ett annat sätt när AI förändrar vad små team kan åstadkomma. Deras poäng är att det som tidigare hade krävt ett större projektupplägg och omkring fyra månader i detta fall kunde realiseras på tio arbetsdagar. De formulerar det som att detta är ”det nya normalläget för utveckling”. Jag skulle vara något försiktigare med att kalla det för ett nytt normalläge redan nu – vi behöver nog köra några sprintar till för att helt trimma in arbetssättet – men exemplet illustrerar åtminstone att relationen mellan teamstorlek, tid och leveransförmåga håller på att förändras markant.
+          </p>
+          <p>
+            Sprinten rörande avvikelsehantering inom välfärdssektorn, som genomfördes 10–14 augusti, gav också ett viktigt tillägg till modellen. Den startade inte från ett blankt papper – registreringsdelen fanns redan i testmiljö och en AI-byggd demo av handläggarstödet var godkänd som funktionell målbild. Den tekniska sprintens uppgift var därför att isolera och angripa de svåra tekniska frågorna – framför allt behörighetsstyrning och datasäkerhet – innan de kommande verksamhetssprintarna tar över. Det är en nyttig påminnelse om att ”sprint” i detta sammanhang inte behöver betyda samma sak varje gång. Man kan tänka sig en kedja av korta, fokuserade steg: först förankra problemet och målbilden, sedan undanröja tekniska osäkerheter, därefter bygga vidare tillsammans med verksamheten. Varje sprint ska alltså organiseras efter den osäkerhet som just då är dyrast att bära vidare.
+          </p>
+          <p>
+            Poängen är inte att tio dagar automatiskt är den perfekta sprintlängden – i egensotningsfallet räckte två dagar för att besvara de viktigaste frågorna och skapa en fungerande grund för fortsättningen, i ett annat problem kan två veckor vara rimligt, och ett tredje kanske kräver något helt annat. Det viktiga är principen:
+          </p>
+          <blockquote>
+            <p>Samla rätt kompetenser under en kort och fokuserad period, bygg något verkligt, testa hypoteserna och fatta därefter beslut om nästa steg.</p>
+          </blockquote>
+          <p>
+            Det står i ganska tydlig kontrast till den klassiska projektlogiken där vi först försöker skapa säkerhet genom analys och planering och därefter gör den stora investeringen. Här försöker vi i stället köpa kunskap billigt och tidigt.
+          </p>
+          <p>
+            En intressant lärdom från avvikelsesprintens retrospektiv var diskussionen om en ”förankringssprint” före den tekniska sprinten som alternativ till den klassiska förstudien. Tanken är att verksamhet och utveckling tillsammans reder ut process, teknik och osäkerheter, i stället för att ett dokument produceras och överlämnas genom flera led. Det ligger nära samma princip, att ersätta överlämning med gemensamt lärande, och förbättra först därefter prognoser och estimat.
+          </p>
+
+          <h2>Det här är egentligen ganska nära vad agil utveckling alltid ville åstadkomma</h2>
+          <p>
+            Det finns alltså inget principiellt nytt i att arbeta iterativt, involvera användare, leverera små steg eller förändra riktning baserat på ny kunskap. Agil utveckling har argumenterat för detta i 25 år. Forskningen ger också stöd för arbetssättet. Serrador &amp; Pinto (2015) analyserade drygt tusen projekt och fann samband mellan användning av agila arbetssätt och såväl projekteffektivitet som intressentnöjdhet. Mergel (2016) och senare Mergel et al. (2018) beskriver samtidigt hur offentlig sektors strukturer, styrning och upphandling gör sådana arbetssätt svåra att realisera. Det nya är alltså kanske inte idén, det nya är att AI kan förändra ekonomin och tidsåtgången i iterationen.
+          </p>
+          <p>
+            När varje varv går fortare blir det lättare att faktiskt bygga enligt den filosofi vi länge sagt oss tro på. Ett projekt som tar ett år kräver verksamhetsmedverkan under ett år – en fokuserad sprint som tar två dagar kräver koncentrerad tillgänglighet under två dagar. Plötsligt blir principen ”verksamhetskunniga och utvecklare måste arbeta tillsammans dagligen under hela projektet” betydligt rimligare om hela den kritiska utvecklingsfasen faktiskt mäts i dagar, inte månader.
+          </p>
+
+          <h2>AI flyttar flaskhalsen</h2>
+          <p>
+            Det finns samtidigt anledning att vara lite försiktig, och en mycket intressant studie från 2026 visar varför. Demirer et al. studerade AI-användning hos fler än 100&nbsp;000 utvecklare på GitHub. De fann stora ökningar i själva kodaktiviteten när mer avancerade AI-verktyg används – autocomplete ökade aktiviteten med omkring 40 procent, interaktiva kodagenter med omkring 140 procent och autonoma agenter med omkring 180 procent – men effekten minskade kraftigt ju närmare faktisk leverans man kom. Ökningen på omkring 180 procent i kodaktivitet motsvarades av ungefär 50 procent fler projekt, och bara omkring 30 procent fler faktiska releaser. Det är ett väldigt intressant resultat. Kodningen blev mycket snabbare, men hela systemet blev alls inte lika mycket snabbare. Forskarna beskriver detta som mänskliga flaskhalsar i produktionskedjan och jag tror att vi kommer att få se betydligt mer av det – när själva programmeringen går fortare blir sådant som verksamhetsanalys, beslut, informationssäkerhet, juridik, test, arkitektur, integrationer, förändringsledning och driftsättning en relativt större del av ledtiden. AI tar alltså inte bort organisationen ur utvecklingsprocessen – AI gör organisationens begränsningar tydligare!
+          </p>
+          <p>
+            Magnusson &amp; Matteby (2026) gör i sitt debattinlägg en användbar distinktion mellan kapacitet och rådighet. Kapacitet är vad en organisation kan göra och rådighet handlar om huruvida den faktiskt bestämmer vad den ska göra och hur. Det är en viktig skillnad även här. AI kan höja utvecklingskapaciteten dramatiskt, men om teamet fortfarande måste vänta på beslut, miljöer, upphandlingar, säkerhetsgranskningar eller andra organisatoriska beroenden omsätts inte den tekniska kapaciteten i faktisk förändring. Förmågan att bygga snabbare behöver alltså kombineras med förmågan att agera.
+          </p>
+          <p>
+            Avvikelsesprinten blev nästan ett skolexempel på just detta. Teamet hann skriva och deploya en omfattande behörighetslösning, men den gick inte att visa live på slutdemon eftersom en testanvändare saknade de riktiga AD-grupper som integrationen förutsatte. Under samma vecka blottlade säkerhetsarbetet runt hundra krav för K3-klassad information, där flera inte alls var programmeringsfrågor utan krävde exempelvis organisatoriska rutiner, kryptering, separerade nätsegment och tydligt ägarskap. AI kunde hjälpa teamet att utveckla snabbare, men inte trolla fram testanvändare, besluta om ansvar eller undanröja beroenden i den omgivande organisationen. Det är precis detta jag menar med att flaskhalsen flyttar.
+          </p>
+
+          <h2>Utvecklarrollen förändras också</h2>
+          <p>
+            Med detta följer också konsekvenser för vad det innebär att vara utvecklare. Om en allt större del av den faktiska kodproduktionen kan genomföras med AI-stöd, blir det mindre rimligt att organisera utvecklare som människor vars huvudsakliga uppgift är att ta emot färdigbeskrivna krav och omsätta dem till kod. Utvecklaren behöver i högre grad kunna förstå verksamhetsproblemet, diskutera lösningsalternativ, göra arkitektoniska avvägningar, bedöma AI-genererad kod och se hur en lokal lösning passar in i en större teknisk helhet. Detta ligger nära ett arbetssätt där produktägaren inte är en kravskrivare eller Jira-administratör, utan ansvarar för att teamet löser rätt problem och skapar faktisk nytta. Utvecklaren blir alltså mindre av en mottagare längst ned i en beställningskedja och mer av en aktiv deltagare i problemlösningen, och detta är sannolikt en större förändring än valet av vilket AI-verktyg vi använder.
+          </p>
+          <p>
+            Detta illustrerar återigen den klassiska <a href="../20-80/">20/80-problematiken</a> inom digital transformation – tekniken förändras snabbt, men den stora nyttan kommer först när organisation, roller och arbetssätt förändras tillsammans med den.
+          </p>
+
+          <h2>Det går också att skapa dåliga lösningar snabbare</h2>
+          <p>
+            Det finns dessutom en baksida som är viktig att prata om – om AI gör utveckling snabbare kan AI också hjälpa oss att bygga fel saker snabbare, som till exempel att:
+          </p>
+          <ul>
+            <li>vi kan skapa ytterligare en verksamhetsspecifik speciallösning snabbare</li>
+            <li>vi kan duplicera funktionalitet snabbare</li>
+            <li>vi kan bygga nya leverantörsberoenden snabbare</li>
+            <li>vi kan producera dåligt genomtänkt kod snabbare</li>
+            <li>och vi kan skapa ny teknisk skuld i en takt som tidigare varit omöjlig</li>
+          </ul>
+          <p>
+            Men problemet är större än kodkvalitet. I min avhandling (Persson, 2025) använder jag begreppet socio-teknisk skuld för att beskriva hur tekniska problem och organisatoriska förhållanden växer ihop och förstärker varandra över tid. Fragmenterad styrning, stuprör, leverantörsberoenden, kultur, upphandlingsmodeller och gamla tekniska strukturer skapar tillsammans en tröghet som gör förändring svår. AI trollar inte bort detta, snarare tvärtom. Om samma organisation, samma styrmodell och samma arkitektur producerar lösningar tio gånger snabbare finns en uppenbar risk att vi också producerar våra gamla problem tio gånger snabbare. Därför måste snabbare utveckling kombineras med gemensam arkitektur, öppna gränssnitt, återanvändning, tydligt ägarskap och en styrning som fokuserar på faktisk nytta snarare än antal levererade funktioner.
+          </p>
+          <p>
+            Det är också här begreppet kollektiv digitalisering blir relevant. Om varje kommun använder den nya utvecklingshastigheten till att bygga egna varianter av samma funktion riskerar vi att accelerera fragmenteringen. Om lösningar i stället byggs så att de kan delas och återanvändas kan samma utvecklingskapacitet spridas mellan kommuner. Magnusson &amp; Matteby lyfter Kommuna som exempel på en sådan modell, att kommuner med olika styrkor bygger gemensam digital förmåga och delar lösningarna vidare. Det ligger nära de principer om överförbarhet, öppna gränssnitt och minskade beroenden som jag själv argumenterar för.
+          </p>
+
+          <h2>Kanske är sprinten en organisatorisk respons på AI</h2>
+          <p>
+            Det leder mig tillbaka till rubriken. Jag tror inte att framtiden innebär att all offentlig utveckling ska bedrivas i korta sprintar – stora och komplexa förändringar kommer fortfarande att kräva långsiktighet, uthållighet, juridik, säkerhet, integrationer och omfattande verksamhetsförändring – men jag tror att vi behöver bli mycket bättre på att bryta loss osäkerheten ur de stora projekten och svara på:
+          </p>
+          <ul>
+            <li>vilket problem försöker vi egentligen lösa?</li>
+            <li>går den tänkta lösningen att bygga?</li>
+            <li>förstår vi verksamhetslogiken?</li>
+            <li>kan användaren faktiskt använda den?</li>
+            <li>fungerar AI för just det här delproblemet?</li>
+            <li>kan vi återanvända något vi redan har?</li>
+          </ul>
+          <p>
+            I stället för att låta sådana frågor följa med som antaganden genom ett långt projekt kan vi i stället samla rätt människor i ett rum och försöka besvara dem på två dagar, eller fem, eller tio, och sedan går vi vidare med betydligt mer kunskap än vi hade när vi började. Det handlar inte om mindre styrning, det handlar om styrning baserad på mer verklig information.
+          </p>
+          <p>
+            Retrospektiven från våra sprintar pekar också på något som lätt tappas bort när man pratar om hastighet. Det som deltagarna framför allt lyft som framgångsfaktorer var inte ett visst AI-verktyg, istället var det att teamet satt tillsammans, slapp sidospår och kontextväxling, hade mandat att fatta beslut och hade gjort tillräckligt förarbete innan veckan började. Kontinuitet mellan sprintar lyftes som nödvändig – mycket av förståelsen sitter i huvudet på dem som varit med – och teamet var lika tydligt med att tempot inte går att hålla konstant. Modellen behöver därför innehålla både fokuserade sprintar och lugnare perioder för restlista, förvaltning och återhämtning. En sprint är ett sätt att koncentrera uppmärksamhet, inte ett sätt att permanent skruva upp arbetstakten.
+          </p>
+
+          <h2>Från att planera utveckling till att organisera lärande</h2>
+          <p>
+            Digital transformation har länge beskrivits som något betydligt större än att införa ny teknik. Forskning av bland andra Mergel et al. (2019) visar att transformation handlar om förändringar i processer, organisation, relationer och sättet att skapa värde. AI förändrar inte den slutsatsen. Men AI kan förändra tempot i vilket vi kan lära oss, och där tror jag att den stora möjligheten finns för offentlig sektor – inte i att låta AI skriva så mycket kod som möjligt, inte i att ersätta verksamhetsexperter, inte i att eliminera utvecklare, utan i stället att göra avståndet mellan problem, idé, fungerande lösning och återkoppling så kort att verksamhet och utveckling faktiskt kan arbeta tillsammans på det sätt vi har pratat om i 25 år.
+          </p>
+          <p>
+            Då blir frågan inte längre hur vi ska skriva en perfekt kravspecifikation för något som ska levereras om ett år. Frågan blir i stället:
+          </p>
+          <blockquote>
+            <p>Vad behöver vi bygga de närmaste dagarna för att lära oss om vi är på rätt väg?</p>
+          </blockquote>
+          <p>
+            Det är en ganska skild logik jämfört med den traditionella projektlogiken, och kanske är det först nu som vi på allvar har fått de tekniska förutsättningarna för att organisera oss så.
+          </p>
+
+          <h2>Källor</h2>
+          <ul class="references">
+            <li>Bano, M. &amp; Zowghi, D. (2013). User Involvement in Software Development and System Success: A Systematic Literature Review. <em>2013 16th International Conference on Evaluation &amp; Assessment in Software Engineering</em>.</li>
+            <li>Cui, K. Z., Demirer, M., Jaffe, S., Musolff, L., Peng, S. &amp; Salz, T. (2026). The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers. <em>Management Science</em>.</li>
+            <li>Demirer, M., Musolff, L. &amp; Yang, L. (2026). Writing Code vs. Shipping Code: Productivity Effects Across Generations of AI Coding Tools. <em>NBER Working Paper 35275</em>.</li>
+            <li>Kommuna. <a href="https://kommuna.se/" rel="noopener noreferrer" target="_blank">https://kommuna.se/</a></li>
+            <li>Magnusson, J. &amp; Matteby, M. (2026). ”Dalslandsrapporten ger bara kommunerna plåster”. <em>Dagens Samhälle</em>, 13 augusti 2026. <a href="https://www.dagenssamhalle.se/opinion/debatt/dalslandsrapporten-ger-bara-kommunerna-plaster/" rel="noopener noreferrer" target="_blank">https://www.dagenssamhalle.se/opinion/debatt/dalslandsrapporten-ger-bara-kommunerna-plaster/</a></li>
+            <li>Mergel, I. (2016). Agile Innovation Management in Government: A Research Agenda. <em>Government Information Quarterly, 33</em>(3), 516–523.</li>
+            <li>Mergel, I., Gong, Y. &amp; Bertot, J. (2018). Agile Government: Systematic Literature Review and Future Research. <em>Government Information Quarterly, 35</em>(2), 291–298.</li>
+            <li>Mergel, I., Edelmann, N. &amp; Haug, N. (2019). Defining Digital Transformation: Results from Expert Interviews. <em>Government Information Quarterly, 36</em>(4), 101385.</li>
+            <li>Peng, S., Kalliamvakou, E., Cihon, P. &amp; Demirer, M. (2023). The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. <em>arXiv preprint arXiv:2302.06590</em>.</li>
+            <li>Persson, P. (2025). <em>Managing Socio-Technical Debt: Causes and Design-Science Solutions for Citizen-Centred Digital Public Services</em>. Doktorsavhandling.</li>
+            <li>Serrador, P. &amp; Pinto, J. K. (2015). Does Agile Work? A Quantitative Analysis of Agile Project Success. <em>International Journal of Project Management, 33</em>(5), 1040–1051.</li>
+            <li>Sundsvalls kommun (2026). Innovationssprint – ett nytt arbetssätt. <a href="https://innovation.sundsvall.dev/" rel="noopener noreferrer" target="_blank">https://innovation.sundsvall.dev/</a></li>
+            <li>Sundsvalls kommun (2026). Teknisk utvecklingssprint – Avvikelsehantering. <a href="https://tech-sprint-avvikelser.sundsvall.dev/" rel="noopener noreferrer" target="_blank">https://tech-sprint-avvikelser.sundsvall.dev/</a></li>
+            <li>Sundsvalls kommun &amp; Räddningstjänsten Medelpad/Jämtland (2026). Prototypsprint för egensotning. <a href="https://sprint-egen-sotning-app.lovable.app/" rel="noopener noreferrer" target="_blank">https://sprint-egen-sotning-app.lovable.app/</a></li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
