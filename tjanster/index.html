@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tjänster – Per Persson, Ph.D.</title>
-  <meta name="description" content="Tjänster av Ph.D. Per Persson: föreläsningar, workshops, teknisk skuld-analys, arkitekturrådgivning, upphandlingsstöd, AI-rådgivning, förändringsledning och utbildningar.">
+  <meta name="description" content="Tjänster av Ph.D. Per Persson: digitala tjänster som erfarenhetsbanken för fokuserade sprintar, samt föreläsningar, workshops, teknisk skuld-analys, arkitekturrådgivning och utbildningar.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -15,7 +15,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Tjänster – Per Persson, Ph.D.">
-  <meta property="og:description" content="Tjänster av Ph.D. Per Persson: föreläsningar, workshops, teknisk skuld-analys, arkitekturrådgivning, upphandlingsstöd, AI-rådgivning, förändringsledning och utbildningar.">
+  <meta property="og:description" content="Tjänster av Ph.D. Per Persson: digitala tjänster som erfarenhetsbanken för fokuserade sprintar, samt föreläsningar, workshops, teknisk skuld-analys, arkitekturrådgivning och utbildningar.">
   <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://phd-persson.se/tjanster/">
@@ -242,6 +242,60 @@
       color: var(--color-text-muted);
     }
 
+    /* Digitala tjänster */
+    .digital-services {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .digital-services { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .digital-services { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .digital-service {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .digital-service h3 {
+      margin: 0;
+      font-size: 1.125rem;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+    .digital-service p {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+    .digital-service-link {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      min-height: var(--touch-target);
+      margin-top: auto;
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .digital-service-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
     /* Kontaktsektion */
     .contact {
       background: var(--color-surface);
@@ -314,9 +368,24 @@
       </div>
     </section>
 
+    <section aria-labelledby="digital-services-title">
+      <div class="container">
+        <h2 id="digital-services-title">Digitala tjänster</h2>
+        <ul class="digital-services">
+
+          <li class="digital-service">
+            <h3>Erfarenhetsbank: fokuserade sprintar</h3>
+            <p>En levande kunskapsbank om hur man arbetar i fokuserade sprintar – grundprinciper, olika sprinttyper och konkreta lärdomar från genomförda innovations-, prototyp- och tekniksprintar i offentlig sektor.</p>
+            <a class="digital-service-link" href="./erfarenhetsbank/">Till erfarenhetsbanken</a>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
     <section aria-labelledby="services-title">
       <div class="container">
-        <h2 id="services-title">Vad jag erbjuder</h2>
+        <h2 id="services-title">Rådgivning och utbildning</h2>
         <ol class="services">
 
           <li class="service">
