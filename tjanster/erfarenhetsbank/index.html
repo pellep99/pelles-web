@@ -428,28 +428,59 @@
         </blockquote>
         <ul class="cards cards-3">
           <li class="card">
-            <h3>Direkt kontakt mellan verksamhet och utveckling</h3>
-            <p>Inga mellanled och inga överlämningar av kravdokument. Verksamhetskunskapen ska finnas direkt tillgänglig när frågor uppstår och när något går att testa.</p>
+            <h3>Noll avstånd</h3>
+            <p>Mellanlager mellan verksamhet och utveckling minimeras. Direkt dialog och direkt feedback ska vara normen – inga överlämningar av kravdokument genom flera led.</p>
           </li>
           <li class="card">
-            <h3>Egen förmåga att deploya hela vägen</h3>
-            <p>Teamet ska själv kunna bygga, testa och driftsätta allt som behövs under sprinten, utan att vänta på andra team eller beslutsled.</p>
+            <h3>Snabba leveranser</h3>
+            <p>Korta cykler och dagliga leveranser till testmiljön gör att förändrade behov upptäcks tidigt. Små förändringar görs synliga och testbara varje dag.</p>
           </li>
           <li class="card">
-            <h3>Dagliga demonstrationer och återkoppling</h3>
-            <p>Något visbart varje dag. Verksamheten klickar, kommenterar och fattar beslut medan arbetet fortfarande pågår – inte på en demo tre veckor senare.</p>
+            <h3>Tvärfunktionellt team med full rådighet</h3>
+            <p>Teamet täcker de kompetenser som behövs för helheten, har egen deploykedja och full rådighet över utvecklings- och testmiljöer – utan väntan på andra team eller externa köer.</p>
           </li>
           <li class="card">
-            <h3>Hypoteser i stället för färdiga sanningar</h3>
-            <p>Sprinten utgår från antaganden som ska testas, inte krav som ska verkställas. Att ett antagande visar sig fel är ett lärande, inte ett misslyckande.</p>
+            <h3>Hypotesdrivet</h3>
+            <p>Teamet testar antaganden med en fungerande prototyp innan lösningen färdigställs. Att ett antagande visar sig fel är ett lärande, inte ett misslyckande.</p>
           </li>
           <li class="card">
-            <h3>AI som aktivt verktyg genom hela processen</h3>
-            <p>AI används för prototyper, programmering, testning, dokumentation och felsökning – det som sänker kostnaden för varje återkopplingsloop dramatiskt.</p>
+            <h3>AI-accelererat</h3>
+            <p>AI används för att öka tempo, utforska alternativ och frigöra tid till problemlösning – i utveckling, analys och dokumentation, och ibland även som del av den byggda tjänsten.</p>
           </li>
           <li class="card">
-            <h3>Mandat att fatta beslut</h3>
-            <p>Teamet, inklusive verksamhetsrepresentanterna, ska kunna fatta beslut i rummet. Väntan på extern styrning är en av de dyraste flaskhalsarna.</p>
+            <h3>Löpande anpassning</h3>
+            <p>Process, prioriteringar och lösning justeras när teamet lär sig mer. Grovplanen är just en grovplan – ny insikt slår gammal plan.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="faser-title">
+      <div class="container">
+        <h2 id="faser-title">Sprintens fyra faser</h2>
+        <p class="section-intro">
+          Alla genomförda sprintar följer i grunden samma fasmodell – och en återkommande lärdom är att fas 0 avgör hur mycket sprinttiden faktiskt ger.
+        </p>
+        <ul class="cards">
+          <li class="card">
+            <span class="card-tag">Fas 0</span>
+            <h3>Förberedelse</h3>
+            <p>Prototyp eller grundplåt tas fram, arkitektur och teknik förankras, deploykedjan sätts upp och torrkörs, och verksamhetens deltagande planeras. Hit hör också konkret underlag från verksamheten – exempeldokument, beslutsmallar, testdata – och sådant som AI-nycklar och testanvändare.</p>
+          </li>
+          <li class="card">
+            <span class="card-tag">Fas 1</span>
+            <h3>Genomförande</h3>
+            <p>De intensiva dagarna i samma rum. Daglig standup fungerar som nav för demo, hinder, beslut och direkt feedback, och leveranser görs löpande till testmiljön.</p>
+          </li>
+          <li class="card">
+            <span class="card-tag">Fas 2</span>
+            <h3>Utvärdering</h3>
+            <p>Resultatet och arbetssättet utvärderas mot hypotesen. Lärdomar, risker och förbättringar dokumenteras och förs vidare – till nästa sprint och till den ordinarie utvecklingsförmågan.</p>
+          </li>
+          <li class="card">
+            <span class="card-tag">Fas 3</span>
+            <h3>Fortsatt utveckling</h3>
+            <p>Produktionsutvecklingen tar vid från den körande prototypen, den prioriterade restlistan och de beslut som fattats – utan att behöva börja om från noll.</p>
           </li>
         </ul>
       </div>
@@ -457,34 +488,41 @@
 
     <section aria-labelledby="spelregler-title">
       <div class="container">
-        <h2 id="spelregler-title">Spelregler under sprintveckan</h2>
+        <h2 id="spelregler-title">Spelregler och mindset under sprinten</h2>
         <p class="section-intro">
-          Den tekniska sprinten kring avvikelsehantering arbetade efter sju enkla spelregler, formulerade på sprintsidan som ”inte förhandlingsbara – de är förutsättningen för att vi ska ro det här i land”. En lärdom från retrospektivet är att reglerna också ska presenteras uttryckligen på uppstartsmötet.
+          Samma spelregler återkommer på alla sprintsidorna, i något olika varianter – i avvikelsesprinten beskrivna som ”inte förhandlingsbara”. En lärdom från retrospektiven är att reglerna också ska presenteras uttryckligen på uppstartsmötet.
         </p>
+        <blockquote class="principle-quote">
+          <p>En sprint lyckas inte för att teamet har rätt kompetens – den lyckas för att teamet har rätt inställning.</p>
+        </blockquote>
         <ul class="cards cards-3">
           <li class="card">
             <h3>Ägarskap</h3>
-            <p>Ta eget ansvar för att driva processen framåt utan att vänta på yttre instruktioner. Ser du något som behöver göras – gör det.</p>
+            <p>Förstå varför, inte bara vad. Ta ansvar för att driva processen framåt utan att vänta på instruktioner eller tilldelning. Ser du något som behöver göras – gör det.</p>
           </li>
           <li class="card">
             <h3>Kommunikation</h3>
-            <p>Prata direkt med varandra, alltid. Ge feedback omedelbart. Tystnad är det största hindret.</p>
+            <p>Prata direkt med varandra, alltid. Ge feedback omedelbart – tystnad är ett större hinder än ofärdiga idéer.</p>
           </li>
           <li class="card">
             <h3>Tempo</h3>
-            <p>Varje timme räknas. Agera med tillräcklig information – inte nödvändigtvis perfekt komplett sådan.</p>
+            <p>Varje timme räknas. Agera med tillräckligt bra information i stället för att vänta på perfektion.</p>
           </li>
           <li class="card">
             <h3>Förenkla, förenkla, förenkla</h3>
-            <p>Good-enough framför optimalt. Komplexitet är en kostnad teamet inte har råd med under sprintveckan.</p>
+            <p>Good-enough framför optimalt. Komplexitet är en kostnad teamet inte har råd med under sprinten.</p>
           </li>
           <li class="card">
             <h3>Omfamna förändring</h3>
-            <p>Ändringar är bevis på att processen fungerar – inte på dålig planering. Ny insikt slår gammal plan.</p>
+            <p>Ändringar är bevis på lärande, inte på dålig planering. Teamet ska inte nödvändigtvis bygga det man trodde från början, utan det man lär sig att man behöver.</p>
           </li>
           <li class="card">
             <h3>Teamet framför individen</h3>
-            <p>Är du klar men en kollega har fastnat? Hjälp kollegan. Teamet levererar tillsammans eller inte alls.</p>
+            <p>Alla roller är jämlika under dagarna. Är du klar men en kollega har fastnat? Hjälp kollegan. Teamet levererar tillsammans eller inte alls.</p>
+          </li>
+          <li class="card">
+            <h3>Våga vara obekväm</h3>
+            <p>Visa halvfärdigt arbete, erkänn när du inte vet och ändra uppfattning när ny kunskap uppstår.</p>
           </li>
           <li class="card">
             <h3>AI-accelererat</h3>
@@ -507,11 +545,15 @@
           </li>
           <li class="card">
             <h3>Daglig standup</h3>
-            <p>En kort avstämning varje morgon med hela teamet, inklusive expertstödet. Vad gjorde vi, vad gör vi, vad blockerar?</p>
+            <p>En kort avstämning varje morgon med hela teamet, inklusive expertstödet: genomgång av gårdagen, demo av ny funktionalitet – även halvfärdig – och frågor, hinder och synk som tas direkt, inte nästa dag.</p>
           </li>
           <li class="card">
             <h3>Halvtidsdemo</h3>
             <p>Mitt i veckan visas körande funktionalitet – inte slides. Feedback tas emot direkt, in i backloggen eller in i koden.</p>
+          </li>
+          <li class="card">
+            <h3>Dokumentationsansvarig varje dag</h3>
+            <p>I ekbistånd-sprinten utsågs varje dag en dokumentationsansvarig som skrev beslut, frågor och bordlagda punkter i realtid – så att inget lärande går förlorat i tempot.</p>
           </li>
           <li class="card">
             <h3>Slutdemo och retrospektiv</h3>
@@ -533,16 +575,16 @@
       <div class="container">
         <h2 id="sprinttyper-title">Olika sprintar för olika osäkerheter</h2>
         <p class="section-intro">
-          ”Sprint” behöver inte betyda samma sak varje gång. Varje sprint organiseras efter den osäkerhet som just då är dyrast att bära vidare – och längden anpassas efter frågan: två dagar kan räcka för en prototyp, medan tekniskt komplexa frågor kan kräva en eller två veckor.
+          ”Sprint” behöver inte betyda samma sak varje gång. Varje sprint organiseras efter den osäkerhet som just då är dyrast att bära vidare – och längden anpassas efter frågan: två dagar kan räcka för en prototyp, tre dagar för att verifiera och estimera, medan tekniskt komplexa frågor kan kräva en eller två veckor.
         </p>
         <ul class="cards">
           <li class="card">
             <h3>Innovationssprint</h3>
-            <p>Testar om ett verksamhetsproblem går att lösa på ett nytt sätt. Ett tvärfunktionellt team bygger en fungerande lösning som verksamheten kan använda och bedöma, och sprinten avslutas med ett beslut om att gå vidare eller inte.</p>
+            <p>Testar om ett verksamhetsproblem går att lösa på ett nytt sätt. Ett tvärfunktionellt team bygger en fungerande lösning som verksamheten kan använda och bedöma, och sprinten avslutas med ett beslut om att gå vidare eller inte. I kortare form – innovationsdagar – används formatet som verifieringsmoment: lösningen prövas mot verkliga ärenden, juridiska gränser och tekniska förutsättningar innan ett större genomförande estimeras.</p>
           </li>
           <li class="card">
             <h3>Prototypsprint</h3>
-            <p>Ersätter antaganden med konkret kunskap genom en körbar prototyp av en hel kedja – till exempel från medborgarens ansökan till handläggarens beslut. Målet är inte produktionsfärdig kod utan besvarade frågor.</p>
+            <p>Ersätter antaganden med konkret kunskap genom en körbar prototyp av en hel kedja – till exempel från medborgarens ansökan till handläggarens beslut. Sprinten utgår från en uttalad hypotes och ett fåtal frågor som ska besvaras. Målet är inte produktionsfärdig kod utan besvarade frågor och fattade beslut.</p>
           </li>
           <li class="card">
             <h3>Teknisk sprint</h3>
@@ -566,22 +608,22 @@
           <li class="card">
             <span class="card-tag">Innovationssprint</span>
             <h3>Dokumenthantering</h3>
-            <p class="card-meta">Två veckor · våren 2026 · Sundsvalls kommun</p>
-            <p>Ett tvärfunktionellt team angrep återkommande problem med långa ledtider, teamberoenden och en kravbild som förändras under arbetets gång. Bakgrunden var ett historiskt arbetssätt inspirerat av stora ramverk, med team uppdelade per kompetensområde och flera rollager mellan verksamhet och utvecklare. Sprinten dokumenterades dag för dag på sprintsidan – standups, möten, beslut och faktiskt utvecklingsarbete. Efter tio arbetsdagar fanns en lösning som verksamheten kunde använda och bedöma – och ett enhälligt ja till att gå vidare mot införande. Motsvarande arbete hade tidigare bedömts kräva ett projektupplägg på omkring fyra månader.</p>
+            <p class="card-meta">Två veckor (tio arbetsdagar) · våren 2026 · Sundsvalls kommun</p>
+            <p>Både metodtest och produktbygge: ett tvärfunktionellt team byggde en dokumenthanteringsapplikation och prövade samtidigt arbetssättet, som svar på en utveckling som lätt fragmenteras mellan roller, specialistteam och överlämningar. Av 60 planerade funktioner hann en stor del byggas eller påbörjas på tio arbetsdagar, i tre kodrepon och med två verksamhetsdemos. Kärnan kom på plats tidigt, vecka två prioriterades om utifrån verksamhetens reaktioner, sökningen växte från stödfunktion till huvudvärde, och AI-stödet kopplades in sist – när grunddata och sökförmåga bar. Slutdemon landade i ett enhälligt ja till att gå vidare. Motsvarande arbete hade tidigare bedömts kräva ett projektupplägg på omkring fyra månader.</p>
             <a class="card-link" href="https://innovation.sundsvall.dev/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
-            <span class="card-tag">Innovationssprint</span>
+            <span class="card-tag">Innovationsdagar</span>
             <h3>Ekonomiskt bistånd</h3>
-            <p class="card-meta">2026 · Sundsvalls kommun</p>
-            <p>En innovationssprint kring ekonomiskt bistånd som byggde vidare på arbetssättet från dokumenthanteringssprinten, med samma grundprinciper: tvärfunktionellt team, direkt verksamhetskontakt och AI som aktivt verktyg. Upplägg och resultat finns dokumenterade på sprintens sida.</p>
+            <p class="card-meta">Tre dagar · 2026 · Sundsvalls kommun</p>
+            <p>Tre innovationsdagar med tio personer för att designa, verifiera och estimera automatiseringen av ekonomiskt bistånd – ett verifieringsmoment före ett större bygge, med digital ansökan, processmotor och myndighetsintegration på plats redan i fas 0. Utfall: fyra av fem leverabler klara, tre beslut fattade och åtta MVP-krav definierade. När det stod klart att flera frågor krävde tillgång till faktiska API:er valde teamet att inte utveckla vidare i blindo, utan flyttade fokus till problemförståelse och preciserade åtta öppna frågor inför nästa sprint – enligt retrospektivet mer värdefullt än att pressa fram en ofullständigt verifierad POC.</p>
             <a class="card-link" href="https://innovation-ekbistand.lovable.app/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
             <span class="card-tag">Prototypsprint</span>
             <h3>Egensotning</h3>
-            <p class="card-meta">Två dagar · juni 2026 · med Räddningstjänsten Medelpad och Jämtland</p>
-            <p>Målet var en körbar prototyp av hela kedjan, från medborgarens ansökan till handläggarens beslut. Dag ett byggdes medborgarflödet medan verksamheten testade, kommenterade och fattade beslut; dag två byggdes handläggarens gränssnitt och hela flödet testades från början till slut. Ett antal antaganden ersattes av konkret kunskap – och frågor som annars hamnat i ett kravdokument avgjordes i rummet.</p>
+            <p class="card-meta">Två dagar · 2–3 juni 2026 · med Räddningstjänsten Medelpad och Jämtland</p>
+            <p>Ett byggmoment snarare än ett designmöte: en körbar prototyp av hela kedjan från medborgarens ansökan till handläggarens beslut, som ersättning för en manuell process genom flera system. Sprinten utgick från en uttalad hypotes och fyra frågor – bland annat om AI kan läsa utbildningsbevis och hur tidsbegränsade beslut byggs utan administrativ börda. Dag ett byggdes medborgarflödet och beslut fattades i rummet; dag två byggdes handläggarvyn och hela kedjan testades, med slutdemo där räddningstjänsten själv klickade igenom flödet. På två sprintdagar plus förberedelser producerades cirka 26 400 rader kod, och tvådagarsformatet tvingade fram fokus på det ”glada flödet” – undantagen flyttades till en prioriterad restlista.</p>
             <a class="card-link" href="https://sprint-egen-sotning-app.lovable.app/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
@@ -605,34 +647,39 @@
           <div class="lesson-group">
             <h3>Före sprinten</h3>
             <ul>
-              <li>Gör tillräckligt förarbete – i avvikelsesprinten fanns design, rollkartläggning och tekniska vägval redan påbörjade. Utan det hade uppstartssträckan blivit lång.</li>
-              <li>Sätt ett tydligt och enkelt mål att förhålla sig till – i avvikelsesprinten: ”få något som snurrar i testmiljön, inte färdigt men inte trasigt”. Då kan teamet ta tag i det som står i vägen utan att fråga om det ingår.</li>
-              <li>Bedöm om formatet är rätt: en teknisk sprint motiveras av nya, tunga frågor mitt i en plattform som mycket annat beror på. Handlar det mest om att återanvända befintliga mönster räcker förberedelser veckan innan.</li>
-              <li>Organisera sprinten efter den osäkerhet som är dyrast att bära vidare: verksamhetslogik, teknik eller förankring.</li>
+              <li>Gör tillräckligt förarbete – i avvikelsesprinten fanns design, rollkartläggning och tekniska vägval redan påbörjade, och i egensotningssprinten var backend och processmotor förberedda. Utan det hade uppstartssträckan blivit lång.</li>
+              <li>Torrkör det tekniska i fas 0: deploykedja, kodskelett, webbadress och AI-nycklar ska fungera innan dag ett. Egensotningsretrot ville till nästa gång förbereda grundplåt och autentiseringsflöde ännu bättre och säkra AI-resursen i förväg.</li>
+              <li>Be verksamheten om konkret underlag i förväg – exempeldokument, beslutsmallar, typiska avslagsskäl, testdata och diskussionsunderlag för de beslut som ska fattas – och boka verksamhetsrepresentanterna hela dagarna, inte bara uppstart och demo.</li>
+              <li>Sätt en tydlig målbild med två delar: vad som ska byggas och vad sprinten ska lära organisationen. I avvikelsesprinten räckte ”få något som snurrar i testmiljön, inte färdigt men inte trasigt” för att teamet skulle kunna agera utan att fråga om saker ingår.</li>
+              <li>Bedöm om formatet är rätt och organisera sprinten efter den osäkerhet som är dyrast att bära vidare: verksamhetslogik, teknik eller förankring. Handlar det mest om att återanvända befintliga mönster räcker förberedelser veckan innan.</li>
               <li>Säkra praktiska beroenden i förväg – testanvändare, behörigheter och miljöer. I avvikelsesprinten kunde en färdig behörighetslösning inte visas live på slutdemon eftersom testanvändaren saknade riktiga AD-grupper.</li>
-              <li>Anpassa bemanningen efter det som ska byggas: två utvecklare i backend gav löpande review och någon att bolla med – mest värdefullt där ett misstag slår brett. För en fristående tjänst räcker ofta en.</li>
+              <li>Anpassa bemanningen efter det som ska byggas – två i backend där ett misstag slår brett – och ge utvecklarna en kort teknisk brief före dag ett. Skicka kallelser tidigt och utan osäkra platshållare.</li>
               <li>Estimera i två steg: grov prognos först, förfinad efter förankringen – och stoppa tidigt om omfattningen växer.</li>
             </ul>
           </div>
           <div class="lesson-group">
             <h3>Under sprinten</h3>
             <ul>
-              <li>Sitt tillsammans – redan olika rum räcker för att man ska klura vidare själv i onödan. Extra viktigt med AI-stöd: stegen blir större, ett felaktigt steg dyrare, och tät avstämning fångar det tidigt.</li>
-              <li>Skydda fokuset: inga andra möten, inga andra projekt. En stor del av vinsten är att slippa kontextväxla.</li>
+              <li>Sitt tillsammans – redan olika rum räcker för att man ska klura vidare själv i onödan. Extra viktigt med AI-stöd: stegen blir större, ett felaktigt steg dyrare, och tät avstämning fångar det tidigt. Fysisk närvaro skapade dessutom relationer och spontana sidosamtal som drev arbetet.</li>
+              <li>Skydda fokuset: inga andra möten, inga andra projekt. En stor del av vinsten är att slippa kontextväxla – och samlokaliseringen ger en tydlig brytpunkt från vardagens avbrott.</li>
+              <li>Börja smått: en enklare, avgränsad process gör komplexiteten hanterbar och ger snabbt en prototyp som går att testa i praktiken. Fokusera på det ”glada flödet” och flytta undantag och sidoeffekter till restlistan.</li>
               <li>Se till att mandatet används: någon som kan bryta en metadiskussion, ta beslutet och låta teamet köra vidare. I avvikelsesprinten avgjordes en fråga som kunde ha diskuterats i timmar med ett snabbt beslut om manuell hantering tills vidare.</li>
-              <li>Anpassa verksamhetsnärvaron efter frågan: tät och kontinuerlig när verksamhetslogik ska lösas, koncentrerad till beslut och verifiering när sprinten löser tekniska grundproblem. Under längre byggpass behöver utvecklarna arbetsro – det avgörande är att kunskapen finns direkt tillgänglig när frågor uppstår.</li>
-              <li>Demonstrera körande funktionalitet och låt verksamheten klicka i lösningen – det som visar sig fel ska kunna ändras medan arbetet pågår.</li>
-              <li>Gör det säkert att integrera: i avvikelsesprinten mergades allt bakom featureflaggor, vilket minimerar konflikter när fler går in i koden i nästa sprint.</li>
+              <li>Anpassa verksamhetsnärvaron efter frågan: tät när verksamhetslogik ska lösas, koncentrerad till beslut, frågor och demo när tekniken står i centrum. Under längre byggpass behöver utvecklarna arbetsro – det avgörande är att kunskapen finns direkt tillgänglig.</li>
+              <li>Demonstrera körande funktionalitet och låt verksamheten klicka i lösningen – prototypen ger diskussionerna ett konkret ankare, och det som visar sig fel kan ändras medan arbetet pågår.</li>
+              <li>Bygg inte i blindo: när en förutsättning saknas – som API-åtkomsten i ekbistånd-sprinten – är det bättre att växla till problemförståelse och precisera frågorna än att pressa fram en ofullständigt verifierad lösning.</li>
+              <li>Gör det säkert att integrera: i avvikelsesprinten mergades allt bakom featureflaggor, vilket minimerar konflikter när fler går in i koden i nästa sprint. Planera också in fler och kortare pauser – tempot är intensivt.</li>
             </ul>
           </div>
           <div class="lesson-group">
             <h3>Efter sprinten</h3>
             <ul>
-              <li>Håll retrospektiv direkt efter slutdemon och dokumentera det öppet – erfarenhetsbanken är en del av arbetssättet.</li>
-              <li>Dokumentera restlista och öppna frågor, och se till att varje öppen fråga får en utpekad ägare. Listorna uppdateras även efter sprintveckan.</li>
+              <li>Håll retrospektiv direkt efter slutdemon och dokumentera det öppet – erfarenhetsbanken är en del av arbetssättet. Ett informellt avslut tillsammans hör också till formatet.</li>
+              <li>Dokumentera restlista och öppna frågor, och se till att varje öppen fråga får en utpekad ägare. Listorna uppdateras även efter sprintveckan – och gör tydligt vad som inte är produktionsklart utan att utvecklingen behöver börja om.</li>
               <li>Fatta ett uttryckligt beslut om nästa steg medan kunskapen är färsk – och låt teamet fortsätta direkt medan allt sitter i huvudet.</li>
               <li>Planera för kontinuitet mellan sprintar – mycket av förståelsen sitter i huvudet på dem som varit med. Ett helt nytt team i nästa sprint fungerar inte; det behövs överlappning.</li>
-              <li>Växla mellan fokuserade sprintar och lugnare ”gråa veckor” för restlista, förvaltning och återhämtning. Veckan är rolig just för att man får jobba nonstop med en sak – men tempot går inte att hålla konstant utan att bränna ut folk.</li>
+              <li>Växla mellan fokuserade sprintar och lugnare ”gråa veckor” för restlista, förvaltning och återhämtning – formatet är intensivt och får inte bli permanent normalbelastning.</li>
+              <li>Se upp för ”förväntningsraketen”: extrem leveranstakt under en sprint får inte skapa föreställningen att samma tempo är hållbart kontinuerligt.</li>
+              <li>Återför snabba teknikval till ordinarie arkitektur och förvaltning – frihet i tekniska val ökar lösningsutrymmet men kräver en mekanism som hindrar att lokal frihet blir ny teknisk skuld.</li>
               <li>Förenkla administrationen runt sprinten där det går – i avvikelsesprinten ersattes detaljerad tidrapportering per objektkod med en formlös veckorapport.</li>
             </ul>
           </div>
