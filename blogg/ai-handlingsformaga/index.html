@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI gör mig inte bara snabbare – den får mig att göra saker jag annars aldrig hade gjort – Per Persson, Ph.D.</title>
+  <meta name="description" content="Diskussionen om AI handlar ofta om hur många timmar vi sparar. Men den största förändringen är kanske en annan: att avståndet mellan ”det där borde man göra” och ”jag gjorde det” blir mycket kortare. Om jagged frontier, Jevons paradox, job crafting och varför expertis inte försvinner utan flyttar.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI gör mig inte bara snabbare – den får mig att göra saker jag annars aldrig hade gjort">
+  <meta property="og:description" content="Frågan ”hur mycket tid sparar AI?” missar kanske det viktigaste. Med AI genomför jag saker jag annars aldrig hade påbörjat – produktivitetsvinsten återinvesteras i högre ambitionsnivå. Om ökad handlingsförmåga, taggiga teknologiska gränser och varför verifiering blir dyrare när produktion blir billig.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/ai-handlingsformaga/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-09-03">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="AI och arbetssätt">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Citat */
+    .article-body blockquote {
+      margin: 0 0 var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+    .article-body blockquote p {
+      margin: 0 0 var(--space-xs);
+    }
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">AI och arbetssätt</span>
+            <span><time datetime="2026-09-03">3 september 2026</time></span>
+          </p>
+          <h1>AI gör mig inte bara snabbare – den får mig att göra saker jag annars aldrig hade gjort</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+
+          <p>
+            Jag har funderat en del på hur mycket AI faktiskt har förändrat mitt sätt att arbeta. Jag svarar fortfarande själv på mejl och på meddelanden i Teams och Slack, men för nästan allt annat använder jag numera AI i någon form, och det kan vara för att resonera om ett problem, koda, strukturera något, analysera något, ta fram utkast, testa idéer eller lära mig något nytt.
+          </p>
+          <p>
+            Jag gör saker jag alltid gjort snabbare än förut, och det som är intressant är att jag har börjat göra saker som jag av olika anledningar aldrig hade tagit tag i tidigare.
+          </p>
+
+          <h2>Det är inte bara en produktivitetsfråga</h2>
+          <p>
+            Ett exempel är vår nya <a href="https://ekosystemet.sundsvall.dev/api/index.html" rel="noopener noreferrer" target="_blank">API-katalog</a>. Grundproblemet är ganska typiskt – vi har mycket information om våra API:er i koden och i olika tekniska källor, samtidigt som det finns ett behov av en samlad och begriplig bild av vilka API som finns. Vi har tidigare dokumenterat detta manuellt, men problemet är att manuell dokumentation innebär dubbelarbete. Först ändrar någon verkligheten, exempelvis koden, sedan måste någon komma ihåg att även ändra beskrivningen av verkligheten, och det finns en uppenbar risk att de två börjar glida isär.
+          </p>
+          <p>
+            Jag började därför bygga en lösning där dokumentationen kan genereras automatiskt utifrån den faktiska koden på GitHub. Det ger både mindre arbete för utvecklarna och mer korrekt information i katalogen. Det intressanta är att jag inte hade gjort detta alls för något år sedan, inte för att idén är särskilt revolutionerande (vi har diskuterat möjligheterna att automatisera dokumentationen i flera år) utan för att tröskeln varit för hög.
+          </p>
+          <p>
+            Vi hade behövt avsätta tid till att sätta oss in i en massa tekniska detaljer, lägga tid på att skriva en massa kod, felsöka en massa, testa flera olika exempel och lägga mycket tid på att få alla små delar på plats. Det är därför det aldrig prioriterats och diskussionerna tidigare alltid slutat i ”<em>bra idé, det här borde göra det någon gång</em>”. Med AI blir skillnaden i stället att avståndet mellan ”det där borde gå att göra” och ”nu har vi faktiskt en fungerande lösning” blir väldigt mycket kortare, och det har fått mig att fundera på om vi kanske beskriver effekten av AI i vårt arbete på fel sätt ibland.
+          </p>
+
+          <h2>Samma arbete snabbare är bara den första effekten</h2>
+          <p>
+            Mycket av forskningen om generativ AI har naturligt nog tittat på produktivitet. Noy &amp; Zhang (2023) visade exempelvis i ett experiment att, föga förvånande, personer som fick använda generativ AI för olika skrivuppgifter både arbetade snabbare och i genomsnitt producerade bättre resultat. Brynjolfsson et al. (2025) har sett liknande effekter i kundtjänstarbete, och Dell'Acqua et al. (2026b) har i olika experiment med kunskapsarbetare visat på tydliga förbättringar inom många typer av uppgifter.
+          </p>
+          <p>
+            Allt detta är viktigt, men alla dessa resultat leder lätt till frågan:
+          </p>
+          <blockquote>
+            <p>Hur mycket tid sparar AI?</p>
+          </blockquote>
+          <p>
+            Jag börjar tro att det åtminstone för mitt eget, och säkert flera andras, arbete inte är den centrala frågan. Tänk om jag utan AI hade lagt fyra timmar på en uppgift och med AI bara behöver lägga en timme, ja då har AI sparat tre timmar. Men tänk i stället på API-katalogen – om alternativet utan AI inte är ”<em>det tar 40 timmar</em>”, utan snarare ”<em>vi kommer aldrig att bygga det</em>”, då är det svårt att prata om sparade timmar då AI inte primärt effektiviserat en aktivitet och i stället gjort aktiviteten möjlig – det är en betydligt större förändring.
+          </p>
+
+          <h2>Min handlingsradie har blivit större</h2>
+          <p>
+            Det finns ett användbart begrepp inom forskningen om AI som Dell'Acqua et al. (2026a) kallar för en <em>jagged technological frontier</em> – ungefär en <em>taggig teknologisk gräns</em>. Deras poäng är att generativ AI inte är lika bra på allt. På vissa uppgifter kan den vara exceptionellt bra, men på andra kan den misslyckas på mer eller mindre överraskande sätt. Detta innebär att den verkligt intressanta kompetensen inte bara består i att kunna använda AI, utan också i att förstå var denna gräns går.
+          </p>
+          <p>
+            När man börjar förstå det förändras också vilka problem som känns möjliga att angripa. Jag behöver exempelvis inte nödvändigtvis själv vara expert på varje teknisk komponent i en lösning, men jag behöver förstå problemet tillräckligt väl för att kunna formulera vad jag vill uppnå, värdera olika lösningar, upptäcka när något verkar orimligt och avgöra om resultatet faktiskt fungerar i vår kontext. AI fyller då i delar av gapet mellan min egen kompetens och den kompetens som behövs för att genomföra idén fullt ut. Detta är inte riktigt samma sak som automatisering – snarare handlar det om förstärkning.
+          </p>
+          <p>
+            Raisch &amp; Krakowski (2021) beskriver detta som spänningen mellan <em>automation och mänsklig förstärkning</em>. AI kan ersätta vissa mänskliga aktiviteter, men kan samtidigt också förstärka människors förmåga att göra sådant de annars inte skulle ha gjort, och jag känner igen mig själv betydligt mer i det senare. AI gör det billigare att ta initiativ, och jag tror att det är här den verkligt stora förändringen finns.
+          </p>
+          <p>
+            Alla organisationer är fulla av saker som borde förbättras, som till exempel:
+          </p>
+          <ul>
+            <li>dokumentation som borde automatiseras,</li>
+            <li>processer som borde förenklas,</li>
+            <li>att någon borde analysera ett problem lite djupare,</li>
+            <li>att vi borde prova ett annat arbetssätt,</li>
+            <li>att vi borde bygga det där lilla verktyget,</li>
+            <li>och att vi borde sammanställa den där informationen.</li>
+          </ul>
+          <p>
+            Men varje sådan idé har en startkostnad – man måste förstå problemet, leta information, kanske lära sig någon ny teknik, formulera en lösning, bygga något, skriva dokumentation och testa om idén över huvud taget håller. Varje steg kanske inte är särskilt svårt, men tillsammans blir de tillräckligt dyra för att väldigt många goda idéer aldrig genomförs. AI pressar ner den kostnaden dramatiskt, och det som då händer för åtminstone min egen del är att jag nödvändigtvis inte får mindre att göra, i stället gör jag mer!
+          </p>
+
+          <h2>Produktivitetsvinsten blir högre ambitionsnivå</h2>
+          <p>
+            Det här påminner lite om det som inom ekonomin ibland kallas Jevons paradox (Jevons, 1865). När något blir mer effektivt att använda är det inte säkert att den totala användningen minskar. Tvärtom kan användningen öka eftersom det blivit billigare, och något liknande verkar hända i mitt eget arbete. Om det tidigare kostade en halv dag att undersöka om en idé var genomförbar kanske jag lät bli, men om samma utforskning nu tar en halvtimme så gör jag den.
+          </p>
+          <p>
+            När det blir billigare att:
+          </p>
+          <ul>
+            <li>koda,</li>
+            <li>analysera data,</li>
+            <li>läsa in sig på ett område,</li>
+            <li>formulera ett förslag,</li>
+            <li>jämföra alternativ,</li>
+            <li>skapa dokumentation,</li>
+            <li>eller testa en idé</li>
+          </ul>
+          <p>
+            så börjar jag helt enkelt göra mer av allt detta.
+          </p>
+          <p>
+            Jag tar alltså inte ut produktivitetsökningen i form av längre fikapauser, i stället återinvesteras den i en högre ambitionsnivå, och det tycker jag är en betydligt mer intressant konsekvens av AI än att ett dokument kanske går 90 procent snabbare att skriva.
+          </p>
+
+          <h2>AI förändrar dessutom arbetssätt</h2>
+          <p>
+            Jag har sett samma sak när vi arbetat med nya arbetssätt. När vi exempelvis utvecklade tankarna kring <a href="../fokuserade-sprintar/">fokuserade sprintar</a> använde vi AI inte bara för att producera text. Vi kunde också resonera kring upplägg, angripa antaganden, pröva olika varianter och konkretisera idéer mycket snabbare än tidigare med hjälp av AI. Detta anknyter till ett äldre forskningsbegrepp – <em>job crafting</em> – som handlar om hur människor själva förändrar sitt arbete; vilka uppgifter de utför, hur de utför dem och ibland till och med hur de uppfattar sin egen roll (Wrzesniewski &amp; Dutton, 2001).
+          </p>
+          <p>
+            Generativ AI verkar alltså göra förändring i arbetssätt och liknande betydligt enklare. Vi använder alltså inte bara AI inne i en befintlig process, vi använder AI för att förändra processen, och skillnaden däri är ganska fundamental.
+          </p>
+          <p>
+            Min egen arbetsfördelning mellan mig själv och AI är numer något i stil med:
+          </p>
+          <ul>
+            <li>AI hjälper mig väldigt mycket med produktion, utforskande och förändrade arbetssätt (både mitt eget och organisationens)</li>
+            <li>Jag behåller dock bedömning, relation och ansvar själv</li>
+          </ul>
+
+          <h2>När produktion blir billig blir kvalitetssäkring dyrare</h2>
+          <p>
+            Det finns också en baksida värd att beakta. Om AI gör det extremt enkelt att skapa kod, analyser, texter och förslag blir det också extremt enkelt att producera fel – dessutom ofta ganska övertygande fel. Dell'Acqua et al. (2026a) visar i sin forskning om den taggiga teknologiska gränsen just detta – för uppgifter där AI är bra kan resultaten bli dramatiskt bättre, men när uppgiften ligger utanför AI:s faktiska kompetens kan människor i vissa fall prestera sämre eftersom de litar på ett övertygande men felaktigt svar.
+          </p>
+          <p>
+            Så när produktionskostnaden faller blir därför verifiering allt viktigare. Vi behöver kanske inte längre vara den som skriver varje kodrad, men vi måste fortfarande kunna bedöma:
+          </p>
+          <ul>
+            <li>Fungerar lösningen?</li>
+            <li>Är den robust?</li>
+            <li>Representerar den informationen korrekt?</li>
+            <li>Är den rimlig att förvalta?</li>
+            <li>Löser den faktiskt problemet?</li>
+          </ul>
+          <p>
+            Expertis försvinner alltså inte, men den flyttar.
+          </p>
+
+          <h2>Kanske mäter vi fel sak</h2>
+          <p>
+            Detta för mig tillbaka till frågan om produktivitet. Om jag skulle försöka mäta effekten av AI på mitt eget arbete tror jag inte längre att jag skulle fråga hur många timmar jag sparat rörande olika uppgifter. Jag skulle hellre vilja mäta något i stil med:
+          </p>
+          <blockquote>
+            <p>Hur många saker har jag genomfört som jag sannolikt aldrig hade påbörjat utan AI?</p>
+          </blockquote>
+          <p>
+            Och det hade varit betydligt mer intressant.
+          </p>
+          <p>
+            Man skulle också kunna mäta:
+          </p>
+          <ul>
+            <li>hur många idéer jag testar,</li>
+            <li>hur lång tid det går från idé till första fungerande prototyp,</li>
+            <li>hur många manuella processer som blir automatiserade,</li>
+            <li>och hur stor del av min tid som flyttas från ren produktion till bedömning och beslut.</li>
+          </ul>
+          <p>
+            Jag misstänker att den förändringen är mycket större än de direkta tidsvinsterna.
+          </p>
+
+          <h2>AI kanske framför allt ökar vår handlingsförmåga</h2>
+          <p>
+            Det finns tre nivåer som jag tycker är användbara för att beskriva utvecklingen.
+          </p>
+          <p>
+            Den första är effektivisering:
+          </p>
+          <ul>
+            <li>Vi gör samma sak snabbare.</li>
+          </ul>
+          <p>
+            Den andra är kapacitetsökning:
+          </p>
+          <ul>
+            <li>Vi kan göra saker som tidigare låg utanför vad vi praktiskt hade möjlighet att göra.</li>
+          </ul>
+          <p>
+            Men den tredje tycker jag är mest intressant:
+          </p>
+          <ul>
+            <li>Vi börjar förändra system, processer och arbetssätt eftersom kostnaden för att prova blivit mycket lägre.</li>
+          </ul>
+          <p>
+            Man skulle kunna kalla det en ökad handlingsförmåga, och när jag tittar på hur jag själv använder AI just nu är det nog där den största förändringen ligger.
+          </p>
+          <p>
+            AI hjälper mig såklart att utföra en hel del uppgifter snabbare. Men framför allt gör AI avståndet mellan:
+          </p>
+          <blockquote>
+            <p>”Det där borde man göra”</p>
+            <p>och</p>
+            <p>”Jag gjorde det”</p>
+          </blockquote>
+          <p>
+            väldigt mycket kortare.
+          </p>
+          <p>
+            Det tror jag på sikt kan vara en betydligt större förändring av kunskapsarbete än att vi sparar några minuter på att skriva ett dokument.
+          </p>
+
+          <h2>Några forskningsreferenser</h2>
+          <ul class="references">
+            <li>Brynjolfsson, E., Li, D. &amp; Raymond, L. (2025). Generative AI at Work. <em>The Quarterly Journal of Economics, 140</em>(2), 889–942.</li>
+            <li>Dell'Acqua, F., McFowland III, E., Mollick, E., Lifshitz, H., Kellogg, K. C., Rajendran, S., … &amp; Lakhani, K. R. (2026a). Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality. <em>Organization Science, 37</em>(2), 403–423.</li>
+            <li>Dell'Acqua, F., Ayoubi, C., Lifshitz, H., Sadun, R., Mollick, E., Mollick, L., … &amp; Lakhani, K. R. (2026b). The Cybernetic Teammate: A Field Experiment on Generative AI and Teamwork. <em>Organization Science, 37</em>(4), 1217–1242.</li>
+            <li>Jarrahi, M. H., Li, L., Robinson, A. P. &amp; Meng, S. (2025). Generative AI and the Augmentation of Information Practices in Knowledge Work. <em>Behaviour &amp; Information Technology</em>, 1–22.</li>
+            <li>Jevons, W. S. (1865). <em>The Coal Question: An Inquiry Concerning the Progress of the Nation, and the Probable Exhaustion of Our Coal-Mines</em>. London: Macmillan.</li>
+            <li>Law, M. &amp; Varanasi, R. A. (2025). Generative AI and Changing Work: Systematic Review of Practitioner-Led Work Transformations Through the Lens of Job Crafting. I <em>International Conference on Human-Computer Interaction</em> (s. 131–152). Cham: Springer Nature Switzerland.</li>
+            <li>Noy, S. &amp; Zhang, W. (2023). Experimental Evidence on the Productivity Effects of Generative Artificial Intelligence. <em>Science, 381</em>(6654), 187–192.</li>
+            <li>Raisch, S. &amp; Krakowski, S. (2021). Artificial Intelligence and Management: The Automation–Augmentation Paradox. <em>Academy of Management Review, 46</em>(1), 192–210.</li>
+            <li>Wrzesniewski, A. &amp; Dutton, J. E. (2001). Crafting a Job: Revisioning Employees as Active Crafters of Their Work. <em>Academy of Management Review, 26</em>(2), 179–201.</li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
