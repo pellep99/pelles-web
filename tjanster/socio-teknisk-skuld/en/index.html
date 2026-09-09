@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register of Socio-Technical Debt – Per Persson, Ph.D.</title>
+  <meta name="description" content="Searchable register of all 45 categories of socio-technical debt (STeD), sorted into social and technical debt, with definitions, sources and the history of the concept from Cunningham's 1992 metaphor to today's unifying construct.">
+
+  <!-- Språkversioner -->
+  <link rel="alternate" hreflang="sv" href="https://phd-persson.se/tjanster/socio-teknisk-skuld/">
+  <link rel="alternate" hreflang="en" href="https://phd-persson.se/tjanster/socio-teknisk-skuld/en/">
+  <link rel="alternate" hreflang="x-default" href="https://phd-persson.se/tjanster/socio-teknisk-skuld/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Register of Socio-Technical Debt">
+  <meta property="og:description" content="All 45 categories of socio-technical debt in a searchable register, with definitions, sources and the history of the concept.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://phd-persson.se/tjanster/socio-teknisk-skuld/en/">
+  <meta property="og:locale" content="en_GB">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+      /* Domänfärger (text på ljus bakgrund, kontrast ≥ 4.5:1) */
+      --color-social: #7a3b12;
+      --color-social-bg: #fbeee4;
+      --color-technical: #1f4f8b;
+      --color-technical-bg: #e8eff8;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* Endast för skärmläsare */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Hoppa-till-innehåll-länk för skärmläsare/tangentbord */
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+    /* Språkväxling */
+    .site-nav .lang-switch a {
+      gap: 0.4em;
+      color: var(--color-primary);
+      font-weight: 600;
+      border: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-nav .lang-switch a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+    .site-nav .lang-switch svg {
+      width: 1.1em;
+      height: 1.1em;
+      flex: none;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+      .site-nav .lang-switch { margin-left: var(--space-sm); }
+    }
+
+    /* Hjälte */
+    .hero {
+      padding: var(--space-xl) 0;
+      background: var(--color-surface);
+    }
+    .hero h1 {
+      margin: 0 0 var(--space-md);
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    .hero p {
+      margin: 0 0 var(--space-md);
+      max-width: 48rem;
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+    }
+    .hero p:last-child { margin-bottom: 0; }
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .hero h1 { font-size: 3rem; }
+    }
+
+    .hero-facts {
+      list-style: none;
+      margin: var(--space-lg) 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .hero-facts li {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.4em;
+      padding: var(--space-xs) var(--space-md);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .hero-facts strong {
+      font-size: 1.25rem;
+      color: var(--color-text);
+    }
+    .hero-facts li.fact-social strong { color: var(--color-social); }
+    .hero-facts li.fact-technical strong { color: var(--color-technical); }
+    .hero-facts a { color: var(--color-primary); }
+
+    /* Sektioner */
+    main section { padding: var(--space-xl) 0; }
+    main h2 {
+      margin: 0 0 var(--space-md);
+      font-size: 1.5rem;
+    }
+    main h3 {
+      margin: 0 0 var(--space-sm);
+      font-size: 1.125rem;
+      line-height: 1.3;
+    }
+    .section-intro {
+      margin: 0 0 var(--space-lg);
+      max-width: 48rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Notis om namnsättning */
+    .naming-note {
+      margin: 0 0 var(--space-lg);
+      padding: var(--space-md) var(--space-lg);
+      max-width: 48rem;
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .naming-note h3 {
+      margin: 0 0 var(--space-xs);
+      font-size: 1rem;
+    }
+    .naming-note p {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+
+    /* Registrets verktygsrad */
+    .toolbar {
+      display: grid;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      margin-bottom: var(--space-lg);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+    @media (min-width: 1024px) {
+      .toolbar {
+        grid-template-columns: minmax(16rem, 1.5fr) auto auto auto;
+        align-items: end;
+      }
+    }
+    .toolbar label,
+    .toolbar .group-label {
+      display: block;
+      margin-bottom: var(--space-xs);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .toolbar input[type="search"],
+    .toolbar select {
+      width: 100%;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-sm);
+      font: inherit;
+      color: var(--color-text);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+    .segmented {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .segmented button {
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      font: inherit;
+      font-weight: 600;
+      color: var(--color-primary);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .segmented button:hover { border-color: var(--color-primary); }
+    .segmented button[aria-pressed="true"] {
+      color: #fff;
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+    .toolbar .reset {
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      font: inherit;
+      font-weight: 600;
+      color: var(--color-primary);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .toolbar .reset:hover { border-color: var(--color-primary); }
+    .result-count {
+      margin: 0 0 var(--space-md);
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .no-js-note { margin: 0 0 var(--space-md); color: var(--color-text-muted); font-size: 0.9375rem; }
+    .js .no-js-note { display: none; }
+    .no-js .toolbar { display: none; }
+
+    /* Domängrupper */
+    .domain {
+      margin-bottom: var(--space-xl);
+    }
+    .domain-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+      padding-bottom: var(--space-sm);
+      border-bottom: 3px solid var(--color-border);
+    }
+    .domain-social .domain-header { border-color: var(--color-social); }
+    .domain-technical .domain-header { border-color: var(--color-technical); }
+    .domain-header h3 {
+      margin: 0;
+      font-size: 1.375rem;
+    }
+    .domain-alt {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--color-text-muted);
+    }
+    .domain-count {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .domain-def {
+      margin: 0 0 var(--space-lg);
+      max-width: 48rem;
+      color: var(--color-text-muted);
+    }
+    .domain[hidden] { display: none; }
+
+    .entries {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .entries { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .entries { grid-template-columns: repeat(3, 1fr); }
+    }
+    .entry {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      scroll-margin-top: var(--space-lg);
+    }
+    .entry[hidden] { display: none; }
+    .entry:target { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+    .entry-title {
+      margin: 0;
+      font-size: 1.125rem;
+      line-height: 1.3;
+    }
+    .entry-alt {
+      font-size: 0.9375rem;
+      font-weight: 400;
+      color: var(--color-text-muted);
+    }
+    .tags {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.125rem var(--space-xs);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-surface);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .tag abbr { text-decoration: none; }
+    .tag-social {
+      color: var(--color-social);
+      background: var(--color-social-bg);
+      border-color: transparent;
+    }
+    .tag-technical {
+      color: var(--color-technical);
+      background: var(--color-technical-bg);
+      border-color: transparent;
+    }
+    .entry-desc {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+    .entry-note {
+      margin: 0;
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-border);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .entry-source {
+      margin: auto 0 0;
+      padding-top: var(--space-xs);
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+    }
+    .empty-state {
+      padding: var(--space-lg);
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius);
+      color: var(--color-text-muted);
+    }
+    .empty-state[hidden] { display: none; }
+
+    /* Förklaring av förkortningar */
+    .legend {
+      margin: 0 0 var(--space-lg);
+      padding: var(--space-md) var(--space-lg);
+      max-width: 48rem;
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .legend dl {
+      margin: 0;
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 0.25rem var(--space-md);
+    }
+    .legend dt { font-weight: 600; color: var(--color-text); }
+    .legend dd { margin: 0; }
+
+    /* Struktur och beroenden */
+    .structure {
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: 1fr;
+      margin-top: var(--space-lg);
+    }
+    @media (min-width: 640px) {
+      .structure { grid-template-columns: repeat(2, 1fr); }
+    }
+    .structure-card {
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-top: 4px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .structure-card.is-social { border-top-color: var(--color-social); }
+    .structure-card.is-technical { border-top-color: var(--color-technical); }
+    .structure-card p { margin: 0 0 var(--space-sm); color: var(--color-text-muted); }
+    .structure-card p:last-child { margin-bottom: 0; }
+
+    .dependency {
+      margin: var(--space-lg) 0 0;
+      padding: var(--space-lg);
+      max-width: 48rem;
+      background: var(--color-surface);
+      border-radius: var(--radius);
+    }
+    .dependency figure { margin: 0; }
+    .dependency .figure-scroll {
+      overflow-x: auto;
+      margin-bottom: var(--space-md);
+    }
+    .dependency svg {
+      display: block;
+      width: 100%;
+      min-width: 28rem;
+      max-width: 38rem;
+      height: auto;
+      margin: 0 auto;
+    }
+    .dependency figcaption {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Tidslinje */
+    .timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-width: 48rem;
+      border-left: 3px solid var(--color-border);
+    }
+    .timeline li {
+      position: relative;
+      margin: 0 0 var(--space-lg);
+      padding-left: var(--space-xl);
+    }
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: calc(-0.5rem - 1.5px);
+      top: 0.45rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: var(--color-bg);
+      border: 3px solid var(--color-primary);
+    }
+    .timeline li.milestone::before { background: var(--color-primary); }
+    .timeline .year {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+    }
+    .timeline h3 { margin: 0.125rem 0 var(--space-xs); }
+    .timeline p { margin: 0 0 var(--space-xs); color: var(--color-text-muted); }
+    .timeline p:last-child { margin-bottom: 0; }
+    .timeline blockquote {
+      margin: var(--space-xs) 0;
+      padding: var(--space-xs) var(--space-md);
+      border-left: 3px solid var(--color-border);
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+    .timeline blockquote p { margin: 0; }
+
+    /* Paraplybegrepp */
+    .umbrellas {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .umbrellas { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .umbrellas { grid-template-columns: repeat(4, 1fr); }
+    }
+    .umbrella {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .umbrella .tag { align-self: flex-start; }
+    .umbrella p { margin: 0; color: var(--color-text-muted); }
+    .umbrella .umbrella-meta { margin-top: auto; font-size: 0.8125rem; }
+
+    /* Källor */
+    .references {
+      margin: 0;
+      padding-left: 1.25rem;
+      max-width: 48rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .references li { margin-bottom: var(--space-xs); }
+
+    /* Avslutande sektion */
+    .note {
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      padding: var(--space-lg);
+      max-width: 48rem;
+    }
+    .note h2 { margin: 0 0 var(--space-sm); }
+    .note p {
+      margin: 0 0 var(--space-sm);
+      color: var(--color-text-muted);
+    }
+    .note p:last-child { margin-bottom: 0; }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body class="no-js">
+  <script>document.body.className = 'js';</script>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../../" aria-label="Per Persson, Ph.D. – home page">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="../../../">Home</a></li>
+          <li><a href="../../../publikationer/">Publications</a></li>
+          <li><a href="../../../blogg/">Blog</a></li>
+          <li><a href="../../" aria-current="page">Services</a></li>
+          <li class="lang-switch"><a href="../" hreflang="sv" lang="sv" aria-label="Växla till den svenska versionen av sidan"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>På svenska</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <h1 id="hero-title">Register of Socio-Technical Debt</h1>
+        <p>
+          Socio-technical debt (STeD) occurs when past social and/or technical decisions lead to inefficiencies or increased risks in designing, building, maintaining, managing or using digital solutions, which in turn hampers the organisation's ability to create value and reach its goals. The register collects every category of debt identified in the literature and in my <a href="https://gupea.ub.gu.se/items/01e1caf1-9259-4b74-aafa-ba75a306b06c" rel="noopener">doctoral thesis</a>, sorted by whether the debt resides in the technical artefact or in the social structures around it.
+        </p>
+        <ul class="hero-facts" aria-label="The register in numbers">
+          <li><strong>45</strong> categories</li>
+          <li class="fact-social"><strong>14</strong> social debt</li>
+          <li class="fact-technical"><strong>31</strong> technical debt</li>
+          <li><strong>4</strong> umbrella concepts</li>
+          <li><a href="#historia-title">History of the concept</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="register-title" id="register">
+      <div class="container">
+        <h2 id="register-title">The register</h2>
+        <p class="section-intro">
+          Search by English or Swedish name, or by words in the description. Filter by domain (social or technical) and by the umbrella concept within which the category was originally defined. Each entry states the source of its definition.
+        </p>
+        <div class="naming-note" role="note">
+          <h3>About the names: the English terms are the established ones</h3>
+          <p>The category names are the established English terms used in the research literature, and they are the names to use when referring to that literature. The Swedish names shown in parentheses are my own translations, used on the Swedish version of this page; they are not established Swedish terms.</p>
+        </div>
+        <p class="no-js-note">Search and filters require JavaScript. All categories are shown below.</p>
+
+        <form class="toolbar" id="filters" role="search" aria-label="Search and filter the register" onsubmit="return false;">
+          <div>
+            <label for="q">Search</label>
+            <input type="search" id="q" name="q" placeholder="e.g. documentation, governance, procurement" autocomplete="off">
+          </div>
+          <div>
+            <span class="group-label" id="domain-label">Domain</span>
+            <div class="segmented" role="group" aria-labelledby="domain-label">
+              <button type="button" data-domain="all" aria-pressed="true">All</button>
+              <button type="button" data-domain="social" aria-pressed="false">Social debt</button>
+              <button type="button" data-domain="technical" aria-pressed="false">Technical debt</button>
+            </div>
+          </div>
+          <div>
+            <label for="origin">Origin</label>
+            <select id="origin" name="origin">
+              <option value="all">All umbrella concepts</option>
+              <option value="td">TD – Technical debt (traditional)</option>
+              <option value="ai">AI – AI-specific technical debt</option>
+              <option value="dd">DD – Digital debt</option>
+              <option value="tyd">TyD – Technology debt</option>
+              <option value="ntd">NTD – Non-technical debt</option>
+              <option value="egen">Own – The thesis's own studies</option>
+            </select>
+          </div>
+          <div>
+            <button type="button" class="reset" id="reset">Clear filters</button>
+          </div>
+        </form>
+
+        <p class="result-count" id="result-count" aria-live="polite" aria-atomic="true">Showing 45 of 45 categories.</p>
+
+        <div class="domain domain-social" id="domain-social">
+          <div class="domain-header">
+            <h3>Social debt <span class="domain-alt">(<span lang="sv">social skuld</span>)</span></h3>
+            <span class="domain-count" data-count-for="social">14 categories</span>
+          </div>
+          <p class="domain-def">
+            Social debt emerges from failures in communication, management and the organisation of development processes. Examples are poor team-management practices, flawed prioritisation and communication breakdown between business units and the IT department. The debt is accumulated through social decisions and resides in structures, roles and relationships rather than in the technology.
+          </p>
+          <ul class="entries">
+          <li class="entry" id="ai-ethics-debt" data-domain="social" data-origin="td ai" data-search="ai-etikskuld ai ethics debt deficiencies around ethical aspects of ai-based systems, such as algorithmic fairness, prediction bias, or a lack of transparency and accountability. classified as social debt in the thesis because its roots lie in decisions and values rather than in the artefact. bogner m.fl., 2021 bogner et al., 2021 technical debt (traditional) ai-specific technical debt">
+            <h4 class="entry-title">AI ethics debt <span class="entry-alt">(<span lang="sv">AI-etikskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="AI-specific technical debt">AI</abbr></li>
+            </ul>
+            <p class="entry-desc">Deficiencies around ethical aspects of AI-based systems, such as algorithmic fairness, prediction bias, or a lack of transparency and accountability. Classified as social debt in the thesis because its roots lie in decisions and values rather than in the artefact.</p>
+            <p class="entry-source">Source: Bogner et al., 2021</p>
+          </li>
+          <li class="entry" id="competence-debt" data-domain="social" data-origin="tyd" data-search="kompetensskuld competence debt since the installed base is often built on elements of antiquated technology, conditions create a competence base optimised for maintenance and operations rather than for modernisation and the development of new technology. magnusson m.fl., 2018 magnusson et al., 2018 technology debt">
+            <h4 class="entry-title">Competence debt <span class="entry-alt">(<span lang="sv">Kompetensskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Since the installed base is often built on elements of antiquated technology, conditions create a competence base optimised for maintenance and operations rather than for modernisation and the development of new technology.</p>
+            <p class="entry-source">Source: Magnusson et al., 2018</p>
+          </li>
+          <li class="entry" id="cultural-debt" data-domain="social" data-origin="ntd" data-search="kulturskuld cultural debt arises from a technical decision that borrows against the organisation&#x27;s culture. such decisions can introduce team divisions, deteriorate communication, or even weaken leadership effectiveness. a culture that discourages collaboration, experimentation or learning from mistakes reinforces the debt. saeeda m.fl., 2023 saeeda et al., 2023 non-technical debt">
+            <h4 class="entry-title">Cultural debt <span class="entry-alt">(<span lang="sv">Kulturskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Non-technical debt">NTD</abbr></li>
+            </ul>
+            <p class="entry-desc">Arises from a technical decision that borrows against the organisation&#x27;s culture. Such decisions can introduce team divisions, deteriorate communication, or even weaken leadership effectiveness. A culture that discourages collaboration, experimentation or learning from mistakes reinforces the debt.</p>
+            <p class="entry-source">Source: Saeeda et al., 2023</p>
+          </li>
+          <li class="entry" id="enterprise-architecture-debt" data-domain="social" data-origin="td" data-search="verksamhetsarkitekturskuld enterprise architecture debt a metric that depicts the deviation of the currently present state of an enterprise from a hypothetical ideal state, viewed across the organisation&#x27;s whole architecture rather than a single system. hacks m.fl., 2019 hacks et al., 2019 technical debt (traditional)">
+            <h4 class="entry-title">Enterprise architecture debt <span class="entry-alt">(<span lang="sv">Verksamhetsarkitekturskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">A metric that depicts the deviation of the currently present state of an enterprise from a hypothetical ideal state, viewed across the organisation&#x27;s whole architecture rather than a single system.</p>
+            <p class="entry-source">Source: Hacks et al., 2019</p>
+          </li>
+          <li class="entry" id="governance-debt" data-domain="social" data-origin="tyd" data-search="styrningsskuld governance debt bias in the configuration of governance creates a governance optimised for stability that does not cater to the needs for innovation. misaligned or excessively rigid it governance structures. magnusson m.fl., 2018 magnusson et al., 2018 technology debt">
+            <h4 class="entry-title">Governance debt <span class="entry-alt">(<span lang="sv">Styrningsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Bias in the configuration of governance creates a governance optimised for stability that does not cater to the needs for innovation. Misaligned or excessively rigid IT governance structures.</p>
+            <p class="entry-source">Source: Magnusson et al., 2018</p>
+          </li>
+          <li class="entry" id="information-debt" data-domain="social" data-origin="dd" data-search="informationsskuld information debt related to platform maintenance and evolvability, representing performance risks in an organisation&#x27;s work processes. the accumulation of outdated, inconsistent or poorly structured information makes digital services harder to scale, integrate and adapt. rolland m.fl., 2018 rolland et al., 2018 digital debt">
+            <h4 class="entry-title">Information debt <span class="entry-alt">(<span lang="sv">Informationsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Digital debt">DD</abbr></li>
+            </ul>
+            <p class="entry-desc">Related to platform maintenance and evolvability, representing performance risks in an organisation&#x27;s work processes. The accumulation of outdated, inconsistent or poorly structured information makes digital services harder to scale, integrate and adapt.</p>
+            <p class="entry-source">Source: Rolland et al., 2018</p>
+          </li>
+          <li class="entry" id="organisational-debt" data-domain="social" data-origin="ntd" data-search="organisationsskuld organisational debt the accumulating catalogue of changes that leaders should have made but didn&#x27;t. structural issues such as unclear hierarchies, siloed departments or misaligned responsibilities. saeeda m.fl., 2023; ahmad &amp; al-baik, 2024 saeeda et al., 2023; ahmad &amp; al-baik, 2024 non-technical debt">
+            <h4 class="entry-title">Organisational debt <span class="entry-alt">(<span lang="sv">Organisationsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Non-technical debt">NTD</abbr></li>
+            </ul>
+            <p class="entry-desc">The accumulating catalogue of changes that leaders should have made but didn&#x27;t. Structural issues such as unclear hierarchies, siloed departments or misaligned responsibilities.</p>
+            <p class="entry-source">Source: Saeeda et al., 2023; Ahmad &amp; Al-Baik, 2024</p>
+          </li>
+          <li class="entry" id="people-debt" data-domain="social" data-origin="td ntd" data-search="personalskuld people debt people issues in the organisation that delay or hinder development activities, for example too few people having the necessary expertise due to delayed training or hiring, or over-reliance on a few key individuals. rios m.fl., 2018; ahmad &amp; gustavsson, 2022 rios et al., 2018; ahmad &amp; gustavsson, 2022 technical debt (traditional) non-technical debt">
+            <h4 class="entry-title">People debt <span class="entry-alt">(<span lang="sv">Personalskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Non-technical debt">NTD</abbr></li>
+            </ul>
+            <p class="entry-desc">People issues in the organisation that delay or hinder development activities, for example too few people having the necessary expertise due to delayed training or hiring, or over-reliance on a few key individuals.</p>
+            <p class="entry-source">Source: Rios et al., 2018; Ahmad &amp; Gustavsson, 2022</p>
+          </li>
+          <li class="entry" id="process-debt" data-domain="social" data-origin="td ntd" data-search="processkuld process debt inefficient processes, where what the process was designed to handle is no longer appropriate. a suboptimal action or event with short-term advantages but long-term detrimental effects, such as outdated project-management methods, unnecessary bureaucracy or unsuitable procurement processes. rios m.fl., 2018; martini m.fl., 2020 rios et al., 2018; martini et al., 2020 technical debt (traditional) non-technical debt">
+            <h4 class="entry-title">Process debt <span class="entry-alt">(<span lang="sv">Processkuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Non-technical debt">NTD</abbr></li>
+            </ul>
+            <p class="entry-desc">Inefficient processes, where what the process was designed to handle is no longer appropriate. A suboptimal action or event with short-term advantages but long-term detrimental effects, such as outdated project-management methods, unnecessary bureaucracy or unsuitable procurement processes.</p>
+            <p class="entry-source">Source: Rios et al., 2018; Martini et al., 2020</p>
+          </li>
+          <li class="entry" id="reputation-debt" data-domain="social" data-origin="tyd" data-search="anseendeskuld reputation debt deficiencies in delivery capability over long periods of time create a reputation where users have a low level of trust for the it department. trust between the it function and the business erodes. magnusson m.fl., 2018 magnusson et al., 2018 technology debt">
+            <h4 class="entry-title">Reputation debt <span class="entry-alt">(<span lang="sv">Anseendeskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Deficiencies in delivery capability over long periods of time create a reputation where users have a low level of trust for the IT department. Trust between the IT function and the business erodes.</p>
+            <p class="entry-source">Source: Magnusson et al., 2018</p>
+          </li>
+          <li class="entry" id="requirements-debt" data-domain="social" data-origin="td dd" data-search="kravskuld requirements debt trade-offs made with respect to what requirements the development team needs to implement or how to implement them. the distance between the optimal requirements specification and the actual system implementation. rios m.fl., 2018; li m.fl., 2015 rios et al., 2018; li et al., 2015 technical debt (traditional) digital debt">
+            <h4 class="entry-title">Requirements debt <span class="entry-alt">(<span lang="sv">Kravskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Digital debt">DD</abbr></li>
+            </ul>
+            <p class="entry-desc">Trade-offs made with respect to what requirements the development team needs to implement or how to implement them. The distance between the optimal requirements specification and the actual system implementation.</p>
+            <p class="entry-source">Source: Rios et al., 2018; Li et al., 2015</p>
+          </li>
+          <li class="entry" id="shadow-it-debt" data-domain="social" data-origin="tyd" data-search="skugg-it-skuld shadow-it debt decentralised investment and non-sanctioned user-driven innovation, in parallel with official it governance, creates a lack of synergies, efficiency and security. magnusson m.fl., 2018 magnusson et al., 2018 technology debt">
+            <h4 class="entry-title">Shadow-IT debt <span class="entry-alt">(<span lang="sv">Skugg-IT-skuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Decentralised investment and non-sanctioned user-driven innovation, in parallel with official IT governance, creates a lack of synergies, efficiency and security.</p>
+            <p class="entry-source">Source: Magnusson et al., 2018</p>
+          </li>
+          <li class="entry" id="user-satisfaction-debt" data-domain="social" data-origin="tyd" data-search="användarnöjdhetsskuld user-satisfaction debt deficiencies in user satisfaction affect users&#x27; willingness to work actively with the it function to create improvements. frustration with it systems and low engagement. magnusson m.fl., 2018 magnusson et al., 2018 technology debt">
+            <h4 class="entry-title">User-satisfaction debt <span class="entry-alt">(<span lang="sv">Användarnöjdhetsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Deficiencies in user satisfaction affect users&#x27; willingness to work actively with the IT function to create improvements. Frustration with IT systems and low engagement.</p>
+            <p class="entry-source">Source: Magnusson et al., 2018</p>
+          </li>
+          <li class="entry" id="work-environment-debt" data-domain="social" data-origin="tyd" data-search="arbetsmiljöskuld work-environment debt shortcomings in the work environment for it workers create difficulty in attracting and retaining the competences needed for future needs. magnusson m.fl., 2018 magnusson et al., 2018 technology debt">
+            <h4 class="entry-title">Work-environment debt <span class="entry-alt">(<span lang="sv">Arbetsmiljöskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-social">Social debt</li>
+              <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Shortcomings in the work environment for IT workers create difficulty in attracting and retaining the competences needed for future needs.</p>
+            <p class="entry-source">Source: Magnusson et al., 2018</p>
+          </li>
+          </ul>
+        </div>
+
+        <div class="domain domain-technical" id="domain-technical">
+          <div class="domain-header">
+            <h3>Technical debt <span class="domain-alt">(<span lang="sv">teknisk skuld</span>)</span></h3>
+            <span class="domain-count" data-count-for="technical">31 categories</span>
+          </div>
+          <p class="domain-def">
+            Technical debt is a collection of design or implementation constructs that are expedient in the short term but set up a technical context that can make future changes more costly or impossible. It presents an actual or contingent liability whose impact is limited to internal system qualities, primarily maintainability and evolvability. It resides in artefacts such as code, architecture, databases and testing frameworks.
+          </p>
+          <ul class="entries">
+          <li class="entry" id="ai-configuration-debt" data-domain="technical" data-origin="td ai" data-search="ai-konfigurationsskuld ai configuration debt deficiencies around the configuration mechanisms of ai-based systems. bogner m.fl., 2021 bogner et al., 2021 technical debt (traditional) ai-specific technical debt">
+            <h4 class="entry-title">AI configuration debt <span class="entry-alt">(<span lang="sv">AI-konfigurationsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="AI-specific technical debt">AI</abbr></li>
+            </ul>
+            <p class="entry-desc">Deficiencies around the configuration mechanisms of AI-based systems.</p>
+            <p class="entry-source">Source: Bogner et al., 2021</p>
+          </li>
+          <li class="entry" id="ai-data-debt" data-domain="technical" data-origin="td ai" data-search="ai-dataskuld ai data debt deficiencies related to the collection, management and usage of data, both for training models and in production. bogner m.fl., 2021 bogner et al., 2021 technical debt (traditional) ai-specific technical debt">
+            <h4 class="entry-title">AI data debt <span class="entry-alt">(<span lang="sv">AI-dataskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="AI-specific technical debt">AI</abbr></li>
+            </ul>
+            <p class="entry-desc">Deficiencies related to the collection, management and usage of data, both for training models and in production.</p>
+            <p class="entry-source">Source: Bogner et al., 2021</p>
+          </li>
+          <li class="entry" id="ai-model-debt" data-domain="technical" data-origin="td ai" data-search="ai-modellskuld ai model debt suboptimal practices in the design, training and management of ai models. bogner m.fl., 2021 bogner et al., 2021 technical debt (traditional) ai-specific technical debt">
+            <h4 class="entry-title">AI model debt <span class="entry-alt">(<span lang="sv">AI-modellskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="AI-specific technical debt">AI</abbr></li>
+            </ul>
+            <p class="entry-desc">Suboptimal practices in the design, training and management of AI models.</p>
+            <p class="entry-source">Source: Bogner et al., 2021</p>
+          </li>
+          <li class="entry" id="algorithm-debt" data-domain="technical" data-origin="td" data-search="algoritmskuld algorithm debt sub-optimal implementations of algorithm logic. liu m.fl., 2020 liu et al., 2020 technical debt (traditional)">
+            <h4 class="entry-title">Algorithm debt <span class="entry-alt">(<span lang="sv">Algoritmskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Sub-optimal implementations of algorithm logic.</p>
+            <p class="entry-source">Source: Liu et al., 2020</p>
+          </li>
+          <li class="entry" id="architectural-debt" data-domain="technical" data-origin="td" data-search="arkitekturskuld architectural debt problems encountered in product architecture that affect architectural requirements. it has a significant influence on system success and, left unchecked, can cause expensive repercussions. upgrades to systems with high architectural debt require three times the effort of well-structured architectures, and early architectural shortcuts increase brittleness and later rework costs. rios m.fl., 2018; besker m.fl., 2016; maccormack m.fl., 2012 rios et al., 2018; besker et al., 2016; maccormack et al., 2012 technical debt (traditional)">
+            <h4 class="entry-title">Architectural debt <span class="entry-alt">(<span lang="sv">Arkitekturskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Problems encountered in product architecture that affect architectural requirements. It has a significant influence on system success and, left unchecked, can cause expensive repercussions. Upgrades to systems with high architectural debt require three times the effort of well-structured architectures, and early architectural shortcuts increase brittleness and later rework costs.</p>
+            <p class="entry-source">Source: Rios et al., 2018; Besker et al., 2016; MacCormack et al., 2012</p>
+          </li>
+          <li class="entry" id="automation-build-debt" data-domain="technical" data-origin="td" data-search="automatiseringsskuld automation (build) debt in today&#x27;s fast-paced, release-oriented development, almost any manual step in building a software system indicates automation debt. it is both a source of and a resolution approach to technical debt (also called build or devops debt). rosser &amp; norton, 2021 rosser &amp; norton, 2021 technical debt (traditional)">
+            <h4 class="entry-title">Automation (build) debt <span class="entry-alt">(<span lang="sv">Automatiseringsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">In today&#x27;s fast-paced, release-oriented development, almost any manual step in building a software system indicates automation debt. It is both a source of and a resolution approach to technical debt (also called build or DevOps debt).</p>
+            <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="automation-test-debt" data-domain="technical" data-origin="td" data-search="testautomatiseringsskuld automation test debt the work involved in automating tests of previously developed functionality to support continuous integration and faster development cycles, plus the accumulation of issues such as poorly maintained test scripts, outdated test cases and lack of proper test coverage. rios m.fl., 2018; wiklund m.fl., 2012 rios et al., 2018; wiklund et al., 2012 technical debt (traditional)">
+            <h4 class="entry-title">Automation test debt <span class="entry-alt">(<span lang="sv">Testautomatiseringsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">The work involved in automating tests of previously developed functionality to support continuous integration and faster development cycles, plus the accumulation of issues such as poorly maintained test scripts, outdated test cases and lack of proper test coverage.</p>
+            <p class="entry-source">Source: Rios et al., 2018; Wiklund et al., 2012</p>
+          </li>
+          <li class="entry" id="build-debt" data-domain="technical" data-origin="td" data-search="byggskuld build debt issues that make the build task harder and unnecessarily time-consuming, for instance building and running unnecessary code and tests. rios m.fl., 2018; morgenthaler m.fl., 2012 rios et al., 2018; morgenthaler et al., 2012 technical debt (traditional)">
+            <h4 class="entry-title">Build debt <span class="entry-alt">(<span lang="sv">Byggskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Issues that make the build task harder and unnecessarily time-consuming, for instance building and running unnecessary code and tests.</p>
+            <p class="entry-source">Source: Rios et al., 2018; Morgenthaler et al., 2012</p>
+          </li>
+          <li class="entry" id="code-debt-implementation-debt" data-domain="technical" data-origin="td dd" data-search="kodskuld code debt (implementation debt) problems found in the source code, that is poorly written code that violates best coding practices or coding rules, which reduces legibility and makes the code harder to maintain. this is cunningham&#x27;s original 1992 metaphor: ‘shipping first-time code is like going into debt’. cunningham, 1992; rios m.fl., 2018 cunningham, 1992; rios et al., 2018 technical debt (traditional) digital debt">
+            <h4 class="entry-title">Code debt (implementation debt) <span class="entry-alt">(<span lang="sv">Kodskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Digital debt">DD</abbr></li>
+            </ul>
+            <p class="entry-desc">Problems found in the source code, that is poorly written code that violates best coding practices or coding rules, which reduces legibility and makes the code harder to maintain. This is Cunningham&#x27;s original 1992 metaphor: ‘shipping first-time code is like going into debt’.</p>
+            <p class="entry-source">Source: Cunningham, 1992; Rios et al., 2018</p>
+          </li>
+          <li class="entry" id="compatibility-debt" data-domain="technical" data-origin="td" data-search="kompatibilitetsskuld compatibility debt a project&#x27;s immature dependencies on other projects that cannot supply all qualified services, so that the current implementation is a temporary workaround. liu m.fl., 2020 liu et al., 2020 technical debt (traditional)">
+            <h4 class="entry-title">Compatibility debt <span class="entry-alt">(<span lang="sv">Kompatibilitetsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">A project&#x27;s immature dependencies on other projects that cannot supply all qualified services, so that the current implementation is a temporary workaround.</p>
+            <p class="entry-source">Source: Liu et al., 2020</p>
+          </li>
+          <li class="entry" id="configuration-debt" data-domain="technical" data-origin="td" data-search="konfigurationsskuld configuration debt incurred when configuration mechanisms are not controlled with the same rigour as the software, when differences between configurations cannot easily be determined, or when redundant or unused configuration data exists. rosser &amp; norton, 2021 rosser &amp; norton, 2021 technical debt (traditional)">
+            <h4 class="entry-title">Configuration debt <span class="entry-alt">(<span lang="sv">Konfigurationsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Incurred when configuration mechanisms are not controlled with the same rigour as the software, when differences between configurations cannot easily be determined, or when redundant or unused configuration data exists.</p>
+            <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="database-debt" data-domain="technical" data-origin="td" data-search="databasskuld database debt accumulated through issues with data requirements, data architecture, database design, implementation and documentation, and through the typical dependence on a third party for the database package (commercial or open source). rosser &amp; norton, 2021 rosser &amp; norton, 2021 technical debt (traditional)">
+            <h4 class="entry-title">Database debt <span class="entry-alt">(<span lang="sv">Databasskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Accumulated through issues with data requirements, data architecture, database design, implementation and documentation, and through the typical dependence on a third party for the database package (commercial or open source).</p>
+            <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="database-design-debt" data-domain="technical" data-origin="td" data-search="databasdesignskuld database-design debt immature or suboptimal database design decisions that lag behind the optimal or desirable ones. al-barak &amp; bahsoon, 2016 al-barak &amp; bahsoon, 2016 technical debt (traditional)">
+            <h4 class="entry-title">Database-design debt <span class="entry-alt">(<span lang="sv">Databasdesignskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Immature or suboptimal database design decisions that lag behind the optimal or desirable ones.</p>
+            <p class="entry-source">Source: Al-Barak &amp; Bahsoon, 2016</p>
+          </li>
+          <li class="entry" id="defect-debt" data-domain="technical" data-origin="td" data-search="defektskuld defect debt the trade-off between the short-term benefit of postponing bug-fixing and the long-term consequences of delaying it. known defects that the development team agrees should be fixed but that are deferred due to competing priorities and limited resources. akbarinasaji m.fl., 2016; rios m.fl., 2018 akbarinasaji et al., 2016; rios et al., 2018 technical debt (traditional)">
+            <h4 class="entry-title">Defect debt <span class="entry-alt">(<span lang="sv">Defektskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">The trade-off between the short-term benefit of postponing bug-fixing and the long-term consequences of delaying it. Known defects that the development team agrees should be fixed but that are deferred due to competing priorities and limited resources.</p>
+            <p class="entry-source">Source: Akbarinasaji et al., 2016; Rios et al., 2018</p>
+          </li>
+          <li class="entry" id="deployment-debt" data-domain="technical" data-origin="dd" data-search="driftsättningsskuld deployment debt all the shortcuts, errors or mistakes that happen when deploying, for example rushed or incomplete deployment processes. ernst m.fl., 2021; asatiani &amp; torell, 2023 ernst et al., 2021; asatiani &amp; torell, 2023 digital debt">
+            <h4 class="entry-title">Deployment debt <span class="entry-alt">(<span lang="sv">Driftsättningsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Digital debt">DD</abbr></li>
+            </ul>
+            <p class="entry-desc">All the shortcuts, errors or mistakes that happen when deploying, for example rushed or incomplete deployment processes.</p>
+            <p class="entry-note">Listed in appendix 2 of the thesis as one of digital debt&#x27;s eight sub-categories, but not included in figure 2. Placed here under technical debt because it is tied to the artefact.</p>
+            <p class="entry-source">Source: Ernst et al., 2021; Asatiani &amp; Torell, 2023</p>
+          </li>
+          <li class="entry" id="depreciation-debt" data-domain="technical" data-origin="td" data-search="föråldringsskuld depreciation debt software systems that have longevity incur depreciation debt because the rate of technology change often overtakes even a well-written software system. rosser &amp; norton, 2021 rosser &amp; norton, 2021 technical debt (traditional)">
+            <h4 class="entry-title">Depreciation debt <span class="entry-alt">(<span lang="sv">Föråldringsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Software systems that have longevity incur depreciation debt because the rate of technology change often overtakes even a well-written software system.</p>
+            <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="design-debt" data-domain="technical" data-origin="td dd" data-search="designskuld design debt tough time-to-market constraints and unanticipated integration or evolution issues lead to design trade-offs that cause flaws in the structure of a software system, such as violations of good object-oriented design principles or design shortcuts in customisation software. design issues accumulate over time, making later modifications up to three times as costly as addressing them early. marinescu, 2012; rios m.fl., 2018; rolland m.fl., 2018; zazworka m.fl., 2014 marinescu, 2012; rios et al., 2018; rolland et al., 2018; zazworka et al., 2014 technical debt (traditional) digital debt">
+            <h4 class="entry-title">Design debt <span class="entry-alt">(<span lang="sv">Designskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Digital debt">DD</abbr></li>
+            </ul>
+            <p class="entry-desc">Tough time-to-market constraints and unanticipated integration or evolution issues lead to design trade-offs that cause flaws in the structure of a software system, such as violations of good object-oriented design principles or design shortcuts in customisation software. Design issues accumulate over time, making later modifications up to three times as costly as addressing them early.</p>
+            <p class="entry-source">Source: Marinescu, 2012; Rios et al., 2018; Rolland et al., 2018; Zazworka et al., 2014</p>
+          </li>
+          <li class="entry" id="documentation-debt" data-domain="technical" data-origin="td dd ntd" data-search="dokumentationsskuld documentation debt missing, inconsistent, outdated or incomplete documentation, including outdated design specifications and lack of code comments. the only category recognised under all three umbrella concepts: technical, digital and non-technical debt. rios m.fl., 2018; ernst m.fl., 2021; ahmad m.fl., 2024 rios et al., 2018; ernst et al., 2021; ahmad et al., 2024 technical debt (traditional) digital debt non-technical debt">
+            <h4 class="entry-title">Documentation debt <span class="entry-alt">(<span lang="sv">Dokumentationsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Digital debt">DD</abbr></li><li class="tag tag-origin"><abbr title="Non-technical debt">NTD</abbr></li>
+            </ul>
+            <p class="entry-desc">Missing, inconsistent, outdated or incomplete documentation, including outdated design specifications and lack of code comments. The only category recognised under all three umbrella concepts: technical, digital and non-technical debt.</p>
+            <p class="entry-source">Source: Rios et al., 2018; Ernst et al., 2021; Ahmad et al., 2024</p>
+          </li>
+          <li class="entry" id="domain-debt" data-domain="technical" data-origin="td" data-search="domänskuld domain debt the mis-representation of the application domain by an actual system. störrle &amp; ciolkowski, 2019 störrle &amp; ciolkowski, 2019 technical debt (traditional)">
+            <h4 class="entry-title">Domain debt <span class="entry-alt">(<span lang="sv">Domänskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">The mis-representation of the application domain by an actual system.</p>
+            <p class="entry-source">Source: Störrle &amp; Ciolkowski, 2019</p>
+          </li>
+          <li class="entry" id="infrastructure-debt" data-domain="technical" data-origin="td tyd" data-search="infrastrukturskuld infrastructure debt infrastructure issues that delay or hinder development activities, for example postponed upgrades. deficiencies in infrastructure lead to potentially long lead times for future changes and require modernisation and new investment before new innovation with concrete benefits can be delivered. rios m.fl., 2018; alves m.fl., 2014; magnusson m.fl., 2018 rios et al., 2018; alves et al., 2014; magnusson et al., 2018 technical debt (traditional) technology debt">
+            <h4 class="entry-title">Infrastructure debt <span class="entry-alt">(<span lang="sv">Infrastrukturskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Infrastructure issues that delay or hinder development activities, for example postponed upgrades. Deficiencies in infrastructure lead to potentially long lead times for future changes and require modernisation and new investment before new innovation with concrete benefits can be delivered.</p>
+            <p class="entry-source">Source: Rios et al., 2018; Alves et al., 2014; Magnusson et al., 2018</p>
+          </li>
+          <li class="entry" id="integration-debt" data-domain="technical" data-origin="td" data-search="integrationsskuld integration debt the effort involved in connecting systems or components together to achieve desired functionality. non-standard connections, proprietary interfaces and niche standards increase the debt. rosser &amp; norton, 2021 rosser &amp; norton, 2021 technical debt (traditional)">
+            <h4 class="entry-title">Integration debt <span class="entry-alt">(<span lang="sv">Integrationsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">The effort involved in connecting systems or components together to achieve desired functionality. Non-standard connections, proprietary interfaces and niche standards increase the debt.</p>
+            <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="modelling-and-simulation-debt" data-domain="technical" data-origin="td" data-search="modellerings- och simuleringsskuld modelling and simulation debt as model-based engineering becomes standard practice, the models become part of the technical baseline and are themselves subject to technical debt. rosser &amp; norton, 2021 rosser &amp; norton, 2021 technical debt (traditional)">
+            <h4 class="entry-title">Modelling and simulation debt <span class="entry-alt">(<span lang="sv">Modellerings- och simuleringsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">As model-based engineering becomes standard practice, the models become part of the technical baseline and are themselves subject to technical debt.</p>
+            <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="privacy-debt" data-domain="technical" data-origin="td" data-search="integritetsskuld privacy debt the quantity of effort required for identifying, governing, controlling, communicating and protecting the software system with regard to data protection and regulatory compliance throughout the development lifecycle. larrucea m.fl., 2021 larrucea et al., 2021 technical debt (traditional)">
+            <h4 class="entry-title">Privacy debt <span class="entry-alt">(<span lang="sv">Integritetsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">The quantity of effort required for identifying, governing, controlling, communicating and protecting the software system with regard to data protection and regulatory compliance throughout the development lifecycle.</p>
+            <p class="entry-source">Source: Larrucea et al., 2021</p>
+          </li>
+          <li class="entry" id="quality-debt" data-domain="technical" data-origin="td" data-search="kvalitetsskuld quality debt the measure of the effort to fix the defects, discovered or undiscovered, that exist within a system at a given point in time. rosser &amp; norton, 2021 rosser &amp; norton, 2021 technical debt (traditional)">
+            <h4 class="entry-title">Quality debt <span class="entry-alt">(<span lang="sv">Kvalitetsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">The measure of the effort to fix the defects, discovered or undiscovered, that exist within a system at a given point in time.</p>
+            <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="security-debt" data-domain="technical" data-origin="td" data-search="säkerhetsskuld security debt a solution that compromises the security of the system, for example by introducing a particular breach of security. technical debt containing a security risk. silva m.fl., 2016; rindell m.fl., 2019 silva et al., 2016; rindell et al., 2019 technical debt (traditional)">
+            <h4 class="entry-title">Security debt <span class="entry-alt">(<span lang="sv">Säkerhetsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">A solution that compromises the security of the system, for example by introducing a particular breach of security. Technical debt containing a security risk.</p>
+            <p class="entry-source">Source: Silva et al., 2016; Rindell et al., 2019</p>
+          </li>
+          <li class="entry" id="service-debt" data-domain="technical" data-origin="td" data-search="tjänsteskuld service debt the inappropriate selection and substitution of web services that leads to a mismatch between the service features and the applications&#x27; requirements. relevant for service-oriented architectures. rios m.fl., 2018 rios et al., 2018 technical debt (traditional)">
+            <h4 class="entry-title">Service debt <span class="entry-alt">(<span lang="sv">Tjänsteskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">The inappropriate selection and substitution of web services that leads to a mismatch between the service features and the applications&#x27; requirements. Relevant for service-oriented architectures.</p>
+            <p class="entry-source">Source: Rios et al., 2018</p>
+          </li>
+          <li class="entry" id="test-debt-testing-debt" data-domain="technical" data-origin="td dd" data-search="testskuld test debt (testing debt) shortcuts, that is wrong or non-optimal decisions, related to testing, and issues found in testing activities that can affect the quality of those activities. samarthyam m.fl., 2017; rios m.fl., 2018 samarthyam et al., 2017; rios et al., 2018 technical debt (traditional) digital debt">
+            <h4 class="entry-title">Test debt (testing debt) <span class="entry-alt">(<span lang="sv">Testskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Digital debt">DD</abbr></li>
+            </ul>
+            <p class="entry-desc">Shortcuts, that is wrong or non-optimal decisions, related to testing, and issues found in testing activities that can affect the quality of those activities.</p>
+            <p class="entry-source">Source: Samarthyam et al., 2017; Rios et al., 2018</p>
+          </li>
+          <li class="entry" id="transparency-debt" data-domain="technical" data-origin="td egen" data-search="transparensskuld transparency debt the fact that the code is closed leads to transparency issues regarding what data is stored about citizens and what algorithms are used when cases are evaluated. identified in the thesis&#x27;s first study of the building-permit systems of a swedish municipality. persson m.fl., 2023 (publikation i) persson et al., 2023 (publication i) technical debt (traditional) identified in the thesis&#x27;s own studies">
+            <h4 class="entry-title">Transparency debt <span class="entry-alt">(<span lang="sv">Transparensskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Identified in the thesis&#x27;s own studies">Own</abbr></li>
+            </ul>
+            <p class="entry-desc">The fact that the code is closed leads to transparency issues regarding what data is stored about citizens and what algorithms are used when cases are evaluated. Identified in the thesis&#x27;s first study of the building-permit systems of a Swedish municipality.</p>
+            <p class="entry-source">Source: Persson et al., 2023 (publication I)</p>
+          </li>
+          <li class="entry" id="usability-debt" data-domain="technical" data-origin="td" data-search="användbarhetsskuld usability debt inappropriate usability decisions that will need to be adjusted later, such as lack of usability testing, poor interface design and complex navigation structures that increase users&#x27; cognitive load. in web applications, usability debt incurred early has been shown to increase redesign costs by 50 per cent. rios m.fl., 2018; alves m.fl., 2016; rodriguez m.fl., 2023 rios et al., 2018; alves et al., 2016; rodriguez et al., 2023 technical debt (traditional)">
+            <h4 class="entry-title">Usability debt <span class="entry-alt">(<span lang="sv">Användbarhetsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Inappropriate usability decisions that will need to be adjusted later, such as lack of usability testing, poor interface design and complex navigation structures that increase users&#x27; cognitive load. In web applications, usability debt incurred early has been shown to increase redesign costs by 50 per cent.</p>
+            <p class="entry-source">Source: Rios et al., 2018; Alves et al., 2016; Rodriguez et al., 2023</p>
+          </li>
+          <li class="entry" id="variability-debt" data-domain="technical" data-origin="td" data-search="variabilitetsskuld variability debt defects and sub-optimal solutions in the implementation of variability management in software systems, for example opportunistic reuse that brings short-term benefits regardless of technical and architectural drawbacks in the medium and long term. wolfart m.fl., 2021 wolfart et al., 2021 technical debt (traditional)">
+            <h4 class="entry-title">Variability debt <span class="entry-alt">(<span lang="sv">Variabilitetsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Defects and sub-optimal solutions in the implementation of variability management in software systems, for example opportunistic reuse that brings short-term benefits regardless of technical and architectural drawbacks in the medium and long term.</p>
+            <p class="entry-source">Source: Wolfart et al., 2021</p>
+          </li>
+          <li class="entry" id="versioning-debt" data-domain="technical" data-origin="td" data-search="versionshanteringsskuld versioning debt problems in source-code versioning, such as unnecessary code forks. rios m.fl., 2018 rios et al., 2018 technical debt (traditional)">
+            <h4 class="entry-title">Versioning debt <span class="entry-alt">(<span lang="sv">Versionshanteringsskuld</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Problems in source-code versioning, such as unnecessary code forks.</p>
+            <p class="entry-source">Source: Rios et al., 2018</p>
+          </li>
+          </ul>
+        </div>
+
+        <p class="empty-state" id="empty-state" hidden>No categories match your search. Try another word or clear the filters.</p>
+
+        <div class="legend">
+          <dl>
+            <dt>TD</dt><dd>Technical debt in the traditional sense, mainly per Rios et al. (2018) and later additions.</dd>
+            <dt>AI</dt><dd>AI-specific forms of technical debt per Bogner et al. (2021).</dd>
+            <dt>DD</dt><dd>Digital debt per Rolland et al. (2018), Ernst et al. (2021) and Asatiani &amp; Torell (2023).</dd>
+            <dt>TyD</dt><dd>Technology debt per Magnusson &amp; Bygstad (2014) and Magnusson et al. (2018).</dd>
+            <dt>NTD</dt><dd>Non-technical debt per Saeeda et al. (2023) and Ahmad et al. (2024).</dd>
+            <dt>Own</dt><dd>Category identified in the thesis's own studies.</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="struktur-title">
+      <div class="container">
+        <h2 id="struktur-title">How the debts interrelate</h2>
+        <p class="section-intro">
+          The division into two domains gives analytical clarity, but in practice the debts reinforce each other. Weak governance and siloed decision-making produce inconsistent architectures and fragmented codebases, and outdated systems frustrate users, create resistance to change and erode trust between IT and the business. Social debt is often the fuel for technical debt, and persistent technical debt in turn breeds new social debt.
+        </p>
+        <div class="dependency">
+          <figure>
+            <div class="figure-scroll">
+            <svg viewBox="0 0 600 290" role="img" aria-labelledby="dep-title dep-desc" xmlns="http://www.w3.org/2000/svg">
+              <title id="dep-title">Mutual dependencies between social and technical debt</title>
+              <desc id="dep-desc">Socio-technical debt at the top divides into social debt and technical debt. Arrows show that social debt creates and maintains technical debt, that technical debt invokes new social debt, and that both forms also reinforce themselves.</desc>
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" fill="#4a525c"/>
+                </marker>
+              </defs>
+              <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="16">
+                <rect x="180" y="12" width="240" height="50" rx="8" fill="#ffffff" stroke="#1a1d22" stroke-width="1.5"/>
+                <text x="300" y="43" text-anchor="middle" font-weight="700" fill="#1a1d22">Socio-technical debt</text>
+
+                <path d="M240,62 L240,93 L105,93 L105,121" fill="none" stroke="#4a525c" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <path d="M360,62 L360,93 L495,93 L495,121" fill="none" stroke="#4a525c" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                <rect x="20" y="125" width="170" height="60" rx="8" fill="#fbeee4" stroke="#7a3b12" stroke-width="1.5"/>
+                <text x="105" y="161" text-anchor="middle" font-weight="700" fill="#7a3b12">Social debt</text>
+
+                <rect x="410" y="125" width="170" height="60" rx="8" fill="#e8eff8" stroke="#1f4f8b" stroke-width="1.5"/>
+                <text x="495" y="161" text-anchor="middle" font-weight="700" fill="#1f4f8b">Technical debt</text>
+
+                <path d="M192,142 L406,142" fill="none" stroke="#4a525c" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <text x="300" y="134" text-anchor="middle" font-size="13" fill="#4a525c">creates and maintains</text>
+                <path d="M408,170 L194,170" fill="none" stroke="#4a525c" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <text x="300" y="187" text-anchor="middle" font-size="13" fill="#4a525c">invokes new</text>
+
+                <path d="M65,185 C65,238 145,238 145,189" fill="none" stroke="#4a525c" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <text x="105" y="256" text-anchor="middle" font-size="13" fill="#4a525c">social debt creates social debt</text>
+                <path d="M455,185 C455,238 535,238 535,189" fill="none" stroke="#4a525c" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <text x="495" y="256" text-anchor="middle" font-size="13" fill="#4a525c">technical debt creates technical debt</text>
+              </g>
+            </svg>
+            </div>
+            <figcaption>After figure 3 in the thesis: mutual dependencies between social debt (SD) and technical debt (TD). The dependencies mean that debt needs to be managed in an integrated way, addressing the technical and social roots simultaneously, rather than as separate phenomena.</figcaption>
+          </figure>
+        </div>
+        <div class="structure">
+          <div class="structure-card is-social">
+            <h3>Example: social debt drives technical debt</h3>
+            <p>Organisational debt can directly trigger the accumulation of technical debt, as weak governance or siloed decision-making leads to inconsistent architectures or fragmented codebases.</p>
+            <p>Cultural debt and organisational debt often shape inefficient development processes, which in turn generate technical debt in the artefacts themselves.</p>
+          </div>
+          <div class="structure-card is-technical">
+            <h3>Example: technical debt drives social debt</h3>
+            <p>Persistent technical debt in outdated systems frustrates users, creates resistance to change and weakens trust between the IT function and the business, that is user-satisfaction and reputation debt.</p>
+            <p>The thesis's municipal studies show that the debt is above all social: fragmented governance, procurement dependencies and organisational inertia drive it more than deficiencies in the code.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="historia-title" id="historia">
+      <div class="container">
+        <h2 id="historia-title">History of the concept: from technical to socio-technical debt</h2>
+        <p class="section-intro">
+          The debt metaphor was born in the world of programming but has over three decades grown into a way of describing the whole socio-technical system in which software is developed, maintained and used. The timeline summarises the development described in the thesis's introductory chapters (section 2.2), which culminates in the unifying concept of socio-technical debt.
+        </p>
+
+        <ol class="timeline">
+          <li class="milestone">
+            <span class="year">1992</span>
+            <h3>The metaphor is coined</h3>
+            <p>Ward Cunningham describes ‘quick-and-dirty’ programming as a loan: a little debt speeds up development, provided it is paid back promptly with a rewrite.</p>
+            <blockquote><p>‘Shipping first-time code is like going into debt. A little debt speeds development so long as it is paid back promptly with a rewrite. […] Every minute spent on not-quite-right code counts as interest on that debt.’</p></blockquote>
+            <p>The metaphor gains power because it also helps non-technical decision-makers in finance and management understand the risks of poor practice. Lutz (1993) shows that the debt can also be strategically viable, like borrowing capital in the business world.</p>
+          </li>
+          <li>
+            <span class="year">2003 and 2009</span>
+            <h3>Interest, principal and Fowler's quadrant</h3>
+            <p>Martin Fowler simplifies the metaphor to the choice between a ‘messy but quick’ and a ‘clean but time-consuming’ solution. Just like a loan, the debt demands interest payments in the form of extra effort in all future development, until the principal is paid down by refactoring. Fowler later distinguishes deliberate from inadvertent, and prudent from reckless, debt. The concept thereby becomes a shared language for developers, architects and managers.</p>
+          </li>
+          <li>
+            <span class="year">2012–2013</span>
+            <h3>Expansion and a warning against dilution</h3>
+            <p>Kruchten et al. (2012) and Tom et al. (2013) expand technical debt to the architectural and process levels, but also note that inconsistent terminology risks weakening the concept's analytical precision.</p>
+          </li>
+          <li>
+            <span class="year">2014 and 2018</span>
+            <h3>Technology debt (TyD)</h3>
+            <p>Magnusson and Bygstad define technology debt as ‘the accumulated obligation owned by the current CIO (debtor) to a future CIO (creditor), where previous decisions limit prospective decisions’. The debt does not arise in the code but between the artefacts, in paths and dependencies: a proprietary enterprise system allows rapid deployment but locks the organisation into costly upgrade cycles. Three main groups are described (organisation, users, technology) with subtypes such as competence, work-environment, user-satisfaction, reputation, infrastructure, shadow-IT and governance debt (Magnusson et al., 2018).</p>
+          </li>
+          <li>
+            <span class="year">2015</span>
+            <h3>Social debt</h3>
+            <p>Tamburri et al. define social debt as ‘a cumulative and increasing cost in the current state of things, connected to invisible and negative effects within a development community’. It is the first distinct formulation of the idea that debt can reside in collaboration and relationships rather than in code.</p>
+          </li>
+          <li class="milestone">
+            <span class="year">2016</span>
+            <h3>The research field agrees on a definition</h3>
+            <p>Leading debt researchers meet at a seminar to harmonise the concept. The outcome (Avgeriou et al., 2016) defines technical debt as design or implementation constructs that are expedient in the short term but set up a technical context that can make future changes more costly or impossible, with impact limited to internal system qualities. Three key elements are highlighted: the debt (the suboptimal constructs), the interest (future extra effort) and the principal (the cost of removing the debt). It is this definition that delimits the technical domain in the register above.</p>
+          </li>
+          <li>
+            <span class="year">2018</span>
+            <h3>A taxonomy of 15 types, and digital debt (DD)</h3>
+            <p>Rios et al. compile, in a tertiary study, a taxonomy of 15 sub-types of technical debt, from requirements and testing to documentation, process and people, while warning that the concept is being used as a ‘catch-all’ for any obstacle in development. The taxonomy has since been substantially extended and forms the backbone of appendix 1 of the thesis.</p>
+            <p>The same year, Rolland et al. define digital debt as ‘an organization's cumulative build-up of technical and informational obligations related to the maintenance and evolvability of its platform and infrastructure’. The concept shifts focus from individual technical flaws to the systemic outcome of postponed modernisation, and extends the metaphor to the information layer. Ernst et al. (2021) and Asatiani &amp; Torell (2023) specify eight sub-categories, of which deployment, social and information debt are the most distinctive.</p>
+          </li>
+          <li>
+            <span class="year">2021</span>
+            <h3>AI-specific debts</h3>
+            <p>Bogner et al. map technical debt in AI-based systems and describe four new types: AI configuration, AI data, AI model and AI ethics debt. The metaphor follows into a new generation of technology.</p>
+          </li>
+          <li>
+            <span class="year">2023–2024</span>
+            <h3>Non-technical debt (NTD)</h3>
+            <p>Saeeda et al. define non-technical debt as the accumulation of suboptimal or immature decisions, compromises or workarounds in the non-technical aspects of development: poor communication, inefficient processes, misaligned teams, weak leadership. Five sub-categories are arranged (process, people, cultural, social and organisational debt), and Ahmad et al. (2024) add documentation debt. Non-technical debt often acts as an amplifier: when processes, structures or human factors fail, even well-built systems do not deliver value.</p>
+            <p>The overlaps now become clear: process debt appears in both the TD and NTD literature, cultural debt aligns closely with socio-technical debt, and documentation debt is recognised under all three rubrics. The field needs a framework that orders the categories without diluting the metaphor.</p>
+          </li>
+          <li>
+            <span class="year">2023</span>
+            <h3>Transparency debt in a municipal context</h3>
+            <p>The thesis's first study (Persson et al., 2023) identifies transparency debt: closed code makes it hard to know what data is stored about citizens and which algorithms are used when cases are evaluated. The study of the building-permit systems of a Swedish municipality also shows that departments work in silos and that citizens have only a passive role as system users.</p>
+          </li>
+          <li class="milestone">
+            <span class="year">2024</span>
+            <h3>Socio-technical debt (STeD) as a unifying concept</h3>
+            <p>The debate on the metaphor's boundaries continues: one side holds that the expansion is necessary to capture the socio-technical reality (Ahmad &amp; Al-Baik, 2024; Avgeriou et al., 2025), the other that the concept is groaning under ever more categories (Tom et al., 2013; Besker et al., 2016). Riquet et al. (2024) propose socio-technical debt as a unifying construct: organisations cannot meaningfully separate technical debt in artefacts from the organisational and social dynamics that shape development.</p>
+            <blockquote><p>‘A phenomenon that occurs when past social and/or technical decisions lead to inefficiencies or increased risks in designing, building, maintaining, managing, or using software engineering artifacts. This, in turn, hampers an organization's ability to create value, achieve strategic goals, or pursue the best course of action.’</p></blockquote>
+            <p>The debt has three defining characteristics: it is cumulative (the longer it remains, the higher the cost), it is costly to eliminate, and it is inevitable in practice since trade-offs and compromises are part of all development work.</p>
+          </li>
+          <li class="milestone">
+            <span class="year">2025</span>
+            <h3>The thesis: the categories are sorted into two domains</h3>
+            <p>Using Riquet's framework as a lens, the thesis arranges all previously articulated categories into two overarching domains: artefact-related debt (technical debt in code, architecture, databases and testing frameworks) and social-related debt (debt accumulated through social decisions about communication, governance and resource allocation). Categories previously counted as technical, such as requirements, process and AI ethics debt, are placed on the social side because their roots lie in social contexts. That is the classification reproduced in the register on this page.</p>
+            <p>The framework is then used as a diagnostic tool in five studies and 25 complementary expert interviews in the Swedish municipal sector. Nine problems driving the accumulation of debt are identified and mapped to design principles and architecture blueprints. The conclusion: in the municipalities, the debt is above all social. The classification is not complete, since the metaphor keeps evolving as new contexts and technologies emerge.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section aria-labelledby="paraply-title">
+      <div class="container">
+        <h2 id="paraply-title">The four umbrella concepts</h2>
+        <p class="section-intro">
+          Before socio-technical debt was introduced, research had created several parallel umbrella concepts to distinguish between different layers and sources of debt. They do not replace technical debt in its traditional sense but complement it at different levels of abstraction, from code quality to organisational strategy. The register states for each category which of the concepts it was defined within.
+        </p>
+        <ul class="umbrellas">
+          <li class="umbrella">
+            <span class="tag">TD</span>
+            <h3>Technical debt</h3>
+            <p>Debt in the software itself: code, design, architecture, testing, documentation. The harmonised definition (Avgeriou et al., 2016) limits the impact to the system's maintainability and evolvability. Rios et al. (2018) provide the taxonomy.</p>
+            <p class="umbrella-meta">Cunningham, 1992; Avgeriou et al., 2016; Rios et al., 2018</p>
+          </li>
+          <li class="umbrella">
+            <span class="tag">DD</span>
+            <h3>Digital debt</h3>
+            <p>An organisation's cumulative build-up of technical and informational obligations related to the maintenance and evolvability of its platform and infrastructure. An impediment to digital transformation that also covers the information layer.</p>
+            <p class="umbrella-meta">Rolland et al., 2018; Ernst et al., 2021; Asatiani &amp; Torell, 2023</p>
+          </li>
+          <li class="umbrella">
+            <span class="tag">TyD</span>
+            <h3>Technology debt</h3>
+            <p>Obligations arising from strategic, infrastructural, organisational and governance choices, often at executive level: procurement strategies, vendor dependencies and governance models that bind future decisions.</p>
+            <p class="umbrella-meta">Magnusson &amp; Bygstad, 2014; Magnusson et al., 2018</p>
+          </li>
+          <li class="umbrella">
+            <span class="tag">NTD</span>
+            <h3>Non-technical debt</h3>
+            <p>Suboptimal decisions, compromises and workarounds in the non-technical aspects of development: processes, people, culture, social relations and organisational structure. Often an amplifier of technical debt.</p>
+            <p class="umbrella-meta">Saeeda et al., 2023; Ahmad et al., 2024</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="kallor-title">
+      <div class="container">
+        <h2 id="kallor-title">Sources</h2>
+        <p class="section-intro">
+          The register is based on appendices 1 and 2 and section 2.2 of the thesis <a href="https://gupea.ub.gu.se/items/01e1caf1-9259-4b74-aafa-ba75a306b06c" rel="noopener">Managing Socio-Technical Debt: Causes and Design-Science Solutions for Citizen-Centred Digital Public Services</a> (University of Gothenburg, 2025). The category names are the established English terms from the literature; the Swedish names are my translations. The descriptions are summaries of the cited definitions. The works cited on this page are listed below.
+        </p>
+        <ul class="references">
+          <li>Ahmad, M. O., &amp; Al-Baik, O. (2024). Beyond technical debt: Unravelling organisational debt concept. <i>Proceedings of the 39th ACM/SIGAPP Symposium on Applied Computing</i>, 802–809.</li>
+          <li>Ahmad, M. O., &amp; Gustavsson, T. (2022). The Pandora’s box of social, process, and people debts in software engineering. <i>Journal of Software: Evolution and Process</i>, 36(2), e2516.</li>
+          <li>Ahmad, M. O., Gustavsson, T., Katin, A., Taušan, N., &amp; Mandić, V. (2024). Non-technical aspects of technical debt in the context of large-scale agile development: A qualitative study. <i>50th Euromicro Conference on Software Engineering and Advanced Applications</i>.</li>
+          <li>Akbarinasaji, S., Bener, A. B., &amp; Erdem, A. (2016). Measuring the principal of defect debt. <i>5th International Workshop on Realizing Artificial Intelligence Synergies in Software Engineering</i>, 1–7.</li>
+          <li>Al-Barak, M., &amp; Bahsoon, R. (2016). Database design debts through examining schema evolution. <i>IEEE 8th International Workshop on Managing Technical Debt</i>, 17–23.</li>
+          <li>Alves, N. S., Ribeiro, L. F., Caires, V., Mendes, T. S., &amp; Spínola, R. O. (2014). Towards an ontology of terms on technical debt. <i>6th International Workshop on Managing Technical Debt</i>, 1–7.</li>
+          <li>Alves, N. S., Mendes, T. S., De Mendonça, M. G., Spínola, R. O., Shull, F., &amp; Seaman, C. (2016). Identification and management of technical debt: A systematic mapping study. <i>Information and Software Technology</i>, 70, 100–121.</li>
+          <li>Asatiani, A., &amp; Torell, J. (2023). Balancing digital debt and digital options: Challenges of digital transformation at Green Cargo. <i>Journal of Information Technology Teaching Cases</i>, 13(2), 154–164.</li>
+          <li>Avgeriou, P., Ernst, N. A., Nord, R. L., &amp; Kruchten, P. (2016). Technical debt: Broadening perspectives. Report on the seventh workshop on managing technical debt (MTD 2015). <i>ACM SIGSOFT Software Engineering Notes</i>, 41(2), 38–41.</li>
+          <li>Avgeriou, P., Ozkaya, I., Koziolek, H., Codabux, Z., &amp; Ernst, N. (2025). Reframing technical debt (Dagstuhl Perspectives Workshop 24452). <i>Dagstuhl Reports</i>, 14(11), 16–39.</li>
+          <li>Besker, T., Martini, A., &amp; Bosch, J. (2016). A systematic literature review and a unified model of ATD. <i>42nd Euromicro Conference on Software Engineering and Advanced Applications</i>, 189–197.</li>
+          <li>Bogner, J., Verdecchia, R., &amp; Gerostathopoulos, I. (2021). Characterizing technical debt and antipatterns in AI-based systems: A systematic mapping study. <i>IEEE/ACM International Conference on Technical Debt</i>, 64–73.</li>
+          <li>Cunningham, W. (1992). The WyCash portfolio management system. <i>Addendum to the Proceedings on Object-Oriented Programming Systems, Languages, and Applications</i>, 29–30.</li>
+          <li>Ernst, N., Kazman, R., &amp; Delange, J. (2021). <i>Technical debt in practice: How to find it and fix it</i>. MIT Press.</li>
+          <li>Fowler, M. (2003). Technical debt. martinfowler.com. Fowler, M. (2009). Technical debt quadrant. martinfowler.com.</li>
+          <li>Hacks, S., Höfert, H., Salentin, J., Yeong, Y. C., &amp; Lichter, H. (2019). Towards the definition of enterprise architecture debts. <i>IEEE 23rd International Enterprise Distributed Object Computing Workshop</i>, 9–16.</li>
+          <li>Kruchten, P., Nord, R. L., &amp; Ozkaya, I. (2012). Technical debt: From metaphor to theory and practice. <i>IEEE Software</i>, 29(6), 18–21.</li>
+          <li>Larrucea, X., Santamaría, I., &amp; Graña Romay, M. (2021). Towards a privacy debt. <i>IET Software</i>, 15(6), 453–463.</li>
+          <li>Li, Z., Avgeriou, P., &amp; Liang, P. (2015). A systematic mapping study on technical debt and its management. <i>Journal of Systems and Software</i>, 101, 193–220.</li>
+          <li>Liu, J., Huang, Q., Xia, X., Shihab, E., Lo, D., &amp; Li, S. (2020). Is using deep learning frameworks free? Characterizing technical debt in deep learning frameworks. <i>ACM/IEEE 42nd International Conference on Software Engineering: Software Engineering in Society</i>.</li>
+          <li>Lutz, M. J. (1993). A maturing field on display at OOPSLA. <i>IEEE Software</i>, 10(1), 113–116.</li>
+          <li>MacCormack, A., Baldwin, C., &amp; Rusnak, J. (2012). Exploring the duality between product and organizational architectures: A test of the ”mirroring” hypothesis. <i>Research Policy</i>, 41(8), 1309–1324.</li>
+          <li>Magnusson, J., &amp; Bygstad, B. (2014). Technology debt: Toward a new theory of technology heritage. <i>Proceedings of the Scandinavian Conference on Information Systems</i>, 5–18.</li>
+          <li>Magnusson, J., Juiz, C., Gómez, B., &amp; Bermejo, B. (2018). Governing technology debt: Beyond technical debt. <i>Proceedings of the 2018 International Conference on Technical Debt</i>, 76–84.</li>
+          <li>Marinescu, R. (2012). Assessing technical debt by identifying design flaws in software systems. <i>IBM Journal of Research and Development</i>, 56(5), 9:1–9:13.</li>
+          <li>Martini, A., Besker, T., &amp; Bosch, J. (2020). Process debt: A first exploration. <i>27th Asia-Pacific Software Engineering Conference</i>, 316–325.</li>
+          <li>Morgenthaler, J. D., Gridnev, M., Sauciuc, R., &amp; Bhansali, S. (2012). Searching for build debt: Experiences managing technical debt at Google. <i>3rd International Workshop on Managing Technical Debt</i>, 1–6.</li>
+          <li>Persson, P. (2025). <i>Managing Socio-Technical Debt: Causes and Design-Science Solutions for Citizen-Centred Digital Public Services</i>. Doctoral thesis, University of Gothenburg.</li>
+          <li>Persson, P., Zhang, Y., Asatiani, A., Lindman, J., &amp; Rudmark, D. (2023). Technical debt in the municipality sector: The missing link with citizens and silofication. <i>14th Scandinavian Conference on Information Systems</i>. (Publication I.)</li>
+          <li>Rindell, K., Bernsmed, K., &amp; Jaatun, M. G. (2019). Managing security in software: Or, how I learned to stop worrying and manage the security technical debt. <i>14th International Conference on Availability, Reliability and Security</i>, 1–8.</li>
+          <li>Rios, N., Mendonça Neto, M., &amp; Spínola, R. (2018). A tertiary study on technical debt: Types, management strategies, research trends, and base information for practitioners. <i>Information and Software Technology</i>, 102, 117–145.</li>
+          <li>Riquet, N., Devroey, X., &amp; Vanderose, B. (2024). Debt stories: Capturing social and technical debt in the industry. <i>7th ACM/IEEE International Conference on Technical Debt</i>, 40–44.</li>
+          <li>Rodriguez, A., Gardey, J. C., Grigera, J., Rossi, G., &amp; Garrido, A. (2023). UX debt in an agile development process: Evidence and characterization. <i>Software Quality Journal</i>, 31(4), 1467–1498.</li>
+          <li>Rolland, K., Mathiassen, L., &amp; Rai, A. (2018). Managing digital platforms in user organizations: The interactions between digital options and digital debt. <i>Information Systems Research</i>, 29(2), 419–443.</li>
+          <li>Rosser, L. A., &amp; Norton, J. H. (2021). A systems perspective on technical debt. <i>2021 IEEE Aerospace Conference</i>, 1–10.</li>
+          <li>Saeeda, H., Ahmad, M. O., &amp; Gustavsson, T. (2023). Multivocal literature review on non-technical debt in software development: An exploratory study. <i>19th International Conference on Evaluation of Novel Approaches to Software Engineering</i>.</li>
+          <li>Samarthyam, G., Muralidharan, M., &amp; Anna, R. K. (2017). Understanding test debt. In <i>Trends in Software Testing</i>, 1–17. Springer.</li>
+          <li>Silva, M. C., Valente, M. T., &amp; Terra, R. (2016). Does technical debt lead to the rejection of pull requests? <i>XII Brazilian Symposium on Information Systems</i>.</li>
+          <li>Störrle, H., &amp; Ciolkowski, M. (2019). Stepping away from the lamppost: Domain-level technical debt. <i>45th Euromicro Conference on Software Engineering and Advanced Applications</i>, 325–332.</li>
+          <li>Tamburri, D. A., Kruchten, P., Lago, P., &amp; van Vliet, H. (2015). Social debt in software engineering: Insights from industry. <i>Journal of Internet Services and Applications</i>, 6(1), 10.</li>
+          <li>Tom, E., Aurum, A., &amp; Vidgen, R. (2013). An exploration of technical debt. <i>Journal of Systems and Software</i>, 86(6), 1498–1516.</li>
+          <li>Wiklund, K., Eldh, S., Sundmark, D., &amp; Lundqvist, K. (2012). Technical debt in test automation. <i>IEEE 5th International Conference on Software Testing, Verification and Validation</i>, 887–892.</li>
+          <li>Wolfart, D., Assunção, W. K. G., &amp; Martinez, J. (2021). Variability debt: Characterization, causes and consequences. <i>XX Brazilian Symposium on Software Quality</i>, 1–10.</li>
+          <li>Zazworka, N., Vetro, A., Izurieta, C., Wong, S., Cai, Y., Seaman, C., &amp; Shull, F. (2014). Comparing four approaches for technical debt identification. <i>Software Quality Journal</i>, 22(3), 403–426.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="levande-title">
+      <div class="container">
+        <div class="note">
+          <h2 id="levande-title">A living register</h2>
+          <p>
+            The debt metaphor remains a popular and evolving tool, and new categories are continually proposed as researchers apply it to new contexts. The register reflects the state of the thesis and will be extended as new categories become established in the literature or in practice.
+          </p>
+          <p>
+            Want to use the register to map the debt in your own organisation? See <a href="../../">services</a> for technical-debt analysis and advisory work (in Swedish).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <a class="back-link" href="../../">← Back to services</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="External profiles">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var form = document.getElementById('filters');
+      if (!form) return;
+
+      var text = {
+        showing: 'Showing',
+        of: 'of',
+        categories: 'categories',
+        one: 'category',
+        many: 'categories'
+      };
+
+      var searchInput = document.getElementById('q');
+      var originSelect = document.getElementById('origin');
+      var domainButtons = Array.prototype.slice.call(form.querySelectorAll('[data-domain]'));
+      var resetButton = document.getElementById('reset');
+      var resultCount = document.getElementById('result-count');
+      var emptyState = document.getElementById('empty-state');
+      var entries = Array.prototype.slice.call(document.querySelectorAll('.entry'));
+      var domains = {
+        social: document.getElementById('domain-social'),
+        technical: document.getElementById('domain-technical')
+      };
+      var total = entries.length;
+      var state = { q: '', domain: 'all', origin: 'all' };
+      var debounceTimer = null;
+
+      function normalize(value) {
+        return (value || '').toLowerCase().replace(/\s+/g, ' ').trim();
+      }
+
+      function matches(entry) {
+        if (state.domain !== 'all' && entry.getAttribute('data-domain') !== state.domain) return false;
+        if (state.origin !== 'all') {
+          var origins = (entry.getAttribute('data-origin') || '').split(' ');
+          if (origins.indexOf(state.origin) === -1) return false;
+        }
+        if (state.q) {
+          var haystack = normalize(entry.getAttribute('data-search'));
+          var terms = state.q.split(' ');
+          for (var i = 0; i < terms.length; i++) {
+            if (haystack.indexOf(terms[i]) === -1) return false;
+          }
+        }
+        return true;
+      }
+
+      function pluralize(n) {
+        return n === 1 ? text.one : text.many;
+      }
+
+      function apply() {
+        var counts = { social: 0, technical: 0 };
+        entries.forEach(function (entry) {
+          var show = matches(entry);
+          entry.hidden = !show;
+          if (show) counts[entry.getAttribute('data-domain')] += 1;
+        });
+
+        Object.keys(domains).forEach(function (key) {
+          var wrapper = domains[key];
+          var label = wrapper.querySelector('[data-count-for="' + key + '"]');
+          wrapper.hidden = counts[key] === 0;
+          if (label) label.textContent = counts[key] + ' ' + pluralize(counts[key]);
+        });
+
+        var shown = counts.social + counts.technical;
+        emptyState.hidden = shown !== 0;
+        resultCount.textContent = text.showing + ' ' + shown + ' ' + text.of + ' ' + total + ' ' + text.categories + '.';
+      }
+
+      function setDomain(value) {
+        state.domain = value;
+        domainButtons.forEach(function (button) {
+          button.setAttribute('aria-pressed', button.getAttribute('data-domain') === value ? 'true' : 'false');
+        });
+        apply();
+      }
+
+      searchInput.addEventListener('input', function () {
+        window.clearTimeout(debounceTimer);
+        debounceTimer = window.setTimeout(function () {
+          state.q = normalize(searchInput.value);
+          apply();
+        }, 120);
+      });
+
+      originSelect.addEventListener('change', function () {
+        state.origin = originSelect.value;
+        apply();
+      });
+
+      domainButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          setDomain(button.getAttribute('data-domain'));
+        });
+      });
+
+      resetButton.addEventListener('click', function () {
+        searchInput.value = '';
+        originSelect.value = 'all';
+        state.q = '';
+        state.origin = 'all';
+        setDomain('all');
+        searchInput.focus();
+      });
+
+      apply();
+    })();
+  </script>
+</body>
+</html>
