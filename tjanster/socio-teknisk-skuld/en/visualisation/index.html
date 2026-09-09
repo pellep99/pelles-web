@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It All Fits Together – Register of Socio-Technical Debt – Per Persson, Ph.D.</title>
+  <meta name="description" content="Visualisation of how all 74 categories of socio-technical debt fit together: social and technical debt with every category and sub-category in one diagram.">
+
+  <!-- Språkversioner -->
+  <link rel="alternate" hreflang="sv" href="https://phd-persson.se/tjanster/socio-teknisk-skuld/visualisering/">
+  <link rel="alternate" hreflang="en" href="https://phd-persson.se/tjanster/socio-teknisk-skuld/en/visualisation/">
+  <link rel="alternate" hreflang="x-default" href="https://phd-persson.se/tjanster/socio-teknisk-skuld/visualisering/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="How it all fits together: the categories of socio-technical debt">
+  <meta property="og:description" content="Visualisation of how all 74 categories of socio-technical debt fit together: social and technical debt with every category and sub-category in one diagram.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://phd-persson.se/tjanster/socio-teknisk-skuld/en/visualisation/">
+  <meta property="og:locale" content="en_GB">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+      /* Domänfärger (text på ljus bakgrund, kontrast ≥ 4.5:1) */
+      --color-social: #7a3b12;
+      --color-social-bg: #fbeee4;
+      --color-technical: #1f4f8b;
+      --color-technical-bg: #e8eff8;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* Endast för skärmläsare */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Hoppa-till-innehåll-länk för skärmläsare/tangentbord */
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+    /* Språkväxling */
+    .site-nav .lang-switch a {
+      gap: 0.4em;
+      color: var(--color-primary);
+      font-weight: 600;
+      border: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-nav .lang-switch a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+    .site-nav .lang-switch svg {
+      width: 1.1em;
+      height: 1.1em;
+      flex: none;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+      .site-nav .lang-switch { margin-left: var(--space-sm); }
+    }
+
+    /* Hjälte */
+    .hero {
+      padding: var(--space-xl) 0;
+      background: var(--color-surface);
+    }
+    .hero h1 {
+      margin: 0 0 var(--space-md);
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    .hero p {
+      margin: 0 0 var(--space-md);
+      max-width: 48rem;
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+    }
+    .hero p:last-child { margin-bottom: 0; }
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .hero h1 { font-size: 3rem; }
+    }
+
+    .hero-facts {
+      list-style: none;
+      margin: var(--space-lg) 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .hero-facts li {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.4em;
+      padding: var(--space-xs) var(--space-md);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .hero-facts strong {
+      font-size: 1.25rem;
+      color: var(--color-text);
+    }
+    .hero-facts li.fact-social strong { color: var(--color-social); }
+    .hero-facts li.fact-technical strong { color: var(--color-technical); }
+    .hero-facts a { color: var(--color-primary); }
+
+    /* Sektioner */
+    main section { padding: var(--space-xl) 0; }
+    main h2 {
+      margin: 0 0 var(--space-md);
+      font-size: 1.5rem;
+    }
+    main h3 {
+      margin: 0 0 var(--space-sm);
+      font-size: 1.125rem;
+      line-height: 1.3;
+    }
+    .section-intro {
+      margin: 0 0 var(--space-lg);
+      max-width: 48rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Notis om namnsättning */
+    .naming-note {
+      margin: 0 0 var(--space-lg);
+      padding: var(--space-md) var(--space-lg);
+      max-width: 48rem;
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .naming-note h3 {
+      margin: 0 0 var(--space-xs);
+      font-size: 1rem;
+    }
+    .naming-note p {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+
+    /* Registrets verktygsrad */
+    .toolbar {
+      display: grid;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      margin-bottom: var(--space-lg);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+    @media (min-width: 1024px) {
+      .toolbar {
+        grid-template-columns: minmax(16rem, 1.5fr) auto auto auto;
+        align-items: end;
+      }
+    }
+    .toolbar label,
+    .toolbar .group-label {
+      display: block;
+      margin-bottom: var(--space-xs);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .toolbar input[type="search"],
+    .toolbar select {
+      width: 100%;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-sm);
+      font: inherit;
+      color: var(--color-text);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+    .segmented {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .segmented button {
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      font: inherit;
+      font-weight: 600;
+      color: var(--color-primary);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .segmented button:hover { border-color: var(--color-primary); }
+    .segmented button[aria-pressed="true"] {
+      color: #fff;
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+    .toolbar .reset {
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      font: inherit;
+      font-weight: 600;
+      color: var(--color-primary);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .toolbar .reset:hover { border-color: var(--color-primary); }
+    .result-count {
+      margin: 0 0 var(--space-md);
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .no-js-note { margin: 0 0 var(--space-md); color: var(--color-text-muted); font-size: 0.9375rem; }
+    .js .no-js-note { display: none; }
+    .no-js .toolbar { display: none; }
+
+    /* Domängrupper */
+    .domain {
+      margin-bottom: var(--space-xl);
+    }
+    .domain-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+      padding-bottom: var(--space-sm);
+      border-bottom: 3px solid var(--color-border);
+    }
+    .domain-social .domain-header { border-color: var(--color-social); }
+    .domain-technical .domain-header { border-color: var(--color-technical); }
+    .domain-header h3 {
+      margin: 0;
+      font-size: 1.375rem;
+    }
+    .domain-alt {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--color-text-muted);
+    }
+    .domain-count {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .domain-def {
+      margin: 0 0 var(--space-lg);
+      max-width: 48rem;
+      color: var(--color-text-muted);
+    }
+    .domain[hidden] { display: none; }
+
+    .entries {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .entries { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .entries { grid-template-columns: repeat(3, 1fr); }
+    }
+    .entry {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      scroll-margin-top: var(--space-lg);
+    }
+    .entry[hidden] { display: none; }
+    .entry:target { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+    .entry-title {
+      margin: 0;
+      font-size: 1.125rem;
+      line-height: 1.3;
+    }
+    .entry-alt {
+      font-size: 0.9375rem;
+      font-weight: 400;
+      color: var(--color-text-muted);
+    }
+    .tags {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.125rem var(--space-xs);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-surface);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .tag abbr { text-decoration: none; }
+    .tag-social {
+      color: var(--color-social);
+      background: var(--color-social-bg);
+      border-color: transparent;
+    }
+    .tag-technical {
+      color: var(--color-technical);
+      background: var(--color-technical-bg);
+      border-color: transparent;
+    }
+    .entry-desc {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+    .entry-note {
+      margin: 0;
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-border);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .entry-relation {
+      margin: 0;
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .entry-relation strong { color: var(--color-text); }
+    .tag-sub {
+      color: var(--color-text);
+      background: var(--color-bg);
+      border-style: dashed;
+    }
+    .entry-source {
+      margin: auto 0 0;
+      padding-top: var(--space-xs);
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+    }
+    .empty-state {
+      padding: var(--space-lg);
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius);
+      color: var(--color-text-muted);
+    }
+    .empty-state[hidden] { display: none; }
+
+    /* Förklaring av förkortningar */
+    .legend {
+      margin: 0 0 var(--space-lg);
+      padding: var(--space-md) var(--space-lg);
+      max-width: 48rem;
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .legend dl {
+      margin: 0;
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 0.25rem var(--space-md);
+    }
+    .legend dt { font-weight: 600; color: var(--color-text); }
+    .legend dd { margin: 0; }
+
+    /* Struktur och beroenden */
+    .structure {
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: 1fr;
+      margin-top: var(--space-lg);
+    }
+    @media (min-width: 640px) {
+      .structure { grid-template-columns: repeat(2, 1fr); }
+    }
+    .structure-card {
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-top: 4px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .structure-card.is-social { border-top-color: var(--color-social); }
+    .structure-card.is-technical { border-top-color: var(--color-technical); }
+    .structure-card p { margin: 0 0 var(--space-sm); color: var(--color-text-muted); }
+    .structure-card p:last-child { margin-bottom: 0; }
+
+    .dependency {
+      margin: var(--space-lg) 0 0;
+      padding: var(--space-lg);
+      max-width: 48rem;
+      background: var(--color-surface);
+      border-radius: var(--radius);
+    }
+    .dependency figure { margin: 0; }
+    .dependency .figure-scroll {
+      overflow-x: auto;
+      margin-bottom: var(--space-md);
+    }
+    .dependency svg {
+      display: block;
+      width: 100%;
+      min-width: 28rem;
+      max-width: 38rem;
+      height: auto;
+      margin: 0 auto;
+    }
+    .dependency figcaption {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Tidslinje */
+    .timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-width: 48rem;
+      border-left: 3px solid var(--color-border);
+    }
+    .timeline li {
+      position: relative;
+      margin: 0 0 var(--space-lg);
+      padding-left: var(--space-xl);
+    }
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: calc(-0.5rem - 1.5px);
+      top: 0.45rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: var(--color-bg);
+      border: 3px solid var(--color-primary);
+    }
+    .timeline li.milestone::before { background: var(--color-primary); }
+    .timeline .year {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+    }
+    .timeline h3 { margin: 0.125rem 0 var(--space-xs); }
+    .timeline p { margin: 0 0 var(--space-xs); color: var(--color-text-muted); }
+    .timeline p:last-child { margin-bottom: 0; }
+    .timeline blockquote {
+      margin: var(--space-xs) 0;
+      padding: var(--space-xs) var(--space-md);
+      border-left: 3px solid var(--color-border);
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+    .timeline blockquote p { margin: 0; }
+
+    /* Paraplybegrepp */
+    .umbrellas {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .umbrellas { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .umbrellas { grid-template-columns: repeat(4, 1fr); }
+    }
+    .umbrella {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .umbrella .tag { align-self: flex-start; }
+    .umbrella p { margin: 0; color: var(--color-text-muted); }
+    .umbrella .umbrella-meta { margin-top: auto; font-size: 0.8125rem; }
+
+    /* Källor */
+    .references {
+      margin: 0;
+      padding-left: 1.25rem;
+      max-width: 48rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .references li { margin-bottom: var(--space-xs); }
+    .references-sub { margin-top: var(--space-xl); }
+
+    /* Avslutande sektion */
+    .note {
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      padding: var(--space-lg);
+      max-width: 48rem;
+    }
+    .note h2 { margin: 0 0 var(--space-sm); }
+    .note p {
+      margin: 0 0 var(--space-sm);
+      color: var(--color-text-muted);
+    }
+    .note p:last-child { margin-bottom: 0; }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    .vis-intro { max-width: 48rem; color: var(--color-text-muted); margin: 0 0 var(--space-lg); }
+    .vis-wrap {
+      overflow-x: auto;
+      padding: var(--space-md);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .vis-wrap svg {
+      display: block;
+      width: 100%;
+      min-width: 64rem;
+      max-width: 80rem;
+      height: auto;
+      margin: 0 auto;
+    }
+    .vis-wrap svg a { cursor: pointer; text-decoration: none; }
+    .vis-wrap svg a:hover text.name, .vis-wrap svg a:focus text.name { fill: var(--color-primary); text-decoration: underline; }
+    .vis-wrap svg a:focus { outline: none; }
+    .vis-wrap svg a:focus-visible rect.rowbg { stroke: var(--color-focus); stroke-width: 3; }
+    .vis-legend {
+      list-style: none;
+      margin: var(--space-md) 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-lg);
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .vis-legend li { display: inline-flex; align-items: center; gap: 0.5em; }
+    .vis-legend .swatch {
+      display: inline-block;
+      width: 1.1em;
+      height: 1.1em;
+      border-radius: 3px;
+      border: 1px solid var(--color-border);
+    }
+    .vis-legend .swatch-social { background: var(--color-social-bg); border-color: var(--color-social); }
+    .vis-legend .swatch-technical { background: var(--color-technical-bg); border-color: var(--color-technical); }
+    .vis-legend .line-dashed {
+      display: inline-block;
+      width: 2em;
+      border-top: 2px dashed var(--color-text-muted);
+    }
+    .vis-legend .line-solid {
+      display: inline-block;
+      width: 2em;
+      border-top: 2px solid var(--color-text-muted);
+    }
+    .vis-actions { margin-top: var(--space-lg); display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../../../" aria-label="Per Persson, Ph.D. – home page">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="../../../../">Home</a></li>
+          <li><a href="../../../../publikationer/">Publications</a></li>
+          <li><a href="../../../../blogg/">Blog</a></li>
+          <li><a href="../../../" aria-current="page">Services</a></li>
+          <li class="lang-switch"><a href="../../visualisering/" hreflang="sv" lang="sv" aria-label="Växla till den svenska versionen av sidan"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>På svenska</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <h1 id="hero-title">How it all fits together</h1>
+        <p>A single diagram of how socio-technical debt divides into social and technical debt, and how the register's 74 categories are distributed and arranged within each domain. Sub-categories are indented under their parent category. Every name links to the category's card in <a href="../">the register</a>.</p>
+      </div>
+    </section>
+
+    <section aria-label="How it all fits together: the categories of socio-technical debt">
+      <div class="container">
+        <div class="vis-wrap">
+<svg viewBox="0 0 1270 1236" role="img" aria-labelledby="vis-title vis-desc" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif">
+<title id="vis-title">How it all fits together: the categories of socio-technical debt</title>
+<desc id="vis-desc">Socio-technical debt at the top divides into social debt and technical debt. Each box lists the domain&#x27;s categories as a tree where sub-categories are indented under their parent category. Dashed lines show technical sub-categories whose parent category is social.</desc>
+<defs><marker id="varrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4a525c"/></marker></defs>
+<rect x="315.0" y="14" width="640" height="78" rx="10" fill="#ffffff" stroke="#1a1d22" stroke-width="2"/>
+<text x="635.0" y="40" text-anchor="middle" font-size="18" font-weight="700" fill="#1a1d22">Socio-technical debt</text>
+<text x="635.0" y="60" text-anchor="middle" font-size="12" fill="#4a525c">Past social and/or technical decisions that lead to inefficiencies or increased risks in</text>
+<text x="635.0" y="76" text-anchor="middle" font-size="12" fill="#4a525c">designing, building, maintaining, managing or using digital solutions.</text>
+<path d="M575.0,92 L575.0,118 L310.0,118 L310.0,145" fill="none" stroke="#4a525c" stroke-width="1.8" marker-end="url(#varrow)"/>
+<path d="M695.0,92 L695.0,118 L960.0,118 L960.0,145" fill="none" stroke="#4a525c" stroke-width="1.8" marker-end="url(#varrow)"/>
+<rect x="20" y="148" width="580" height="716" rx="10" fill="#ffffff" stroke="#7a3b12" stroke-width="2"/>
+<rect x="20" y="148" width="580" height="56" rx="10" fill="#fbeee4"/>
+<rect x="20" y="178" width="580" height="26" fill="#fbeee4"/>
+<text x="36" y="174" font-size="18" font-weight="700" fill="#7a3b12">Social debt <tspan font-weight="400" font-size="13" fill="#4a525c">(29 categories)</tspan></text>
+<text x="36" y="195" font-size="12" fill="#4a525c">Debt in decisions, structures and relationships</text>
+<a href="../#compliance-debt"><title>Compliance debt (Regelefterlevnadsskuld)</title><rect class="rowbg" x="26" y="211" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="225.0" font-size="13" font-weight="700" fill="#1a1d22">Compliance debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Regelefterlevnadsskuld)</tspan></text></a>
+<a href="../#consensus-debt"><title>Consensus debt (Konsensusskuld)</title><rect class="rowbg" x="26" y="233" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="247.0" font-size="13" font-weight="700" fill="#1a1d22">Consensus debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Konsensusskuld)</tspan></text></a>
+<a href="../#cultural-debt"><title>Cultural debt (Kulturskuld)</title><rect class="rowbg" x="26" y="255" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="269.0" font-size="13" font-weight="700" fill="#1a1d22">Cultural debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Kulturskuld)</tspan></text></a>
+<a href="../#enterprise-architecture-debt"><title>Enterprise architecture debt (Verksamhetsarkitekturskuld)</title><rect class="rowbg" x="26" y="277" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="291.0" font-size="13" font-weight="700" fill="#1a1d22">Enterprise architecture debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Verksamhetsarkitekturskuld)</tspan></text></a>
+<a href="../#ethical-debt"><title>Ethical debt (Etisk skuld)</title><rect class="rowbg" x="26" y="299" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="313.0" font-size="13" font-weight="700" fill="#1a1d22">Ethical debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Etisk skuld)</tspan></text></a>
+<path d="M41,317.0 L41,331.0 L56,331.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#ai-ethics-debt"><title>AI ethics debt (AI-etikskuld)</title><rect class="rowbg" x="26" y="321" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="60" y="335.0" font-size="13" font-weight="500" fill="#1a1d22">AI ethics debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (AI-etikskuld)</tspan></text></a>
+<path d="M65,339.0 L65,353.0 L80,353.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#software-fairness-debt"><title>Software fairness debt (Rättviseskuld)</title><rect class="rowbg" x="26" y="343" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="84" y="357.0" font-size="13" font-weight="500" fill="#1a1d22">Software fairness debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Rättviseskuld)</tspan></text></a>
+<a href="../#governance-debt"><title>Governance debt (Styrningsskuld)</title><rect class="rowbg" x="26" y="365" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="379.0" font-size="13" font-weight="700" fill="#1a1d22">Governance debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Styrningsskuld)</tspan></text></a>
+<path d="M41,383.0 L41,397.0 L56,397.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#shadow-it-debt"><title>Shadow-IT debt (Skugg-IT-skuld)</title><rect class="rowbg" x="26" y="387" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="60" y="401.0" font-size="13" font-weight="500" fill="#1a1d22">Shadow-IT debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Skugg-IT-skuld)</tspan></text></a>
+<a href="../#information-debt"><title>Information debt (Informationsskuld)</title><rect class="rowbg" x="26" y="409" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="423.0" font-size="13" font-weight="700" fill="#1a1d22">Information debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Informationsskuld)</tspan></text></a>
+<a href="../#institutional-debt"><title>Institutional debt (Institutionell skuld)</title><rect class="rowbg" x="26" y="431" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="445.0" font-size="13" font-weight="700" fill="#1a1d22">Institutional debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Institutionell skuld)</tspan></text></a>
+<a href="../#knowledge-debt"><title>Knowledge debt (Kunskapsskuld)</title><rect class="rowbg" x="26" y="453" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="467.0" font-size="13" font-weight="700" fill="#1a1d22">Knowledge debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Kunskapsskuld)</tspan></text></a>
+<a href="../#management-debt"><title>Management debt (Ledningsskuld)</title><rect class="rowbg" x="26" y="475" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="489.0" font-size="13" font-weight="700" fill="#1a1d22">Management debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Ledningsskuld)</tspan></text></a>
+<path d="M41,493.0 L41,507.0 L56,507.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#project-management-debt"><title>Project management debt (Projektledningsskuld)</title><rect class="rowbg" x="26" y="497" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="60" y="511.0" font-size="13" font-weight="500" fill="#1a1d22">Project management debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Projektledningsskuld)</tspan></text></a>
+<path d="M65,515.0 L65,529.0 L80,529.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#project-monitoring-debt"><title>Project monitoring debt (Projektuppföljningsskuld)</title><rect class="rowbg" x="26" y="519" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="84" y="533.0" font-size="13" font-weight="500" fill="#1a1d22">Project monitoring debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Projektuppföljningsskuld)</tspan></text></a>
+<path d="M41,493.0 L41,551.0 L56,551.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#resource-management-debt"><title>Resource management debt (Resurshanteringsskuld)</title><rect class="rowbg" x="26" y="541" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="60" y="555.0" font-size="13" font-weight="500" fill="#1a1d22">Resource management debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Resurshanteringsskuld)</tspan></text></a>
+<a href="../#organic-debt"><title>Organic debt (Organisk skuld)</title><rect class="rowbg" x="26" y="563" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="577.0" font-size="13" font-weight="700" fill="#1a1d22">Organic debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Organisk skuld)</tspan></text></a>
+<a href="../#organisational-debt"><title>Organisational debt (Organisationsskuld)</title><rect class="rowbg" x="26" y="585" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="599.0" font-size="13" font-weight="700" fill="#1a1d22">Organisational debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Organisationsskuld)</tspan></text></a>
+<a href="../#people-debt"><title>People debt (Personalskuld)</title><rect class="rowbg" x="26" y="607" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="621.0" font-size="13" font-weight="700" fill="#1a1d22">People debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Personalskuld)</tspan></text></a>
+<path d="M41,625.0 L41,639.0 L56,639.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#competence-debt"><title>Competence debt (Kompetensskuld)</title><rect class="rowbg" x="26" y="629" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="60" y="643.0" font-size="13" font-weight="500" fill="#1a1d22">Competence debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Kompetensskuld)</tspan></text></a>
+<path d="M65,647.0 L65,661.0 L80,661.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#cognitive-debt"><title>Cognitive debt (Kognitiv skuld)</title><rect class="rowbg" x="26" y="651" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="84" y="665.0" font-size="13" font-weight="500" fill="#1a1d22">Cognitive debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Kognitiv skuld)</tspan></text></a>
+<path d="M41,625.0 L41,683.0 L56,683.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#work-environment-debt"><title>Work-environment debt (Arbetsmiljöskuld)</title><rect class="rowbg" x="26" y="673" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="60" y="687.0" font-size="13" font-weight="500" fill="#1a1d22">Work-environment debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Arbetsmiljöskuld)</tspan></text></a>
+<a href="../#process-debt"><title>Process debt (Processkuld)</title><rect class="rowbg" x="26" y="695" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="709.0" font-size="13" font-weight="700" fill="#1a1d22">Process debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Processkuld)</tspan></text></a>
+<a href="../#reputation-debt"><title>Reputation debt (Anseendeskuld)</title><rect class="rowbg" x="26" y="717" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="731.0" font-size="13" font-weight="700" fill="#1a1d22">Reputation debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Anseendeskuld)</tspan></text></a>
+<a href="../#requirements-debt"><title>Requirements debt (Kravskuld)</title><rect class="rowbg" x="26" y="739" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="753.0" font-size="13" font-weight="700" fill="#1a1d22">Requirements debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Kravskuld)</tspan></text></a>
+<a href="../#team-debt"><title>Team debt (Teamskuld)</title><rect class="rowbg" x="26" y="761" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="775.0" font-size="13" font-weight="700" fill="#1a1d22">Team debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Teamskuld)</tspan></text></a>
+<path d="M41,779.0 L41,793.0 L56,793.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#team-collaboration-debt"><title>Team collaboration debt (Teamsamarbetsskuld)</title><rect class="rowbg" x="26" y="783" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="60" y="797.0" font-size="13" font-weight="500" fill="#1a1d22">Team collaboration debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Teamsamarbetsskuld)</tspan></text></a>
+<path d="M41,779.0 L41,815.0 L56,815.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#team-communication-debt"><title>Team communication debt (Teamkommunikationsskuld)</title><rect class="rowbg" x="26" y="805" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="60" y="819.0" font-size="13" font-weight="500" fill="#1a1d22">Team communication debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Teamkommunikationsskuld)</tspan></text></a>
+<a href="../#user-satisfaction-debt"><title>User-satisfaction debt (Användarnöjdhetsskuld)</title><rect class="rowbg" x="26" y="827" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="36" y="841.0" font-size="13" font-weight="700" fill="#1a1d22">User-satisfaction debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Användarnöjdhetsskuld)</tspan></text></a>
+<rect x="670" y="148" width="580" height="1068" rx="10" fill="#ffffff" stroke="#1f4f8b" stroke-width="2"/>
+<rect x="670" y="148" width="580" height="56" rx="10" fill="#e8eff8"/>
+<rect x="670" y="178" width="580" height="26" fill="#e8eff8"/>
+<text x="686" y="174" font-size="18" font-weight="700" fill="#1f4f8b">Technical debt <tspan font-weight="400" font-size="13" fill="#4a525c">(45 categories)</tspan></text>
+<text x="686" y="195" font-size="12" fill="#4a525c">Debt in artefacts such as code, architecture, data and tests</text>
+<a href="../#accessibility-debt"><title>Accessibility debt (Tillgänglighetsskuld)</title><rect class="rowbg" x="676" y="211" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="225.0" font-size="13" font-weight="700" fill="#1a1d22">Accessibility debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Tillgänglighetsskuld)</tspan></text></a>
+<a href="../#agentic-technical-debt"><title>Agentic technical debt (Agentisk teknisk skuld)</title><rect class="rowbg" x="676" y="233" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="247.0" font-size="13" font-weight="700" fill="#1a1d22">Agentic technical debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Agentisk teknisk skuld)</tspan></text></a>
+<a href="../#ai-model-debt"><title>AI model debt (AI-modellskuld)</title><rect class="rowbg" x="676" y="255" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="269.0" font-size="13" font-weight="700" fill="#1a1d22">AI model debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (AI-modellskuld)</tspan></text></a>
+<a href="../#architectural-debt"><title>Architectural debt (Arkitekturskuld)</title><rect class="rowbg" x="676" y="277" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="291.0" font-size="13" font-weight="700" fill="#1a1d22">Architectural debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Arkitekturskuld)</tspan></text></a>
+<a href="../#automation-build-debt"><title>Automation (build) debt (Automatiseringsskuld)</title><rect class="rowbg" x="676" y="299" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="313.0" font-size="13" font-weight="700" fill="#1a1d22">Automation (build) debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Automatiseringsskuld)</tspan></text></a>
+<path d="M691,317.0 L691,331.0 L706,331.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#build-debt"><title>Build debt (Byggskuld)</title><rect class="rowbg" x="676" y="321" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="710" y="335.0" font-size="13" font-weight="500" fill="#1a1d22">Build debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Byggskuld)</tspan></text></a>
+<path d="M691,317.0 L691,353.0 L706,353.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#pipeline-debt"><title>Pipeline debt (Pipelineskuld)</title><rect class="rowbg" x="676" y="343" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="710" y="357.0" font-size="13" font-weight="500" fill="#1a1d22">Pipeline debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Pipelineskuld)</tspan></text></a>
+<a href="../#code-debt-implementation-debt"><title>Code debt (implementation debt) (Kodskuld)</title><rect class="rowbg" x="676" y="365" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="379.0" font-size="13" font-weight="700" fill="#1a1d22">Code debt (implementation debt)<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Kodskuld)</tspan></text></a>
+<path d="M691,383.0 L691,397.0 L706,397.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#algorithm-debt"><title>Algorithm debt (Algoritmskuld)</title><rect class="rowbg" x="676" y="387" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="710" y="401.0" font-size="13" font-weight="500" fill="#1a1d22">Algorithm debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Algoritmskuld)</tspan></text></a>
+<a href="../#configuration-debt"><title>Configuration debt (Konfigurationsskuld)</title><rect class="rowbg" x="676" y="409" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="423.0" font-size="13" font-weight="700" fill="#1a1d22">Configuration debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Konfigurationsskuld)</tspan></text></a>
+<path d="M691,427.0 L691,441.0 L706,441.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#ai-configuration-debt"><title>AI configuration debt (AI-konfigurationsskuld)</title><rect class="rowbg" x="676" y="431" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="710" y="445.0" font-size="13" font-weight="500" fill="#1a1d22">AI configuration debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (AI-konfigurationsskuld)</tspan></text></a>
+<a href="../#data-debt"><title>Data debt (Dataskuld)</title><rect class="rowbg" x="676" y="453" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="467.0" font-size="13" font-weight="700" fill="#1a1d22">Data debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Dataskuld)</tspan></text></a>
+<path d="M691,471.0 L691,485.0 L706,485.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#ai-data-debt"><title>AI data debt (AI-dataskuld)</title><rect class="rowbg" x="676" y="475" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="710" y="489.0" font-size="13" font-weight="500" fill="#1a1d22">AI data debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (AI-dataskuld)</tspan></text></a>
+<a href="../#database-debt"><title>Database debt (Databasskuld)</title><rect class="rowbg" x="676" y="497" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="511.0" font-size="13" font-weight="700" fill="#1a1d22">Database debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Databasskuld)</tspan></text></a>
+<path d="M691,515.0 L691,529.0 L706,529.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#database-design-debt"><title>Database-design debt (Databasdesignskuld)</title><rect class="rowbg" x="676" y="519" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="710" y="533.0" font-size="13" font-weight="500" fill="#1a1d22">Database-design debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Databasdesignskuld)</tspan></text></a>
+<a href="../#dependency-debt"><title>Dependency debt (Beroendeskuld)</title><rect class="rowbg" x="676" y="541" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="555.0" font-size="13" font-weight="700" fill="#1a1d22">Dependency debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Beroendeskuld)</tspan></text></a>
+<path d="M691,559.0 L691,573.0 L706,573.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#compatibility-debt"><title>Compatibility debt (Kompatibilitetsskuld)</title><rect class="rowbg" x="676" y="563" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="710" y="577.0" font-size="13" font-weight="500" fill="#1a1d22">Compatibility debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Kompatibilitetsskuld)</tspan></text></a>
+<a href="../#deployment-debt"><title>Deployment debt (Driftsättningsskuld)</title><rect class="rowbg" x="676" y="585" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="599.0" font-size="13" font-weight="700" fill="#1a1d22">Deployment debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Driftsättningsskuld)</tspan></text></a>
+<a href="../#depreciation-debt"><title>Depreciation debt (Föråldringsskuld)</title><rect class="rowbg" x="676" y="607" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="621.0" font-size="13" font-weight="700" fill="#1a1d22">Depreciation debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Föråldringsskuld)</tspan></text></a>
+<a href="../#design-debt"><title>Design debt (Designskuld)</title><rect class="rowbg" x="676" y="629" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="643.0" font-size="13" font-weight="700" fill="#1a1d22">Design debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Designskuld)</tspan></text></a>
+<a href="../#documentation-debt"><title>Documentation debt (Dokumentationsskuld)</title><rect class="rowbg" x="676" y="651" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="665.0" font-size="13" font-weight="700" fill="#1a1d22">Documentation debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Dokumentationsskuld)</tspan></text></a>
+<a href="../#domain-debt"><title>Domain debt (Domänskuld)</title><rect class="rowbg" x="676" y="673" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="687.0" font-size="13" font-weight="700" fill="#1a1d22">Domain debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Domänskuld)</tspan></text></a>
+<a href="../#infrastructure-debt"><title>Infrastructure debt (Infrastrukturskuld)</title><rect class="rowbg" x="676" y="695" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="709.0" font-size="13" font-weight="700" fill="#1a1d22">Infrastructure debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Infrastrukturskuld)</tspan></text></a>
+<a href="../#integration-debt"><title>Integration debt (Integrationsskuld)</title><rect class="rowbg" x="676" y="717" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="731.0" font-size="13" font-weight="700" fill="#1a1d22">Integration debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Integrationsskuld)</tspan></text></a>
+<path d="M691,735.0 L691,749.0 L706,749.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#service-debt"><title>Service debt (Tjänsteskuld)</title><rect class="rowbg" x="676" y="739" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="710" y="753.0" font-size="13" font-weight="500" fill="#1a1d22">Service debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Tjänsteskuld)</tspan></text></a>
+<a href="../#interoperability-debt"><title>Interoperability debt (Interoperabilitetsskuld)</title><rect class="rowbg" x="676" y="761" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="775.0" font-size="13" font-weight="700" fill="#1a1d22">Interoperability debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Interoperabilitetsskuld)</tspan></text></a>
+<a href="../#modelling-and-simulation-debt"><title>Modelling and simulation debt (Modellerings- och simuleringsskuld)</title><rect class="rowbg" x="676" y="783" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="797.0" font-size="13" font-weight="700" fill="#1a1d22">Modelling and simulation debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Modellerings- och simuleringsskuld)</tspan></text></a>
+<a href="../#performance-debt"><title>Performance debt (Prestandaskuld)</title><rect class="rowbg" x="676" y="805" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="819.0" font-size="13" font-weight="700" fill="#1a1d22">Performance debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Prestandaskuld)</tspan></text></a>
+<a href="../#privacy-debt"><title>Privacy debt (Integritetsskuld)</title><rect class="rowbg" x="676" y="827" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="841.0" font-size="13" font-weight="700" fill="#1a1d22">Privacy debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Integritetsskuld)</tspan></text></a>
+<a href="../#prompt-debt"><title>Prompt debt (Promptskuld)</title><rect class="rowbg" x="676" y="849" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="863.0" font-size="13" font-weight="700" fill="#1a1d22">Prompt debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Promptskuld)</tspan></text></a>
+<a href="../#quality-debt"><title>Quality debt (Kvalitetsskuld)</title><rect class="rowbg" x="676" y="871" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="885.0" font-size="13" font-weight="700" fill="#1a1d22">Quality debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Kvalitetsskuld)</tspan></text></a>
+<path d="M691,889.0 L691,903.0 L706,903.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#defect-debt"><title>Defect debt (Defektskuld)</title><rect class="rowbg" x="676" y="893" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="710" y="907.0" font-size="13" font-weight="500" fill="#1a1d22">Defect debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Defektskuld)</tspan></text></a>
+<a href="../#reproducibility-debt"><title>Reproducibility debt (Reproducerbarhetsskuld)</title><rect class="rowbg" x="676" y="915" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="929.0" font-size="13" font-weight="700" fill="#1a1d22">Reproducibility debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Reproducerbarhetsskuld)</tspan></text></a>
+<a href="../#security-debt"><title>Security debt (Säkerhetsskuld)</title><rect class="rowbg" x="676" y="937" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="951.0" font-size="13" font-weight="700" fill="#1a1d22">Security debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Säkerhetsskuld)</tspan></text></a>
+<a href="../#semantic-debt"><title>Semantic debt (Semantisk skuld)</title><rect class="rowbg" x="676" y="959" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="973.0" font-size="13" font-weight="700" fill="#1a1d22">Semantic debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Semantisk skuld)</tspan></text></a>
+<a href="../#sustainability-debt"><title>Sustainability debt (Hållbarhetsskuld)</title><rect class="rowbg" x="676" y="981" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="995.0" font-size="13" font-weight="700" fill="#1a1d22">Sustainability debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Hållbarhetsskuld)</tspan></text></a>
+<path d="M691,999.0 L691,1013.0 L706,1013.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#energy-debt"><title>Energy debt (Energiskuld)</title><rect class="rowbg" x="676" y="1003" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="710" y="1017.0" font-size="13" font-weight="500" fill="#1a1d22">Energy debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Energiskuld)</tspan></text></a>
+<a href="../#system-evolution-debt"><title>System evolution debt (Systemevolutionsskuld)</title><rect class="rowbg" x="676" y="1025" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="1039.0" font-size="13" font-weight="700" fill="#1a1d22">System evolution debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Systemevolutionsskuld)</tspan></text></a>
+<a href="../#test-debt-testing-debt"><title>Test debt (testing debt) (Testskuld)</title><rect class="rowbg" x="676" y="1047" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="1061.0" font-size="13" font-weight="700" fill="#1a1d22">Test debt (testing debt)<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Testskuld)</tspan></text></a>
+<path d="M691,1065.0 L691,1079.0 L706,1079.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#automation-test-debt"><title>Automation test debt (Testautomatiseringsskuld)</title><rect class="rowbg" x="676" y="1069" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="710" y="1083.0" font-size="13" font-weight="500" fill="#1a1d22">Automation test debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Testautomatiseringsskuld)</tspan></text></a>
+<a href="../#transparency-debt"><title>Transparency debt (Transparensskuld)</title><rect class="rowbg" x="676" y="1091" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="1105.0" font-size="13" font-weight="700" fill="#1a1d22">Transparency debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Transparensskuld)</tspan></text></a>
+<path d="M691,1109.0 L691,1123.0 L706,1123.0" fill="none" stroke="#9aa3ad" stroke-width="1.2"/>
+<a href="../#explainability-debt"><title>Explainability debt (Förklarbarhetsskuld)</title><rect class="rowbg" x="676" y="1113" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="710" y="1127.0" font-size="13" font-weight="500" fill="#1a1d22">Explainability debt ★<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Förklarbarhetsskuld)</tspan></text></a>
+<a href="../#usability-debt"><title>Usability debt (Användbarhetsskuld)</title><rect class="rowbg" x="676" y="1135" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="1149.0" font-size="13" font-weight="700" fill="#1a1d22">Usability debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Användbarhetsskuld)</tspan></text></a>
+<a href="../#variability-debt"><title>Variability debt (Variabilitetsskuld)</title><rect class="rowbg" x="676" y="1157" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="1171.0" font-size="13" font-weight="700" fill="#1a1d22">Variability debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Variabilitetsskuld)</tspan></text></a>
+<a href="../#versioning-debt"><title>Versioning debt (Versionshanteringsskuld)</title><rect class="rowbg" x="676" y="1179" width="568" height="20" rx="4" fill="transparent"/><text class="name" x="686" y="1193.0" font-size="13" font-weight="700" fill="#1a1d22">Versioning debt<tspan font-weight="400" font-size="11.5" fill="#4a525c"> (Versionshanteringsskuld)</tspan></text></a>
+<path d="M670,683.0 C635.0,683.0 635.0,749.0 600,749.0" fill="none" stroke="#4a525c" stroke-width="1.4" stroke-dasharray="5 4"/>
+<circle cx="600" cy="749.0" r="3.5" fill="#7a3b12"/>
+<circle cx="670" cy="683.0" r="3.5" fill="#1f4f8b"/>
+<path d="M670,837.0 C635.0,837.0 635.0,221.0 600,221.0" fill="none" stroke="#4a525c" stroke-width="1.4" stroke-dasharray="5 4"/>
+<circle cx="600" cy="221.0" r="3.5" fill="#7a3b12"/>
+<circle cx="670" cy="837.0" r="3.5" fill="#1f4f8b"/>
+<path d="M670,969.0 C635.0,969.0 635.0,419.0 600,419.0" fill="none" stroke="#4a525c" stroke-width="1.4" stroke-dasharray="5 4"/>
+<circle cx="600" cy="419.0" r="3.5" fill="#7a3b12"/>
+<circle cx="670" cy="969.0" r="3.5" fill="#1f4f8b"/>
+</svg>
+        </div>
+        <ul class="vis-legend" aria-label="Teckenförklaring">
+          <li><span class="swatch swatch-social"></span>Social debt: debt in decisions, structures and relationships</li>
+          <li><span class="swatch swatch-technical"></span>Technical debt: debt in artefacts</li>
+          <li><span class="line-solid"></span>Sub-category of the category above</li>
+          <li><span class="line-dashed"></span>Technical sub-category whose parent category is social</li>
+          <li>★ Added to the register after the thesis</li>
+        </ul>
+        <p class="vis-intro" style="margin-top: var(--space-lg);">The diagram builds on figure 2 of the thesis, where the categories were sorted into two domains, and has been extended with the 29 categories added after the thesis and with the arrangement of 26 sub-categories. It is generated from the same data as the register and is updated whenever the register changes.</p>
+        <div class="vis-actions">
+          <a class="back-link" href="../">← Back to the register</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="External profiles">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
