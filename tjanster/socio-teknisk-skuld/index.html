@@ -485,12 +485,16 @@
       padding: var(--space-xs) var(--space-sm);
       font-size: 0.875rem;
       color: var(--color-text-muted);
-      background: #fff8e6;
-      border-left: 3px solid #c98a12;
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
       border-radius: 0 var(--radius) var(--radius) 0;
     }
-    .entry-relation strong { display: block; color: var(--color-text); }
-    .entry-relation .relation-label { font-weight: 600; }
+    .entry-relation strong { color: var(--color-text); }
+    .tag-sub {
+      color: var(--color-text);
+      background: var(--color-bg);
+      border-style: dashed;
+    }
     .entry-source {
       margin: auto 0 0;
       padding-top: var(--space-xs);
@@ -751,6 +755,7 @@
           <li class="fact-social"><strong>27</strong> social skuld</li>
           <li class="fact-technical"><strong>40</strong> teknisk skuld</li>
           <li><strong>22</strong> tillagda efter avhandlingen</li>
+          <li><strong>24</strong> underkategorier</li>
           <li><strong>4</strong> paraplybegrepp</li>
           <li><a href="#historia-title">Begreppets historia</a></li>
         </ul>
@@ -764,7 +769,7 @@
           Sök på svenskt eller engelskt namn, eller på ord i beskrivningen. Filtrera på domän (social eller teknisk) och på vilket paraplybegrepp kategorin ursprungligen definierats inom. Varje post anger källa till definitionen.
         </p>
         <p class="section-intro">
-          Registret omfattar avhandlingens kategorier samt 22 kategorier som inte ingick i avhandlingen, tillagda 2026 efter en litteraturgenomgång och märkta <em>Ny</em>. Alla listas som egna kategorier, men där litteraturgenomgången eller min egen genomlysning talar för att en kategori snarare är en underkategori till en annan anges det i en gul ruta på kortet. Det gäller även flera av avhandlingens ursprungliga kategorier.
+          Registret omfattar avhandlingens kategorier samt 22 kategorier som inte ingick i avhandlingen, tillagda 2026 efter en litteraturgenomgång och märkta <em>Ny</em>. 24 av kategorierna är inordnade som underkategorier till en annan kategori, vilket anges på kortet med länk till den överordnade kategorin. Inordningen bygger på litteraturgenomgången och min egen bedömning, och gäller även flera av avhandlingens ursprungliga kategorier. Alla kategorier har fortfarande egna kort och går att söka fram.
         </p>
         <div class="naming-note" role="note">
           <h3>Om namnen: de svenska namnen är översättningar</h3>
@@ -814,17 +819,17 @@
             Social skuld uppstår ur brister i kommunikation, ledning och organiseringen av utvecklingsarbetet. Exempel är svag teamledning, bristfällig prioritering och kommunikationssammanbrott mellan verksamheten och IT-avdelningen. Skulden ansamlas genom sociala beslut och sitter i strukturer, roller och relationer snarare än i tekniken.
           </p>
           <ul class="entries">
-          <li class="entry" id="ai-ethics-debt" data-domain="social" data-origin="td ai" data-search="ai-etikskuld ai ethics debt brister i etiska aspekter av ai-baserade system, till exempel algoritmisk rättvisa, snedvridna prediktioner eller avsaknad av transparens och ansvarsutkrävande. klassas i avhandlingen som social skuld eftersom rötterna ligger i beslut och värderingar snarare än i artefakten. bogner m.fl., 2021 bogner et al., 2021 software fairness debt (ny) och explainability debt (ny) ligger nära och kan ses som underkategorier till ai-etikskuld. teknisk skuld (traditionell) ai-specifik teknisk skuld">
+          <li class="entry" id="ai-ethics-debt" data-domain="social" data-origin="td ai" data-search="ai-etikskuld ai ethics debt brister i etiska aspekter av ai-baserade system, till exempel algoritmisk rättvisa, snedvridna prediktioner eller avsaknad av transparens och ansvarsutkrävande. klassas i avhandlingen som social skuld eftersom rötterna ligger i beslut och värderingar snarare än i artefakten. bogner m.fl., 2021 bogner et al., 2021 explainability debt ligger nära men inordnas under transparency debt.  teknisk skuld (traditionell) ai-specifik teknisk skuld">
             <h4 class="entry-title">AI-etikskuld <span class="entry-alt">(<span lang="en">AI ethics debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin"><abbr title="AI-specifik teknisk skuld">AI</abbr></li>
             </ul>
             <p class="entry-desc">Brister i etiska aspekter av AI-baserade system, till exempel algoritmisk rättvisa, snedvridna prediktioner eller avsaknad av transparens och ansvarsutkrävande. Klassas i avhandlingen som social skuld eftersom rötterna ligger i beslut och värderingar snarare än i artefakten.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> <a href="#software-fairness-debt">Rättviseskuld</a> (ny) och <a href="#explainability-debt">Förklarbarhetsskuld</a> (ny) ligger nära och kan ses som underkategorier till AI-etikskuld.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#software-fairness-debt">Rättviseskuld</a>. <a href="#explainability-debt">Förklarbarhetsskuld</a> ligger nära men inordnas under <a href="#transparency-debt">Transparensskuld</a>.</p>
             <p class="entry-source">Källa: Bogner m.fl., 2021</p>
           </li>
-          <li class="entry" id="reputation-debt" data-domain="social" data-origin="tyd" data-search="anseendeskuld reputation debt brister i leveransförmåga under lång tid skapar ett anseende där användarna har låg tillit till it-avdelningen. förtroendet mellan it-funktionen och verksamheten eroderar. magnusson m.fl., 2018 magnusson et al., 2018  teknologiskuld">
+          <li class="entry" id="reputation-debt" data-domain="social" data-origin="tyd" data-search="anseendeskuld reputation debt brister i leveransförmåga under lång tid skapar ett anseende där användarna har låg tillit till it-avdelningen. förtroendet mellan it-funktionen och verksamheten eroderar. magnusson m.fl., 2018 magnusson et al., 2018   teknologiskuld">
             <h4 class="entry-title">Anseendeskuld <span class="entry-alt">(<span lang="en">Reputation debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
@@ -833,7 +838,7 @@
             <p class="entry-desc">Brister i leveransförmåga under lång tid skapar ett anseende där användarna har låg tillit till IT-avdelningen. Förtroendet mellan IT-funktionen och verksamheten eroderar.</p>
             <p class="entry-source">Källa: Magnusson m.fl., 2018</p>
           </li>
-          <li class="entry" id="user-satisfaction-debt" data-domain="social" data-origin="tyd" data-search="användarnöjdhetsskuld user-satisfaction debt brister i användarnöjdhet påverkar användarnas vilja att aktivt arbeta tillsammans med it-funktionen för att skapa förbättringar. frustration över it-systemen och lågt engagemang. magnusson m.fl., 2018 magnusson et al., 2018  teknologiskuld">
+          <li class="entry" id="user-satisfaction-debt" data-domain="social" data-origin="tyd" data-search="användarnöjdhetsskuld user-satisfaction debt brister i användarnöjdhet påverkar användarnas vilja att aktivt arbeta tillsammans med it-funktionen för att skapa förbättringar. frustration över it-systemen och lågt engagemang. magnusson m.fl., 2018 magnusson et al., 2018   teknologiskuld">
             <h4 class="entry-title">Användarnöjdhetsskuld <span class="entry-alt">(<span lang="en">User-satisfaction debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
@@ -842,76 +847,77 @@
             <p class="entry-desc">Brister i användarnöjdhet påverkar användarnas vilja att aktivt arbeta tillsammans med IT-funktionen för att skapa förbättringar. Frustration över IT-systemen och lågt engagemang.</p>
             <p class="entry-source">Källa: Magnusson m.fl., 2018</p>
           </li>
-          <li class="entry" id="work-environment-debt" data-domain="social" data-origin="tyd" data-search="arbetsmiljöskuld work-environment debt brister i arbetsmiljön för it-medarbetare skapar svårigheter att attrahera och behålla den kompetens som behövs för framtida behov. magnusson m.fl., 2018 magnusson et al., 2018 kan passa som underkategori till people debt. teknologiskuld">
+          <li class="entry" id="work-environment-debt" data-domain="social" data-origin="tyd" data-search="arbetsmiljöskuld work-environment debt brister i arbetsmiljön för it-medarbetare skapar svårigheter att attrahera och behålla den kompetens som behövs för framtida behov. magnusson m.fl., 2018 magnusson et al., 2018  people debt underkategori teknologiskuld">
             <h4 class="entry-title">Arbetsmiljöskuld <span class="entry-alt">(<span lang="en">Work-environment debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknologiskuld">TyD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknologiskuld">TyD</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Brister i arbetsmiljön för IT-medarbetare skapar svårigheter att attrahera och behålla den kompetens som behövs för framtida behov.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Kan passa som underkategori till <a href="#people-debt">Personalskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#people-debt">Personalskuld</a>.</p>
             <p class="entry-source">Källa: Magnusson m.fl., 2018</p>
           </li>
-          <li class="entry" id="information-debt" data-domain="social" data-origin="dd" data-search="informationsskuld information debt kopplad till plattformens underhåll och utvecklingsbarhet och utgör prestandarisker i organisationens arbetsprocesser. ansamling av föråldrad, inkonsekvent eller dåligt strukturerad information gör digitala tjänster svårare att skala, integrera och anpassa. rolland m.fl., 2018 rolland et al., 2018 semantic debt (ny) kan passa som underkategori till informationsskuld. knowledge debt (ny) bör hållas isär genom att skilja lagrad information från organisatorisk kunskap. digital skuld">
+          <li class="entry" id="information-debt" data-domain="social" data-origin="dd" data-search="informationsskuld information debt kopplad till plattformens underhåll och utvecklingsbarhet och utgör prestandarisker i organisationens arbetsprocesser. ansamling av föråldrad, inkonsekvent eller dåligt strukturerad information gör digitala tjänster svårare att skala, integrera och anpassa. rolland m.fl., 2018 rolland et al., 2018 knowledge debt hålls isär genom att lagrad information skiljs från organisatorisk kunskap.  digital skuld">
             <h4 class="entry-title">Informationsskuld <span class="entry-alt">(<span lang="en">Information debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Digital skuld">DD</abbr></li>
             </ul>
             <p class="entry-desc">Kopplad till plattformens underhåll och utvecklingsbarhet och utgör prestandarisker i organisationens arbetsprocesser. Ansamling av föråldrad, inkonsekvent eller dåligt strukturerad information gör digitala tjänster svårare att skala, integrera och anpassa.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> <a href="#semantic-debt">Semantisk skuld</a> (ny) kan passa som underkategori till informationsskuld. <a href="#knowledge-debt">Kunskapsskuld</a> (ny) bör hållas isär genom att skilja lagrad information från organisatorisk kunskap.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#semantic-debt">Semantisk skuld</a>. <a href="#knowledge-debt">Kunskapsskuld</a> hålls isär genom att lagrad information skiljs från organisatorisk kunskap.</p>
             <p class="entry-source">Källa: Rolland m.fl., 2018</p>
           </li>
-          <li class="entry" id="institutional-debt" data-domain="social" data-origin="ny" data-search="institutionell skuld institutional debt ackumulerade systemiska begränsningar skapade av föråldrade institutionella arrangemang, fragmenterade ansvar, standarder, regler och styrningsstrukturer. ohno &amp; hashimoto, 2026 ohno &amp; hashimoto, 2026 framväxande, men särskilt relevant i offentlig kontext. egen bedömning: ligger nära governance debt och organisational debt men verkar på systemnivå snarare än inom en organisation. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="institutional-debt" data-domain="social" data-origin="ny" data-search="institutionell skuld institutional debt ackumulerade systemiska begränsningar skapade av föråldrade institutionella arrangemang, fragmenterade ansvar, standarder, regler och styrningsstrukturer. ohno &amp; hashimoto, 2026 ohno &amp; hashimoto, 2026 egen kategori, framväxande men särskilt relevant i offentlig kontext. ligger nära governance debt och organisational debt men verkar på systemnivå snarare än inom en organisation.  tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Institutionell skuld <span class="entry-alt">(<span lang="en">Institutional debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
             </ul>
             <p class="entry-desc">Ackumulerade systemiska begränsningar skapade av föråldrade institutionella arrangemang, fragmenterade ansvar, standarder, regler och styrningsstrukturer.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Framväxande, men särskilt relevant i offentlig kontext. Egen bedömning: ligger nära <a href="#governance-debt">Styrningsskuld</a> och <a href="#organisational-debt">Organisationsskuld</a> men verkar på systemnivå snarare än inom en organisation.</p>
+            <p class="entry-relation">Egen kategori, framväxande men särskilt relevant i offentlig kontext. Ligger nära <a href="#governance-debt">Styrningsskuld</a> och <a href="#organisational-debt">Organisationsskuld</a> men verkar på systemnivå snarare än inom en organisation.</p>
             <p class="entry-source">Källa: Ohno &amp; Hashimoto, 2026</p>
           </li>
-          <li class="entry" id="cognitive-debt" data-domain="social" data-origin="ny" data-search="kognitiv skuld cognitive debt uppskjutna mänskliga kostnader som ansamlas när upprepat beroende av ai försvagar självständigt resonerande, verifiering, domänförståelse eller förmågan att skapa mening. ramamoorti m.fl., 2026; fırat, 2026 ramamoorti et al., 2026; fırat, 2026 ny kandidat som relaterar till competence debt men är mer specifik; kan passa som underkategori till den. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="cognitive-debt" data-domain="social" data-origin="ny" data-search="kognitiv skuld cognitive debt uppskjutna mänskliga kostnader som ansamlas när upprepat beroende av ai försvagar självständigt resonerande, verifiering, domänförståelse eller förmågan att skapa mening. ramamoorti m.fl., 2026; fırat, 2026 ramamoorti et al., 2026; fırat, 2026 en mer specifik form av kompetensskuld, knuten till beroende av ai. competence debt underkategori tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Kognitiv skuld <span class="entry-alt">(<span lang="en">Cognitive debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
-              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
+              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Uppskjutna mänskliga kostnader som ansamlas när upprepat beroende av AI försvagar självständigt resonerande, verifiering, domänförståelse eller förmågan att skapa mening.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Ny kandidat som relaterar till <a href="#competence-debt">Kompetensskuld</a> men är mer specifik; kan passa som underkategori till den.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#competence-debt">Kompetensskuld</a>. En mer specifik form av kompetensskuld, knuten till beroende av AI.</p>
             <p class="entry-source">Källa: Ramamoorti m.fl., 2026; Fırat, 2026</p>
           </li>
-          <li class="entry" id="competence-debt" data-domain="social" data-origin="tyd" data-search="kompetensskuld competence debt eftersom den installerade tekniska basen ofta bygger på föråldrad teknik formas en kompetensbas som är optimerad för förvaltning och drift snarare än för modernisering och utveckling av ny teknik. magnusson m.fl., 2018 magnusson et al., 2018 kan passa som underkategori till people debt, som redan omfattar kompetensgap. cognitive debt (ny) är i sin tur en mer specifik form av kompetensskuld. teknologiskuld">
+          <li class="entry" id="competence-debt" data-domain="social" data-origin="tyd" data-search="kompetensskuld competence debt eftersom den installerade tekniska basen ofta bygger på föråldrad teknik formas en kompetensbas som är optimerad för förvaltning och drift snarare än för modernisering och utveckling av ny teknik. magnusson m.fl., 2018 magnusson et al., 2018 kompetensgap är en form av personalskuld. cognitive debt är i sin tur en mer specifik form av kompetensskuld. people debt underkategori teknologiskuld">
             <h4 class="entry-title">Kompetensskuld <span class="entry-alt">(<span lang="en">Competence debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknologiskuld">TyD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknologiskuld">TyD</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Eftersom den installerade tekniska basen ofta bygger på föråldrad teknik formas en kompetensbas som är optimerad för förvaltning och drift snarare än för modernisering och utveckling av ny teknik.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Kan passa som underkategori till <a href="#people-debt">Personalskuld</a>, som redan omfattar kompetensgap. <a href="#cognitive-debt">Kognitiv skuld</a> (ny) är i sin tur en mer specifik form av kompetensskuld.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#people-debt">Personalskuld</a>. <strong>Underkategorier:</strong> <a href="#cognitive-debt">Kognitiv skuld</a>. Kompetensgap är en form av personalskuld. <a href="#cognitive-debt">Kognitiv skuld</a> är i sin tur en mer specifik form av kompetensskuld.</p>
             <p class="entry-source">Källa: Magnusson m.fl., 2018</p>
           </li>
-          <li class="entry" id="consensus-debt" data-domain="social" data-origin="ny" data-search="konsensusskuld consensus debt ackumulerade förpliktelser som uppstår när viktiga strategiska beslut eller utvecklingsbeslut fattas utan tillräcklig medverkan från berörda intressenter, eller utan att en gemensam förståelse och överenskommelse etableras. skulden visar sig senare som missriktning, omförhandling, motstånd, omarbete eller svårigheter att genomföra och anpassa besluten. norling, 2024; lavallée m.fl., 2017 norling, 2024; lavallée et al., 2017 explicit kategori i norlings avhandling om konsensusbaserad strategiutveckling i offentlig sektor. bedöms som stark kandidat till egen kategori. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="consensus-debt" data-domain="social" data-origin="ny" data-search="konsensusskuld consensus debt ackumulerade förpliktelser som uppstår när viktiga strategiska beslut eller utvecklingsbeslut fattas utan tillräcklig medverkan från berörda intressenter, eller utan att en gemensam förståelse och överenskommelse etableras. skulden visar sig senare som missriktning, omförhandling, motstånd, omarbete eller svårigheter att genomföra och anpassa besluten. norling, 2024; lavallée m.fl., 2017 norling, 2024; lavallée et al., 2017 egen kategori. explicit begrepp i norlings avhandling om konsensusbaserad strategiutveckling i offentlig sektor.  tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Konsensusskuld <span class="entry-alt">(<span lang="en">Consensus debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
             </ul>
             <p class="entry-desc">Ackumulerade förpliktelser som uppstår när viktiga strategiska beslut eller utvecklingsbeslut fattas utan tillräcklig medverkan från berörda intressenter, eller utan att en gemensam förståelse och överenskommelse etableras. Skulden visar sig senare som missriktning, omförhandling, motstånd, omarbete eller svårigheter att genomföra och anpassa besluten.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Explicit kategori i Norlings avhandling om konsensusbaserad strategiutveckling i offentlig sektor. Bedöms som stark kandidat till egen kategori.</p>
+            <p class="entry-relation">Egen kategori. Explicit begrepp i Norlings avhandling om konsensusbaserad strategiutveckling i offentlig sektor.</p>
             <p class="entry-source">Källa: Norling, 2024; Lavallée m.fl., 2017</p>
           </li>
-          <li class="entry" id="requirements-debt" data-domain="social" data-origin="td dd" data-search="kravskuld requirements debt avvägningar kring vilka krav utvecklingsteamet ska implementera och hur. avståndet mellan den optimala kravspecifikationen och den faktiska systemimplementationen. rios m.fl., 2018; li m.fl., 2015 rios et al., 2018; li et al., 2015  teknisk skuld (traditionell) digital skuld">
+          <li class="entry" id="requirements-debt" data-domain="social" data-origin="td dd" data-search="kravskuld requirements debt avvägningar kring vilka krav utvecklingsteamet ska implementera och hur. avståndet mellan den optimala kravspecifikationen och den faktiska systemimplementationen. rios m.fl., 2018; li m.fl., 2015 rios et al., 2018; li et al., 2015   teknisk skuld (traditionell) digital skuld">
             <h4 class="entry-title">Kravskuld <span class="entry-alt">(<span lang="en">Requirements debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin"><abbr title="Digital skuld">DD</abbr></li>
             </ul>
             <p class="entry-desc">Avvägningar kring vilka krav utvecklingsteamet ska implementera och hur. Avståndet mellan den optimala kravspecifikationen och den faktiska systemimplementationen.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#domain-debt">Domänskuld</a>.</p>
             <p class="entry-source">Källa: Rios m.fl., 2018; Li m.fl., 2015</p>
           </li>
-          <li class="entry" id="cultural-debt" data-domain="social" data-origin="ntd" data-search="kulturskuld cultural debt uppstår när ett tekniskt beslut ”lånar” mot organisationens kultur. sådana beslut kan skapa splittring i team, försämra kommunikationen eller försvaga ledarskapets effektivitet. en kultur som motverkar samarbete, experiment eller lärande av misstag förstärker skulden. saeeda m.fl., 2023 saeeda et al., 2023  icke-teknisk skuld">
+          <li class="entry" id="cultural-debt" data-domain="social" data-origin="ntd" data-search="kulturskuld cultural debt uppstår när ett tekniskt beslut ”lånar” mot organisationens kultur. sådana beslut kan skapa splittring i team, försämra kommunikationen eller försvaga ledarskapets effektivitet. en kultur som motverkar samarbete, experiment eller lärande av misstag förstärker skulden. saeeda m.fl., 2023 saeeda et al., 2023   icke-teknisk skuld">
             <h4 class="entry-title">Kulturskuld <span class="entry-alt">(<span lang="en">Cultural debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
@@ -920,157 +926,157 @@
             <p class="entry-desc">Uppstår när ett tekniskt beslut ”lånar” mot organisationens kultur. Sådana beslut kan skapa splittring i team, försämra kommunikationen eller försvaga ledarskapets effektivitet. En kultur som motverkar samarbete, experiment eller lärande av misstag förstärker skulden.</p>
             <p class="entry-source">Källa: Saeeda m.fl., 2023</p>
           </li>
-          <li class="entry" id="knowledge-debt" data-domain="social" data-origin="ny" data-search="kunskapsskuld knowledge debt ackumulerad förlust av tyst kunskap, motiv, sammanhang och designavsikt som senare måste rekonstrueras till betydande kostnad. tsai, 2026; admile m.fl., 2025 tsai, 2026; admile et al., 2025 lovande men fortfarande framväxande. bör hållas isär från information debt genom att skilja lagrad information från organisatorisk kunskap. egen bedömning: ligger också nära documentation debt. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="knowledge-debt" data-domain="social" data-origin="ny" data-search="kunskapsskuld knowledge debt ackumulerad förlust av tyst kunskap, motiv, sammanhang och designavsikt som senare måste rekonstrueras till betydande kostnad. tsai, 2026; admile m.fl., 2025 tsai, 2026; admile et al., 2025 egen kategori, fortfarande framväxande. skiljs från information debt genom att avse organisatorisk kunskap snarare än lagrad information; ligger också nära documentation debt.  tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Kunskapsskuld <span class="entry-alt">(<span lang="en">Knowledge debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
             </ul>
             <p class="entry-desc">Ackumulerad förlust av tyst kunskap, motiv, sammanhang och designavsikt som senare måste rekonstrueras till betydande kostnad.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Lovande men fortfarande framväxande. Bör hållas isär från <a href="#information-debt">Informationsskuld</a> genom att skilja lagrad information från organisatorisk kunskap. Egen bedömning: ligger också nära <a href="#documentation-debt">Dokumentationsskuld</a>.</p>
+            <p class="entry-relation">Egen kategori, fortfarande framväxande. Skiljs från <a href="#information-debt">Informationsskuld</a> genom att avse organisatorisk kunskap snarare än lagrad information; ligger också nära <a href="#documentation-debt">Dokumentationsskuld</a>.</p>
             <p class="entry-source">Källa: Tsai, 2026; Admile m.fl., 2025</p>
           </li>
-          <li class="entry" id="management-debt" data-domain="social" data-origin="ny" data-search="ledningsskuld management debt ackumulerade förpliktelser orsakade av kortsiktiga eller otillräckliga ledningsbeslut om personal, resurser, teknikinförande och projektgenomförande. dayan-akman m.fl., 2025 dayan-akman et al., 2025 föreslås som paraplybegrepp med resource management debt och project management debt som underkategorier. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="management-debt" data-domain="social" data-origin="ny" data-search="ledningsskuld management debt ackumulerade förpliktelser orsakade av kortsiktiga eller otillräckliga ledningsbeslut om personal, resurser, teknikinförande och projektgenomförande. dayan-akman m.fl., 2025 dayan-akman et al., 2025 paraplybegrepp för skulder som uppstår ur ledningsbeslut.  tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Ledningsskuld <span class="entry-alt">(<span lang="en">Management debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
             </ul>
             <p class="entry-desc">Ackumulerade förpliktelser orsakade av kortsiktiga eller otillräckliga ledningsbeslut om personal, resurser, teknikinförande och projektgenomförande.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Föreslås som paraplybegrepp med <a href="#resource-management-debt">Resurshanteringsskuld</a> och <a href="#project-management-debt">Projektledningsskuld</a> som underkategorier.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#resource-management-debt">Resurshanteringsskuld</a>, <a href="#project-management-debt">Projektledningsskuld</a>. Paraplybegrepp för skulder som uppstår ur ledningsbeslut.</p>
             <p class="entry-source">Källa: Dayan-Akman m.fl., 2025</p>
           </li>
-          <li class="entry" id="organisational-debt" data-domain="social" data-origin="ntd" data-search="organisationsskuld organisational debt den växande katalogen av förändringar som ledare borde ha genomfört men inte gjorde. strukturella problem som otydliga hierarkier, avdelningar i silor eller oklara ansvar. saeeda m.fl., 2023; ahmad &amp; al-baik, 2024 saeeda et al., 2023; ahmad &amp; al-baik, 2024 institutional debt (ny) och management debt (ny) ligger nära; ledningsskuld rör beslut, organisationsskuld strukturer och institutionell skuld regelverk och ansvarsfördelning på systemnivå. icke-teknisk skuld">
+          <li class="entry" id="organisational-debt" data-domain="social" data-origin="ntd" data-search="organisationsskuld organisational debt den växande katalogen av förändringar som ledare borde ha genomfört men inte gjorde. strukturella problem som otydliga hierarkier, avdelningar i silor eller oklara ansvar. saeeda m.fl., 2023; ahmad &amp; al-baik, 2024 saeeda et al., 2023; ahmad &amp; al-baik, 2024 institutional debt och management debt ligger nära: ledningsskuld rör beslut, organisationsskuld strukturer och institutionell skuld regelverk och ansvarsfördelning på systemnivå.  icke-teknisk skuld">
             <h4 class="entry-title">Organisationsskuld <span class="entry-alt">(<span lang="en">Organisational debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Icke-teknisk skuld">NTD</abbr></li>
             </ul>
             <p class="entry-desc">Den växande katalogen av förändringar som ledare borde ha genomfört men inte gjorde. Strukturella problem som otydliga hierarkier, avdelningar i silor eller oklara ansvar.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> <a href="#institutional-debt">Institutionell skuld</a> (ny) och <a href="#management-debt">Ledningsskuld</a> (ny) ligger nära; ledningsskuld rör beslut, organisationsskuld strukturer och institutionell skuld regelverk och ansvarsfördelning på systemnivå.</p>
+            <p class="entry-relation"><a href="#institutional-debt">Institutionell skuld</a> och <a href="#management-debt">Ledningsskuld</a> ligger nära: ledningsskuld rör beslut, organisationsskuld strukturer och institutionell skuld regelverk och ansvarsfördelning på systemnivå.</p>
             <p class="entry-source">Källa: Saeeda m.fl., 2023; Ahmad &amp; Al-Baik, 2024</p>
           </li>
-          <li class="entry" id="people-debt" data-domain="social" data-origin="td ntd" data-search="personalskuld people debt personrelaterade problem i organisationen som fördröjer eller hindrar utvecklingsarbete, till exempel att för få personer har nödvändig expertis på grund av försenad utbildning eller rekrytering, eller ett överberoende av några få nyckelpersoner. rios m.fl., 2018; ahmad &amp; gustavsson, 2022 rios et al., 2018; ahmad &amp; gustavsson, 2022 competence debt och work-environment debt kan ses som underkategorier till personalskuld, eftersom båda rör tillgången till rätt kompetens. teknisk skuld (traditionell) icke-teknisk skuld">
+          <li class="entry" id="people-debt" data-domain="social" data-origin="td ntd" data-search="personalskuld people debt personrelaterade problem i organisationen som fördröjer eller hindrar utvecklingsarbete, till exempel att för få personer har nödvändig expertis på grund av försenad utbildning eller rekrytering, eller ett överberoende av några få nyckelpersoner. rios m.fl., 2018; ahmad &amp; gustavsson, 2022 rios et al., 2018; ahmad &amp; gustavsson, 2022 samlar skulder som rör tillgången till rätt kompetens.  teknisk skuld (traditionell) icke-teknisk skuld">
             <h4 class="entry-title">Personalskuld <span class="entry-alt">(<span lang="en">People debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin"><abbr title="Icke-teknisk skuld">NTD</abbr></li>
             </ul>
             <p class="entry-desc">Personrelaterade problem i organisationen som fördröjer eller hindrar utvecklingsarbete, till exempel att för få personer har nödvändig expertis på grund av försenad utbildning eller rekrytering, eller ett överberoende av några få nyckelpersoner.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> <a href="#competence-debt">Kompetensskuld</a> och <a href="#work-environment-debt">Arbetsmiljöskuld</a> kan ses som underkategorier till personalskuld, eftersom båda rör tillgången till rätt kompetens.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#competence-debt">Kompetensskuld</a>, <a href="#work-environment-debt">Arbetsmiljöskuld</a>. Samlar skulder som rör tillgången till rätt kompetens.</p>
             <p class="entry-source">Källa: Rios m.fl., 2018; Ahmad &amp; Gustavsson, 2022</p>
           </li>
-          <li class="entry" id="process-debt" data-domain="social" data-origin="td ntd" data-search="processkuld process debt ineffektiva processer, där det processen en gång utformades för att hantera inte längre är ändamålsenligt. en suboptimal handling eller händelse med kortsiktiga fördelar men långsiktigt skadliga effekter, exempelvis föråldrade projektmodeller, onödig byråkrati eller olämpliga upphandlingsprocesser. rios m.fl., 2018; martini m.fl., 2020 rios et al., 2018; martini et al., 2020 project management debt (ny) överlappar processkuld och styrningsskuld enligt litteraturgenomgången. teknisk skuld (traditionell) icke-teknisk skuld">
+          <li class="entry" id="process-debt" data-domain="social" data-origin="td ntd" data-search="processkuld process debt ineffektiva processer, där det processen en gång utformades för att hantera inte längre är ändamålsenligt. en suboptimal handling eller händelse med kortsiktiga fördelar men långsiktigt skadliga effekter, exempelvis föråldrade projektmodeller, onödig byråkrati eller olämpliga upphandlingsprocesser. rios m.fl., 2018; martini m.fl., 2020 rios et al., 2018; martini et al., 2020 project management debt överlappar processkuld och styrningsskuld men inordnas under management debt.  teknisk skuld (traditionell) icke-teknisk skuld">
             <h4 class="entry-title">Processkuld <span class="entry-alt">(<span lang="en">Process debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin"><abbr title="Icke-teknisk skuld">NTD</abbr></li>
             </ul>
             <p class="entry-desc">Ineffektiva processer, där det processen en gång utformades för att hantera inte längre är ändamålsenligt. En suboptimal handling eller händelse med kortsiktiga fördelar men långsiktigt skadliga effekter, exempelvis föråldrade projektmodeller, onödig byråkrati eller olämpliga upphandlingsprocesser.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> <a href="#project-management-debt">Projektledningsskuld</a> (ny) överlappar processkuld och styrningsskuld enligt litteraturgenomgången.</p>
+            <p class="entry-relation"><a href="#project-management-debt">Projektledningsskuld</a> överlappar processkuld och styrningsskuld men inordnas under <a href="#management-debt">Ledningsskuld</a>.</p>
             <p class="entry-source">Källa: Rios m.fl., 2018; Martini m.fl., 2020</p>
           </li>
-          <li class="entry" id="project-management-debt" data-domain="social" data-origin="ny" data-search="projektledningsskuld project management debt ackumulerad framtida kostnad orsakad av brister i planering, estimering, tillsyn, prioritering och projektstyrning. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026 föreslås som underkategori till management debt, men överlappar process debt och governance debt. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="project-management-debt" data-domain="social" data-origin="ny" data-search="projektledningsskuld project management debt ackumulerad framtida kostnad orsakad av brister i planering, estimering, tillsyn, prioritering och projektstyrning. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026 överlappar delvis process debt och governance debt. management debt underkategori tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Projektledningsskuld <span class="entry-alt">(<span lang="en">Project management debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
-              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
+              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Ackumulerad framtida kostnad orsakad av brister i planering, estimering, tillsyn, prioritering och projektstyrning.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Föreslås som underkategori till <a href="#management-debt">Ledningsskuld</a>, men överlappar <a href="#process-debt">Processkuld</a> och <a href="#governance-debt">Styrningsskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#management-debt">Ledningsskuld</a>. <strong>Underkategorier:</strong> <a href="#project-monitoring-debt">Projektuppföljningsskuld</a>. Överlappar delvis <a href="#process-debt">Processkuld</a> och <a href="#governance-debt">Styrningsskuld</a>.</p>
             <p class="entry-source">Källa: Kapiyasheva m.fl., 2026</p>
           </li>
-          <li class="entry" id="project-monitoring-debt" data-domain="social" data-origin="ny" data-search="projektuppföljningsskuld project monitoring debt skuld orsakad av otillräcklig uppföljning av projektets framdrift, uppgifter, risker och beroenden, så att problem ansamlas obemärkt. dayan-akman m.fl., 2025 dayan-akman et al., 2025 föreslås som konkret underkategori till project management debt. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="project-monitoring-debt" data-domain="social" data-origin="ny" data-search="projektuppföljningsskuld project monitoring debt skuld orsakad av otillräcklig uppföljning av projektets framdrift, uppgifter, risker och beroenden, så att problem ansamlas obemärkt. dayan-akman m.fl., 2025 dayan-akman et al., 2025  project management debt underkategori tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Projektuppföljningsskuld <span class="entry-alt">(<span lang="en">Project monitoring debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
-              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
+              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Skuld orsakad av otillräcklig uppföljning av projektets framdrift, uppgifter, risker och beroenden, så att problem ansamlas obemärkt.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Föreslås som konkret underkategori till <a href="#project-management-debt">Projektledningsskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#project-management-debt">Projektledningsskuld</a>.</p>
             <p class="entry-source">Källa: Dayan-Akman m.fl., 2025</p>
           </li>
-          <li class="entry" id="compliance-debt" data-domain="social" data-origin="ny" data-search="regelefterlevnadsskuld compliance debt ackumulerade förpliktelser som uppstår när krav från regelverk, policyer, kvalitetssäkring eller revision skjuts upp och senare måste införas i efterhand. butt m.fl., 2025; kapiyasheva m.fl., 2026 butt et al., 2025; kapiyasheva et al., 2026 bedöms som mycket stark kandidat, särskilt för offentlig sektor och ai. egen bedömning: privacy debt kan ses som en underkategori. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="compliance-debt" data-domain="social" data-origin="ny" data-search="regelefterlevnadsskuld compliance debt ackumulerade förpliktelser som uppstår när krav från regelverk, policyer, kvalitetssäkring eller revision skjuts upp och senare måste införas i efterhand. butt m.fl., 2025; kapiyasheva m.fl., 2026 butt et al., 2025; kapiyasheva et al., 2026 särskilt relevant för offentlig sektor och ai. privacy debt inordnas här trots att den ligger på den tekniska sidan.  tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Regelefterlevnadsskuld <span class="entry-alt">(<span lang="en">Compliance debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
             </ul>
             <p class="entry-desc">Ackumulerade förpliktelser som uppstår när krav från regelverk, policyer, kvalitetssäkring eller revision skjuts upp och senare måste införas i efterhand.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Bedöms som mycket stark kandidat, särskilt för offentlig sektor och AI. Egen bedömning: <a href="#privacy-debt">Integritetsskuld</a> kan ses som en underkategori.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#privacy-debt">Integritetsskuld</a>. Särskilt relevant för offentlig sektor och AI. <a href="#privacy-debt">Integritetsskuld</a> inordnas här trots att den ligger på den tekniska sidan.</p>
             <p class="entry-source">Källa: Butt m.fl., 2025; Kapiyasheva m.fl., 2026</p>
           </li>
-          <li class="entry" id="resource-management-debt" data-domain="social" data-origin="ny" data-search="resurshanteringsskuld resource management debt skuld som uppstår ur otillräcklig tilldelning, utveckling eller uppföljning av de mänskliga, ekonomiska och tekniska resurser som behövs under systemets livscykel. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026 föreslås som underkategori till management debt. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="resource-management-debt" data-domain="social" data-origin="ny" data-search="resurshanteringsskuld resource management debt skuld som uppstår ur otillräcklig tilldelning, utveckling eller uppföljning av de mänskliga, ekonomiska och tekniska resurser som behövs under systemets livscykel. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026  management debt underkategori tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Resurshanteringsskuld <span class="entry-alt">(<span lang="en">Resource management debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
-              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
+              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Skuld som uppstår ur otillräcklig tilldelning, utveckling eller uppföljning av de mänskliga, ekonomiska och tekniska resurser som behövs under systemets livscykel.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Föreslås som underkategori till <a href="#management-debt">Ledningsskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#management-debt">Ledningsskuld</a>.</p>
             <p class="entry-source">Källa: Kapiyasheva m.fl., 2026</p>
           </li>
-          <li class="entry" id="software-fairness-debt" data-domain="social" data-origin="ny" data-search="rättviseskuld software fairness debt ackumulerade brister i rättvisa och olösta snedvridningar i programvara som skapar framtida åtgärdskostnader och skadliga eller diskriminerande utfall. de souza santos m.fl., 2025 de souza santos et al., 2025 explicit skuldbegrepp, men närliggande ai ethics debt och kan passa som underkategori till den. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="software-fairness-debt" data-domain="social" data-origin="ny" data-search="rättviseskuld software fairness debt ackumulerade brister i rättvisa och olösta snedvridningar i programvara som skapar framtida åtgärdskostnader och skadliga eller diskriminerande utfall. de souza santos m.fl., 2025 de souza santos et al., 2025  ai ethics debt underkategori tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Rättviseskuld <span class="entry-alt">(<span lang="en">Software fairness debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
-              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
+              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Ackumulerade brister i rättvisa och olösta snedvridningar i programvara som skapar framtida åtgärdskostnader och skadliga eller diskriminerande utfall.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Explicit skuldbegrepp, men närliggande <a href="#ai-ethics-debt">AI-etikskuld</a> och kan passa som underkategori till den.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#ai-ethics-debt">AI-etikskuld</a>.</p>
             <p class="entry-source">Källa: de Souza Santos m.fl., 2025</p>
           </li>
-          <li class="entry" id="shadow-it-debt" data-domain="social" data-origin="tyd" data-search="skugg-it-skuld shadow-it debt decentraliserade investeringar och icke-sanktionerad användardriven innovation, vid sidan av den officiella it-styrningen, skapar brist på synergier, effektivitet och säkerhet. magnusson m.fl., 2018 magnusson et al., 2018 kan passa som underkategori till governance debt, eftersom skulden definieras av att teknik införs vid sidan av den sanktionerade styrningen. teknologiskuld">
+          <li class="entry" id="shadow-it-debt" data-domain="social" data-origin="tyd" data-search="skugg-it-skuld shadow-it debt decentraliserade investeringar och icke-sanktionerad användardriven innovation, vid sidan av den officiella it-styrningen, skapar brist på synergier, effektivitet och säkerhet. magnusson m.fl., 2018 magnusson et al., 2018 skulden definieras av att teknik införs vid sidan av den sanktionerade styrningen. governance debt underkategori teknologiskuld">
             <h4 class="entry-title">Skugg-IT-skuld <span class="entry-alt">(<span lang="en">Shadow-IT debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknologiskuld">TyD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknologiskuld">TyD</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Decentraliserade investeringar och icke-sanktionerad användardriven innovation, vid sidan av den officiella IT-styrningen, skapar brist på synergier, effektivitet och säkerhet.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Kan passa som underkategori till <a href="#governance-debt">Styrningsskuld</a>, eftersom skulden definieras av att teknik införs vid sidan av den sanktionerade styrningen.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#governance-debt">Styrningsskuld</a>. Skulden definieras av att teknik införs vid sidan av den sanktionerade styrningen.</p>
             <p class="entry-source">Källa: Magnusson m.fl., 2018</p>
           </li>
-          <li class="entry" id="governance-debt" data-domain="social" data-origin="tyd" data-search="styrningsskuld governance debt snedvridning i hur styrningen är konfigurerad skapar en styrning som är optimerad för stabilitet men som inte tillgodoser behoven av innovation. felriktade eller alltför rigida it-styrningsstrukturer. magnusson m.fl., 2018 magnusson et al., 2018 shadow-it debt kan ses som en underkategori till styrningsskuld. institutional debt (ny) ligger nära men verkar på systemnivå snarare än organisationsnivå. teknologiskuld">
+          <li class="entry" id="governance-debt" data-domain="social" data-origin="tyd" data-search="styrningsskuld governance debt snedvridning i hur styrningen är konfigurerad skapar en styrning som är optimerad för stabilitet men som inte tillgodoser behoven av innovation. felriktade eller alltför rigida it-styrningsstrukturer. magnusson m.fl., 2018 magnusson et al., 2018 institutional debt ligger nära men verkar på systemnivå snarare än organisationsnivå. project management debt överlappar delvis.  teknologiskuld">
             <h4 class="entry-title">Styrningsskuld <span class="entry-alt">(<span lang="en">Governance debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Teknologiskuld">TyD</abbr></li>
             </ul>
             <p class="entry-desc">Snedvridning i hur styrningen är konfigurerad skapar en styrning som är optimerad för stabilitet men som inte tillgodoser behoven av innovation. Felriktade eller alltför rigida IT-styrningsstrukturer.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> <a href="#shadow-it-debt">Skugg-IT-skuld</a> kan ses som en underkategori till styrningsskuld. <a href="#institutional-debt">Institutionell skuld</a> (ny) ligger nära men verkar på systemnivå snarare än organisationsnivå.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#shadow-it-debt">Skugg-IT-skuld</a>. <a href="#institutional-debt">Institutionell skuld</a> ligger nära men verkar på systemnivå snarare än organisationsnivå. <a href="#project-management-debt">Projektledningsskuld</a> överlappar delvis.</p>
             <p class="entry-source">Källa: Magnusson m.fl., 2018</p>
           </li>
-          <li class="entry" id="team-communication-debt" data-domain="social" data-origin="ny" data-search="teamkommunikationsskuld team communication debt ackumulerad kostnad orsakad av kommunikationssammanbrott, svagt informationsutbyte och otillräcklig gemensam förståelse inom eller mellan team. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026 föreslås som underkategori till team debt. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="team-communication-debt" data-domain="social" data-origin="ny" data-search="teamkommunikationsskuld team communication debt ackumulerad kostnad orsakad av kommunikationssammanbrott, svagt informationsutbyte och otillräcklig gemensam förståelse inom eller mellan team. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026  team debt underkategori tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Teamkommunikationsskuld <span class="entry-alt">(<span lang="en">Team communication debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
-              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
+              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Ackumulerad kostnad orsakad av kommunikationssammanbrott, svagt informationsutbyte och otillräcklig gemensam förståelse inom eller mellan team.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Föreslås som underkategori till <a href="#team-debt">Teamskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#team-debt">Teamskuld</a>.</p>
             <p class="entry-source">Källa: Kapiyasheva m.fl., 2026</p>
           </li>
-          <li class="entry" id="team-collaboration-debt" data-domain="social" data-origin="ny" data-search="teamsamarbetsskuld team collaboration debt skuld som uppstår när otillräckligt samarbete och bristande samordning mellan roller eller team skapar omarbete, överlämningsproblem och dubbelarbete. dayan-akman m.fl., 2025 dayan-akman et al., 2025 föreslås som underkategori till team debt. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="team-collaboration-debt" data-domain="social" data-origin="ny" data-search="teamsamarbetsskuld team collaboration debt skuld som uppstår när otillräckligt samarbete och bristande samordning mellan roller eller team skapar omarbete, överlämningsproblem och dubbelarbete. dayan-akman m.fl., 2025 dayan-akman et al., 2025  team debt underkategori tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Teamsamarbetsskuld <span class="entry-alt">(<span lang="en">Team collaboration debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
-              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
+              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Skuld som uppstår när otillräckligt samarbete och bristande samordning mellan roller eller team skapar omarbete, överlämningsproblem och dubbelarbete.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Föreslås som underkategori till <a href="#team-debt">Teamskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#team-debt">Teamskuld</a>.</p>
             <p class="entry-source">Källa: Dayan-Akman m.fl., 2025</p>
           </li>
-          <li class="entry" id="team-debt" data-domain="social" data-origin="ny" data-search="teamskuld team debt ackumulerade sociala och strukturella friktioner inom ett team som minskar den kollektiva effektiviteten, samordningen och leveransförmågan. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026 explicit kategori i ny forskning om icke-teknisk skuld. föreslås som överordnad kategori till team collaboration debt och team communication debt. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="team-debt" data-domain="social" data-origin="ny" data-search="teamskuld team debt ackumulerade sociala och strukturella friktioner inom ett team som minskar den kollektiva effektiviteten, samordningen och leveransförmågan. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026 samlar friktioner inom och mellan team.  tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Teamskuld <span class="entry-alt">(<span lang="en">Team debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
               <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
             </ul>
             <p class="entry-desc">Ackumulerade sociala och strukturella friktioner inom ett team som minskar den kollektiva effektiviteten, samordningen och leveransförmågan.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Explicit kategori i ny forskning om icke-teknisk skuld. Föreslås som överordnad kategori till <a href="#team-collaboration-debt">Teamsamarbetsskuld</a> och <a href="#team-communication-debt">Teamkommunikationsskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#team-collaboration-debt">Teamsamarbetsskuld</a>, <a href="#team-communication-debt">Teamkommunikationsskuld</a>. Samlar friktioner inom och mellan team.</p>
             <p class="entry-source">Källa: Kapiyasheva m.fl., 2026</p>
           </li>
-          <li class="entry" id="enterprise-architecture-debt" data-domain="social" data-origin="td" data-search="verksamhetsarkitekturskuld enterprise architecture debt ett mått på avvikelsen mellan verksamhetens nuvarande tillstånd och ett hypotetiskt idealtillstånd, sett över hela organisationens arkitektur snarare än ett enskilt system. hacks m.fl., 2019 hacks et al., 2019  teknisk skuld (traditionell)">
+          <li class="entry" id="enterprise-architecture-debt" data-domain="social" data-origin="td" data-search="verksamhetsarkitekturskuld enterprise architecture debt ett mått på avvikelsen mellan verksamhetens nuvarande tillstånd och ett hypotetiskt idealtillstånd, sett över hela organisationens arkitektur snarare än ett enskilt system. hacks m.fl., 2019 hacks et al., 2019   teknisk skuld (traditionell)">
             <h4 class="entry-title">Verksamhetsarkitekturskuld <span class="entry-alt">(<span lang="en">Enterprise architecture debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-social">Social skuld</li>
@@ -1091,17 +1097,17 @@
             Teknisk skuld är en samling design- eller implementationskonstruktioner som är ändamålsenliga på kort sikt men som skapar ett tekniskt sammanhang där framtida förändringar blir dyrare eller omöjliga. Skulden är en faktisk eller villkorad förpliktelse vars påverkan är begränsad till systemets inre kvaliteter, främst underhållbarhet och utvecklingsbarhet. Den sitter i artefakter som kod, arkitektur, databaser och testramverk.
           </p>
           <ul class="entries">
-          <li class="entry" id="agentic-technical-debt" data-domain="technical" data-origin="ny" data-search="agentisk teknisk skuld agentic technical debt skuld på systemnivå som är specifik för agentisk ai och uppstår ur autonomt resonerande, beständigt minne, verktygsorkestrering, samordning mellan flera agenter och agentbeteende som förändras över tid. tukur m.fl., 2026 tukur et al., 2026 framväxande paraplybegrepp snarare än en kategori på samma abstraktionsnivå som kodskuld. egen bedömning: kan på sikt samla ai-konfigurations-, ai-data- och ai-modellskuld. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="agentic-technical-debt" data-domain="technical" data-origin="ny" data-search="agentisk teknisk skuld agentic technical debt skuld på systemnivå som är specifik för agentisk ai och uppstår ur autonomt resonerande, beständigt minne, verktygsorkestrering, samordning mellan flera agenter och agentbeteende som förändras över tid. tukur m.fl., 2026 tukur et al., 2026 fristående egen kategori tills vidare. litteraturen beskriver den som ett framväxande paraplybegrepp som på sikt kan samla ai configuration debt, ai data debt och ai model debt, men den inordningen görs inte ännu.  tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Agentisk teknisk skuld <span class="entry-alt">(<span lang="en">Agentic technical debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
             </ul>
             <p class="entry-desc">Skuld på systemnivå som är specifik för agentisk AI och uppstår ur autonomt resonerande, beständigt minne, verktygsorkestrering, samordning mellan flera agenter och agentbeteende som förändras över tid.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Framväxande paraplybegrepp snarare än en kategori på samma abstraktionsnivå som kodskuld. Egen bedömning: kan på sikt samla AI-konfigurations-, AI-data- och AI-modellskuld.</p>
+            <p class="entry-relation">Fristående egen kategori tills vidare. Litteraturen beskriver den som ett framväxande paraplybegrepp som på sikt kan samla <a href="#ai-configuration-debt">AI-konfigurationsskuld</a>, <a href="#ai-data-debt">AI-dataskuld</a> och <a href="#ai-model-debt">AI-modellskuld</a>, men den inordningen görs inte ännu.</p>
             <p class="entry-source">Källa: Tukur m.fl., 2026</p>
           </li>
-          <li class="entry" id="ai-data-debt" data-domain="technical" data-origin="td ai" data-search="ai-dataskuld ai data debt brister i insamling, hantering och användning av data, både för träning av modeller och i produktion. bogner m.fl., 2021 bogner et al., 2021  teknisk skuld (traditionell) ai-specifik teknisk skuld">
+          <li class="entry" id="ai-data-debt" data-domain="technical" data-origin="td ai" data-search="ai-dataskuld ai data debt brister i insamling, hantering och användning av data, både för träning av modeller och i produktion. bogner m.fl., 2021 bogner et al., 2021   teknisk skuld (traditionell) ai-specifik teknisk skuld">
             <h4 class="entry-title">AI-dataskuld <span class="entry-alt">(<span lang="en">AI data debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
@@ -1110,17 +1116,17 @@
             <p class="entry-desc">Brister i insamling, hantering och användning av data, både för träning av modeller och i produktion.</p>
             <p class="entry-source">Källa: Bogner m.fl., 2021</p>
           </li>
-          <li class="entry" id="ai-configuration-debt" data-domain="technical" data-origin="td ai" data-search="ai-konfigurationsskuld ai configuration debt brister i konfigurationsmekanismerna för ai-baserade system. bogner m.fl., 2021 bogner et al., 2021 kan passa som underkategori till configuration debt. teknisk skuld (traditionell) ai-specifik teknisk skuld">
+          <li class="entry" id="ai-configuration-debt" data-domain="technical" data-origin="td ai" data-search="ai-konfigurationsskuld ai configuration debt brister i konfigurationsmekanismerna för ai-baserade system. bogner m.fl., 2021 bogner et al., 2021  configuration debt underkategori teknisk skuld (traditionell) ai-specifik teknisk skuld">
             <h4 class="entry-title">AI-konfigurationsskuld <span class="entry-alt">(<span lang="en">AI configuration debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin"><abbr title="AI-specifik teknisk skuld">AI</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin"><abbr title="AI-specifik teknisk skuld">AI</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Brister i konfigurationsmekanismerna för AI-baserade system.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Kan passa som underkategori till <a href="#configuration-debt">Konfigurationsskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#configuration-debt">Konfigurationsskuld</a>.</p>
             <p class="entry-source">Källa: Bogner m.fl., 2021</p>
           </li>
-          <li class="entry" id="ai-model-debt" data-domain="technical" data-origin="td ai" data-search="ai-modellskuld ai model debt suboptimala arbetssätt i design, träning och förvaltning av ai-modeller. bogner m.fl., 2021 bogner et al., 2021  teknisk skuld (traditionell) ai-specifik teknisk skuld">
+          <li class="entry" id="ai-model-debt" data-domain="technical" data-origin="td ai" data-search="ai-modellskuld ai model debt suboptimala arbetssätt i design, träning och förvaltning av ai-modeller. bogner m.fl., 2021 bogner et al., 2021   teknisk skuld (traditionell) ai-specifik teknisk skuld">
             <h4 class="entry-title">AI-modellskuld <span class="entry-alt">(<span lang="en">AI model debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
@@ -1129,27 +1135,27 @@
             <p class="entry-desc">Suboptimala arbetssätt i design, träning och förvaltning av AI-modeller.</p>
             <p class="entry-source">Källa: Bogner m.fl., 2021</p>
           </li>
-          <li class="entry" id="algorithm-debt" data-domain="technical" data-origin="td" data-search="algoritmskuld algorithm debt suboptimala implementationer av algoritmlogik. liu m.fl., 2020 liu et al., 2020 kan passa som underkategori till code debt (implementation debt), eftersom den avser suboptimal implementation. teknisk skuld (traditionell)">
+          <li class="entry" id="algorithm-debt" data-domain="technical" data-origin="td" data-search="algoritmskuld algorithm debt suboptimala implementationer av algoritmlogik. liu m.fl., 2020 liu et al., 2020 avser suboptimal implementation av algoritmlogik. code debt (implementation debt) underkategori teknisk skuld (traditionell)">
             <h4 class="entry-title">Algoritmskuld <span class="entry-alt">(<span lang="en">Algorithm debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Suboptimala implementationer av algoritmlogik.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Kan passa som underkategori till <a href="#code-debt-implementation-debt">Kodskuld</a>, eftersom den avser suboptimal implementation.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#code-debt-implementation-debt">Kodskuld</a>. Avser suboptimal implementation av algoritmlogik.</p>
             <p class="entry-source">Källa: Liu m.fl., 2020</p>
           </li>
-          <li class="entry" id="usability-debt" data-domain="technical" data-origin="td" data-search="användbarhetsskuld usability debt olämpliga användbarhetsbeslut som senare måste justeras, till exempel utebliven användbarhetstestning, dålig gränssnittsdesign och komplexa navigationsstrukturer som ökar användarnas kognitiva belastning. för webbapplikationer har tidig användbarhetsskuld visats öka kostnaden för omdesign med 50 procent. rios m.fl., 2018; alves m.fl., 2016; rodriguez m.fl., 2023 rios et al., 2018; alves et al., 2016; rodriguez et al., 2023 accessibility debt (ny) är konceptuellt distinkt och bör hållas som egen kategori. teknisk skuld (traditionell)">
+          <li class="entry" id="usability-debt" data-domain="technical" data-origin="td" data-search="användbarhetsskuld usability debt olämpliga användbarhetsbeslut som senare måste justeras, till exempel utebliven användbarhetstestning, dålig gränssnittsdesign och komplexa navigationsstrukturer som ökar användarnas kognitiva belastning. för webbapplikationer har tidig användbarhetsskuld visats öka kostnaden för omdesign med 50 procent. rios m.fl., 2018; alves m.fl., 2016; rodriguez m.fl., 2023 rios et al., 2018; alves et al., 2016; rodriguez et al., 2023 accessibility debt är konceptuellt distinkt och hålls som egen kategori.  teknisk skuld (traditionell)">
             <h4 class="entry-title">Användbarhetsskuld <span class="entry-alt">(<span lang="en">Usability debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
             </ul>
             <p class="entry-desc">Olämpliga användbarhetsbeslut som senare måste justeras, till exempel utebliven användbarhetstestning, dålig gränssnittsdesign och komplexa navigationsstrukturer som ökar användarnas kognitiva belastning. För webbapplikationer har tidig användbarhetsskuld visats öka kostnaden för omdesign med 50 procent.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> <a href="#accessibility-debt">Tillgänglighetsskuld</a> (ny) är konceptuellt distinkt och bör hållas som egen kategori.</p>
+            <p class="entry-relation"><a href="#accessibility-debt">Tillgänglighetsskuld</a> är konceptuellt distinkt och hålls som egen kategori.</p>
             <p class="entry-source">Källa: Rios m.fl., 2018; Alves m.fl., 2016; Rodriguez m.fl., 2023</p>
           </li>
-          <li class="entry" id="architectural-debt" data-domain="technical" data-origin="td" data-search="arkitekturskuld architectural debt problem i produktarkitekturen som påverkar arkitekturkraven. har stor påverkan på systemets framgång och kan, om den lämnas obehandlad, ge dyra följder. uppgraderingar av system med hög arkitekturskuld kräver upp till tre gånger så stor insats som för välstrukturerade arkitekturer, och tidiga arkitekturgenvägar ökar skörheten och kostnaden för omarbete senare. rios m.fl., 2018; besker m.fl., 2016; maccormack m.fl., 2012 rios et al., 2018; besker et al., 2016; maccormack et al., 2012  teknisk skuld (traditionell)">
+          <li class="entry" id="architectural-debt" data-domain="technical" data-origin="td" data-search="arkitekturskuld architectural debt problem i produktarkitekturen som påverkar arkitekturkraven. har stor påverkan på systemets framgång och kan, om den lämnas obehandlad, ge dyra följder. uppgraderingar av system med hög arkitekturskuld kräver upp till tre gånger så stor insats som för välstrukturerade arkitekturer, och tidiga arkitekturgenvägar ökar skörheten och kostnaden för omarbete senare. rios m.fl., 2018; besker m.fl., 2016; maccormack m.fl., 2012 rios et al., 2018; besker et al., 2016; maccormack et al., 2012   teknisk skuld (traditionell)">
             <h4 class="entry-title">Arkitekturskuld <span class="entry-alt">(<span lang="en">Architectural debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
@@ -1158,66 +1164,67 @@
             <p class="entry-desc">Problem i produktarkitekturen som påverkar arkitekturkraven. Har stor påverkan på systemets framgång och kan, om den lämnas obehandlad, ge dyra följder. Uppgraderingar av system med hög arkitekturskuld kräver upp till tre gånger så stor insats som för välstrukturerade arkitekturer, och tidiga arkitekturgenvägar ökar skörheten och kostnaden för omarbete senare.</p>
             <p class="entry-source">Källa: Rios m.fl., 2018; Besker m.fl., 2016; MacCormack m.fl., 2012</p>
           </li>
-          <li class="entry" id="automation-build-debt" data-domain="technical" data-origin="td" data-search="automatiseringsskuld automation (build) debt i dagens releaseorienterade utveckling indikerar nästan alla manuella steg i bygget av ett system automatiseringsskuld. den är både en källa till och ett sätt att lösa teknisk skuld (även kallad build- eller devops-skuld). rosser &amp; norton, 2021 rosser &amp; norton, 2021 build debt och pipeline debt (ny) kan ses som underkategorier till automatiseringsskuld. teknisk skuld (traditionell)">
+          <li class="entry" id="automation-build-debt" data-domain="technical" data-origin="td" data-search="automatiseringsskuld automation (build) debt i dagens releaseorienterade utveckling indikerar nästan alla manuella steg i bygget av ett system automatiseringsskuld. den är både en källa till och ett sätt att lösa teknisk skuld (även kallad build- eller devops-skuld). rosser &amp; norton, 2021 rosser &amp; norton, 2021 samlar skulder i bygg-, leverans- och driftsättningsflöden.  teknisk skuld (traditionell)">
             <h4 class="entry-title">Automatiseringsskuld <span class="entry-alt">(<span lang="en">Automation (build) debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
             </ul>
             <p class="entry-desc">I dagens releaseorienterade utveckling indikerar nästan alla manuella steg i bygget av ett system automatiseringsskuld. Den är både en källa till och ett sätt att lösa teknisk skuld (även kallad build- eller DevOps-skuld).</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> <a href="#build-debt">Byggskuld</a> och <a href="#pipeline-debt">Pipelineskuld</a> (ny) kan ses som underkategorier till automatiseringsskuld.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#build-debt">Byggskuld</a>, <a href="#pipeline-debt">Pipelineskuld</a>. Samlar skulder i bygg-, leverans- och driftsättningsflöden.</p>
             <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="dependency-debt" data-domain="technical" data-origin="ny" data-search="beroendeskuld dependency debt ackumulerade förpliktelser orsakade av externa bibliotek, tjänster, modeller, komponenter eller databeroenden som blir svåra, riskfyllda eller dyra att förändra. sculley m.fl., 2015; arpteg m.fl., 2018 sculley et al., 2015; arpteg et al., 2018 bedöms som mycket stark kandidat och en tydlig lucka i avhandlingens figur 2. egen bedömning: compatibility debt kan ses som en underkategori. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="dependency-debt" data-domain="technical" data-origin="ny" data-search="beroendeskuld dependency debt ackumulerade förpliktelser orsakade av externa bibliotek, tjänster, modeller, komponenter eller databeroenden som blir svåra, riskfyllda eller dyra att förändra. sculley m.fl., 2015; arpteg m.fl., 2018 sculley et al., 2015; arpteg et al., 2018 egen kategori som fyller en tydlig lucka i avhandlingens figur 2.  tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Beroendeskuld <span class="entry-alt">(<span lang="en">Dependency debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
             </ul>
             <p class="entry-desc">Ackumulerade förpliktelser orsakade av externa bibliotek, tjänster, modeller, komponenter eller databeroenden som blir svåra, riskfyllda eller dyra att förändra.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Bedöms som mycket stark kandidat och en tydlig lucka i avhandlingens figur 2. Egen bedömning: <a href="#compatibility-debt">Kompatibilitetsskuld</a> kan ses som en underkategori.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#compatibility-debt">Kompatibilitetsskuld</a>. Egen kategori som fyller en tydlig lucka i avhandlingens figur 2.</p>
             <p class="entry-source">Källa: Sculley m.fl., 2015; Arpteg m.fl., 2018</p>
           </li>
-          <li class="entry" id="build-debt" data-domain="technical" data-origin="td" data-search="byggskuld build debt problem som gör byggsteget svårare och onödigt tidskrävande, till exempel att onödig kod och onödiga tester byggs och körs. rios m.fl., 2018; morgenthaler m.fl., 2012 rios et al., 2018; morgenthaler et al., 2012 överlappar automation (build) debt i hög grad och kan ses som en underkategori till den. teknisk skuld (traditionell)">
+          <li class="entry" id="build-debt" data-domain="technical" data-origin="td" data-search="byggskuld build debt problem som gör byggsteget svårare och onödigt tidskrävande, till exempel att onödig kod och onödiga tester byggs och körs. rios m.fl., 2018; morgenthaler m.fl., 2012 rios et al., 2018; morgenthaler et al., 2012 överlappar automatiseringsskuld i hög grad. automation (build) debt underkategori teknisk skuld (traditionell)">
             <h4 class="entry-title">Byggskuld <span class="entry-alt">(<span lang="en">Build debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Problem som gör byggsteget svårare och onödigt tidskrävande, till exempel att onödig kod och onödiga tester byggs och körs.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Överlappar <a href="#automation-build-debt">Automatiseringsskuld</a> i hög grad och kan ses som en underkategori till den.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#automation-build-debt">Automatiseringsskuld</a>. Överlappar automatiseringsskuld i hög grad.</p>
             <p class="entry-source">Källa: Rios m.fl., 2018; Morgenthaler m.fl., 2012</p>
           </li>
-          <li class="entry" id="database-design-debt" data-domain="technical" data-origin="td" data-search="databasdesignskuld database-design debt omogna eller suboptimala databasdesignbeslut som släpar efter de optimala eller önskvärda. al-barak &amp; bahsoon, 2016 al-barak &amp; bahsoon, 2016 kan passa som underkategori till database debt, som redan omfattar databasdesign. teknisk skuld (traditionell)">
+          <li class="entry" id="database-design-debt" data-domain="technical" data-origin="td" data-search="databasdesignskuld database-design debt omogna eller suboptimala databasdesignbeslut som släpar efter de optimala eller önskvärda. al-barak &amp; bahsoon, 2016 al-barak &amp; bahsoon, 2016 databasskuld omfattar redan databasdesign. database debt underkategori teknisk skuld (traditionell)">
             <h4 class="entry-title">Databasdesignskuld <span class="entry-alt">(<span lang="en">Database-design debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Omogna eller suboptimala databasdesignbeslut som släpar efter de optimala eller önskvärda.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Kan passa som underkategori till <a href="#database-debt">Databasskuld</a>, som redan omfattar databasdesign.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#database-debt">Databasskuld</a>. Databasskuld omfattar redan databasdesign.</p>
             <p class="entry-source">Källa: Al-Barak &amp; Bahsoon, 2016</p>
           </li>
-          <li class="entry" id="database-debt" data-domain="technical" data-origin="td" data-search="databasskuld database debt ansamlas genom problem med datakrav, dataarkitektur, databasdesign, implementation och dokumentation, samt genom det typiska beroendet av en tredje part för databasprodukten (kommersiell eller öppen källkod). rosser &amp; norton, 2021 rosser &amp; norton, 2021  teknisk skuld (traditionell)">
+          <li class="entry" id="database-debt" data-domain="technical" data-origin="td" data-search="databasskuld database debt ansamlas genom problem med datakrav, dataarkitektur, databasdesign, implementation och dokumentation, samt genom det typiska beroendet av en tredje part för databasprodukten (kommersiell eller öppen källkod). rosser &amp; norton, 2021 rosser &amp; norton, 2021   teknisk skuld (traditionell)">
             <h4 class="entry-title">Databasskuld <span class="entry-alt">(<span lang="en">Database debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
             </ul>
             <p class="entry-desc">Ansamlas genom problem med datakrav, dataarkitektur, databasdesign, implementation och dokumentation, samt genom det typiska beroendet av en tredje part för databasprodukten (kommersiell eller öppen källkod).</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#database-design-debt">Databasdesignskuld</a>.</p>
             <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="defect-debt" data-domain="technical" data-origin="td" data-search="defektskuld defect debt avvägningen mellan den kortsiktiga vinsten av att skjuta upp buggrättning och de långsiktiga konsekvenserna av att vänta. kända defekter som utvecklingsteamet är överens om bör åtgärdas men som skjuts upp på grund av konkurrerande prioriteringar och begränsade resurser. akbarinasaji m.fl., 2016; rios m.fl., 2018 akbarinasaji et al., 2016; rios et al., 2018 kan passa som underkategori till quality debt, som avser den totala insatsen för att åtgärda defekter. teknisk skuld (traditionell)">
+          <li class="entry" id="defect-debt" data-domain="technical" data-origin="td" data-search="defektskuld defect debt avvägningen mellan den kortsiktiga vinsten av att skjuta upp buggrättning och de långsiktiga konsekvenserna av att vänta. kända defekter som utvecklingsteamet är överens om bör åtgärdas men som skjuts upp på grund av konkurrerande prioriteringar och begränsade resurser. akbarinasaji m.fl., 2016; rios m.fl., 2018 akbarinasaji et al., 2016; rios et al., 2018 kvalitetsskuld avser den totala insatsen för att åtgärda defekter; defektskuld de kända defekter som skjutits upp. quality debt underkategori teknisk skuld (traditionell)">
             <h4 class="entry-title">Defektskuld <span class="entry-alt">(<span lang="en">Defect debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Avvägningen mellan den kortsiktiga vinsten av att skjuta upp buggrättning och de långsiktiga konsekvenserna av att vänta. Kända defekter som utvecklingsteamet är överens om bör åtgärdas men som skjuts upp på grund av konkurrerande prioriteringar och begränsade resurser.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Kan passa som underkategori till <a href="#quality-debt">Kvalitetsskuld</a>, som avser den totala insatsen för att åtgärda defekter.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#quality-debt">Kvalitetsskuld</a>. Kvalitetsskuld avser den totala insatsen för att åtgärda defekter; defektskuld de kända defekter som skjutits upp.</p>
             <p class="entry-source">Källa: Akbarinasaji m.fl., 2016; Rios m.fl., 2018</p>
           </li>
-          <li class="entry" id="design-debt" data-domain="technical" data-origin="td dd" data-search="designskuld design debt tuffa time-to-market-krav och oväntade integrations- eller utvecklingsproblem leder till designavvägningar som orsakar brister i systemets struktur, till exempel brott mot principer för god objektorienterad design eller designgenvägar i anpassningar av standardsystem. designproblem ansamlas över tid och gör senare ändringar upp till tre gånger dyrare än om de åtgärdats tidigt. marinescu, 2012; rios m.fl., 2018; rolland m.fl., 2018; zazworka m.fl., 2014 marinescu, 2012; rios et al., 2018; rolland et al., 2018; zazworka et al., 2014  teknisk skuld (traditionell) digital skuld">
+          <li class="entry" id="design-debt" data-domain="technical" data-origin="td dd" data-search="designskuld design debt tuffa time-to-market-krav och oväntade integrations- eller utvecklingsproblem leder till designavvägningar som orsakar brister i systemets struktur, till exempel brott mot principer för god objektorienterad design eller designgenvägar i anpassningar av standardsystem. designproblem ansamlas över tid och gör senare ändringar upp till tre gånger dyrare än om de åtgärdats tidigt. marinescu, 2012; rios m.fl., 2018; rolland m.fl., 2018; zazworka m.fl., 2014 marinescu, 2012; rios et al., 2018; rolland et al., 2018; zazworka et al., 2014   teknisk skuld (traditionell) digital skuld">
             <h4 class="entry-title">Designskuld <span class="entry-alt">(<span lang="en">Design debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
@@ -1226,7 +1233,7 @@
             <p class="entry-desc">Tuffa time-to-market-krav och oväntade integrations- eller utvecklingsproblem leder till designavvägningar som orsakar brister i systemets struktur, till exempel brott mot principer för god objektorienterad design eller designgenvägar i anpassningar av standardsystem. Designproblem ansamlas över tid och gör senare ändringar upp till tre gånger dyrare än om de åtgärdats tidigt.</p>
             <p class="entry-source">Källa: Marinescu, 2012; Rios m.fl., 2018; Rolland m.fl., 2018; Zazworka m.fl., 2014</p>
           </li>
-          <li class="entry" id="documentation-debt" data-domain="technical" data-origin="td dd ntd" data-search="dokumentationsskuld documentation debt saknad, inkonsekvent, föråldrad eller ofullständig dokumentation, inklusive föråldrade designspecifikationer och avsaknad av kodkommentarer. den enda kategori som återfinns under alla tre paraplybegreppen teknisk, digital och icke-teknisk skuld. rios m.fl., 2018; ernst m.fl., 2021; ahmad m.fl., 2024 rios et al., 2018; ernst et al., 2021; ahmad et al., 2024  teknisk skuld (traditionell) digital skuld icke-teknisk skuld">
+          <li class="entry" id="documentation-debt" data-domain="technical" data-origin="td dd ntd" data-search="dokumentationsskuld documentation debt saknad, inkonsekvent, föråldrad eller ofullständig dokumentation, inklusive föråldrade designspecifikationer och avsaknad av kodkommentarer. den enda kategori som återfinns under alla tre paraplybegreppen teknisk, digital och icke-teknisk skuld. rios m.fl., 2018; ernst m.fl., 2021; ahmad m.fl., 2024 rios et al., 2018; ernst et al., 2021; ahmad et al., 2024   teknisk skuld (traditionell) digital skuld icke-teknisk skuld">
             <h4 class="entry-title">Dokumentationsskuld <span class="entry-alt">(<span lang="en">Documentation debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
@@ -1235,47 +1242,47 @@
             <p class="entry-desc">Saknad, inkonsekvent, föråldrad eller ofullständig dokumentation, inklusive föråldrade designspecifikationer och avsaknad av kodkommentarer. Den enda kategori som återfinns under alla tre paraplybegreppen teknisk, digital och icke-teknisk skuld.</p>
             <p class="entry-source">Källa: Rios m.fl., 2018; Ernst m.fl., 2021; Ahmad m.fl., 2024</p>
           </li>
-          <li class="entry" id="domain-debt" data-domain="technical" data-origin="td" data-search="domänskuld domain debt felaktig representation av tillämpningsdomänen i det faktiska systemet. störrle &amp; ciolkowski, 2019 störrle &amp; ciolkowski, 2019 kan passa som underkategori till requirements debt, eftersom felaktig domänrepresentation oftast har sin grund i kravarbetet. teknisk skuld (traditionell)">
+          <li class="entry" id="domain-debt" data-domain="technical" data-origin="td" data-search="domänskuld domain debt felaktig representation av tillämpningsdomänen i det faktiska systemet. störrle &amp; ciolkowski, 2019 störrle &amp; ciolkowski, 2019 felaktig domänrepresentation har oftast sin grund i kravarbetet. inordnas under kravskuld trots att den ligger på den tekniska sidan. requirements debt underkategori teknisk skuld (traditionell)">
             <h4 class="entry-title">Domänskuld <span class="entry-alt">(<span lang="en">Domain debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Felaktig representation av tillämpningsdomänen i det faktiska systemet.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Kan passa som underkategori till <a href="#requirements-debt">Kravskuld</a>, eftersom felaktig domänrepresentation oftast har sin grund i kravarbetet.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#requirements-debt">Kravskuld</a> (social skuld). Felaktig domänrepresentation har oftast sin grund i kravarbetet. Inordnas under kravskuld trots att den ligger på den tekniska sidan.</p>
             <p class="entry-source">Källa: Störrle &amp; Ciolkowski, 2019</p>
           </li>
-          <li class="entry" id="deployment-debt" data-domain="technical" data-origin="dd" data-search="driftsättningsskuld deployment debt alla genvägar, fel eller misstag som uppstår vid driftsättning, till exempel forcerade eller ofullständiga driftsättningsprocesser. senare, främst ai-relaterad litteratur beskriver den som det ackumulerade ingenjörsarbete som uppstår när prototyper eller lokalt fungerande system upprepade gånger förs vidare utan att kraven för tillförlitlig produktionsdrift löses. ernst m.fl., 2021; asatiani &amp; torell, 2023; costa, 2026 ernst et al., 2021; asatiani &amp; torell, 2023; costa, 2026 pipeline debt (ny) ligger nära, men avser själva flödet snarare än övergången till produktion. digital skuld">
+          <li class="entry" id="deployment-debt" data-domain="technical" data-origin="dd" data-search="driftsättningsskuld deployment debt alla genvägar, fel eller misstag som uppstår vid driftsättning, till exempel forcerade eller ofullständiga driftsättningsprocesser. senare, främst ai-relaterad litteratur beskriver den som det ackumulerade ingenjörsarbete som uppstår när prototyper eller lokalt fungerande system upprepade gånger förs vidare utan att kraven för tillförlitlig produktionsdrift löses. ernst m.fl., 2021; asatiani &amp; torell, 2023; costa, 2026 ernst et al., 2021; asatiani &amp; torell, 2023; costa, 2026 pipeline debt ligger nära men avser själva flödet snarare än övergången till produktion.  digital skuld">
             <h4 class="entry-title">Driftsättningsskuld <span class="entry-alt">(<span lang="en">Deployment debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Digital skuld">DD</abbr></li>
             </ul>
             <p class="entry-desc">Alla genvägar, fel eller misstag som uppstår vid driftsättning, till exempel forcerade eller ofullständiga driftsättningsprocesser. Senare, främst AI-relaterad litteratur beskriver den som det ackumulerade ingenjörsarbete som uppstår när prototyper eller lokalt fungerande system upprepade gånger förs vidare utan att kraven för tillförlitlig produktionsdrift löses.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> <a href="#pipeline-debt">Pipelineskuld</a> (ny) ligger nära, men avser själva flödet snarare än övergången till produktion.</p>
+            <p class="entry-relation"><a href="#pipeline-debt">Pipelineskuld</a> ligger nära men avser själva flödet snarare än övergången till produktion.</p>
             <p class="entry-source">Källa: Ernst m.fl., 2021; Asatiani &amp; Torell, 2023; Costa, 2026</p>
           </li>
-          <li class="entry" id="energy-debt" data-domain="technical" data-origin="ny" data-search="energiskuld energy debt ackumulerad energiineffektivitet i programvara som ökar den framtida insats som krävs för att återföra energiförbrukningen till en acceptabel nivå. couto m.fl., 2020 couto et al., 2020 föreslås som underkategori till sustainability debt. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="energy-debt" data-domain="technical" data-origin="ny" data-search="energiskuld energy debt ackumulerad energiineffektivitet i programvara som ökar den framtida insats som krävs för att återföra energiförbrukningen till en acceptabel nivå. couto m.fl., 2020 couto et al., 2020  sustainability debt underkategori tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Energiskuld <span class="entry-alt">(<span lang="en">Energy debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
+              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Ackumulerad energiineffektivitet i programvara som ökar den framtida insats som krävs för att återföra energiförbrukningen till en acceptabel nivå.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Föreslås som underkategori till <a href="#sustainability-debt">Hållbarhetsskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#sustainability-debt">Hållbarhetsskuld</a>.</p>
             <p class="entry-source">Källa: Couto m.fl., 2020</p>
           </li>
-          <li class="entry" id="explainability-debt" data-domain="technical" data-origin="ny" data-search="förklarbarhetsskuld explainability debt det ackumulerade gapet mellan den förklarbarhet, granskningsbarhet och intressentförståelse som krävs av ett ai-system och vad det driftsatta systemet faktiskt ger. gandikota, jegathesan m.fl., 2026 gandikota, jegathesan et al., 2026 ny ai-kategori. egen bedömning: kan ses som en ai-specifik underkategori till transparency debt, och ligger nära ai ethics debt. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="explainability-debt" data-domain="technical" data-origin="ny" data-search="förklarbarhetsskuld explainability debt det ackumulerade gapet mellan den förklarbarhet, granskningsbarhet och intressentförståelse som krävs av ett ai-system och vad det driftsatta systemet faktiskt ger. gandikota, jegathesan m.fl., 2026 gandikota, jegathesan et al., 2026 den ai-specifika formen av transparensskuld. ligger också nära ai ethics debt. transparency debt underkategori tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Förklarbarhetsskuld <span class="entry-alt">(<span lang="en">Explainability debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
+              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Det ackumulerade gapet mellan den förklarbarhet, granskningsbarhet och intressentförståelse som krävs av ett AI-system och vad det driftsatta systemet faktiskt ger.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Ny AI-kategori. Egen bedömning: kan ses som en AI-specifik underkategori till <a href="#transparency-debt">Transparensskuld</a>, och ligger nära <a href="#ai-ethics-debt">AI-etikskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#transparency-debt">Transparensskuld</a>. Den AI-specifika formen av transparensskuld. Ligger också nära <a href="#ai-ethics-debt">AI-etikskuld</a>.</p>
             <p class="entry-source">Källa: Gandikota, Jegathesan m.fl., 2026</p>
           </li>
-          <li class="entry" id="depreciation-debt" data-domain="technical" data-origin="td" data-search="föråldringsskuld depreciation debt långlivade system drar på sig föråldringsskuld eftersom teknikutvecklingens takt ofta hinner ikapp även välskriven programvara. rosser &amp; norton, 2021 rosser &amp; norton, 2021  teknisk skuld (traditionell)">
+          <li class="entry" id="depreciation-debt" data-domain="technical" data-origin="td" data-search="föråldringsskuld depreciation debt långlivade system drar på sig föråldringsskuld eftersom teknikutvecklingens takt ofta hinner ikapp även välskriven programvara. rosser &amp; norton, 2021 rosser &amp; norton, 2021   teknisk skuld (traditionell)">
             <h4 class="entry-title">Föråldringsskuld <span class="entry-alt">(<span lang="en">Depreciation debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
@@ -1284,17 +1291,17 @@
             <p class="entry-desc">Långlivade system drar på sig föråldringsskuld eftersom teknikutvecklingens takt ofta hinner ikapp även välskriven programvara.</p>
             <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="sustainability-debt" data-domain="technical" data-origin="ny" data-search="hållbarhetsskuld sustainability debt ackumulerad framtida kostnad och risk orsakad av arkitektur- eller designbeslut som skjuter upp miljömässiga, ekonomiska, sociala, individuella eller tekniska hållbarhetskrav. ojameruaye m.fl., 2016 ojameruaye et al., 2016 väl etablerad kandidat sedan 2016. föreslås som överordnad kategori till energy debt. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="sustainability-debt" data-domain="technical" data-origin="ny" data-search="hållbarhetsskuld sustainability debt ackumulerad framtida kostnad och risk orsakad av arkitektur- eller designbeslut som skjuter upp miljömässiga, ekonomiska, sociala, individuella eller tekniska hållbarhetskrav. ojameruaye m.fl., 2016 ojameruaye et al., 2016 väl etablerad sedan 2016.  tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Hållbarhetsskuld <span class="entry-alt">(<span lang="en">Sustainability debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
             </ul>
             <p class="entry-desc">Ackumulerad framtida kostnad och risk orsakad av arkitektur- eller designbeslut som skjuter upp miljömässiga, ekonomiska, sociala, individuella eller tekniska hållbarhetskrav.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Väl etablerad kandidat sedan 2016. Föreslås som överordnad kategori till <a href="#energy-debt">Energiskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#energy-debt">Energiskuld</a>. Väl etablerad sedan 2016.</p>
             <p class="entry-source">Källa: Ojameruaye m.fl., 2016</p>
           </li>
-          <li class="entry" id="infrastructure-debt" data-domain="technical" data-origin="td tyd" data-search="infrastrukturskuld infrastructure debt infrastrukturproblem som fördröjer eller hindrar utvecklingsaktiviteter, till exempel uppskjutna uppgraderingar. brister i infrastrukturen ger potentiellt långa ledtider för framtida förändringar och kräver modernisering och nyinvesteringar innan ny innovation med konkret nytta kan levereras. rios m.fl., 2018; alves m.fl., 2014; magnusson m.fl., 2018 rios et al., 2018; alves et al., 2014; magnusson et al., 2018  teknisk skuld (traditionell) teknologiskuld">
+          <li class="entry" id="infrastructure-debt" data-domain="technical" data-origin="td tyd" data-search="infrastrukturskuld infrastructure debt infrastrukturproblem som fördröjer eller hindrar utvecklingsaktiviteter, till exempel uppskjutna uppgraderingar. brister i infrastrukturen ger potentiellt långa ledtider för framtida förändringar och kräver modernisering och nyinvesteringar innan ny innovation med konkret nytta kan levereras. rios m.fl., 2018; alves m.fl., 2014; magnusson m.fl., 2018 rios et al., 2018; alves et al., 2014; magnusson et al., 2018   teknisk skuld (traditionell) teknologiskuld">
             <h4 class="entry-title">Infrastrukturskuld <span class="entry-alt">(<span lang="en">Infrastructure debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
@@ -1303,63 +1310,67 @@
             <p class="entry-desc">Infrastrukturproblem som fördröjer eller hindrar utvecklingsaktiviteter, till exempel uppskjutna uppgraderingar. Brister i infrastrukturen ger potentiellt långa ledtider för framtida förändringar och kräver modernisering och nyinvesteringar innan ny innovation med konkret nytta kan levereras.</p>
             <p class="entry-source">Källa: Rios m.fl., 2018; Alves m.fl., 2014; Magnusson m.fl., 2018</p>
           </li>
-          <li class="entry" id="integration-debt" data-domain="technical" data-origin="td" data-search="integrationsskuld integration debt insatsen som krävs för att koppla samman system eller komponenter för att uppnå önskad funktionalitet. icke-standardiserade kopplingar, proprietära gränssnitt och nischstandarder ökar skulden. rosser &amp; norton, 2021 rosser &amp; norton, 2021  teknisk skuld (traditionell)">
+          <li class="entry" id="integration-debt" data-domain="technical" data-origin="td" data-search="integrationsskuld integration debt insatsen som krävs för att koppla samman system eller komponenter för att uppnå önskad funktionalitet. icke-standardiserade kopplingar, proprietära gränssnitt och nischstandarder ökar skulden. rosser &amp; norton, 2021 rosser &amp; norton, 2021   teknisk skuld (traditionell)">
             <h4 class="entry-title">Integrationsskuld <span class="entry-alt">(<span lang="en">Integration debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
             </ul>
             <p class="entry-desc">Insatsen som krävs för att koppla samman system eller komponenter för att uppnå önskad funktionalitet. Icke-standardiserade kopplingar, proprietära gränssnitt och nischstandarder ökar skulden.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#service-debt">Tjänsteskuld</a>.</p>
             <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="privacy-debt" data-domain="technical" data-origin="td" data-search="integritetsskuld privacy debt omfattningen av de insatser som krävs för att identifiera, styra, kontrollera, kommunicera och skydda systemet med avseende på dataskydd och regelefterlevnad genom hela utvecklingslivscykeln. larrucea m.fl., 2021 larrucea et al., 2021 kan passa som underkategori till compliance debt (ny) eller security debt, beroende på om tyngdpunkten ligger på regelefterlevnad eller skydd. teknisk skuld (traditionell)">
+          <li class="entry" id="privacy-debt" data-domain="technical" data-origin="td" data-search="integritetsskuld privacy debt omfattningen av de insatser som krävs för att identifiera, styra, kontrollera, kommunicera och skydda systemet med avseende på dataskydd och regelefterlevnad genom hela utvecklingslivscykeln. larrucea m.fl., 2021 larrucea et al., 2021 inordnas under regelefterlevnadsskuld eftersom tyngdpunkten ligger på reglerat dataskydd. ligger också nära security debt. compliance debt underkategori teknisk skuld (traditionell)">
             <h4 class="entry-title">Integritetsskuld <span class="entry-alt">(<span lang="en">Privacy debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Omfattningen av de insatser som krävs för att identifiera, styra, kontrollera, kommunicera och skydda systemet med avseende på dataskydd och regelefterlevnad genom hela utvecklingslivscykeln.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Kan passa som underkategori till <a href="#compliance-debt">Regelefterlevnadsskuld</a> (ny) eller <a href="#security-debt">Säkerhetsskuld</a>, beroende på om tyngdpunkten ligger på regelefterlevnad eller skydd.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#compliance-debt">Regelefterlevnadsskuld</a> (social skuld). Inordnas under regelefterlevnadsskuld eftersom tyngdpunkten ligger på reglerat dataskydd. Ligger också nära <a href="#security-debt">Säkerhetsskuld</a>.</p>
             <p class="entry-source">Källa: Larrucea m.fl., 2021</p>
           </li>
-          <li class="entry" id="code-debt-implementation-debt" data-domain="technical" data-origin="td dd" data-search="kodskuld code debt (implementation debt) problem i källkoden, det vill säga dåligt skriven kod som bryter mot god praxis eller kodregler och som försämrar läsbarheten och gör koden svårare att underhålla. detta är cunninghams ursprungliga metafor från 1992: ”att skeppa kod första gången är som att ta ett lån”. cunningham, 1992; rios m.fl., 2018 cunningham, 1992; rios et al., 2018  teknisk skuld (traditionell) digital skuld">
+          <li class="entry" id="code-debt-implementation-debt" data-domain="technical" data-origin="td dd" data-search="kodskuld code debt (implementation debt) problem i källkoden, det vill säga dåligt skriven kod som bryter mot god praxis eller kodregler och som försämrar läsbarheten och gör koden svårare att underhålla. detta är cunninghams ursprungliga metafor från 1992: ”att skeppa kod första gången är som att ta ett lån”. cunningham, 1992; rios m.fl., 2018 cunningham, 1992; rios et al., 2018   teknisk skuld (traditionell) digital skuld">
             <h4 class="entry-title">Kodskuld <span class="entry-alt">(<span lang="en">Code debt (implementation debt)</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin"><abbr title="Digital skuld">DD</abbr></li>
             </ul>
             <p class="entry-desc">Problem i källkoden, det vill säga dåligt skriven kod som bryter mot god praxis eller kodregler och som försämrar läsbarheten och gör koden svårare att underhålla. Detta är Cunninghams ursprungliga metafor från 1992: ”att skeppa kod första gången är som att ta ett lån”.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#algorithm-debt">Algoritmskuld</a>.</p>
             <p class="entry-source">Källa: Cunningham, 1992; Rios m.fl., 2018</p>
           </li>
-          <li class="entry" id="compatibility-debt" data-domain="technical" data-origin="td" data-search="kompatibilitetsskuld compatibility debt ett projekts omogna beroenden till andra projekt som inte kan leverera alla kvalificerade tjänster, så att den nuvarande implementationen blir en tillfällig nödlösning. liu m.fl., 2020 liu et al., 2020 kan passa som underkategori till dependency debt (ny), eftersom den definieras av omogna beroenden till andra projekt. teknisk skuld (traditionell)">
+          <li class="entry" id="compatibility-debt" data-domain="technical" data-origin="td" data-search="kompatibilitetsskuld compatibility debt ett projekts omogna beroenden till andra projekt som inte kan leverera alla kvalificerade tjänster, så att den nuvarande implementationen blir en tillfällig nödlösning. liu m.fl., 2020 liu et al., 2020 definieras av omogna beroenden till andra projekt. dependency debt underkategori teknisk skuld (traditionell)">
             <h4 class="entry-title">Kompatibilitetsskuld <span class="entry-alt">(<span lang="en">Compatibility debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Ett projekts omogna beroenden till andra projekt som inte kan leverera alla kvalificerade tjänster, så att den nuvarande implementationen blir en tillfällig nödlösning.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Kan passa som underkategori till <a href="#dependency-debt">Beroendeskuld</a> (ny), eftersom den definieras av omogna beroenden till andra projekt.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#dependency-debt">Beroendeskuld</a>. Definieras av omogna beroenden till andra projekt.</p>
             <p class="entry-source">Källa: Liu m.fl., 2020</p>
           </li>
-          <li class="entry" id="configuration-debt" data-domain="technical" data-origin="td" data-search="konfigurationsskuld configuration debt uppstår när konfigurationsmekanismer inte kontrolleras lika rigoröst som programvaran, när skillnader mellan konfigurationer inte enkelt kan fastställas, eller när redundant eller oanvänd konfigurationsdata finns kvar. rosser &amp; norton, 2021 rosser &amp; norton, 2021  teknisk skuld (traditionell)">
+          <li class="entry" id="configuration-debt" data-domain="technical" data-origin="td" data-search="konfigurationsskuld configuration debt uppstår när konfigurationsmekanismer inte kontrolleras lika rigoröst som programvaran, när skillnader mellan konfigurationer inte enkelt kan fastställas, eller när redundant eller oanvänd konfigurationsdata finns kvar. rosser &amp; norton, 2021 rosser &amp; norton, 2021   teknisk skuld (traditionell)">
             <h4 class="entry-title">Konfigurationsskuld <span class="entry-alt">(<span lang="en">Configuration debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
             </ul>
             <p class="entry-desc">Uppstår när konfigurationsmekanismer inte kontrolleras lika rigoröst som programvaran, när skillnader mellan konfigurationer inte enkelt kan fastställas, eller när redundant eller oanvänd konfigurationsdata finns kvar.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#ai-configuration-debt">AI-konfigurationsskuld</a>.</p>
             <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="quality-debt" data-domain="technical" data-origin="td" data-search="kvalitetsskuld quality debt insatsen som krävs för att åtgärda de defekter, upptäckta eller oupptäckta, som finns i ett system vid en given tidpunkt. rosser &amp; norton, 2021 rosser &amp; norton, 2021  teknisk skuld (traditionell)">
+          <li class="entry" id="quality-debt" data-domain="technical" data-origin="td" data-search="kvalitetsskuld quality debt insatsen som krävs för att åtgärda de defekter, upptäckta eller oupptäckta, som finns i ett system vid en given tidpunkt. rosser &amp; norton, 2021 rosser &amp; norton, 2021   teknisk skuld (traditionell)">
             <h4 class="entry-title">Kvalitetsskuld <span class="entry-alt">(<span lang="en">Quality debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
             </ul>
             <p class="entry-desc">Insatsen som krävs för att åtgärda de defekter, upptäckta eller oupptäckta, som finns i ett system vid en given tidpunkt.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#defect-debt">Defektskuld</a>.</p>
             <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="modelling-and-simulation-debt" data-domain="technical" data-origin="td" data-search="modellerings- och simuleringsskuld modelling and simulation debt när modellbaserad utveckling blir standardpraxis blir modellerna en del av den tekniska basen och därmed själva föremål för teknisk skuld. rosser &amp; norton, 2021 rosser &amp; norton, 2021  teknisk skuld (traditionell)">
+          <li class="entry" id="modelling-and-simulation-debt" data-domain="technical" data-origin="td" data-search="modellerings- och simuleringsskuld modelling and simulation debt när modellbaserad utveckling blir standardpraxis blir modellerna en del av den tekniska basen och därmed själva föremål för teknisk skuld. rosser &amp; norton, 2021 rosser &amp; norton, 2021   teknisk skuld (traditionell)">
             <h4 class="entry-title">Modellerings- och simuleringsskuld <span class="entry-alt">(<span lang="en">Modelling and simulation debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
@@ -1368,37 +1379,37 @@
             <p class="entry-desc">När modellbaserad utveckling blir standardpraxis blir modellerna en del av den tekniska basen och därmed själva föremål för teknisk skuld.</p>
             <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="pipeline-debt" data-domain="technical" data-origin="ny" data-search="pipelineskuld pipeline debt skuld inbäddad i sköra, hårt kopplade, svårreproducerade eller svagt styrda bygg-, data-, ml- eller driftsättningsflöden. brahmi m.fl., 2026 brahmi et al., 2026 stark kandidat, framför allt för ai/ml-system. egen bedömning: kan passa som underkategori till automation (build) debt. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="pipeline-debt" data-domain="technical" data-origin="ny" data-search="pipelineskuld pipeline debt skuld inbäddad i sköra, hårt kopplade, svårreproducerade eller svagt styrda bygg-, data-, ml- eller driftsättningsflöden. brahmi m.fl., 2026 brahmi et al., 2026 särskilt relevant för ai/ml-system. automation (build) debt underkategori tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Pipelineskuld <span class="entry-alt">(<span lang="en">Pipeline debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
+              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Skuld inbäddad i sköra, hårt kopplade, svårreproducerade eller svagt styrda bygg-, data-, ML- eller driftsättningsflöden.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Stark kandidat, framför allt för AI/ML-system. Egen bedömning: kan passa som underkategori till <a href="#automation-build-debt">Automatiseringsskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#automation-build-debt">Automatiseringsskuld</a>. Särskilt relevant för AI/ML-system.</p>
             <p class="entry-source">Källa: Brahmi m.fl., 2026</p>
           </li>
-          <li class="entry" id="performance-debt" data-domain="technical" data-origin="ny" data-search="prestandaskuld performance debt ackumulerad framtida kostnad orsakad av uppskjutna förbättringar av prestanda, skalbarhet, svarstider, genomströmning eller resurseffektivitet. carvalho m.fl., 2026 carvalho et al., 2026 bra kandidat, även om forskningsbasen är mindre än för kod- och arkitekturskuld. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="performance-debt" data-domain="technical" data-origin="ny" data-search="prestandaskuld performance debt ackumulerad framtida kostnad orsakad av uppskjutna förbättringar av prestanda, skalbarhet, svarstider, genomströmning eller resurseffektivitet. carvalho m.fl., 2026 carvalho et al., 2026 egen kategori, med mindre forskningsbas än kod- och arkitekturskuld.  tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Prestandaskuld <span class="entry-alt">(<span lang="en">Performance debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
             </ul>
             <p class="entry-desc">Ackumulerad framtida kostnad orsakad av uppskjutna förbättringar av prestanda, skalbarhet, svarstider, genomströmning eller resurseffektivitet.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Bra kandidat, även om forskningsbasen är mindre än för kod- och arkitekturskuld.</p>
+            <p class="entry-relation">Egen kategori, med mindre forskningsbas än kod- och arkitekturskuld.</p>
             <p class="entry-source">Källa: Carvalho m.fl., 2026</p>
           </li>
-          <li class="entry" id="semantic-debt" data-domain="technical" data-origin="ny" data-search="semantisk skuld semantic debt ackumulerade inkonsekvenser, tvetydigheter och oförenliga betydelser i scheman, ontologier och gemensamma databegrepp som gör integration allt dyrare. mukherjee, 2026 mukherjee, 2026 framväxande, men potentiellt mycket relevant för informationsinfrastruktur. egen bedömning: kan passa som underkategori till information debt. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="semantic-debt" data-domain="technical" data-origin="ny" data-search="semantisk skuld semantic debt ackumulerade inkonsekvenser, tvetydigheter och oförenliga betydelser i scheman, ontologier och gemensamma databegrepp som gör integration allt dyrare. mukherjee, 2026 mukherjee, 2026 inordnas under informationsskuld trots att den ligger på den tekniska sidan. potentiellt mycket relevant för informationsinfrastruktur. information debt underkategori tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Semantisk skuld <span class="entry-alt">(<span lang="en">Semantic debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
+              <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Ackumulerade inkonsekvenser, tvetydigheter och oförenliga betydelser i scheman, ontologier och gemensamma databegrepp som gör integration allt dyrare.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Framväxande, men potentiellt mycket relevant för informationsinfrastruktur. Egen bedömning: kan passa som underkategori till <a href="#information-debt">Informationsskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#information-debt">Informationsskuld</a> (social skuld). Inordnas under informationsskuld trots att den ligger på den tekniska sidan. Potentiellt mycket relevant för informationsinfrastruktur.</p>
             <p class="entry-source">Källa: Mukherjee, 2026</p>
           </li>
-          <li class="entry" id="security-debt" data-domain="technical" data-origin="td" data-search="säkerhetsskuld security debt en lösning som kompromissar med systemets säkerhet, till exempel genom att införa en specifik sårbarhet. teknisk skuld som innehåller en säkerhetsrisk. silva m.fl., 2016; rindell m.fl., 2019 silva et al., 2016; rindell et al., 2019  teknisk skuld (traditionell)">
+          <li class="entry" id="security-debt" data-domain="technical" data-origin="td" data-search="säkerhetsskuld security debt en lösning som kompromissar med systemets säkerhet, till exempel genom att införa en specifik sårbarhet. teknisk skuld som innehåller en säkerhetsrisk. silva m.fl., 2016; rindell m.fl., 2019 silva et al., 2016; rindell et al., 2019   teknisk skuld (traditionell)">
             <h4 class="entry-title">Säkerhetsskuld <span class="entry-alt">(<span lang="en">Security debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
@@ -1407,56 +1418,57 @@
             <p class="entry-desc">En lösning som kompromissar med systemets säkerhet, till exempel genom att införa en specifik sårbarhet. Teknisk skuld som innehåller en säkerhetsrisk.</p>
             <p class="entry-source">Källa: Silva m.fl., 2016; Rindell m.fl., 2019</p>
           </li>
-          <li class="entry" id="automation-test-debt" data-domain="technical" data-origin="td" data-search="testautomatiseringsskuld automation test debt arbetet som återstår med att automatisera tester av tidigare utvecklad funktionalitet för att stödja kontinuerlig integration och snabbare utvecklingscykler, samt ansamlade problem som dåligt underhållna testskript, föråldrade testfall och bristande testtäckning. rios m.fl., 2018; wiklund m.fl., 2012 rios et al., 2018; wiklund et al., 2012 kan passa som underkategori till test debt (testing debt). teknisk skuld (traditionell)">
+          <li class="entry" id="automation-test-debt" data-domain="technical" data-origin="td" data-search="testautomatiseringsskuld automation test debt arbetet som återstår med att automatisera tester av tidigare utvecklad funktionalitet för att stödja kontinuerlig integration och snabbare utvecklingscykler, samt ansamlade problem som dåligt underhållna testskript, föråldrade testfall och bristande testtäckning. rios m.fl., 2018; wiklund m.fl., 2012 rios et al., 2018; wiklund et al., 2012  test debt (testing debt) underkategori teknisk skuld (traditionell)">
             <h4 class="entry-title">Testautomatiseringsskuld <span class="entry-alt">(<span lang="en">Automation test debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Arbetet som återstår med att automatisera tester av tidigare utvecklad funktionalitet för att stödja kontinuerlig integration och snabbare utvecklingscykler, samt ansamlade problem som dåligt underhållna testskript, föråldrade testfall och bristande testtäckning.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Kan passa som underkategori till <a href="#test-debt-testing-debt">Testskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#test-debt-testing-debt">Testskuld</a>.</p>
             <p class="entry-source">Källa: Rios m.fl., 2018; Wiklund m.fl., 2012</p>
           </li>
-          <li class="entry" id="test-debt-testing-debt" data-domain="technical" data-origin="td dd" data-search="testskuld test debt (testing debt) genvägar, det vill säga felaktiga eller icke-optimala beslut, i testningen, samt problem i testaktiviteter som påverkar kvaliteten på dessa aktiviteter. samarthyam m.fl., 2017; rios m.fl., 2018 samarthyam et al., 2017; rios et al., 2018  teknisk skuld (traditionell) digital skuld">
+          <li class="entry" id="test-debt-testing-debt" data-domain="technical" data-origin="td dd" data-search="testskuld test debt (testing debt) genvägar, det vill säga felaktiga eller icke-optimala beslut, i testningen, samt problem i testaktiviteter som påverkar kvaliteten på dessa aktiviteter. samarthyam m.fl., 2017; rios m.fl., 2018 samarthyam et al., 2017; rios et al., 2018   teknisk skuld (traditionell) digital skuld">
             <h4 class="entry-title">Testskuld <span class="entry-alt">(<span lang="en">Test debt (testing debt)</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin"><abbr title="Digital skuld">DD</abbr></li>
             </ul>
             <p class="entry-desc">Genvägar, det vill säga felaktiga eller icke-optimala beslut, i testningen, samt problem i testaktiviteter som påverkar kvaliteten på dessa aktiviteter.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#automation-test-debt">Testautomatiseringsskuld</a>.</p>
             <p class="entry-source">Källa: Samarthyam m.fl., 2017; Rios m.fl., 2018</p>
           </li>
-          <li class="entry" id="accessibility-debt" data-domain="technical" data-origin="ny" data-search="tillgänglighetsskuld accessibility debt ackumulerade tillgänglighetshinder som uppstår när krav på inkluderande design skjuts upp och senare kräver kostsam omdesign eller åtgärd. indika m.fl., 2026; lazar m.fl., 2026 indika et al., 2026; lazar et al., 2026 stark och konceptuellt distinkt från usability debt; bör vara egen kategori. tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
+          <li class="entry" id="accessibility-debt" data-domain="technical" data-origin="ny" data-search="tillgänglighetsskuld accessibility debt ackumulerade tillgänglighetshinder som uppstår när krav på inkluderande design skjuts upp och senare kräver kostsam omdesign eller åtgärd. indika m.fl., 2026; lazar m.fl., 2026 indika et al., 2026; lazar et al., 2026 egen kategori, konceptuellt distinkt från usability debt.  tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">
             <h4 class="entry-title">Tillgänglighetsskuld <span class="entry-alt">(<span lang="en">Accessibility debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Tillagd i registret efter avhandlingen; ingår inte i avhandlingens figur 2">Ny</abbr></li>
             </ul>
             <p class="entry-desc">Ackumulerade tillgänglighetshinder som uppstår när krav på inkluderande design skjuts upp och senare kräver kostsam omdesign eller åtgärd.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Litteraturgenomgången:</span> Stark och konceptuellt distinkt från <a href="#usability-debt">Användbarhetsskuld</a>; bör vara egen kategori.</p>
+            <p class="entry-relation">Egen kategori, konceptuellt distinkt från <a href="#usability-debt">Användbarhetsskuld</a>.</p>
             <p class="entry-source">Källa: Indika m.fl., 2026; Lazar m.fl., 2026</p>
           </li>
-          <li class="entry" id="service-debt" data-domain="technical" data-origin="td" data-search="tjänsteskuld service debt olämpligt val och utbyte av webbtjänster som leder till att tjänsternas egenskaper inte matchar applikationernas krav. relevant för tjänsteorienterade arkitekturer. rios m.fl., 2018 rios et al., 2018 kan passa som underkategori till integration debt. teknisk skuld (traditionell)">
+          <li class="entry" id="service-debt" data-domain="technical" data-origin="td" data-search="tjänsteskuld service debt olämpligt val och utbyte av webbtjänster som leder till att tjänsternas egenskaper inte matchar applikationernas krav. relevant för tjänsteorienterade arkitekturer. rios m.fl., 2018 rios et al., 2018  integration debt underkategori teknisk skuld (traditionell)">
             <h4 class="entry-title">Tjänsteskuld <span class="entry-alt">(<span lang="en">Service debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
-              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-sub">Underkategori</li>
             </ul>
             <p class="entry-desc">Olämpligt val och utbyte av webbtjänster som leder till att tjänsternas egenskaper inte matchar applikationernas krav. Relevant för tjänsteorienterade arkitekturer.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> Kan passa som underkategori till <a href="#integration-debt">Integrationsskuld</a>.</p>
+            <p class="entry-relation"><strong>Underkategori till</strong> <a href="#integration-debt">Integrationsskuld</a>.</p>
             <p class="entry-source">Källa: Rios m.fl., 2018</p>
           </li>
-          <li class="entry" id="transparency-debt" data-domain="technical" data-origin="td egen" data-search="transparensskuld transparency debt att koden är stängd leder till transparensproblem kring vilka data som lagras om medborgarna och vilka algoritmer som används när ärenden bedöms. identifierad i avhandlingens första studie av bygglovsprocessens system i en svensk kommun. persson m.fl., 2023 (publikation i) persson et al., 2023 (publication i) explainability debt (ny) ligger nära och kan ses som en ai-specifik underkategori till transparensskuld. teknisk skuld (traditionell) identifierad i avhandlingens egna studier">
+          <li class="entry" id="transparency-debt" data-domain="technical" data-origin="td egen" data-search="transparensskuld transparency debt att koden är stängd leder till transparensproblem kring vilka data som lagras om medborgarna och vilka algoritmer som används när ärenden bedöms. identifierad i avhandlingens första studie av bygglovsprocessens system i en svensk kommun. persson m.fl., 2023 (publikation i) persson et al., 2023 (publication i) explainability debt är den ai-specifika formen.  teknisk skuld (traditionell) identifierad i avhandlingens egna studier">
             <h4 class="entry-title">Transparensskuld <span class="entry-alt">(<span lang="en">Transparency debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
               <li class="tag tag-origin"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin"><abbr title="Identifierad i avhandlingens egna studier">Egen</abbr></li>
             </ul>
             <p class="entry-desc">Att koden är stängd leder till transparensproblem kring vilka data som lagras om medborgarna och vilka algoritmer som används när ärenden bedöms. Identifierad i avhandlingens första studie av bygglovsprocessens system i en svensk kommun.</p>
-            <p class="entry-relation"><strong>Underkategori eller egen kategori?</strong> <span class="relation-label">Egen bedömning:</span> <a href="#explainability-debt">Förklarbarhetsskuld</a> (ny) ligger nära och kan ses som en AI-specifik underkategori till transparensskuld.</p>
+            <p class="entry-relation"><strong>Underkategorier:</strong> <a href="#explainability-debt">Förklarbarhetsskuld</a>. <a href="#explainability-debt">Förklarbarhetsskuld</a> är den AI-specifika formen.</p>
             <p class="entry-source">Källa: Persson m.fl., 2023 (publikation I)</p>
           </li>
-          <li class="entry" id="variability-debt" data-domain="technical" data-origin="td" data-search="variabilitetsskuld variability debt defekter och suboptimala lösningar i hanteringen av variabilitet i programvara, till exempel opportunistisk återanvändning som ger kortsiktiga fördelar oavsett tekniska och arkitektoniska nackdelar på medellång och lång sikt. wolfart m.fl., 2021 wolfart et al., 2021  teknisk skuld (traditionell)">
+          <li class="entry" id="variability-debt" data-domain="technical" data-origin="td" data-search="variabilitetsskuld variability debt defekter och suboptimala lösningar i hanteringen av variabilitet i programvara, till exempel opportunistisk återanvändning som ger kortsiktiga fördelar oavsett tekniska och arkitektoniska nackdelar på medellång och lång sikt. wolfart m.fl., 2021 wolfart et al., 2021   teknisk skuld (traditionell)">
             <h4 class="entry-title">Variabilitetsskuld <span class="entry-alt">(<span lang="en">Variability debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
@@ -1465,7 +1477,7 @@
             <p class="entry-desc">Defekter och suboptimala lösningar i hanteringen av variabilitet i programvara, till exempel opportunistisk återanvändning som ger kortsiktiga fördelar oavsett tekniska och arkitektoniska nackdelar på medellång och lång sikt.</p>
             <p class="entry-source">Källa: Wolfart m.fl., 2021</p>
           </li>
-          <li class="entry" id="versioning-debt" data-domain="technical" data-origin="td" data-search="versionshanteringsskuld versioning debt problem i versionshanteringen av källkod, till exempel onödiga kodförgreningar. rios m.fl., 2018 rios et al., 2018  teknisk skuld (traditionell)">
+          <li class="entry" id="versioning-debt" data-domain="technical" data-origin="td" data-search="versionshanteringsskuld versioning debt problem i versionshanteringen av källkod, till exempel onödiga kodförgreningar. rios m.fl., 2018 rios et al., 2018   teknisk skuld (traditionell)">
             <h4 class="entry-title">Versionshanteringsskuld <span class="entry-alt">(<span lang="en">Versioning debt</span>)</span></h4>
             <ul class="tags" aria-label="Klassificering">
               <li class="tag tag-technical">Teknisk skuld</li>
@@ -1631,7 +1643,7 @@
           <li>
             <span class="year">2026</span>
             <h3>Registret utökas med kategorier efter avhandlingen</h3>
-            <p>En genomgång av litteratur som tillkommit efter avhandlingen, och av några äldre kategorier som inte fanns med i figur 2, tillför registret ytterligare kategorier märkta ”Ny”. På den sociala sidan bland annat konsensus-, team-, lednings-, regelefterlevnads-, kunskaps- och institutionell skuld; på den tekniska sidan bland annat beroende-, pipeline-, prestanda-, tillgänglighets-, hållbarhets-, förklarbarhets- och semantisk skuld samt agentisk teknisk skuld. Flera av dem föreslås i litteraturen som underkategorier till andra, vilket anges på respektive kort.</p>
+            <p>En genomgång av litteratur som tillkommit efter avhandlingen, och av några äldre kategorier som inte fanns med i figur 2, tillför registret ytterligare kategorier märkta ”Ny”. På den sociala sidan bland annat konsensus-, team-, lednings-, regelefterlevnads-, kunskaps- och institutionell skuld; på den tekniska sidan bland annat beroende-, pipeline-, prestanda-, tillgänglighets-, hållbarhets-, förklarbarhets- och semantisk skuld samt agentisk teknisk skuld. Flera av dem inordnas som underkategorier till andra, vilket anges på respektive kort. Samtidigt inordnas några av avhandlingens ursprungliga kategorier på samma sätt, till exempel databasdesignskuld under databasskuld och skugg-IT-skuld under styrningsskuld.</p>
           </li>
         </ol>
       </div>
