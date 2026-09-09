@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register över socio-teknisk skuld – Per Persson, Ph.D.</title>
+  <meta name="description" content="Sökbart register över samtliga 45 kategorier av socio-teknisk skuld (STeD), sorterade i social och teknisk skuld, med definitioner, källor och begreppets historia från Cunninghams metafor 1992 till dagens samlande begrepp.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Register över socio-teknisk skuld">
+  <meta property="og:description" content="Samtliga 45 kategorier av socio-teknisk skuld i ett sökbart register, med definitioner, källor och begreppets historia.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://phd-persson.se/tjanster/socio-teknisk-skuld/">
+  <meta property="og:locale" content="sv_SE">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+      /* Domänfärger (text på ljus bakgrund, kontrast ≥ 4.5:1) */
+      --color-social: #7a3b12;
+      --color-social-bg: #fbeee4;
+      --color-technical: #1f4f8b;
+      --color-technical-bg: #e8eff8;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* Endast för skärmläsare */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Hoppa-till-innehåll-länk för skärmläsare/tangentbord */
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Hjälte */
+    .hero {
+      padding: var(--space-xl) 0;
+      background: var(--color-surface);
+    }
+    .hero h1 {
+      margin: 0 0 var(--space-md);
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    .hero p {
+      margin: 0 0 var(--space-md);
+      max-width: 48rem;
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+    }
+    .hero p:last-child { margin-bottom: 0; }
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .hero h1 { font-size: 3rem; }
+    }
+
+    .hero-facts {
+      list-style: none;
+      margin: var(--space-lg) 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .hero-facts li {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.4em;
+      padding: var(--space-xs) var(--space-md);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .hero-facts strong {
+      font-size: 1.25rem;
+      color: var(--color-text);
+    }
+    .hero-facts li.fact-social strong { color: var(--color-social); }
+    .hero-facts li.fact-technical strong { color: var(--color-technical); }
+    .hero-facts a { color: var(--color-primary); }
+
+    /* Sektioner */
+    main section { padding: var(--space-xl) 0; }
+    main h2 {
+      margin: 0 0 var(--space-md);
+      font-size: 1.5rem;
+    }
+    main h3 {
+      margin: 0 0 var(--space-sm);
+      font-size: 1.125rem;
+      line-height: 1.3;
+    }
+    .section-intro {
+      margin: 0 0 var(--space-lg);
+      max-width: 48rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Registrets verktygsrad */
+    .toolbar {
+      display: grid;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      margin-bottom: var(--space-lg);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+    @media (min-width: 1024px) {
+      .toolbar {
+        grid-template-columns: minmax(16rem, 1.5fr) auto auto auto;
+        align-items: end;
+      }
+    }
+    .toolbar label,
+    .toolbar .group-label {
+      display: block;
+      margin-bottom: var(--space-xs);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .toolbar input[type="search"],
+    .toolbar select {
+      width: 100%;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-sm);
+      font: inherit;
+      color: var(--color-text);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+    .segmented {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .segmented button {
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      font: inherit;
+      font-weight: 600;
+      color: var(--color-primary);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .segmented button:hover { border-color: var(--color-primary); }
+    .segmented button[aria-pressed="true"] {
+      color: #fff;
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+    .toolbar .reset {
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      font: inherit;
+      font-weight: 600;
+      color: var(--color-primary);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .toolbar .reset:hover { border-color: var(--color-primary); }
+    .result-count {
+      margin: 0 0 var(--space-md);
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .no-js-note { margin: 0 0 var(--space-md); color: var(--color-text-muted); font-size: 0.9375rem; }
+    .js .no-js-note { display: none; }
+    .no-js .toolbar { display: none; }
+
+    /* Domängrupper */
+    .domain {
+      margin-bottom: var(--space-xl);
+    }
+    .domain-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+      padding-bottom: var(--space-sm);
+      border-bottom: 3px solid var(--color-border);
+    }
+    .domain-social .domain-header { border-color: var(--color-social); }
+    .domain-technical .domain-header { border-color: var(--color-technical); }
+    .domain-header h3 {
+      margin: 0;
+      font-size: 1.375rem;
+    }
+    .domain-count {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .domain-def {
+      margin: 0 0 var(--space-lg);
+      max-width: 48rem;
+      color: var(--color-text-muted);
+    }
+    .domain[hidden] { display: none; }
+
+    .entries {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .entries { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .entries { grid-template-columns: repeat(3, 1fr); }
+    }
+    .entry {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      scroll-margin-top: var(--space-lg);
+    }
+    .entry[hidden] { display: none; }
+    .entry:target { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+    .entry-title {
+      margin: 0;
+      font-size: 1.125rem;
+      line-height: 1.3;
+    }
+    .entry-en {
+      display: block;
+      margin-top: 0.125rem;
+      font-size: 0.875rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+    .tags {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.125rem var(--space-xs);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-surface);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .tag abbr { text-decoration: none; }
+    .tag-social {
+      color: var(--color-social);
+      background: var(--color-social-bg);
+      border-color: transparent;
+    }
+    .tag-technical {
+      color: var(--color-technical);
+      background: var(--color-technical-bg);
+      border-color: transparent;
+    }
+    .entry-desc {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+    .entry-note {
+      margin: 0;
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-border);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .entry-source {
+      margin: auto 0 0;
+      padding-top: var(--space-xs);
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+    }
+    .empty-state {
+      padding: var(--space-lg);
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius);
+      color: var(--color-text-muted);
+    }
+    .empty-state[hidden] { display: none; }
+
+    /* Förklaring av förkortningar */
+    .legend {
+      margin: 0 0 var(--space-lg);
+      padding: var(--space-md) var(--space-lg);
+      max-width: 48rem;
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .legend dl {
+      margin: 0;
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 0.25rem var(--space-md);
+    }
+    .legend dt { font-weight: 600; color: var(--color-text); }
+    .legend dd { margin: 0; }
+
+    /* Struktur och beroenden */
+    .structure {
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .structure { grid-template-columns: repeat(2, 1fr); }
+    }
+    .structure-card {
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-top: 4px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .structure-card.is-social { border-top-color: var(--color-social); }
+    .structure-card.is-technical { border-top-color: var(--color-technical); }
+    .structure-card p { margin: 0 0 var(--space-sm); color: var(--color-text-muted); }
+    .structure-card p:last-child { margin-bottom: 0; }
+
+    .dependency {
+      margin: var(--space-lg) 0 0;
+      padding: var(--space-lg);
+      max-width: 48rem;
+      background: var(--color-surface);
+      border-radius: var(--radius);
+    }
+    .dependency figure { margin: 0; }
+    .dependency .figure-scroll {
+      overflow-x: auto;
+      margin-bottom: var(--space-md);
+    }
+    .dependency svg {
+      display: block;
+      width: 100%;
+      min-width: 28rem;
+      max-width: 38rem;
+      height: auto;
+      margin: 0 auto;
+    }
+    .dependency figcaption {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+
+    .definition-quote {
+      margin: 0 0 var(--space-lg);
+      padding: var(--space-md) var(--space-lg);
+      max-width: 48rem;
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--color-text-muted);
+    }
+    .definition-quote p { margin: 0 0 var(--space-xs); font-style: italic; }
+    .definition-quote cite { font-style: normal; font-size: 0.875rem; }
+
+    /* Tidslinje */
+    .timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-width: 48rem;
+      border-left: 3px solid var(--color-border);
+    }
+    .timeline li {
+      position: relative;
+      margin: 0 0 var(--space-lg);
+      padding-left: var(--space-xl);
+    }
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: calc(-0.5rem - 1.5px);
+      top: 0.45rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: var(--color-bg);
+      border: 3px solid var(--color-primary);
+    }
+    .timeline li.milestone::before { background: var(--color-primary); }
+    .timeline .year {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+    }
+    .timeline h3 { margin: 0.125rem 0 var(--space-xs); }
+    .timeline p { margin: 0 0 var(--space-xs); color: var(--color-text-muted); }
+    .timeline p:last-child { margin-bottom: 0; }
+    .timeline blockquote {
+      margin: var(--space-xs) 0;
+      padding: var(--space-xs) var(--space-md);
+      border-left: 3px solid var(--color-border);
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+    .timeline blockquote p { margin: 0; }
+
+    /* Paraplybegrepp */
+    .umbrellas {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-md);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .umbrellas { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .umbrellas { grid-template-columns: repeat(4, 1fr); }
+    }
+    .umbrella {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .umbrella .tag { align-self: flex-start; }
+    .umbrella p { margin: 0; color: var(--color-text-muted); }
+    .umbrella .umbrella-meta { margin-top: auto; font-size: 0.8125rem; }
+
+    /* Källor */
+    .references {
+      margin: 0;
+      padding-left: 1.25rem;
+      max-width: 48rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .references li { margin-bottom: var(--space-xs); }
+
+    /* Avslutande sektion */
+    .note {
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      padding: var(--space-lg);
+      max-width: 48rem;
+    }
+    .note h2 { margin: 0 0 var(--space-sm); }
+    .note p {
+      margin: 0 0 var(--space-sm);
+      color: var(--color-text-muted);
+    }
+    .note p:last-child { margin-bottom: 0; }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body class="no-js">
+  <script>document.body.className = 'js';</script>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/">Blogg</a></li>
+          <li><a href="../" aria-current="page">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <h1 id="hero-title">Register över socio-teknisk skuld</h1>
+        <p>
+          Socio-teknisk skuld (STeD) uppstår när tidigare sociala och/eller tekniska beslut leder till ineffektivitet eller ökade risker i att utforma, bygga, förvalta, styra eller använda digitala lösningar, vilket i sin tur hämmar organisationens förmåga att skapa värde och nå sina mål. Registret samlar samtliga kategorier av skuld som identifierats i litteraturen och i min <a href="https://gupea.ub.gu.se/items/01e1caf1-9259-4b74-aafa-ba75a306b06c" rel="noopener">doktorsavhandling</a>, sorterade efter om skulden sitter i den tekniska artefakten eller i de sociala strukturerna runt den.
+        </p>
+        <ul class="hero-facts" aria-label="Registret i siffror">
+          <li><strong>45</strong> kategorier</li>
+          <li class="fact-social"><strong>14</strong> social skuld</li>
+          <li class="fact-technical"><strong>31</strong> teknisk skuld</li>
+          <li><strong>4</strong> paraplybegrepp</li>
+          <li><a href="#historia-title">Begreppets historia</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="register-title" id="register">
+      <div class="container">
+        <h2 id="register-title">Registret</h2>
+        <p class="section-intro">
+          Sök på svenskt eller engelskt namn, eller på ord i beskrivningen. Filtrera på domän (social eller teknisk) och på vilket paraplybegrepp kategorin ursprungligen definierats inom. Varje post anger källa till definitionen.
+        </p>
+        <p class="no-js-note">Sök och filter kräver JavaScript. Samtliga kategorier visas nedan.</p>
+
+        <form class="toolbar" id="filters" role="search" aria-label="Sök och filtrera registret" onsubmit="return false;">
+          <div>
+            <label for="q">Sök</label>
+            <input type="search" id="q" name="q" placeholder="t.ex. dokumentation, governance, upphandling" autocomplete="off">
+          </div>
+          <div>
+            <span class="group-label" id="domain-label">Domän</span>
+            <div class="segmented" role="group" aria-labelledby="domain-label">
+              <button type="button" data-domain="all" aria-pressed="true">Alla</button>
+              <button type="button" data-domain="social" aria-pressed="false">Social skuld</button>
+              <button type="button" data-domain="technical" aria-pressed="false">Teknisk skuld</button>
+            </div>
+          </div>
+          <div>
+            <label for="origin">Ursprung</label>
+            <select id="origin" name="origin">
+              <option value="all">Alla paraplybegrepp</option>
+              <option value="td">TD – Teknisk skuld (traditionell)</option>
+              <option value="ai">AI – AI-specifik teknisk skuld</option>
+              <option value="dd">DD – Digital skuld</option>
+              <option value="tyd">TyD – Teknologiskuld</option>
+              <option value="ntd">NTD – Icke-teknisk skuld</option>
+              <option value="egen">Egen – Avhandlingens egna studier</option>
+            </select>
+          </div>
+          <div>
+            <button type="button" class="reset" id="reset">Rensa filter</button>
+          </div>
+        </form>
+
+        <p class="result-count" id="result-count" aria-live="polite" aria-atomic="true">Visar 45 av 45 kategorier.</p>
+
+        <div class="domain domain-social" id="domain-social">
+          <div class="domain-header">
+            <h3>Social skuld</h3>
+            <span class="domain-count" data-count-for="social">14 kategorier</span>
+          </div>
+          <p class="domain-def">
+            Social skuld uppstår ur brister i kommunikation, ledning och organiseringen av utvecklingsarbetet. Exempel är svag teamledning, bristfällig prioritering och kommunikationssammanbrott mellan verksamheten och IT-avdelningen. Skulden ansamlas genom sociala beslut och sitter i strukturer, roller och relationer snarare än i tekniken.
+          </p>
+          <ul class="entries">
+          <li class="entry" id="ai-etikskuld" data-domain="social" data-origin="td ai" data-search="ai-etikskuld ai ethics debt brister i etiska aspekter av ai-baserade system, till exempel algoritmisk rättvisa, snedvridna prediktioner eller avsaknad av transparens och ansvarsutkrävande. klassas i avhandlingen som social skuld eftersom rötterna ligger i beslut och värderingar snarare än i artefakten. bogner m.fl., 2021 teknisk skuld (traditionell) ai-specifik teknisk skuld">
+            <h4 class="entry-title">AI-etikskuld <span class="entry-en" lang="en">AI ethics debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="AI-specifik teknisk skuld"><abbr title="AI-specifik teknisk skuld">AI</abbr></li>
+            </ul>
+            <p class="entry-desc">Brister i etiska aspekter av AI-baserade system, till exempel algoritmisk rättvisa, snedvridna prediktioner eller avsaknad av transparens och ansvarsutkrävande. Klassas i avhandlingen som social skuld eftersom rötterna ligger i beslut och värderingar snarare än i artefakten.</p>
+            <p class="entry-source">Källa: Bogner m.fl., 2021</p>
+          </li>
+          <li class="entry" id="anseendeskuld" data-domain="social" data-origin="tyd" data-search="anseendeskuld reputation debt brister i leveransförmåga under lång tid skapar ett anseende där användarna har låg tillit till it-avdelningen. förtroendet mellan it-funktionen och verksamheten eroderar. magnusson m.fl., 2018 teknologiskuld">
+            <h4 class="entry-title">Anseendeskuld <span class="entry-en" lang="en">Reputation debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Teknologiskuld"><abbr title="Teknologiskuld">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Brister i leveransförmåga under lång tid skapar ett anseende där användarna har låg tillit till IT-avdelningen. Förtroendet mellan IT-funktionen och verksamheten eroderar.</p>
+            <p class="entry-source">Källa: Magnusson m.fl., 2018</p>
+          </li>
+          <li class="entry" id="anvandarnojdhetsskuld" data-domain="social" data-origin="tyd" data-search="användarnöjdhetsskuld user-satisfaction debt brister i användarnöjdhet påverkar användarnas vilja att aktivt arbeta tillsammans med it-funktionen för att skapa förbättringar. frustration över it-systemen och lågt engagemang. magnusson m.fl., 2018 teknologiskuld">
+            <h4 class="entry-title">Användarnöjdhetsskuld <span class="entry-en" lang="en">User-satisfaction debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Teknologiskuld"><abbr title="Teknologiskuld">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Brister i användarnöjdhet påverkar användarnas vilja att aktivt arbeta tillsammans med IT-funktionen för att skapa förbättringar. Frustration över IT-systemen och lågt engagemang.</p>
+            <p class="entry-source">Källa: Magnusson m.fl., 2018</p>
+          </li>
+          <li class="entry" id="arbetsmiljoskuld" data-domain="social" data-origin="tyd" data-search="arbetsmiljöskuld work-environment debt brister i arbetsmiljön för it-medarbetare skapar svårigheter att attrahera och behålla den kompetens som behövs för framtida behov. magnusson m.fl., 2018 teknologiskuld">
+            <h4 class="entry-title">Arbetsmiljöskuld <span class="entry-en" lang="en">Work-environment debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Teknologiskuld"><abbr title="Teknologiskuld">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Brister i arbetsmiljön för IT-medarbetare skapar svårigheter att attrahera och behålla den kompetens som behövs för framtida behov.</p>
+            <p class="entry-source">Källa: Magnusson m.fl., 2018</p>
+          </li>
+          <li class="entry" id="informationsskuld" data-domain="social" data-origin="dd" data-search="informationsskuld information debt kopplad till plattformens underhåll och utvecklingsbarhet och utgör prestandarisker i organisationens arbetsprocesser. ansamling av föråldrad, inkonsekvent eller dåligt strukturerad information gör digitala tjänster svårare att skala, integrera och anpassa. rolland m.fl., 2018 digital skuld">
+            <h4 class="entry-title">Informationsskuld <span class="entry-en" lang="en">Information debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Digital skuld"><abbr title="Digital skuld">DD</abbr></li>
+            </ul>
+            <p class="entry-desc">Kopplad till plattformens underhåll och utvecklingsbarhet och utgör prestandarisker i organisationens arbetsprocesser. Ansamling av föråldrad, inkonsekvent eller dåligt strukturerad information gör digitala tjänster svårare att skala, integrera och anpassa.</p>
+            <p class="entry-source">Källa: Rolland m.fl., 2018</p>
+          </li>
+          <li class="entry" id="kompetensskuld" data-domain="social" data-origin="tyd" data-search="kompetensskuld competence debt eftersom den installerade tekniska basen ofta bygger på föråldrad teknik formas en kompetensbas som är optimerad för förvaltning och drift snarare än för modernisering och utveckling av ny teknik. magnusson m.fl., 2018 teknologiskuld">
+            <h4 class="entry-title">Kompetensskuld <span class="entry-en" lang="en">Competence debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Teknologiskuld"><abbr title="Teknologiskuld">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Eftersom den installerade tekniska basen ofta bygger på föråldrad teknik formas en kompetensbas som är optimerad för förvaltning och drift snarare än för modernisering och utveckling av ny teknik.</p>
+            <p class="entry-source">Källa: Magnusson m.fl., 2018</p>
+          </li>
+          <li class="entry" id="kravskuld" data-domain="social" data-origin="td dd" data-search="kravskuld requirements debt avvägningar kring vilka krav utvecklingsteamet ska implementera och hur. avståndet mellan den optimala kravspecifikationen och den faktiska systemimplementationen. rios m.fl., 2018; li m.fl., 2015 teknisk skuld (traditionell) digital skuld">
+            <h4 class="entry-title">Kravskuld <span class="entry-en" lang="en">Requirements debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="Digital skuld"><abbr title="Digital skuld">DD</abbr></li>
+            </ul>
+            <p class="entry-desc">Avvägningar kring vilka krav utvecklingsteamet ska implementera och hur. Avståndet mellan den optimala kravspecifikationen och den faktiska systemimplementationen.</p>
+            <p class="entry-source">Källa: Rios m.fl., 2018; Li m.fl., 2015</p>
+          </li>
+          <li class="entry" id="kulturskuld" data-domain="social" data-origin="ntd" data-search="kulturskuld cultural debt uppstår när ett tekniskt beslut ”lånar” mot organisationens kultur. sådana beslut kan skapa splittring i team, försämra kommunikationen eller försvaga ledarskapets effektivitet. en kultur som motverkar samarbete, experiment eller lärande av misstag förstärker skulden. saeeda m.fl., 2023 icke-teknisk skuld">
+            <h4 class="entry-title">Kulturskuld <span class="entry-en" lang="en">Cultural debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Icke-teknisk skuld"><abbr title="Icke-teknisk skuld">NTD</abbr></li>
+            </ul>
+            <p class="entry-desc">Uppstår när ett tekniskt beslut ”lånar” mot organisationens kultur. Sådana beslut kan skapa splittring i team, försämra kommunikationen eller försvaga ledarskapets effektivitet. En kultur som motverkar samarbete, experiment eller lärande av misstag förstärker skulden.</p>
+            <p class="entry-source">Källa: Saeeda m.fl., 2023</p>
+          </li>
+          <li class="entry" id="organisationsskuld" data-domain="social" data-origin="ntd" data-search="organisationsskuld organisational debt den växande katalogen av förändringar som ledare borde ha genomfört men inte gjorde. strukturella problem som otydliga hierarkier, avdelningar i silor eller oklara ansvar. saeeda m.fl., 2023; ahmad &amp; al-baik, 2024 icke-teknisk skuld">
+            <h4 class="entry-title">Organisationsskuld <span class="entry-en" lang="en">Organisational debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Icke-teknisk skuld"><abbr title="Icke-teknisk skuld">NTD</abbr></li>
+            </ul>
+            <p class="entry-desc">Den växande katalogen av förändringar som ledare borde ha genomfört men inte gjorde. Strukturella problem som otydliga hierarkier, avdelningar i silor eller oklara ansvar.</p>
+            <p class="entry-source">Källa: Saeeda m.fl., 2023; Ahmad &amp; Al-Baik, 2024</p>
+          </li>
+          <li class="entry" id="personalskuld" data-domain="social" data-origin="td ntd" data-search="personalskuld people debt personrelaterade problem i organisationen som fördröjer eller hindrar utvecklingsarbete, till exempel att för få personer har nödvändig expertis på grund av försenad utbildning eller rekrytering, eller ett överberoende av några få nyckelpersoner. rios m.fl., 2018; ahmad &amp; gustavsson, 2022 teknisk skuld (traditionell) icke-teknisk skuld">
+            <h4 class="entry-title">Personalskuld <span class="entry-en" lang="en">People debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="Icke-teknisk skuld"><abbr title="Icke-teknisk skuld">NTD</abbr></li>
+            </ul>
+            <p class="entry-desc">Personrelaterade problem i organisationen som fördröjer eller hindrar utvecklingsarbete, till exempel att för få personer har nödvändig expertis på grund av försenad utbildning eller rekrytering, eller ett överberoende av några få nyckelpersoner.</p>
+            <p class="entry-source">Källa: Rios m.fl., 2018; Ahmad &amp; Gustavsson, 2022</p>
+          </li>
+          <li class="entry" id="processkuld" data-domain="social" data-origin="td ntd" data-search="processkuld process debt ineffektiva processer, där det processen en gång utformades för att hantera inte längre är ändamålsenligt. en suboptimal handling eller händelse med kortsiktiga fördelar men långsiktigt skadliga effekter, exempelvis föråldrade projektmodeller, onödig byråkrati eller olämpliga upphandlingsprocesser. rios m.fl., 2018; martini m.fl., 2020 teknisk skuld (traditionell) icke-teknisk skuld">
+            <h4 class="entry-title">Processkuld <span class="entry-en" lang="en">Process debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="Icke-teknisk skuld"><abbr title="Icke-teknisk skuld">NTD</abbr></li>
+            </ul>
+            <p class="entry-desc">Ineffektiva processer, där det processen en gång utformades för att hantera inte längre är ändamålsenligt. En suboptimal handling eller händelse med kortsiktiga fördelar men långsiktigt skadliga effekter, exempelvis föråldrade projektmodeller, onödig byråkrati eller olämpliga upphandlingsprocesser.</p>
+            <p class="entry-source">Källa: Rios m.fl., 2018; Martini m.fl., 2020</p>
+          </li>
+          <li class="entry" id="skugg-it-skuld" data-domain="social" data-origin="tyd" data-search="skugg-it-skuld shadow-it debt decentraliserade investeringar och icke-sanktionerad användardriven innovation, vid sidan av den officiella it-styrningen, skapar brist på synergier, effektivitet och säkerhet. magnusson m.fl., 2018 teknologiskuld">
+            <h4 class="entry-title">Skugg-IT-skuld <span class="entry-en" lang="en">Shadow-IT debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Teknologiskuld"><abbr title="Teknologiskuld">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Decentraliserade investeringar och icke-sanktionerad användardriven innovation, vid sidan av den officiella IT-styrningen, skapar brist på synergier, effektivitet och säkerhet.</p>
+            <p class="entry-source">Källa: Magnusson m.fl., 2018</p>
+          </li>
+          <li class="entry" id="styrningsskuld" data-domain="social" data-origin="tyd" data-search="styrningsskuld governance debt snedvridning i hur styrningen är konfigurerad skapar en styrning som är optimerad för stabilitet men som inte tillgodoser behoven av innovation. felriktade eller alltför rigida it-styrningsstrukturer. magnusson m.fl., 2018 teknologiskuld">
+            <h4 class="entry-title">Styrningsskuld <span class="entry-en" lang="en">Governance debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Teknologiskuld"><abbr title="Teknologiskuld">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Snedvridning i hur styrningen är konfigurerad skapar en styrning som är optimerad för stabilitet men som inte tillgodoser behoven av innovation. Felriktade eller alltför rigida IT-styrningsstrukturer.</p>
+            <p class="entry-source">Källa: Magnusson m.fl., 2018</p>
+          </li>
+          <li class="entry" id="verksamhetsarkitekturskuld" data-domain="social" data-origin="td" data-search="verksamhetsarkitekturskuld enterprise architecture debt ett mått på avvikelsen mellan verksamhetens nuvarande tillstånd och ett hypotetiskt idealtillstånd, sett över hela organisationens arkitektur snarare än ett enskilt system. hacks m.fl., 2019 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Verksamhetsarkitekturskuld <span class="entry-en" lang="en">Enterprise architecture debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-social">Social skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Ett mått på avvikelsen mellan verksamhetens nuvarande tillstånd och ett hypotetiskt idealtillstånd, sett över hela organisationens arkitektur snarare än ett enskilt system.</p>
+            <p class="entry-source">Källa: Hacks m.fl., 2019</p>
+          </li>
+          </ul>
+        </div>
+
+        <div class="domain domain-technical" id="domain-technical">
+          <div class="domain-header">
+            <h3>Teknisk skuld</h3>
+            <span class="domain-count" data-count-for="technical">31 kategorier</span>
+          </div>
+          <p class="domain-def">
+            Teknisk skuld är en samling design- eller implementationskonstruktioner som är ändamålsenliga på kort sikt men som skapar ett tekniskt sammanhang där framtida förändringar blir dyrare eller omöjliga. Skulden är en faktisk eller villkorad förpliktelse vars påverkan är begränsad till systemets inre kvaliteter, främst underhållbarhet och utvecklingsbarhet. Den sitter i artefakter som kod, arkitektur, databaser och testramverk.
+          </p>
+          <ul class="entries">
+          <li class="entry" id="ai-dataskuld" data-domain="technical" data-origin="td ai" data-search="ai-dataskuld ai data debt brister i insamling, hantering och användning av data, både för träning av modeller och i produktion. bogner m.fl., 2021 teknisk skuld (traditionell) ai-specifik teknisk skuld">
+            <h4 class="entry-title">AI-dataskuld <span class="entry-en" lang="en">AI data debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="AI-specifik teknisk skuld"><abbr title="AI-specifik teknisk skuld">AI</abbr></li>
+            </ul>
+            <p class="entry-desc">Brister i insamling, hantering och användning av data, både för träning av modeller och i produktion.</p>
+            <p class="entry-source">Källa: Bogner m.fl., 2021</p>
+          </li>
+          <li class="entry" id="ai-konfigurationsskuld" data-domain="technical" data-origin="td ai" data-search="ai-konfigurationsskuld ai configuration debt brister i konfigurationsmekanismerna för ai-baserade system. bogner m.fl., 2021 teknisk skuld (traditionell) ai-specifik teknisk skuld">
+            <h4 class="entry-title">AI-konfigurationsskuld <span class="entry-en" lang="en">AI configuration debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="AI-specifik teknisk skuld"><abbr title="AI-specifik teknisk skuld">AI</abbr></li>
+            </ul>
+            <p class="entry-desc">Brister i konfigurationsmekanismerna för AI-baserade system.</p>
+            <p class="entry-source">Källa: Bogner m.fl., 2021</p>
+          </li>
+          <li class="entry" id="ai-modellskuld" data-domain="technical" data-origin="td ai" data-search="ai-modellskuld ai model debt suboptimala arbetssätt i design, träning och förvaltning av ai-modeller. bogner m.fl., 2021 teknisk skuld (traditionell) ai-specifik teknisk skuld">
+            <h4 class="entry-title">AI-modellskuld <span class="entry-en" lang="en">AI model debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="AI-specifik teknisk skuld"><abbr title="AI-specifik teknisk skuld">AI</abbr></li>
+            </ul>
+            <p class="entry-desc">Suboptimala arbetssätt i design, träning och förvaltning av AI-modeller.</p>
+            <p class="entry-source">Källa: Bogner m.fl., 2021</p>
+          </li>
+          <li class="entry" id="algoritmskuld" data-domain="technical" data-origin="td" data-search="algoritmskuld algorithm debt suboptimala implementationer av algoritmlogik. liu m.fl., 2020 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Algoritmskuld <span class="entry-en" lang="en">Algorithm debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Suboptimala implementationer av algoritmlogik.</p>
+            <p class="entry-source">Källa: Liu m.fl., 2020</p>
+          </li>
+          <li class="entry" id="anvandbarhetsskuld" data-domain="technical" data-origin="td" data-search="användbarhetsskuld usability debt olämpliga användbarhetsbeslut som senare måste justeras, till exempel utebliven användbarhetstestning, dålig gränssnittsdesign och komplexa navigationsstrukturer som ökar användarnas kognitiva belastning. för webbapplikationer har tidig användbarhetsskuld visats öka kostnaden för omdesign med 50 procent. rios m.fl., 2018; alves m.fl., 2016; rodriguez m.fl., 2023 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Användbarhetsskuld <span class="entry-en" lang="en">Usability debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Olämpliga användbarhetsbeslut som senare måste justeras, till exempel utebliven användbarhetstestning, dålig gränssnittsdesign och komplexa navigationsstrukturer som ökar användarnas kognitiva belastning. För webbapplikationer har tidig användbarhetsskuld visats öka kostnaden för omdesign med 50 procent.</p>
+            <p class="entry-source">Källa: Rios m.fl., 2018; Alves m.fl., 2016; Rodriguez m.fl., 2023</p>
+          </li>
+          <li class="entry" id="arkitekturskuld" data-domain="technical" data-origin="td" data-search="arkitekturskuld architectural debt problem i produktarkitekturen som påverkar arkitekturkraven. har stor påverkan på systemets framgång och kan, om den lämnas obehandlad, ge dyra följder. uppgraderingar av system med hög arkitekturskuld kräver upp till tre gånger så stor insats som för välstrukturerade arkitekturer, och tidiga arkitekturgenvägar ökar skörheten och kostnaden för omarbete senare. rios m.fl., 2018; besker m.fl., 2016; maccormack m.fl., 2012 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Arkitekturskuld <span class="entry-en" lang="en">Architectural debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Problem i produktarkitekturen som påverkar arkitekturkraven. Har stor påverkan på systemets framgång och kan, om den lämnas obehandlad, ge dyra följder. Uppgraderingar av system med hög arkitekturskuld kräver upp till tre gånger så stor insats som för välstrukturerade arkitekturer, och tidiga arkitekturgenvägar ökar skörheten och kostnaden för omarbete senare.</p>
+            <p class="entry-source">Källa: Rios m.fl., 2018; Besker m.fl., 2016; MacCormack m.fl., 2012</p>
+          </li>
+          <li class="entry" id="automatiseringsskuld" data-domain="technical" data-origin="td" data-search="automatiseringsskuld automation (build) debt i dagens releaseorienterade utveckling indikerar nästan alla manuella steg i bygget av ett system automatiseringsskuld. den är både en källa till och ett sätt att lösa teknisk skuld (även kallad build- eller devops-skuld). rosser &amp; norton, 2021 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Automatiseringsskuld <span class="entry-en" lang="en">Automation (build) debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">I dagens releaseorienterade utveckling indikerar nästan alla manuella steg i bygget av ett system automatiseringsskuld. Den är både en källa till och ett sätt att lösa teknisk skuld (även kallad build- eller DevOps-skuld).</p>
+            <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="byggskuld" data-domain="technical" data-origin="td" data-search="byggskuld build debt problem som gör byggsteget svårare och onödigt tidskrävande, till exempel att onödig kod och onödiga tester byggs och körs. rios m.fl., 2018; morgenthaler m.fl., 2012 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Byggskuld <span class="entry-en" lang="en">Build debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Problem som gör byggsteget svårare och onödigt tidskrävande, till exempel att onödig kod och onödiga tester byggs och körs.</p>
+            <p class="entry-source">Källa: Rios m.fl., 2018; Morgenthaler m.fl., 2012</p>
+          </li>
+          <li class="entry" id="databasdesignskuld" data-domain="technical" data-origin="td" data-search="databasdesignskuld database-design debt omogna eller suboptimala databasdesignbeslut som släpar efter de optimala eller önskvärda. al-barak &amp; bahsoon, 2016 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Databasdesignskuld <span class="entry-en" lang="en">Database-design debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Omogna eller suboptimala databasdesignbeslut som släpar efter de optimala eller önskvärda.</p>
+            <p class="entry-source">Källa: Al-Barak &amp; Bahsoon, 2016</p>
+          </li>
+          <li class="entry" id="databasskuld" data-domain="technical" data-origin="td" data-search="databasskuld database debt ansamlas genom problem med datakrav, dataarkitektur, databasdesign, implementation och dokumentation, samt genom det typiska beroendet av en tredje part för databasprodukten (kommersiell eller öppen källkod). rosser &amp; norton, 2021 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Databasskuld <span class="entry-en" lang="en">Database debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Ansamlas genom problem med datakrav, dataarkitektur, databasdesign, implementation och dokumentation, samt genom det typiska beroendet av en tredje part för databasprodukten (kommersiell eller öppen källkod).</p>
+            <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="defektskuld" data-domain="technical" data-origin="td" data-search="defektskuld defect debt avvägningen mellan den kortsiktiga vinsten av att skjuta upp buggrättning och de långsiktiga konsekvenserna av att vänta. kända defekter som utvecklingsteamet är överens om bör åtgärdas men som skjuts upp på grund av konkurrerande prioriteringar och begränsade resurser. akbarinasaji m.fl., 2016; rios m.fl., 2018 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Defektskuld <span class="entry-en" lang="en">Defect debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Avvägningen mellan den kortsiktiga vinsten av att skjuta upp buggrättning och de långsiktiga konsekvenserna av att vänta. Kända defekter som utvecklingsteamet är överens om bör åtgärdas men som skjuts upp på grund av konkurrerande prioriteringar och begränsade resurser.</p>
+            <p class="entry-source">Källa: Akbarinasaji m.fl., 2016; Rios m.fl., 2018</p>
+          </li>
+          <li class="entry" id="designskuld" data-domain="technical" data-origin="td dd" data-search="designskuld design debt tuffa time-to-market-krav och oväntade integrations- eller utvecklingsproblem leder till designavvägningar som orsakar brister i systemets struktur, till exempel brott mot principer för god objektorienterad design eller designgenvägar i anpassningar av standardsystem. designproblem ansamlas över tid och gör senare ändringar upp till tre gånger dyrare än om de åtgärdats tidigt. marinescu, 2012; rios m.fl., 2018; rolland m.fl., 2018; zazworka m.fl., 2014 teknisk skuld (traditionell) digital skuld">
+            <h4 class="entry-title">Designskuld <span class="entry-en" lang="en">Design debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="Digital skuld"><abbr title="Digital skuld">DD</abbr></li>
+            </ul>
+            <p class="entry-desc">Tuffa time-to-market-krav och oväntade integrations- eller utvecklingsproblem leder till designavvägningar som orsakar brister i systemets struktur, till exempel brott mot principer för god objektorienterad design eller designgenvägar i anpassningar av standardsystem. Designproblem ansamlas över tid och gör senare ändringar upp till tre gånger dyrare än om de åtgärdats tidigt.</p>
+            <p class="entry-source">Källa: Marinescu, 2012; Rios m.fl., 2018; Rolland m.fl., 2018; Zazworka m.fl., 2014</p>
+          </li>
+          <li class="entry" id="dokumentationsskuld" data-domain="technical" data-origin="td dd ntd" data-search="dokumentationsskuld documentation debt saknad, inkonsekvent, föråldrad eller ofullständig dokumentation, inklusive föråldrade designspecifikationer och avsaknad av kodkommentarer. den enda kategori som återfinns under alla tre paraplybegreppen teknisk, digital och icke-teknisk skuld. rios m.fl., 2018; ernst m.fl., 2021; ahmad m.fl., 2024 teknisk skuld (traditionell) digital skuld icke-teknisk skuld">
+            <h4 class="entry-title">Dokumentationsskuld <span class="entry-en" lang="en">Documentation debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="Digital skuld"><abbr title="Digital skuld">DD</abbr></li><li class="tag tag-origin" title="Icke-teknisk skuld"><abbr title="Icke-teknisk skuld">NTD</abbr></li>
+            </ul>
+            <p class="entry-desc">Saknad, inkonsekvent, föråldrad eller ofullständig dokumentation, inklusive föråldrade designspecifikationer och avsaknad av kodkommentarer. Den enda kategori som återfinns under alla tre paraplybegreppen teknisk, digital och icke-teknisk skuld.</p>
+            <p class="entry-source">Källa: Rios m.fl., 2018; Ernst m.fl., 2021; Ahmad m.fl., 2024</p>
+          </li>
+          <li class="entry" id="domanskuld" data-domain="technical" data-origin="td" data-search="domänskuld domain debt felaktig representation av tillämpningsdomänen i det faktiska systemet. störrle &amp; ciolkowski, 2019 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Domänskuld <span class="entry-en" lang="en">Domain debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Felaktig representation av tillämpningsdomänen i det faktiska systemet.</p>
+            <p class="entry-source">Källa: Störrle &amp; Ciolkowski, 2019</p>
+          </li>
+          <li class="entry" id="driftsattningsskuld" data-domain="technical" data-origin="dd" data-search="driftsättningsskuld deployment debt alla genvägar, fel eller misstag som uppstår vid driftsättning, till exempel forcerade eller ofullständiga driftsättningsprocesser. ernst m.fl., 2021; asatiani &amp; torell, 2023 digital skuld">
+            <h4 class="entry-title">Driftsättningsskuld <span class="entry-en" lang="en">Deployment debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Digital skuld"><abbr title="Digital skuld">DD</abbr></li>
+            </ul>
+            <p class="entry-desc">Alla genvägar, fel eller misstag som uppstår vid driftsättning, till exempel forcerade eller ofullständiga driftsättningsprocesser.</p>
+            <p class="entry-note">Listad i avhandlingens appendix 2 som en av digital skulds åtta underkategorier, men ingår inte i figur 2. Placerad här under teknisk skuld eftersom den är knuten till artefakten.</p>
+            <p class="entry-source">Källa: Ernst m.fl., 2021; Asatiani &amp; Torell, 2023</p>
+          </li>
+          <li class="entry" id="foraldringsskuld" data-domain="technical" data-origin="td" data-search="föråldringsskuld depreciation debt långlivade system drar på sig föråldringsskuld eftersom teknikutvecklingens takt ofta hinner ikapp även välskriven programvara. rosser &amp; norton, 2021 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Föråldringsskuld <span class="entry-en" lang="en">Depreciation debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Långlivade system drar på sig föråldringsskuld eftersom teknikutvecklingens takt ofta hinner ikapp även välskriven programvara.</p>
+            <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="infrastrukturskuld" data-domain="technical" data-origin="td tyd" data-search="infrastrukturskuld infrastructure debt infrastrukturproblem som fördröjer eller hindrar utvecklingsaktiviteter, till exempel uppskjutna uppgraderingar. brister i infrastrukturen ger potentiellt långa ledtider för framtida förändringar och kräver modernisering och nyinvesteringar innan ny innovation med konkret nytta kan levereras. rios m.fl., 2018; alves m.fl., 2014; magnusson m.fl., 2018 teknisk skuld (traditionell) teknologiskuld">
+            <h4 class="entry-title">Infrastrukturskuld <span class="entry-en" lang="en">Infrastructure debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="Teknologiskuld"><abbr title="Teknologiskuld">TyD</abbr></li>
+            </ul>
+            <p class="entry-desc">Infrastrukturproblem som fördröjer eller hindrar utvecklingsaktiviteter, till exempel uppskjutna uppgraderingar. Brister i infrastrukturen ger potentiellt långa ledtider för framtida förändringar och kräver modernisering och nyinvesteringar innan ny innovation med konkret nytta kan levereras.</p>
+            <p class="entry-source">Källa: Rios m.fl., 2018; Alves m.fl., 2014; Magnusson m.fl., 2018</p>
+          </li>
+          <li class="entry" id="integrationsskuld" data-domain="technical" data-origin="td" data-search="integrationsskuld integration debt insatsen som krävs för att koppla samman system eller komponenter för att uppnå önskad funktionalitet. icke-standardiserade kopplingar, proprietära gränssnitt och nischstandarder ökar skulden. rosser &amp; norton, 2021 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Integrationsskuld <span class="entry-en" lang="en">Integration debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Insatsen som krävs för att koppla samman system eller komponenter för att uppnå önskad funktionalitet. Icke-standardiserade kopplingar, proprietära gränssnitt och nischstandarder ökar skulden.</p>
+            <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="integritetsskuld" data-domain="technical" data-origin="td" data-search="integritetsskuld privacy debt omfattningen av de insatser som krävs för att identifiera, styra, kontrollera, kommunicera och skydda systemet med avseende på dataskydd och regelefterlevnad genom hela utvecklingslivscykeln. larrucea m.fl., 2021 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Integritetsskuld <span class="entry-en" lang="en">Privacy debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Omfattningen av de insatser som krävs för att identifiera, styra, kontrollera, kommunicera och skydda systemet med avseende på dataskydd och regelefterlevnad genom hela utvecklingslivscykeln.</p>
+            <p class="entry-source">Källa: Larrucea m.fl., 2021</p>
+          </li>
+          <li class="entry" id="kodskuld" data-domain="technical" data-origin="td dd" data-search="kodskuld code debt (implementation debt) problem i källkoden, det vill säga dåligt skriven kod som bryter mot god praxis eller kodregler och som försämrar läsbarheten och gör koden svårare att underhålla. detta är cunninghams ursprungliga metafor från 1992: ”att skeppa kod första gången är som att ta ett lån”. cunningham, 1992; rios m.fl., 2018 teknisk skuld (traditionell) digital skuld">
+            <h4 class="entry-title">Kodskuld <span class="entry-en" lang="en">Code debt (implementation debt)</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="Digital skuld"><abbr title="Digital skuld">DD</abbr></li>
+            </ul>
+            <p class="entry-desc">Problem i källkoden, det vill säga dåligt skriven kod som bryter mot god praxis eller kodregler och som försämrar läsbarheten och gör koden svårare att underhålla. Detta är Cunninghams ursprungliga metafor från 1992: ”att skeppa kod första gången är som att ta ett lån”.</p>
+            <p class="entry-source">Källa: Cunningham, 1992; Rios m.fl., 2018</p>
+          </li>
+          <li class="entry" id="kompatibilitetsskuld" data-domain="technical" data-origin="td" data-search="kompatibilitetsskuld compatibility debt ett projekts omogna beroenden till andra projekt som inte kan leverera alla kvalificerade tjänster, så att den nuvarande implementationen blir en tillfällig nödlösning. liu m.fl., 2020 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Kompatibilitetsskuld <span class="entry-en" lang="en">Compatibility debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Ett projekts omogna beroenden till andra projekt som inte kan leverera alla kvalificerade tjänster, så att den nuvarande implementationen blir en tillfällig nödlösning.</p>
+            <p class="entry-source">Källa: Liu m.fl., 2020</p>
+          </li>
+          <li class="entry" id="konfigurationsskuld" data-domain="technical" data-origin="td" data-search="konfigurationsskuld configuration debt uppstår när konfigurationsmekanismer inte kontrolleras lika rigoröst som programvaran, när skillnader mellan konfigurationer inte enkelt kan fastställas, eller när redundant eller oanvänd konfigurationsdata finns kvar. rosser &amp; norton, 2021 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Konfigurationsskuld <span class="entry-en" lang="en">Configuration debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Uppstår när konfigurationsmekanismer inte kontrolleras lika rigoröst som programvaran, när skillnader mellan konfigurationer inte enkelt kan fastställas, eller när redundant eller oanvänd konfigurationsdata finns kvar.</p>
+            <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="kvalitetsskuld" data-domain="technical" data-origin="td" data-search="kvalitetsskuld quality debt insatsen som krävs för att åtgärda de defekter, upptäckta eller oupptäckta, som finns i ett system vid en given tidpunkt. rosser &amp; norton, 2021 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Kvalitetsskuld <span class="entry-en" lang="en">Quality debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Insatsen som krävs för att åtgärda de defekter, upptäckta eller oupptäckta, som finns i ett system vid en given tidpunkt.</p>
+            <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="modellerings-och-simuleringsskuld" data-domain="technical" data-origin="td" data-search="modellerings- och simuleringsskuld modelling and simulation debt när modellbaserad utveckling blir standardpraxis blir modellerna en del av den tekniska basen och därmed själva föremål för teknisk skuld. rosser &amp; norton, 2021 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Modellerings- och simuleringsskuld <span class="entry-en" lang="en">Modelling and simulation debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">När modellbaserad utveckling blir standardpraxis blir modellerna en del av den tekniska basen och därmed själva föremål för teknisk skuld.</p>
+            <p class="entry-source">Källa: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="sakerhetsskuld" data-domain="technical" data-origin="td" data-search="säkerhetsskuld security debt en lösning som kompromissar med systemets säkerhet, till exempel genom att införa en specifik sårbarhet. teknisk skuld som innehåller en säkerhetsrisk. silva m.fl., 2016; rindell m.fl., 2019 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Säkerhetsskuld <span class="entry-en" lang="en">Security debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">En lösning som kompromissar med systemets säkerhet, till exempel genom att införa en specifik sårbarhet. Teknisk skuld som innehåller en säkerhetsrisk.</p>
+            <p class="entry-source">Källa: Silva m.fl., 2016; Rindell m.fl., 2019</p>
+          </li>
+          <li class="entry" id="testautomatiseringsskuld" data-domain="technical" data-origin="td" data-search="testautomatiseringsskuld automation test debt arbetet som återstår med att automatisera tester av tidigare utvecklad funktionalitet för att stödja kontinuerlig integration och snabbare utvecklingscykler, samt ansamlade problem som dåligt underhållna testskript, föråldrade testfall och bristande testtäckning. rios m.fl., 2018; wiklund m.fl., 2012 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Testautomatiseringsskuld <span class="entry-en" lang="en">Automation test debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Arbetet som återstår med att automatisera tester av tidigare utvecklad funktionalitet för att stödja kontinuerlig integration och snabbare utvecklingscykler, samt ansamlade problem som dåligt underhållna testskript, föråldrade testfall och bristande testtäckning.</p>
+            <p class="entry-source">Källa: Rios m.fl., 2018; Wiklund m.fl., 2012</p>
+          </li>
+          <li class="entry" id="testskuld" data-domain="technical" data-origin="td dd" data-search="testskuld test debt (testing debt) genvägar, det vill säga felaktiga eller icke-optimala beslut, i testningen, samt problem i testaktiviteter som påverkar kvaliteten på dessa aktiviteter. samarthyam m.fl., 2017; rios m.fl., 2018 teknisk skuld (traditionell) digital skuld">
+            <h4 class="entry-title">Testskuld <span class="entry-en" lang="en">Test debt (testing debt)</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="Digital skuld"><abbr title="Digital skuld">DD</abbr></li>
+            </ul>
+            <p class="entry-desc">Genvägar, det vill säga felaktiga eller icke-optimala beslut, i testningen, samt problem i testaktiviteter som påverkar kvaliteten på dessa aktiviteter.</p>
+            <p class="entry-source">Källa: Samarthyam m.fl., 2017; Rios m.fl., 2018</p>
+          </li>
+          <li class="entry" id="tjansteskuld" data-domain="technical" data-origin="td" data-search="tjänsteskuld service debt olämpligt val och utbyte av webbtjänster som leder till att tjänsternas egenskaper inte matchar applikationernas krav. relevant för tjänsteorienterade arkitekturer. rios m.fl., 2018 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Tjänsteskuld <span class="entry-en" lang="en">Service debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Olämpligt val och utbyte av webbtjänster som leder till att tjänsternas egenskaper inte matchar applikationernas krav. Relevant för tjänsteorienterade arkitekturer.</p>
+            <p class="entry-source">Källa: Rios m.fl., 2018</p>
+          </li>
+          <li class="entry" id="transparensskuld" data-domain="technical" data-origin="td egen" data-search="transparensskuld transparency debt att koden är stängd leder till transparensproblem kring vilka data som lagras om medborgarna och vilka algoritmer som används när ärenden bedöms. identifierad i avhandlingens första studie av bygglovsprocessens system i en svensk kommun. persson m.fl., 2023 (publikation i) teknisk skuld (traditionell) identifierad i avhandlingens egna studier">
+            <h4 class="entry-title">Transparensskuld <span class="entry-en" lang="en">Transparency debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li><li class="tag tag-origin" title="Identifierad i avhandlingens egna studier"><abbr title="Identifierad i avhandlingens egna studier">Egen</abbr></li>
+            </ul>
+            <p class="entry-desc">Att koden är stängd leder till transparensproblem kring vilka data som lagras om medborgarna och vilka algoritmer som används när ärenden bedöms. Identifierad i avhandlingens första studie av bygglovsprocessens system i en svensk kommun.</p>
+            <p class="entry-source">Källa: Persson m.fl., 2023 (publikation I)</p>
+          </li>
+          <li class="entry" id="variabilitetsskuld" data-domain="technical" data-origin="td" data-search="variabilitetsskuld variability debt defekter och suboptimala lösningar i hanteringen av variabilitet i programvara, till exempel opportunistisk återanvändning som ger kortsiktiga fördelar oavsett tekniska och arkitektoniska nackdelar på medellång och lång sikt. wolfart m.fl., 2021 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Variabilitetsskuld <span class="entry-en" lang="en">Variability debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Defekter och suboptimala lösningar i hanteringen av variabilitet i programvara, till exempel opportunistisk återanvändning som ger kortsiktiga fördelar oavsett tekniska och arkitektoniska nackdelar på medellång och lång sikt.</p>
+            <p class="entry-source">Källa: Wolfart m.fl., 2021</p>
+          </li>
+          <li class="entry" id="versionshanteringsskuld" data-domain="technical" data-origin="td" data-search="versionshanteringsskuld versioning debt problem i versionshanteringen av källkod, till exempel onödiga kodförgreningar. rios m.fl., 2018 teknisk skuld (traditionell)">
+            <h4 class="entry-title">Versionshanteringsskuld <span class="entry-en" lang="en">Versioning debt</span></h4>
+            <ul class="tags" aria-label="Klassificering">
+              <li class="tag tag-technical">Teknisk skuld</li>
+              <li class="tag tag-origin" title="Teknisk skuld (traditionell)"><abbr title="Teknisk skuld (traditionell)">TD</abbr></li>
+            </ul>
+            <p class="entry-desc">Problem i versionshanteringen av källkod, till exempel onödiga kodförgreningar.</p>
+            <p class="entry-source">Källa: Rios m.fl., 2018</p>
+          </li>
+          </ul>
+        </div>
+
+        <p class="empty-state" id="empty-state" hidden>Inga kategorier matchar sökningen. Prova ett annat ord eller rensa filtren.</p>
+
+        <div class="legend">
+          <dl>
+            <dt>TD</dt><dd>Teknisk skuld i traditionell mening, huvudsakligen enligt Rios m.fl. (2018) och senare tillägg.</dd>
+            <dt>AI</dt><dd>AI-specifika former av teknisk skuld enligt Bogner m.fl. (2021).</dd>
+            <dt>DD</dt><dd>Digital skuld enligt Rolland m.fl. (2018), Ernst m.fl. (2021) och Asatiani &amp; Torell (2023).</dd>
+            <dt>TyD</dt><dd>Teknologiskuld enligt Magnusson &amp; Bygstad (2014) och Magnusson m.fl. (2018).</dd>
+            <dt>NTD</dt><dd>Icke-teknisk skuld enligt Saeeda m.fl. (2023) och Ahmad m.fl. (2024).</dd>
+            <dt>Egen</dt><dd>Kategori som identifierats i avhandlingens egna studier.</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="struktur-title">
+      <div class="container">
+        <h2 id="struktur-title">Så hänger skulderna ihop</h2>
+        <p class="section-intro">
+          Uppdelningen i två domäner ger analytisk tydlighet, men i praktiken förstärker skulderna varandra. Svag styrning och beslut i silor ger inkonsekventa arkitekturer och fragmenterade kodbaser, och föråldrade system frustrerar användare, skapar motstånd mot förändring och urholkar tilliten mellan IT och verksamhet. Social skuld är ofta bränslet till teknisk skuld, och bestående teknisk skuld föder i sin tur ny social skuld.
+        </p>
+        <div class="dependency">
+          <figure>
+            <div class="figure-scroll">
+            <svg viewBox="0 0 600 290" role="img" aria-labelledby="dep-title dep-desc" xmlns="http://www.w3.org/2000/svg">
+              <title id="dep-title">Ömsesidiga beroenden mellan social och teknisk skuld</title>
+              <desc id="dep-desc">Socio-teknisk skuld överst delas i social skuld och teknisk skuld. Pilar visar att social skuld skapar och vidmakthåller teknisk skuld, att teknisk skuld utlöser ny social skuld, och att båda formerna dessutom förstärker sig själva.</desc>
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" fill="#4a525c"/>
+                </marker>
+              </defs>
+              <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="16">
+                <rect x="180" y="12" width="240" height="50" rx="8" fill="#ffffff" stroke="#1a1d22" stroke-width="1.5"/>
+                <text x="300" y="43" text-anchor="middle" font-weight="700" fill="#1a1d22">Socio-teknisk skuld</text>
+
+                <path d="M240,62 L240,93 L105,93 L105,121" fill="none" stroke="#4a525c" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <path d="M360,62 L360,93 L495,93 L495,121" fill="none" stroke="#4a525c" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                <rect x="20" y="125" width="170" height="60" rx="8" fill="#fbeee4" stroke="#7a3b12" stroke-width="1.5"/>
+                <text x="105" y="161" text-anchor="middle" font-weight="700" fill="#7a3b12">Social skuld</text>
+
+                <rect x="410" y="125" width="170" height="60" rx="8" fill="#e8eff8" stroke="#1f4f8b" stroke-width="1.5"/>
+                <text x="495" y="161" text-anchor="middle" font-weight="700" fill="#1f4f8b">Teknisk skuld</text>
+
+                <path d="M192,142 L406,142" fill="none" stroke="#4a525c" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <text x="300" y="134" text-anchor="middle" font-size="13" fill="#4a525c">skapar och vidmakthåller</text>
+                <path d="M408,170 L194,170" fill="none" stroke="#4a525c" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <text x="300" y="187" text-anchor="middle" font-size="13" fill="#4a525c">utlöser ny</text>
+
+                <path d="M65,185 C65,238 145,238 145,189" fill="none" stroke="#4a525c" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <text x="105" y="256" text-anchor="middle" font-size="13" fill="#4a525c">social skuld föder social skuld</text>
+                <path d="M455,185 C455,238 535,238 535,189" fill="none" stroke="#4a525c" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <text x="495" y="256" text-anchor="middle" font-size="13" fill="#4a525c">teknisk skuld föder teknisk skuld</text>
+              </g>
+            </svg>
+            </div>
+            <figcaption>Efter figur 3 i avhandlingen: ömsesidiga beroenden mellan social skuld (SD) och teknisk skuld (TD). Beroendena gör att skulden behöver hanteras integrerat, med de tekniska och sociala rötterna samtidigt, snarare än som separata fenomen.</figcaption>
+          </figure>
+        </div>
+        <div class="structure" style="margin-top: var(--space-lg);">
+          <div class="structure-card is-social">
+            <h3>Exempel: social skuld driver teknisk skuld</h3>
+            <p>Organisationsskuld kan direkt utlösa ansamling av teknisk skuld, när svag styrning eller beslut i silor leder till inkonsekventa arkitekturer eller fragmenterade kodbaser.</p>
+            <p>Kulturskuld och organisationsskuld formar ofta ineffektiva utvecklingsprocesser, som i sin tur genererar teknisk skuld i själva artefakterna.</p>
+          </div>
+          <div class="structure-card is-technical">
+            <h3>Exempel: teknisk skuld driver social skuld</h3>
+            <p>Bestående teknisk skuld i föråldrade system frustrerar användarna, skapar motstånd mot förändring och försvagar förtroendet mellan IT-funktionen och verksamheten, det vill säga användarnöjdhets- och anseendeskuld.</p>
+            <p>Avhandlingens kommunala studier visar att skulden framför allt är social: fragmenterad styrning, upphandlingsberoenden och organisatorisk tröghet driver den mer än brister i koden.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="historia-title" id="historia">
+      <div class="container">
+        <h2 id="historia-title">Begreppets historia: från teknisk till socio-teknisk skuld</h2>
+        <p class="section-intro">
+          Skuldmetaforen föddes i programmeringens värld men har under tre decennier vuxit till ett sätt att beskriva hela det socio-tekniska system där programvara utvecklas, förvaltas och används. Tidslinjen sammanfattar den utveckling som beskrivs i avhandlingens kappa (kapitel 2.2) och som mynnar ut i det samlande begreppet socio-teknisk skuld.
+        </p>
+
+        <ol class="timeline">
+          <li class="milestone">
+            <span class="year">1992</span>
+            <h3>Metaforen myntas</h3>
+            <p>Ward Cunningham beskriver ”quick-and-dirty”-programmering som ett lån: lite skuld snabbar upp utvecklingen, förutsatt att den betalas tillbaka snabbt genom omskrivning.</p>
+            <blockquote lang="en"><p>”Shipping first-time code is like going into debt. A little debt speeds development so long as it is paid back promptly with a rewrite. […] Every minute spent on not-quite-right code counts as interest on that debt.”</p></blockquote>
+            <p>Metaforen får kraft för att den även hjälper icke-tekniska beslutsfattare inom ekonomi och ledning att förstå riskerna med dålig praxis. Lutz (1993) visar att skulden också kan vara strategiskt gångbar, som att låna kapital i affärsvärlden.</p>
+          </li>
+          <li>
+            <span class="year">2003 och 2009</span>
+            <h3>Ränta, amortering och Fowlers kvadrant</h3>
+            <p>Martin Fowler förenklar metaforen till valet mellan en ”rörig men snabb” och en ”ren men tidskrävande” lösning. Precis som ett lån kräver skulden räntebetalningar i form av extra arbete i all framtida utveckling, tills kapitalet amorteras genom refaktorering. Senare skiljer Fowler på avsiktlig och oavsiktlig, ansvarsfull och oansvarig skuld. Begreppet blir därmed ett gemensamt språk för utvecklare, arkitekter och chefer.</p>
+          </li>
+          <li>
+            <span class="year">2012–2013</span>
+            <h3>Utvidgning och varning för urvattning</h3>
+            <p>Kruchten m.fl. (2012) och Tom m.fl. (2013) utvidgar teknisk skuld till arkitektur- och processnivå, men noterar samtidigt att inkonsekvent terminologi riskerar att försvaga begreppets analytiska skärpa.</p>
+          </li>
+          <li>
+            <span class="year">2014 och 2018</span>
+            <h3>Teknologiskuld (TyD)</h3>
+            <p>Magnusson och Bygstad definierar teknologiskuld som ”den ackumulerade förpliktelse som nuvarande CIO (gäldenär) har till en framtida CIO (borgenär), där tidigare beslut begränsar kommande beslut”. Skulden uppstår inte i koden utan mellan artefakterna, i vägval och beroenden: ett proprietärt affärssystem ger snabb driftsättning men låser organisationen i dyra uppgraderingscykler. Tre huvudgrupper beskrivs (organisation, användare, teknik) med undertyper som kompetens-, arbetsmiljö-, användarnöjdhets-, anseende-, infrastruktur-, skugg-IT- och styrningsskuld (Magnusson m.fl., 2018).</p>
+          </li>
+          <li>
+            <span class="year">2015</span>
+            <h3>Social skuld</h3>
+            <p>Tamburri m.fl. definierar social skuld som ”en kumulativ och ökande kostnad i det rådande läget, kopplad till osynliga och negativa effekter inom en utvecklingsgemenskap”. Det är den första renodlade formuleringen av att skuld kan sitta i samarbete och relationer snarare än i kod.</p>
+          </li>
+          <li class="milestone">
+            <span class="year">2016</span>
+            <h3>Forskarfältet enas om en definition</h3>
+            <p>Ledande skuldforskare samlas vid ett seminarium för att harmonisera begreppet. Resultatet (Avgeriou m.fl., 2016) definierar teknisk skuld som design- eller implementationskonstruktioner som är ändamålsenliga på kort sikt men skapar ett tekniskt sammanhang där framtida förändringar blir dyrare eller omöjliga, med påverkan begränsad till systemets inre kvaliteter. Tre nyckelelement lyfts fram: skulden (de suboptimala konstruktionerna), räntan (framtida merarbete) och kapitalet (kostnaden att avhjälpa skulden). Det är denna definition som avgränsar den tekniska domänen i registret ovan.</p>
+          </li>
+          <li>
+            <span class="year">2018</span>
+            <h3>En taxonomi med 15 typer, och digital skuld (DD)</h3>
+            <p>Rios m.fl. sammanställer i en tertiär studie en taxonomi med 15 undertyper av teknisk skuld, från krav och test till dokumentation, process och personal, och varnar samtidigt för att begreppet används som ett ”catch-all” för varje hinder i utvecklingen. Taxonomin har sedan byggts ut väsentligt och utgör stommen i avhandlingens appendix 1.</p>
+            <p>Samma år definierar Rolland m.fl. digital skuld som ”en organisations ackumulerade tekniska och informationsmässiga förpliktelser kopplade till underhåll och utvecklingsbarhet hos dess plattform och infrastruktur”. Begreppet flyttar fokus från enskilda tekniska brister till det systemiska resultatet av uppskjuten modernisering, och utvidgar metaforen till informationslagret. Ernst m.fl. (2021) och Asatiani &amp; Torell (2023) preciserar åtta underkategorier, där driftsättnings-, social och informationsskuld är de mest särskiljande.</p>
+          </li>
+          <li>
+            <span class="year">2021</span>
+            <h3>AI-specifika skulder</h3>
+            <p>Bogner m.fl. kartlägger teknisk skuld i AI-baserade system och beskriver fyra nya typer: AI-konfigurations-, AI-data-, AI-modell- och AI-etikskuld. Metaforen följer med in i en ny teknikgeneration.</p>
+          </li>
+          <li>
+            <span class="year">2023–2024</span>
+            <h3>Icke-teknisk skuld (NTD)</h3>
+            <p>Saeeda m.fl. definierar icke-teknisk skuld som ansamlingen av suboptimala eller omogna beslut, kompromisser eller nödlösningar i utvecklingens icke-tekniska delar: bristande kommunikation, ineffektiva processer, felriktade team, svagt ledarskap. Fem underkategorier ordnas upp (process-, personal-, kultur-, social och organisationsskuld), och Ahmad m.fl. (2024) lägger till dokumentationsskuld. Icke-teknisk skuld fungerar ofta som en förstärkare: när processer, strukturer eller mänskliga faktorer brister levererar även välbyggda system inte värde.</p>
+            <p>Överlappningarna blir nu tydliga: processkuld finns i både TD- och NTD-litteraturen, kulturskuld ligger nära socio-teknisk skuld, och dokumentationsskuld erkänns under alla tre rubrikerna. Fältet behöver ett ramverk som ordnar kategorierna utan att späda ut metaforen.</p>
+          </li>
+          <li>
+            <span class="year">2023</span>
+            <h3>Transparensskuld i kommunal kontext</h3>
+            <p>I avhandlingens första studie (Persson m.fl., 2023) identifieras transparensskuld: stängd kod gör det svårt att veta vilka data som lagras om medborgarna och vilka algoritmer som används när ärenden bedöms. Studien av bygglovsprocessens system i en svensk kommun visar också att avdelningar arbetar i silor och att medborgaren bara har en passiv roll som systemanvändare.</p>
+          </li>
+          <li class="milestone">
+            <span class="year">2024</span>
+            <h3>Socio-teknisk skuld (STeD) som samlande begrepp</h3>
+            <p>Debatten om metaforens gränser pågår: ena sidan menar att utvidgningen är nödvändig för att fånga den socio-tekniska verkligheten (Ahmad &amp; Al-Baik, 2024; Avgeriou m.fl., 2025), den andra att begreppet dignar under allt fler kategorier (Tom m.fl., 2013; Besker m.fl., 2016). Riquet m.fl. (2024) föreslår socio-teknisk skuld som ett enande begrepp: organisationer kan inte meningsfullt skilja teknisk skuld i artefakter från de organisatoriska och sociala dynamiker som formar utvecklingen.</p>
+            <blockquote lang="en"><p>”A phenomenon that occurs when past social and/or technical decisions lead to inefficiencies or increased risks in designing, building, maintaining, managing, or using software engineering artifacts. This, in turn, hampers an organization’s ability to create value, achieve strategic goals, or pursue the best course of action.”</p></blockquote>
+            <p>Skulden har tre kännetecken: den är kumulativ (ju längre den kvarstår, desto högre kostnad), den är dyr att avveckla, och den är oundviklig i praktiken eftersom avvägningar och kompromisser är en del av allt utvecklingsarbete.</p>
+          </li>
+          <li class="milestone">
+            <span class="year">2025</span>
+            <h3>Avhandlingen: kategorierna sorteras i två domäner</h3>
+            <p>Med Riquets ramverk som lins ordnar avhandlingen alla tidigare artikulerade kategorier i två övergripande domäner: artefaktknuten skuld (teknisk skuld i kod, arkitektur, databaser och testramverk) och socialt knuten skuld (skuld som ansamlas genom sociala beslut om kommunikation, styrning och resursfördelning). Kategorier som tidigare räknats som tekniska, till exempel krav-, process- och AI-etikskuld, placeras på den sociala sidan eftersom deras rötter ligger i sociala sammanhang. Det är den klassificering som registret på denna sida återger.</p>
+            <p>Ramverket används sedan som diagnostiskt verktyg i fem studier och 25 kompletterande expertintervjuer i svensk kommunal sektor. Nio problem som driver skuldansamlingen identifieras och kartläggs mot designprinciper och arkitekturskisser. Slutsatsen: i kommunerna är skulden framför allt social. Klassificeringen är inte fullständig, eftersom metaforen fortsätter att utvecklas i takt med att nya sammanhang och tekniker tillkommer.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section aria-labelledby="paraply-title">
+      <div class="container">
+        <h2 id="paraply-title">De fyra paraplybegreppen</h2>
+        <p class="section-intro">
+          Innan socio-teknisk skuld introducerades hade forskningen skapat flera parallella paraplybegrepp för att skilja mellan olika lager och källor till skuld. De ersätter inte teknisk skuld i traditionell mening utan kompletterar den på olika abstraktionsnivåer, från kodkvalitet till organisationsstrategi. I registret anges för varje kategori vilket eller vilka av begreppen den definierats inom.
+        </p>
+        <ul class="umbrellas">
+          <li class="umbrella">
+            <span class="tag">TD</span>
+            <h3>Teknisk skuld</h3>
+            <p>Skuld i själva programvaran: kod, design, arkitektur, test, dokumentation. Den harmoniserade definitionen (Avgeriou m.fl., 2016) begränsar påverkan till systemets underhållbarhet och utvecklingsbarhet. Rios m.fl. (2018) ger taxonomin.</p>
+            <p class="umbrella-meta">Cunningham, 1992; Avgeriou m.fl., 2016; Rios m.fl., 2018</p>
+          </li>
+          <li class="umbrella">
+            <span class="tag">DD</span>
+            <h3>Digital skuld</h3>
+            <p>Organisationens ackumulerade tekniska och informationsmässiga förpliktelser kring plattformens och infrastrukturens underhåll och utvecklingsbarhet. Ett hinder för digital transformation som även omfattar informationslagret.</p>
+            <p class="umbrella-meta">Rolland m.fl., 2018; Ernst m.fl., 2021; Asatiani &amp; Torell, 2023</p>
+          </li>
+          <li class="umbrella">
+            <span class="tag">TyD</span>
+            <h3>Teknologiskuld</h3>
+            <p>Förpliktelser som uppstår ur strategiska, infrastrukturella, organisatoriska och styrningsmässiga val, ofta på ledningsnivå: upphandlingsstrategier, leverantörsberoenden och styrmodeller som binder framtida beslut.</p>
+            <p class="umbrella-meta">Magnusson &amp; Bygstad, 2014; Magnusson m.fl., 2018</p>
+          </li>
+          <li class="umbrella">
+            <span class="tag">NTD</span>
+            <h3>Icke-teknisk skuld</h3>
+            <p>Suboptimala beslut, kompromisser och nödlösningar i utvecklingens icke-tekniska delar: processer, personal, kultur, sociala relationer och organisationsstruktur. Ofta en förstärkare av teknisk skuld.</p>
+            <p class="umbrella-meta">Saeeda m.fl., 2023; Ahmad m.fl., 2024</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="kallor-title">
+      <div class="container">
+        <h2 id="kallor-title">Källor</h2>
+        <p class="section-intro">
+          Registret bygger på appendix 1 och 2 samt kapitel 2.2 i avhandlingen <a href="https://gupea.ub.gu.se/items/01e1caf1-9259-4b74-aafa-ba75a306b06c" rel="noopener">Managing Socio-Technical Debt: Causes and Design-Science Solutions for Citizen-Centred Digital Public Services</a> (Göteborgs universitet, 2025). Beskrivningarna är svenska sammanfattningar av de citerade definitionerna. Nedan de arbeten som citeras på sidan.
+        </p>
+        <ul class="references">
+          <li>Ahmad, M. O., &amp; Al-Baik, O. (2024). Beyond technical debt: Unravelling organisational debt concept. <i>Proceedings of the 39th ACM/SIGAPP Symposium on Applied Computing</i>, 802–809.</li>
+          <li>Ahmad, M. O., &amp; Gustavsson, T. (2022). The Pandora’s box of social, process, and people debts in software engineering. <i>Journal of Software: Evolution and Process</i>, 36(2), e2516.</li>
+          <li>Ahmad, M. O., Gustavsson, T., Katin, A., Taušan, N., &amp; Mandić, V. (2024). Non-technical aspects of technical debt in the context of large-scale agile development: A qualitative study. <i>50th Euromicro Conference on Software Engineering and Advanced Applications</i>.</li>
+          <li>Akbarinasaji, S., Bener, A. B., &amp; Erdem, A. (2016). Measuring the principal of defect debt. <i>5th International Workshop on Realizing Artificial Intelligence Synergies in Software Engineering</i>, 1–7.</li>
+          <li>Al-Barak, M., &amp; Bahsoon, R. (2016). Database design debts through examining schema evolution. <i>IEEE 8th International Workshop on Managing Technical Debt</i>, 17–23.</li>
+          <li>Alves, N. S., Ribeiro, L. F., Caires, V., Mendes, T. S., &amp; Spínola, R. O. (2014). Towards an ontology of terms on technical debt. <i>6th International Workshop on Managing Technical Debt</i>, 1–7.</li>
+          <li>Alves, N. S., Mendes, T. S., De Mendonça, M. G., Spínola, R. O., Shull, F., &amp; Seaman, C. (2016). Identification and management of technical debt: A systematic mapping study. <i>Information and Software Technology</i>, 70, 100–121.</li>
+          <li>Asatiani, A., &amp; Torell, J. (2023). Balancing digital debt and digital options: Challenges of digital transformation at Green Cargo. <i>Journal of Information Technology Teaching Cases</i>, 13(2), 154–164.</li>
+          <li>Avgeriou, P., Ernst, N. A., Nord, R. L., &amp; Kruchten, P. (2016). Technical debt: Broadening perspectives. Report on the seventh workshop on managing technical debt (MTD 2015). <i>ACM SIGSOFT Software Engineering Notes</i>, 41(2), 38–41.</li>
+          <li>Avgeriou, P., Ozkaya, I., Koziolek, H., Codabux, Z., &amp; Ernst, N. (2025). Reframing technical debt (Dagstuhl Perspectives Workshop 24452). <i>Dagstuhl Reports</i>, 14(11), 16–39.</li>
+          <li>Besker, T., Martini, A., &amp; Bosch, J. (2016). A systematic literature review and a unified model of ATD. <i>42nd Euromicro Conference on Software Engineering and Advanced Applications</i>, 189–197.</li>
+          <li>Bogner, J., Verdecchia, R., &amp; Gerostathopoulos, I. (2021). Characterizing technical debt and antipatterns in AI-based systems: A systematic mapping study. <i>IEEE/ACM International Conference on Technical Debt</i>, 64–73.</li>
+          <li>Cunningham, W. (1992). The WyCash portfolio management system. <i>Addendum to the Proceedings on Object-Oriented Programming Systems, Languages, and Applications</i>, 29–30.</li>
+          <li>Ernst, N., Kazman, R., &amp; Delange, J. (2021). <i>Technical debt in practice: How to find it and fix it</i>. MIT Press.</li>
+          <li>Fowler, M. (2003). Technical debt. martinfowler.com. Fowler, M. (2009). Technical debt quadrant. martinfowler.com.</li>
+          <li>Hacks, S., Höfert, H., Salentin, J., Yeong, Y. C., &amp; Lichter, H. (2019). Towards the definition of enterprise architecture debts. <i>IEEE 23rd International Enterprise Distributed Object Computing Workshop</i>, 9–16.</li>
+          <li>Kruchten, P., Nord, R. L., &amp; Ozkaya, I. (2012). Technical debt: From metaphor to theory and practice. <i>IEEE Software</i>, 29(6), 18–21.</li>
+          <li>Larrucea, X., Santamaría, I., &amp; Graña Romay, M. (2021). Towards a privacy debt. <i>IET Software</i>, 15(6), 453–463.</li>
+          <li>Li, Z., Avgeriou, P., &amp; Liang, P. (2015). A systematic mapping study on technical debt and its management. <i>Journal of Systems and Software</i>, 101, 193–220.</li>
+          <li>Liu, J., Huang, Q., Xia, X., Shihab, E., Lo, D., &amp; Li, S. (2020). Is using deep learning frameworks free? Characterizing technical debt in deep learning frameworks. <i>ACM/IEEE 42nd International Conference on Software Engineering: Software Engineering in Society</i>.</li>
+          <li>Lutz, M. J. (1993). A maturing field on display at OOPSLA. <i>IEEE Software</i>, 10(1), 113–116.</li>
+          <li>MacCormack, A., Baldwin, C., &amp; Rusnak, J. (2012). Exploring the duality between product and organizational architectures: A test of the ”mirroring” hypothesis. <i>Research Policy</i>, 41(8), 1309–1324.</li>
+          <li>Magnusson, J., &amp; Bygstad, B. (2014). Technology debt: Toward a new theory of technology heritage. <i>Proceedings of the Scandinavian Conference on Information Systems</i>, 5–18.</li>
+          <li>Magnusson, J., Juiz, C., Gómez, B., &amp; Bermejo, B. (2018). Governing technology debt: Beyond technical debt. <i>Proceedings of the 2018 International Conference on Technical Debt</i>, 76–84.</li>
+          <li>Marinescu, R. (2012). Assessing technical debt by identifying design flaws in software systems. <i>IBM Journal of Research and Development</i>, 56(5), 9:1–9:13.</li>
+          <li>Martini, A., Besker, T., &amp; Bosch, J. (2020). Process debt: A first exploration. <i>27th Asia-Pacific Software Engineering Conference</i>, 316–325.</li>
+          <li>Morgenthaler, J. D., Gridnev, M., Sauciuc, R., &amp; Bhansali, S. (2012). Searching for build debt: Experiences managing technical debt at Google. <i>3rd International Workshop on Managing Technical Debt</i>, 1–6.</li>
+          <li>Persson, P. (2025). <i>Managing Socio-Technical Debt: Causes and Design-Science Solutions for Citizen-Centred Digital Public Services</i>. Doktorsavhandling, Göteborgs universitet.</li>
+          <li>Persson, P., Zhang, Y., Asatiani, A., Lindman, J., &amp; Rudmark, D. (2023). Technical debt in the municipality sector: The missing link with citizens and silofication. <i>14th Scandinavian Conference on Information Systems</i>. (Publikation I.)</li>
+          <li>Rindell, K., Bernsmed, K., &amp; Jaatun, M. G. (2019). Managing security in software: Or, how I learned to stop worrying and manage the security technical debt. <i>14th International Conference on Availability, Reliability and Security</i>, 1–8.</li>
+          <li>Rios, N., Mendonça Neto, M., &amp; Spínola, R. (2018). A tertiary study on technical debt: Types, management strategies, research trends, and base information for practitioners. <i>Information and Software Technology</i>, 102, 117–145.</li>
+          <li>Riquet, N., Devroey, X., &amp; Vanderose, B. (2024). Debt stories: Capturing social and technical debt in the industry. <i>7th ACM/IEEE International Conference on Technical Debt</i>, 40–44.</li>
+          <li>Rodriguez, A., Gardey, J. C., Grigera, J., Rossi, G., &amp; Garrido, A. (2023). UX debt in an agile development process: Evidence and characterization. <i>Software Quality Journal</i>, 31(4), 1467–1498.</li>
+          <li>Rolland, K., Mathiassen, L., &amp; Rai, A. (2018). Managing digital platforms in user organizations: The interactions between digital options and digital debt. <i>Information Systems Research</i>, 29(2), 419–443.</li>
+          <li>Rosser, L. A., &amp; Norton, J. H. (2021). A systems perspective on technical debt. <i>2021 IEEE Aerospace Conference</i>, 1–10.</li>
+          <li>Saeeda, H., Ahmad, M. O., &amp; Gustavsson, T. (2023). Multivocal literature review on non-technical debt in software development: An exploratory study. <i>19th International Conference on Evaluation of Novel Approaches to Software Engineering</i>.</li>
+          <li>Samarthyam, G., Muralidharan, M., &amp; Anna, R. K. (2017). Understanding test debt. I <i>Trends in Software Testing</i>, 1–17. Springer.</li>
+          <li>Silva, M. C., Valente, M. T., &amp; Terra, R. (2016). Does technical debt lead to the rejection of pull requests? <i>XII Brazilian Symposium on Information Systems</i>.</li>
+          <li>Störrle, H., &amp; Ciolkowski, M. (2019). Stepping away from the lamppost: Domain-level technical debt. <i>45th Euromicro Conference on Software Engineering and Advanced Applications</i>, 325–332.</li>
+          <li>Tamburri, D. A., Kruchten, P., Lago, P., &amp; van Vliet, H. (2015). Social debt in software engineering: Insights from industry. <i>Journal of Internet Services and Applications</i>, 6(1), 10.</li>
+          <li>Tom, E., Aurum, A., &amp; Vidgen, R. (2013). An exploration of technical debt. <i>Journal of Systems and Software</i>, 86(6), 1498–1516.</li>
+          <li>Wiklund, K., Eldh, S., Sundmark, D., &amp; Lundqvist, K. (2012). Technical debt in test automation. <i>IEEE 5th International Conference on Software Testing, Verification and Validation</i>, 887–892.</li>
+          <li>Wolfart, D., Assunção, W. K. G., &amp; Martinez, J. (2021). Variability debt: Characterization, causes and consequences. <i>XX Brazilian Symposium on Software Quality</i>, 1–10.</li>
+          <li>Zazworka, N., Vetro, A., Izurieta, C., Wong, S., Cai, Y., Seaman, C., &amp; Shull, F. (2014). Comparing four approaches for technical debt identification. <i>Software Quality Journal</i>, 22(3), 403–426.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="levande-title">
+      <div class="container">
+        <div class="note">
+          <h2 id="levande-title">Ett levande register</h2>
+          <p>
+            Skuldmetaforen är fortfarande ett populärt och växande verktyg, och nya kategorier föreslås löpande när forskare tillämpar den på nya sammanhang. Registret speglar läget i avhandlingen och kommer att utökas när nya kategorier etableras i litteraturen eller i praktiken.
+          </p>
+          <p>
+            Vill du använda registret för att kartlägga skulden i din egen organisation? Se <a href="../">tjänster</a> för teknisk skuld-analys och rådgivning.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <a class="back-link" href="../">← Tillbaka till tjänster</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var form = document.getElementById('filters');
+      if (!form) return;
+
+      var searchInput = document.getElementById('q');
+      var originSelect = document.getElementById('origin');
+      var domainButtons = Array.prototype.slice.call(form.querySelectorAll('[data-domain]'));
+      var resetButton = document.getElementById('reset');
+      var resultCount = document.getElementById('result-count');
+      var emptyState = document.getElementById('empty-state');
+      var entries = Array.prototype.slice.call(document.querySelectorAll('.entry'));
+      var domains = {
+        social: document.getElementById('domain-social'),
+        technical: document.getElementById('domain-technical')
+      };
+      var total = entries.length;
+      var state = { q: '', domain: 'all', origin: 'all' };
+      var debounceTimer = null;
+
+      function normalize(text) {
+        return (text || '').toLowerCase().replace(/\s+/g, ' ').trim();
+      }
+
+      function matches(entry) {
+        if (state.domain !== 'all' && entry.getAttribute('data-domain') !== state.domain) return false;
+        if (state.origin !== 'all') {
+          var origins = (entry.getAttribute('data-origin') || '').split(' ');
+          if (origins.indexOf(state.origin) === -1) return false;
+        }
+        if (state.q) {
+          var haystack = normalize(entry.getAttribute('data-search'));
+          var terms = state.q.split(' ');
+          for (var i = 0; i < terms.length; i++) {
+            if (haystack.indexOf(terms[i]) === -1) return false;
+          }
+        }
+        return true;
+      }
+
+      function pluralize(n) {
+        return n === 1 ? 'kategori' : 'kategorier';
+      }
+
+      function apply() {
+        var counts = { social: 0, technical: 0 };
+        entries.forEach(function (entry) {
+          var show = matches(entry);
+          entry.hidden = !show;
+          if (show) counts[entry.getAttribute('data-domain')] += 1;
+        });
+
+        Object.keys(domains).forEach(function (key) {
+          var wrapper = domains[key];
+          var label = wrapper.querySelector('[data-count-for="' + key + '"]');
+          wrapper.hidden = counts[key] === 0;
+          if (label) label.textContent = counts[key] + ' ' + pluralize(counts[key]);
+        });
+
+        var shown = counts.social + counts.technical;
+        emptyState.hidden = shown !== 0;
+        resultCount.textContent = 'Visar ' + shown + ' av ' + total + ' kategorier.';
+      }
+
+      function setDomain(value) {
+        state.domain = value;
+        domainButtons.forEach(function (button) {
+          button.setAttribute('aria-pressed', button.getAttribute('data-domain') === value ? 'true' : 'false');
+        });
+        apply();
+      }
+
+      searchInput.addEventListener('input', function () {
+        window.clearTimeout(debounceTimer);
+        debounceTimer = window.setTimeout(function () {
+          state.q = normalize(searchInput.value);
+          apply();
+        }, 120);
+      });
+
+      originSelect.addEventListener('change', function () {
+        state.origin = originSelect.value;
+        apply();
+      });
+
+      domainButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          setDomain(button.getAttribute('data-domain'));
+        });
+      });
+
+      resetButton.addEventListener('click', function () {
+        searchInput.value = '';
+        originSelect.value = 'all';
+        state.q = '';
+        state.origin = 'all';
+        setDomain('all');
+        searchInput.focus();
+      });
+
+      // Om sidan öppnas med en länk direkt till en post: se till att posten är synlig.
+      if (window.location.hash) {
+        var target = document.getElementById(window.location.hash.slice(1));
+        if (target && target.classList.contains('entry')) {
+          apply();
+        }
+      }
+
+      apply();
+    })();
+  </script>
+</body>
+</html>
