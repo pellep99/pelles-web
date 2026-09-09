@@ -485,12 +485,16 @@
       padding: var(--space-xs) var(--space-sm);
       font-size: 0.875rem;
       color: var(--color-text-muted);
-      background: #fff8e6;
-      border-left: 3px solid #c98a12;
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
       border-radius: 0 var(--radius) var(--radius) 0;
     }
-    .entry-relation strong { display: block; color: var(--color-text); }
-    .entry-relation .relation-label { font-weight: 600; }
+    .entry-relation strong { color: var(--color-text); }
+    .tag-sub {
+      color: var(--color-text);
+      background: var(--color-bg);
+      border-style: dashed;
+    }
     .entry-source {
       margin: auto 0 0;
       padding-top: var(--space-xs);
@@ -751,6 +755,7 @@
           <li class="fact-social"><strong>27</strong> social debt</li>
           <li class="fact-technical"><strong>40</strong> technical debt</li>
           <li><strong>22</strong> added after the thesis</li>
+          <li><strong>24</strong> sub-categories</li>
           <li><strong>4</strong> umbrella concepts</li>
           <li><a href="#historia-title">History of the concept</a></li>
         </ul>
@@ -764,7 +769,7 @@
           Search by English or Swedish name, or by words in the description. Filter by domain (social or technical) and by the umbrella concept within which the category was originally defined. Each entry states the source of its definition.
         </p>
         <p class="section-intro">
-          The register covers the categories of the thesis plus 22 categories not included in the thesis, added in 2026 after a literature review and tagged <em>New</em>. All are listed as categories in their own right, but where the literature review or my own review suggests that a category is rather a sub-category of another, this is stated in a yellow box on the card. This also applies to several of the thesis's original categories.
+          The register covers the categories of the thesis plus 22 categories not included in the thesis, added in 2026 after a literature review and tagged <em>New</em>. 24 of the categories are arranged as sub-categories of another category, which is stated on the card with a link to the parent category. The arrangement is based on the literature review and my own assessment, and also applies to several of the thesis's original categories. All categories still have their own cards and can be searched.
         </p>
         <div class="naming-note" role="note">
           <h3>About the names: the English terms are the established ones</h3>
@@ -814,57 +819,57 @@
             Social debt emerges from failures in communication, management and the organisation of development processes. Examples are poor team-management practices, flawed prioritisation and communication breakdown between business units and the IT department. The debt is accumulated through social decisions and resides in structures, roles and relationships rather than in the technology.
           </p>
           <ul class="entries">
-          <li class="entry" id="ai-ethics-debt" data-domain="social" data-origin="td ai" data-search="ai-etikskuld ai ethics debt deficiencies around ethical aspects of ai-based systems, such as algorithmic fairness, prediction bias, or a lack of transparency and accountability. classified as social debt in the thesis because its roots lie in decisions and values rather than in the artefact. bogner m.fl., 2021 bogner et al., 2021 software fairness debt (new) and explainability debt (new) are closely related and could be seen as sub-categories of ai ethics debt. technical debt (traditional) ai-specific technical debt">
+          <li class="entry" id="ai-ethics-debt" data-domain="social" data-origin="td ai" data-search="ai-etikskuld ai ethics debt deficiencies around ethical aspects of ai-based systems, such as algorithmic fairness, prediction bias, or a lack of transparency and accountability. classified as social debt in the thesis because its roots lie in decisions and values rather than in the artefact. bogner m.fl., 2021 bogner et al., 2021 explainability debt is closely related but is placed under transparency debt.  technical debt (traditional) ai-specific technical debt">
             <h4 class="entry-title">AI ethics debt <span class="entry-alt">(<span lang="sv">AI-etikskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="AI-specific technical debt">AI</abbr></li>
             </ul>
             <p class="entry-desc">Deficiencies around ethical aspects of AI-based systems, such as algorithmic fairness, prediction bias, or a lack of transparency and accountability. Classified as social debt in the thesis because its roots lie in decisions and values rather than in the artefact.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> <a href="#software-fairness-debt">Software fairness debt</a> (new) and <a href="#explainability-debt">Explainability debt</a> (new) are closely related and could be seen as sub-categories of AI ethics debt.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#software-fairness-debt">Software fairness debt</a>. <a href="#explainability-debt">Explainability debt</a> is closely related but is placed under <a href="#transparency-debt">Transparency debt</a>.</p>
             <p class="entry-source">Source: Bogner et al., 2021</p>
           </li>
-          <li class="entry" id="cognitive-debt" data-domain="social" data-origin="ny" data-search="kognitiv skuld cognitive debt deferred human costs that accumulate when repeated reliance on ai weakens independent reasoning, verification, domain understanding, or sensemaking capability. ramamoorti m.fl., 2026; fırat, 2026 ramamoorti et al., 2026; fırat, 2026 a new candidate related to competence debt but more specific; could fit as a sub-category of it. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="cognitive-debt" data-domain="social" data-origin="ny" data-search="kognitiv skuld cognitive debt deferred human costs that accumulate when repeated reliance on ai weakens independent reasoning, verification, domain understanding, or sensemaking capability. ramamoorti m.fl., 2026; fırat, 2026 ramamoorti et al., 2026; fırat, 2026 a more specific form of competence debt, tied to reliance on ai. competence debt sub-category added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Cognitive debt <span class="entry-alt">(<span lang="sv">Kognitiv skuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
-              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
+              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Deferred human costs that accumulate when repeated reliance on AI weakens independent reasoning, verification, domain understanding, or sensemaking capability.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> A new candidate related to <a href="#competence-debt">Competence debt</a> but more specific; could fit as a sub-category of it.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#competence-debt">Competence debt</a>. A more specific form of competence debt, tied to reliance on AI.</p>
             <p class="entry-source">Source: Ramamoorti et al., 2026; Fırat, 2026</p>
           </li>
-          <li class="entry" id="competence-debt" data-domain="social" data-origin="tyd" data-search="kompetensskuld competence debt since the installed base is often built on elements of antiquated technology, conditions create a competence base optimised for maintenance and operations rather than for modernisation and the development of new technology. magnusson m.fl., 2018 magnusson et al., 2018 could fit as a sub-category of people debt, which already covers skill gaps. cognitive debt (new) is in turn a more specific form of competence debt. technology debt">
+          <li class="entry" id="competence-debt" data-domain="social" data-origin="tyd" data-search="kompetensskuld competence debt since the installed base is often built on elements of antiquated technology, conditions create a competence base optimised for maintenance and operations rather than for modernisation and the development of new technology. magnusson m.fl., 2018 magnusson et al., 2018 skill gaps are a form of people debt. cognitive debt is in turn a more specific form of competence debt. people debt sub-category technology debt">
             <h4 class="entry-title">Competence debt <span class="entry-alt">(<span lang="sv">Kompetensskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
-              <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Since the installed base is often built on elements of antiquated technology, conditions create a competence base optimised for maintenance and operations rather than for modernisation and the development of new technology.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Could fit as a sub-category of <a href="#people-debt">People debt</a>, which already covers skill gaps. <a href="#cognitive-debt">Cognitive debt</a> (new) is in turn a more specific form of competence debt.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#people-debt">People debt</a>. <strong>Sub-categories:</strong> <a href="#cognitive-debt">Cognitive debt</a>. Skill gaps are a form of people debt. <a href="#cognitive-debt">Cognitive debt</a> is in turn a more specific form of competence debt.</p>
             <p class="entry-source">Source: Magnusson et al., 2018</p>
           </li>
-          <li class="entry" id="compliance-debt" data-domain="social" data-origin="ny" data-search="regelefterlevnadsskuld compliance debt accumulated obligations created when regulatory, policy, assurance, or audit requirements are deferred and must be retrofitted later. butt m.fl., 2025; kapiyasheva m.fl., 2026 butt et al., 2025; kapiyasheva et al., 2026 assessed as a very strong candidate, especially for the public sector and ai. own assessment: privacy debt could be seen as a sub-category. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="compliance-debt" data-domain="social" data-origin="ny" data-search="regelefterlevnadsskuld compliance debt accumulated obligations created when regulatory, policy, assurance, or audit requirements are deferred and must be retrofitted later. butt m.fl., 2025; kapiyasheva m.fl., 2026 butt et al., 2025; kapiyasheva et al., 2026 especially relevant for the public sector and ai. privacy debt is placed here although it sits on the technical side.  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Compliance debt <span class="entry-alt">(<span lang="sv">Regelefterlevnadsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
             </ul>
             <p class="entry-desc">Accumulated obligations created when regulatory, policy, assurance, or audit requirements are deferred and must be retrofitted later.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Assessed as a very strong candidate, especially for the public sector and AI. Own assessment: <a href="#privacy-debt">Privacy debt</a> could be seen as a sub-category.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#privacy-debt">Privacy debt</a>. Especially relevant for the public sector and AI. <a href="#privacy-debt">Privacy debt</a> is placed here although it sits on the technical side.</p>
             <p class="entry-source">Source: Butt et al., 2025; Kapiyasheva et al., 2026</p>
           </li>
-          <li class="entry" id="consensus-debt" data-domain="social" data-origin="ny" data-search="konsensusskuld consensus debt accumulated liabilities arising when important strategic or development decisions proceed without sufficient involvement of relevant stakeholders or without establishing adequate shared understanding and agreement. the resulting debt may later manifest as misalignment, renewed negotiation, resistance, rework, or difficulties in implementing and adapting decisions. norling, 2024; lavallée m.fl., 2017 norling, 2024; lavallée et al., 2017 an explicit category in norling&#x27;s thesis on consensus-based strategising in the public sector. assessed as a strong candidate for its own category. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="consensus-debt" data-domain="social" data-origin="ny" data-search="konsensusskuld consensus debt accumulated liabilities arising when important strategic or development decisions proceed without sufficient involvement of relevant stakeholders or without establishing adequate shared understanding and agreement. the resulting debt may later manifest as misalignment, renewed negotiation, resistance, rework, or difficulties in implementing and adapting decisions. norling, 2024; lavallée m.fl., 2017 norling, 2024; lavallée et al., 2017 a category in its own right. an explicit concept in norling&#x27;s thesis on consensus-based strategising in the public sector.  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Consensus debt <span class="entry-alt">(<span lang="sv">Konsensusskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
             </ul>
             <p class="entry-desc">Accumulated liabilities arising when important strategic or development decisions proceed without sufficient involvement of relevant stakeholders or without establishing adequate shared understanding and agreement. The resulting debt may later manifest as misalignment, renewed negotiation, resistance, rework, or difficulties in implementing and adapting decisions.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> An explicit category in Norling's thesis on consensus-based strategising in the public sector. Assessed as a strong candidate for its own category.</p>
+            <p class="entry-relation">A category in its own right. An explicit concept in Norling's thesis on consensus-based strategising in the public sector.</p>
             <p class="entry-source">Source: Norling, 2024; Lavallée et al., 2017</p>
           </li>
-          <li class="entry" id="cultural-debt" data-domain="social" data-origin="ntd" data-search="kulturskuld cultural debt arises from a technical decision that borrows against the organisation&#x27;s culture. such decisions can introduce team divisions, deteriorate communication, or even weaken leadership effectiveness. a culture that discourages collaboration, experimentation or learning from mistakes reinforces the debt. saeeda m.fl., 2023 saeeda et al., 2023  non-technical debt">
+          <li class="entry" id="cultural-debt" data-domain="social" data-origin="ntd" data-search="kulturskuld cultural debt arises from a technical decision that borrows against the organisation&#x27;s culture. such decisions can introduce team divisions, deteriorate communication, or even weaken leadership effectiveness. a culture that discourages collaboration, experimentation or learning from mistakes reinforces the debt. saeeda m.fl., 2023 saeeda et al., 2023   non-technical debt">
             <h4 class="entry-title">Cultural debt <span class="entry-alt">(<span lang="sv">Kulturskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
@@ -873,7 +878,7 @@
             <p class="entry-desc">Arises from a technical decision that borrows against the organisation&#x27;s culture. Such decisions can introduce team divisions, deteriorate communication, or even weaken leadership effectiveness. A culture that discourages collaboration, experimentation or learning from mistakes reinforces the debt.</p>
             <p class="entry-source">Source: Saeeda et al., 2023</p>
           </li>
-          <li class="entry" id="enterprise-architecture-debt" data-domain="social" data-origin="td" data-search="verksamhetsarkitekturskuld enterprise architecture debt a metric that depicts the deviation of the currently present state of an enterprise from a hypothetical ideal state, viewed across the organisation&#x27;s whole architecture rather than a single system. hacks m.fl., 2019 hacks et al., 2019  technical debt (traditional)">
+          <li class="entry" id="enterprise-architecture-debt" data-domain="social" data-origin="td" data-search="verksamhetsarkitekturskuld enterprise architecture debt a metric that depicts the deviation of the currently present state of an enterprise from a hypothetical ideal state, viewed across the organisation&#x27;s whole architecture rather than a single system. hacks m.fl., 2019 hacks et al., 2019   technical debt (traditional)">
             <h4 class="entry-title">Enterprise architecture debt <span class="entry-alt">(<span lang="sv">Verksamhetsarkitekturskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
@@ -882,107 +887,107 @@
             <p class="entry-desc">A metric that depicts the deviation of the currently present state of an enterprise from a hypothetical ideal state, viewed across the organisation&#x27;s whole architecture rather than a single system.</p>
             <p class="entry-source">Source: Hacks et al., 2019</p>
           </li>
-          <li class="entry" id="governance-debt" data-domain="social" data-origin="tyd" data-search="styrningsskuld governance debt bias in the configuration of governance creates a governance optimised for stability that does not cater to the needs for innovation. misaligned or excessively rigid it governance structures. magnusson m.fl., 2018 magnusson et al., 2018 shadow-it debt could be seen as a sub-category of governance debt. institutional debt (new) is closely related but operates at the system level rather than the organisational level. technology debt">
+          <li class="entry" id="governance-debt" data-domain="social" data-origin="tyd" data-search="styrningsskuld governance debt bias in the configuration of governance creates a governance optimised for stability that does not cater to the needs for innovation. misaligned or excessively rigid it governance structures. magnusson m.fl., 2018 magnusson et al., 2018 institutional debt is closely related but operates at the system level rather than the organisational level. project management debt partly overlaps.  technology debt">
             <h4 class="entry-title">Governance debt <span class="entry-alt">(<span lang="sv">Styrningsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li>
             </ul>
             <p class="entry-desc">Bias in the configuration of governance creates a governance optimised for stability that does not cater to the needs for innovation. Misaligned or excessively rigid IT governance structures.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> <a href="#shadow-it-debt">Shadow-IT debt</a> could be seen as a sub-category of governance debt. <a href="#institutional-debt">Institutional debt</a> (new) is closely related but operates at the system level rather than the organisational level.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#shadow-it-debt">Shadow-IT debt</a>. <a href="#institutional-debt">Institutional debt</a> is closely related but operates at the system level rather than the organisational level. <a href="#project-management-debt">Project management debt</a> partly overlaps.</p>
             <p class="entry-source">Source: Magnusson et al., 2018</p>
           </li>
-          <li class="entry" id="information-debt" data-domain="social" data-origin="dd" data-search="informationsskuld information debt related to platform maintenance and evolvability, representing performance risks in an organisation&#x27;s work processes. the accumulation of outdated, inconsistent or poorly structured information makes digital services harder to scale, integrate and adapt. rolland m.fl., 2018 rolland et al., 2018 semantic debt (new) could fit as a sub-category of information debt. knowledge debt (new) should be kept apart by distinguishing stored information from organisational knowledge. digital debt">
+          <li class="entry" id="information-debt" data-domain="social" data-origin="dd" data-search="informationsskuld information debt related to platform maintenance and evolvability, representing performance risks in an organisation&#x27;s work processes. the accumulation of outdated, inconsistent or poorly structured information makes digital services harder to scale, integrate and adapt. rolland m.fl., 2018 rolland et al., 2018 knowledge debt is kept apart by distinguishing stored information from organisational knowledge.  digital debt">
             <h4 class="entry-title">Information debt <span class="entry-alt">(<span lang="sv">Informationsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Digital debt">DD</abbr></li>
             </ul>
             <p class="entry-desc">Related to platform maintenance and evolvability, representing performance risks in an organisation&#x27;s work processes. The accumulation of outdated, inconsistent or poorly structured information makes digital services harder to scale, integrate and adapt.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> <a href="#semantic-debt">Semantic debt</a> (new) could fit as a sub-category of information debt. <a href="#knowledge-debt">Knowledge debt</a> (new) should be kept apart by distinguishing stored information from organisational knowledge.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#semantic-debt">Semantic debt</a>. <a href="#knowledge-debt">Knowledge debt</a> is kept apart by distinguishing stored information from organisational knowledge.</p>
             <p class="entry-source">Source: Rolland et al., 2018</p>
           </li>
-          <li class="entry" id="institutional-debt" data-domain="social" data-origin="ny" data-search="institutionell skuld institutional debt accumulated systemic constraints created by outdated institutional arrangements, fragmented responsibilities, standards, rules, and governance structures. ohno &amp; hashimoto, 2026 ohno &amp; hashimoto, 2026 emerging, but especially relevant in a public-sector context. own assessment: closely related to governance debt and organisational debt but operates at the system level rather than within one organisation. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="institutional-debt" data-domain="social" data-origin="ny" data-search="institutionell skuld institutional debt accumulated systemic constraints created by outdated institutional arrangements, fragmented responsibilities, standards, rules, and governance structures. ohno &amp; hashimoto, 2026 ohno &amp; hashimoto, 2026 a category in its own right, emerging but especially relevant in a public-sector context. closely related to governance debt and organisational debt but operates at the system level rather than within one organisation.  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Institutional debt <span class="entry-alt">(<span lang="sv">Institutionell skuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
             </ul>
             <p class="entry-desc">Accumulated systemic constraints created by outdated institutional arrangements, fragmented responsibilities, standards, rules, and governance structures.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Emerging, but especially relevant in a public-sector context. Own assessment: closely related to <a href="#governance-debt">Governance debt</a> and <a href="#organisational-debt">Organisational debt</a> but operates at the system level rather than within one organisation.</p>
+            <p class="entry-relation">A category in its own right, emerging but especially relevant in a public-sector context. Closely related to <a href="#governance-debt">Governance debt</a> and <a href="#organisational-debt">Organisational debt</a> but operates at the system level rather than within one organisation.</p>
             <p class="entry-source">Source: Ohno &amp; Hashimoto, 2026</p>
           </li>
-          <li class="entry" id="knowledge-debt" data-domain="social" data-origin="ny" data-search="kunskapsskuld knowledge debt accumulated loss of tacit knowledge, rationale, context, and design intent that later has to be reconstructed at substantial cost. tsai, 2026; admile m.fl., 2025 tsai, 2026; admile et al., 2025 promising but still emerging. should be kept apart from information debt by distinguishing stored information from organisational knowledge. own assessment: also closely related to documentation debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="knowledge-debt" data-domain="social" data-origin="ny" data-search="kunskapsskuld knowledge debt accumulated loss of tacit knowledge, rationale, context, and design intent that later has to be reconstructed at substantial cost. tsai, 2026; admile m.fl., 2025 tsai, 2026; admile et al., 2025 a category in its own right, still emerging. distinguished from information debt by concerning organisational knowledge rather than stored information; also closely related to documentation debt.  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Knowledge debt <span class="entry-alt">(<span lang="sv">Kunskapsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
             </ul>
             <p class="entry-desc">Accumulated loss of tacit knowledge, rationale, context, and design intent that later has to be reconstructed at substantial cost.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Promising but still emerging. Should be kept apart from <a href="#information-debt">Information debt</a> by distinguishing stored information from organisational knowledge. Own assessment: also closely related to <a href="#documentation-debt">Documentation debt</a>.</p>
+            <p class="entry-relation">A category in its own right, still emerging. Distinguished from <a href="#information-debt">Information debt</a> by concerning organisational knowledge rather than stored information; also closely related to <a href="#documentation-debt">Documentation debt</a>.</p>
             <p class="entry-source">Source: Tsai, 2026; Admile et al., 2025</p>
           </li>
-          <li class="entry" id="management-debt" data-domain="social" data-origin="ny" data-search="ledningsskuld management debt accumulated liabilities caused by short-term or inadequate managerial decisions concerning people, resources, technology adoption, and project execution. dayan-akman m.fl., 2025 dayan-akman et al., 2025 proposed as an umbrella concept with resource management debt and project management debt as sub-categories. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="management-debt" data-domain="social" data-origin="ny" data-search="ledningsskuld management debt accumulated liabilities caused by short-term or inadequate managerial decisions concerning people, resources, technology adoption, and project execution. dayan-akman m.fl., 2025 dayan-akman et al., 2025 umbrella concept for debts arising from managerial decisions.  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Management debt <span class="entry-alt">(<span lang="sv">Ledningsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
             </ul>
             <p class="entry-desc">Accumulated liabilities caused by short-term or inadequate managerial decisions concerning people, resources, technology adoption, and project execution.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Proposed as an umbrella concept with <a href="#resource-management-debt">Resource management debt</a> and <a href="#project-management-debt">Project management debt</a> as sub-categories.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#resource-management-debt">Resource management debt</a>, <a href="#project-management-debt">Project management debt</a>. Umbrella concept for debts arising from managerial decisions.</p>
             <p class="entry-source">Source: Dayan-Akman et al., 2025</p>
           </li>
-          <li class="entry" id="organisational-debt" data-domain="social" data-origin="ntd" data-search="organisationsskuld organisational debt the accumulating catalogue of changes that leaders should have made but didn&#x27;t. structural issues such as unclear hierarchies, siloed departments or misaligned responsibilities. saeeda m.fl., 2023; ahmad &amp; al-baik, 2024 saeeda et al., 2023; ahmad &amp; al-baik, 2024 institutional debt (new) and management debt (new) are closely related; management debt concerns decisions, organisational debt structures, and institutional debt rules and responsibilities at the system level. non-technical debt">
+          <li class="entry" id="organisational-debt" data-domain="social" data-origin="ntd" data-search="organisationsskuld organisational debt the accumulating catalogue of changes that leaders should have made but didn&#x27;t. structural issues such as unclear hierarchies, siloed departments or misaligned responsibilities. saeeda m.fl., 2023; ahmad &amp; al-baik, 2024 saeeda et al., 2023; ahmad &amp; al-baik, 2024 institutional debt and management debt are closely related: management debt concerns decisions, organisational debt structures, and institutional debt rules and responsibilities at the system level.  non-technical debt">
             <h4 class="entry-title">Organisational debt <span class="entry-alt">(<span lang="sv">Organisationsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Non-technical debt">NTD</abbr></li>
             </ul>
             <p class="entry-desc">The accumulating catalogue of changes that leaders should have made but didn&#x27;t. Structural issues such as unclear hierarchies, siloed departments or misaligned responsibilities.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> <a href="#institutional-debt">Institutional debt</a> (new) and <a href="#management-debt">Management debt</a> (new) are closely related; management debt concerns decisions, organisational debt structures, and institutional debt rules and responsibilities at the system level.</p>
+            <p class="entry-relation"><a href="#institutional-debt">Institutional debt</a> and <a href="#management-debt">Management debt</a> are closely related: management debt concerns decisions, organisational debt structures, and institutional debt rules and responsibilities at the system level.</p>
             <p class="entry-source">Source: Saeeda et al., 2023; Ahmad &amp; Al-Baik, 2024</p>
           </li>
-          <li class="entry" id="people-debt" data-domain="social" data-origin="td ntd" data-search="personalskuld people debt people issues in the organisation that delay or hinder development activities, for example too few people having the necessary expertise due to delayed training or hiring, or over-reliance on a few key individuals. rios m.fl., 2018; ahmad &amp; gustavsson, 2022 rios et al., 2018; ahmad &amp; gustavsson, 2022 competence debt and work-environment debt could be seen as sub-categories of people debt, since both concern access to the right competence. technical debt (traditional) non-technical debt">
+          <li class="entry" id="people-debt" data-domain="social" data-origin="td ntd" data-search="personalskuld people debt people issues in the organisation that delay or hinder development activities, for example too few people having the necessary expertise due to delayed training or hiring, or over-reliance on a few key individuals. rios m.fl., 2018; ahmad &amp; gustavsson, 2022 rios et al., 2018; ahmad &amp; gustavsson, 2022 groups debts that concern access to the right competence.  technical debt (traditional) non-technical debt">
             <h4 class="entry-title">People debt <span class="entry-alt">(<span lang="sv">Personalskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Non-technical debt">NTD</abbr></li>
             </ul>
             <p class="entry-desc">People issues in the organisation that delay or hinder development activities, for example too few people having the necessary expertise due to delayed training or hiring, or over-reliance on a few key individuals.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> <a href="#competence-debt">Competence debt</a> and <a href="#work-environment-debt">Work-environment debt</a> could be seen as sub-categories of people debt, since both concern access to the right competence.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#competence-debt">Competence debt</a>, <a href="#work-environment-debt">Work-environment debt</a>. Groups debts that concern access to the right competence.</p>
             <p class="entry-source">Source: Rios et al., 2018; Ahmad &amp; Gustavsson, 2022</p>
           </li>
-          <li class="entry" id="process-debt" data-domain="social" data-origin="td ntd" data-search="processkuld process debt inefficient processes, where what the process was designed to handle is no longer appropriate. a suboptimal action or event with short-term advantages but long-term detrimental effects, such as outdated project-management methods, unnecessary bureaucracy or unsuitable procurement processes. rios m.fl., 2018; martini m.fl., 2020 rios et al., 2018; martini et al., 2020 project management debt (new) overlaps process debt and governance debt according to the literature review. technical debt (traditional) non-technical debt">
+          <li class="entry" id="process-debt" data-domain="social" data-origin="td ntd" data-search="processkuld process debt inefficient processes, where what the process was designed to handle is no longer appropriate. a suboptimal action or event with short-term advantages but long-term detrimental effects, such as outdated project-management methods, unnecessary bureaucracy or unsuitable procurement processes. rios m.fl., 2018; martini m.fl., 2020 rios et al., 2018; martini et al., 2020 project management debt overlaps process debt and governance debt but is placed under management debt.  technical debt (traditional) non-technical debt">
             <h4 class="entry-title">Process debt <span class="entry-alt">(<span lang="sv">Processkuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Non-technical debt">NTD</abbr></li>
             </ul>
             <p class="entry-desc">Inefficient processes, where what the process was designed to handle is no longer appropriate. A suboptimal action or event with short-term advantages but long-term detrimental effects, such as outdated project-management methods, unnecessary bureaucracy or unsuitable procurement processes.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> <a href="#project-management-debt">Project management debt</a> (new) overlaps process debt and governance debt according to the literature review.</p>
+            <p class="entry-relation"><a href="#project-management-debt">Project management debt</a> overlaps process debt and governance debt but is placed under <a href="#management-debt">Management debt</a>.</p>
             <p class="entry-source">Source: Rios et al., 2018; Martini et al., 2020</p>
           </li>
-          <li class="entry" id="project-management-debt" data-domain="social" data-origin="ny" data-search="projektledningsskuld project management debt accumulated future cost caused by deficiencies in planning, estimation, oversight, prioritisation, and project control. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026 proposed as a sub-category of management debt, but overlaps process debt and governance debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="project-management-debt" data-domain="social" data-origin="ny" data-search="projektledningsskuld project management debt accumulated future cost caused by deficiencies in planning, estimation, oversight, prioritisation, and project control. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026 partly overlaps process debt and governance debt. management debt sub-category added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Project management debt <span class="entry-alt">(<span lang="sv">Projektledningsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
-              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
+              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Accumulated future cost caused by deficiencies in planning, estimation, oversight, prioritisation, and project control.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Proposed as a sub-category of <a href="#management-debt">Management debt</a>, but overlaps <a href="#process-debt">Process debt</a> and <a href="#governance-debt">Governance debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#management-debt">Management debt</a>. <strong>Sub-categories:</strong> <a href="#project-monitoring-debt">Project monitoring debt</a>. Partly overlaps <a href="#process-debt">Process debt</a> and <a href="#governance-debt">Governance debt</a>.</p>
             <p class="entry-source">Source: Kapiyasheva et al., 2026</p>
           </li>
-          <li class="entry" id="project-monitoring-debt" data-domain="social" data-origin="ny" data-search="projektuppföljningsskuld project monitoring debt debt caused by insufficient monitoring of project progress, tasks, risks, and dependencies, allowing problems to accumulate unnoticed. dayan-akman m.fl., 2025 dayan-akman et al., 2025 proposed as a concrete sub-category of project management debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="project-monitoring-debt" data-domain="social" data-origin="ny" data-search="projektuppföljningsskuld project monitoring debt debt caused by insufficient monitoring of project progress, tasks, risks, and dependencies, allowing problems to accumulate unnoticed. dayan-akman m.fl., 2025 dayan-akman et al., 2025  project management debt sub-category added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Project monitoring debt <span class="entry-alt">(<span lang="sv">Projektuppföljningsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
-              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
+              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Debt caused by insufficient monitoring of project progress, tasks, risks, and dependencies, allowing problems to accumulate unnoticed.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Proposed as a concrete sub-category of <a href="#project-management-debt">Project management debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#project-management-debt">Project management debt</a>.</p>
             <p class="entry-source">Source: Dayan-Akman et al., 2025</p>
           </li>
-          <li class="entry" id="reputation-debt" data-domain="social" data-origin="tyd" data-search="anseendeskuld reputation debt deficiencies in delivery capability over long periods of time create a reputation where users have a low level of trust for the it department. trust between the it function and the business erodes. magnusson m.fl., 2018 magnusson et al., 2018  technology debt">
+          <li class="entry" id="reputation-debt" data-domain="social" data-origin="tyd" data-search="anseendeskuld reputation debt deficiencies in delivery capability over long periods of time create a reputation where users have a low level of trust for the it department. trust between the it function and the business erodes. magnusson m.fl., 2018 magnusson et al., 2018   technology debt">
             <h4 class="entry-title">Reputation debt <span class="entry-alt">(<span lang="sv">Anseendeskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
@@ -991,76 +996,77 @@
             <p class="entry-desc">Deficiencies in delivery capability over long periods of time create a reputation where users have a low level of trust for the IT department. Trust between the IT function and the business erodes.</p>
             <p class="entry-source">Source: Magnusson et al., 2018</p>
           </li>
-          <li class="entry" id="requirements-debt" data-domain="social" data-origin="td dd" data-search="kravskuld requirements debt trade-offs made with respect to what requirements the development team needs to implement or how to implement them. the distance between the optimal requirements specification and the actual system implementation. rios m.fl., 2018; li m.fl., 2015 rios et al., 2018; li et al., 2015  technical debt (traditional) digital debt">
+          <li class="entry" id="requirements-debt" data-domain="social" data-origin="td dd" data-search="kravskuld requirements debt trade-offs made with respect to what requirements the development team needs to implement or how to implement them. the distance between the optimal requirements specification and the actual system implementation. rios m.fl., 2018; li m.fl., 2015 rios et al., 2018; li et al., 2015   technical debt (traditional) digital debt">
             <h4 class="entry-title">Requirements debt <span class="entry-alt">(<span lang="sv">Kravskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Digital debt">DD</abbr></li>
             </ul>
             <p class="entry-desc">Trade-offs made with respect to what requirements the development team needs to implement or how to implement them. The distance between the optimal requirements specification and the actual system implementation.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#domain-debt">Domain debt</a>.</p>
             <p class="entry-source">Source: Rios et al., 2018; Li et al., 2015</p>
           </li>
-          <li class="entry" id="resource-management-debt" data-domain="social" data-origin="ny" data-search="resurshanteringsskuld resource management debt debt resulting from inadequate allocation, development, or monitoring of human, financial, and technical resources needed over the system lifecycle. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026 proposed as a sub-category of management debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="resource-management-debt" data-domain="social" data-origin="ny" data-search="resurshanteringsskuld resource management debt debt resulting from inadequate allocation, development, or monitoring of human, financial, and technical resources needed over the system lifecycle. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026  management debt sub-category added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Resource management debt <span class="entry-alt">(<span lang="sv">Resurshanteringsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
-              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
+              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Debt resulting from inadequate allocation, development, or monitoring of human, financial, and technical resources needed over the system lifecycle.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Proposed as a sub-category of <a href="#management-debt">Management debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#management-debt">Management debt</a>.</p>
             <p class="entry-source">Source: Kapiyasheva et al., 2026</p>
           </li>
-          <li class="entry" id="shadow-it-debt" data-domain="social" data-origin="tyd" data-search="skugg-it-skuld shadow-it debt decentralised investment and non-sanctioned user-driven innovation, in parallel with official it governance, creates a lack of synergies, efficiency and security. magnusson m.fl., 2018 magnusson et al., 2018 could fit as a sub-category of governance debt, since the debt is defined by technology being adopted outside sanctioned governance. technology debt">
+          <li class="entry" id="shadow-it-debt" data-domain="social" data-origin="tyd" data-search="skugg-it-skuld shadow-it debt decentralised investment and non-sanctioned user-driven innovation, in parallel with official it governance, creates a lack of synergies, efficiency and security. magnusson m.fl., 2018 magnusson et al., 2018 the debt is defined by technology being adopted outside sanctioned governance. governance debt sub-category technology debt">
             <h4 class="entry-title">Shadow-IT debt <span class="entry-alt">(<span lang="sv">Skugg-IT-skuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
-              <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Decentralised investment and non-sanctioned user-driven innovation, in parallel with official IT governance, creates a lack of synergies, efficiency and security.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Could fit as a sub-category of <a href="#governance-debt">Governance debt</a>, since the debt is defined by technology being adopted outside sanctioned governance.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#governance-debt">Governance debt</a>. The debt is defined by technology being adopted outside sanctioned governance.</p>
             <p class="entry-source">Source: Magnusson et al., 2018</p>
           </li>
-          <li class="entry" id="software-fairness-debt" data-domain="social" data-origin="ny" data-search="rättviseskuld software fairness debt accumulated fairness deficiencies and unresolved bias that create future remediation costs and harmful or discriminatory outcomes. de souza santos m.fl., 2025 de souza santos et al., 2025 an explicit debt construct, but closely related to ai ethics debt and could fit as a sub-category of it. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="software-fairness-debt" data-domain="social" data-origin="ny" data-search="rättviseskuld software fairness debt accumulated fairness deficiencies and unresolved bias that create future remediation costs and harmful or discriminatory outcomes. de souza santos m.fl., 2025 de souza santos et al., 2025  ai ethics debt sub-category added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Software fairness debt <span class="entry-alt">(<span lang="sv">Rättviseskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
-              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
+              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Accumulated fairness deficiencies and unresolved bias that create future remediation costs and harmful or discriminatory outcomes.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> An explicit debt construct, but closely related to <a href="#ai-ethics-debt">AI ethics debt</a> and could fit as a sub-category of it.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#ai-ethics-debt">AI ethics debt</a>.</p>
             <p class="entry-source">Source: de Souza Santos et al., 2025</p>
           </li>
-          <li class="entry" id="team-collaboration-debt" data-domain="social" data-origin="ny" data-search="teamsamarbetsskuld team collaboration debt debt arising when insufficient collaboration and coordination between roles or teams create rework, hand-off problems, and duplicated effort. dayan-akman m.fl., 2025 dayan-akman et al., 2025 proposed as a sub-category of team debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="team-collaboration-debt" data-domain="social" data-origin="ny" data-search="teamsamarbetsskuld team collaboration debt debt arising when insufficient collaboration and coordination between roles or teams create rework, hand-off problems, and duplicated effort. dayan-akman m.fl., 2025 dayan-akman et al., 2025  team debt sub-category added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Team collaboration debt <span class="entry-alt">(<span lang="sv">Teamsamarbetsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
-              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
+              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Debt arising when insufficient collaboration and coordination between roles or teams create rework, hand-off problems, and duplicated effort.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Proposed as a sub-category of <a href="#team-debt">Team debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#team-debt">Team debt</a>.</p>
             <p class="entry-source">Source: Dayan-Akman et al., 2025</p>
           </li>
-          <li class="entry" id="team-communication-debt" data-domain="social" data-origin="ny" data-search="teamkommunikationsskuld team communication debt accumulated cost caused by communication breakdowns, weak information exchange, and insufficient shared understanding within or across teams. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026 proposed as a sub-category of team debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="team-communication-debt" data-domain="social" data-origin="ny" data-search="teamkommunikationsskuld team communication debt accumulated cost caused by communication breakdowns, weak information exchange, and insufficient shared understanding within or across teams. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026  team debt sub-category added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Team communication debt <span class="entry-alt">(<span lang="sv">Teamkommunikationsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
-              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
+              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Accumulated cost caused by communication breakdowns, weak information exchange, and insufficient shared understanding within or across teams.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Proposed as a sub-category of <a href="#team-debt">Team debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#team-debt">Team debt</a>.</p>
             <p class="entry-source">Source: Kapiyasheva et al., 2026</p>
           </li>
-          <li class="entry" id="team-debt" data-domain="social" data-origin="ny" data-search="teamskuld team debt accumulated social and structural frictions within a team that reduce collective effectiveness, coordination, and delivery capability. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026 an explicit category in recent research on non-technical debt. proposed as the parent category of team collaboration debt and team communication debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="team-debt" data-domain="social" data-origin="ny" data-search="teamskuld team debt accumulated social and structural frictions within a team that reduce collective effectiveness, coordination, and delivery capability. kapiyasheva m.fl., 2026 kapiyasheva et al., 2026 groups frictions within and between teams.  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Team debt <span class="entry-alt">(<span lang="sv">Teamskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
               <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
             </ul>
             <p class="entry-desc">Accumulated social and structural frictions within a team that reduce collective effectiveness, coordination, and delivery capability.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> An explicit category in recent research on non-technical debt. Proposed as the parent category of <a href="#team-collaboration-debt">Team collaboration debt</a> and <a href="#team-communication-debt">Team communication debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#team-collaboration-debt">Team collaboration debt</a>, <a href="#team-communication-debt">Team communication debt</a>. Groups frictions within and between teams.</p>
             <p class="entry-source">Source: Kapiyasheva et al., 2026</p>
           </li>
-          <li class="entry" id="user-satisfaction-debt" data-domain="social" data-origin="tyd" data-search="användarnöjdhetsskuld user-satisfaction debt deficiencies in user satisfaction affect users&#x27; willingness to work actively with the it function to create improvements. frustration with it systems and low engagement. magnusson m.fl., 2018 magnusson et al., 2018  technology debt">
+          <li class="entry" id="user-satisfaction-debt" data-domain="social" data-origin="tyd" data-search="användarnöjdhetsskuld user-satisfaction debt deficiencies in user satisfaction affect users&#x27; willingness to work actively with the it function to create improvements. frustration with it systems and low engagement. magnusson m.fl., 2018 magnusson et al., 2018   technology debt">
             <h4 class="entry-title">User-satisfaction debt <span class="entry-alt">(<span lang="sv">Användarnöjdhetsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
@@ -1069,14 +1075,14 @@
             <p class="entry-desc">Deficiencies in user satisfaction affect users&#x27; willingness to work actively with the IT function to create improvements. Frustration with IT systems and low engagement.</p>
             <p class="entry-source">Source: Magnusson et al., 2018</p>
           </li>
-          <li class="entry" id="work-environment-debt" data-domain="social" data-origin="tyd" data-search="arbetsmiljöskuld work-environment debt shortcomings in the work environment for it workers create difficulty in attracting and retaining the competences needed for future needs. magnusson m.fl., 2018 magnusson et al., 2018 could fit as a sub-category of people debt. technology debt">
+          <li class="entry" id="work-environment-debt" data-domain="social" data-origin="tyd" data-search="arbetsmiljöskuld work-environment debt shortcomings in the work environment for it workers create difficulty in attracting and retaining the competences needed for future needs. magnusson m.fl., 2018 magnusson et al., 2018  people debt sub-category technology debt">
             <h4 class="entry-title">Work-environment debt <span class="entry-alt">(<span lang="sv">Arbetsmiljöskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-social">Social debt</li>
-              <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technology debt">TyD</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Shortcomings in the work environment for IT workers create difficulty in attracting and retaining the competences needed for future needs.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Could fit as a sub-category of <a href="#people-debt">People debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#people-debt">People debt</a>.</p>
             <p class="entry-source">Source: Magnusson et al., 2018</p>
           </li>
           </ul>
@@ -1091,37 +1097,37 @@
             Technical debt is a collection of design or implementation constructs that are expedient in the short term but set up a technical context that can make future changes more costly or impossible. It presents an actual or contingent liability whose impact is limited to internal system qualities, primarily maintainability and evolvability. It resides in artefacts such as code, architecture, databases and testing frameworks.
           </p>
           <ul class="entries">
-          <li class="entry" id="accessibility-debt" data-domain="technical" data-origin="ny" data-search="tillgänglighetsskuld accessibility debt accumulated accessibility barriers created when inclusive-design requirements are postponed and later require costly redesign or remediation. indika m.fl., 2026; lazar m.fl., 2026 indika et al., 2026; lazar et al., 2026 strong and conceptually distinct from usability debt; should be its own category. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="accessibility-debt" data-domain="technical" data-origin="ny" data-search="tillgänglighetsskuld accessibility debt accumulated accessibility barriers created when inclusive-design requirements are postponed and later require costly redesign or remediation. indika m.fl., 2026; lazar m.fl., 2026 indika et al., 2026; lazar et al., 2026 a category in its own right, conceptually distinct from usability debt.  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Accessibility debt <span class="entry-alt">(<span lang="sv">Tillgänglighetsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
             </ul>
             <p class="entry-desc">Accumulated accessibility barriers created when inclusive-design requirements are postponed and later require costly redesign or remediation.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Strong and conceptually distinct from <a href="#usability-debt">Usability debt</a>; should be its own category.</p>
+            <p class="entry-relation">A category in its own right, conceptually distinct from <a href="#usability-debt">Usability debt</a>.</p>
             <p class="entry-source">Source: Indika et al., 2026; Lazar et al., 2026</p>
           </li>
-          <li class="entry" id="agentic-technical-debt" data-domain="technical" data-origin="ny" data-search="agentisk teknisk skuld agentic technical debt system-level debt specific to agentic ai, arising from autonomous reasoning, persistent memory, tool orchestration, multi-agent coordination, and evolving agent behaviour. tukur m.fl., 2026 tukur et al., 2026 an emerging umbrella concept rather than a category at the same level of abstraction as code debt. own assessment: could in time group ai configuration, ai data and ai model debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="agentic-technical-debt" data-domain="technical" data-origin="ny" data-search="agentisk teknisk skuld agentic technical debt system-level debt specific to agentic ai, arising from autonomous reasoning, persistent memory, tool orchestration, multi-agent coordination, and evolving agent behaviour. tukur m.fl., 2026 tukur et al., 2026 a standalone category for now. the literature describes it as an emerging umbrella concept that could in time group ai configuration debt, ai data debt and ai model debt, but that arrangement is not made yet.  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Agentic technical debt <span class="entry-alt">(<span lang="sv">Agentisk teknisk skuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
             </ul>
             <p class="entry-desc">System-level debt specific to agentic AI, arising from autonomous reasoning, persistent memory, tool orchestration, multi-agent coordination, and evolving agent behaviour.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> An emerging umbrella concept rather than a category at the same level of abstraction as code debt. Own assessment: could in time group AI configuration, AI data and AI model debt.</p>
+            <p class="entry-relation">A standalone category for now. The literature describes it as an emerging umbrella concept that could in time group <a href="#ai-configuration-debt">AI configuration debt</a>, <a href="#ai-data-debt">AI data debt</a> and <a href="#ai-model-debt">AI model debt</a>, but that arrangement is not made yet.</p>
             <p class="entry-source">Source: Tukur et al., 2026</p>
           </li>
-          <li class="entry" id="ai-configuration-debt" data-domain="technical" data-origin="td ai" data-search="ai-konfigurationsskuld ai configuration debt deficiencies around the configuration mechanisms of ai-based systems. bogner m.fl., 2021 bogner et al., 2021 could fit as a sub-category of configuration debt. technical debt (traditional) ai-specific technical debt">
+          <li class="entry" id="ai-configuration-debt" data-domain="technical" data-origin="td ai" data-search="ai-konfigurationsskuld ai configuration debt deficiencies around the configuration mechanisms of ai-based systems. bogner m.fl., 2021 bogner et al., 2021  configuration debt sub-category technical debt (traditional) ai-specific technical debt">
             <h4 class="entry-title">AI configuration debt <span class="entry-alt">(<span lang="sv">AI-konfigurationsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="AI-specific technical debt">AI</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="AI-specific technical debt">AI</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Deficiencies around the configuration mechanisms of AI-based systems.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Could fit as a sub-category of <a href="#configuration-debt">Configuration debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#configuration-debt">Configuration debt</a>.</p>
             <p class="entry-source">Source: Bogner et al., 2021</p>
           </li>
-          <li class="entry" id="ai-data-debt" data-domain="technical" data-origin="td ai" data-search="ai-dataskuld ai data debt deficiencies related to the collection, management and usage of data, both for training models and in production. bogner m.fl., 2021 bogner et al., 2021  technical debt (traditional) ai-specific technical debt">
+          <li class="entry" id="ai-data-debt" data-domain="technical" data-origin="td ai" data-search="ai-dataskuld ai data debt deficiencies related to the collection, management and usage of data, both for training models and in production. bogner m.fl., 2021 bogner et al., 2021   technical debt (traditional) ai-specific technical debt">
             <h4 class="entry-title">AI data debt <span class="entry-alt">(<span lang="sv">AI-dataskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
@@ -1130,7 +1136,7 @@
             <p class="entry-desc">Deficiencies related to the collection, management and usage of data, both for training models and in production.</p>
             <p class="entry-source">Source: Bogner et al., 2021</p>
           </li>
-          <li class="entry" id="ai-model-debt" data-domain="technical" data-origin="td ai" data-search="ai-modellskuld ai model debt suboptimal practices in the design, training and management of ai models. bogner m.fl., 2021 bogner et al., 2021  technical debt (traditional) ai-specific technical debt">
+          <li class="entry" id="ai-model-debt" data-domain="technical" data-origin="td ai" data-search="ai-modellskuld ai model debt suboptimal practices in the design, training and management of ai models. bogner m.fl., 2021 bogner et al., 2021   technical debt (traditional) ai-specific technical debt">
             <h4 class="entry-title">AI model debt <span class="entry-alt">(<span lang="sv">AI-modellskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
@@ -1139,17 +1145,17 @@
             <p class="entry-desc">Suboptimal practices in the design, training and management of AI models.</p>
             <p class="entry-source">Source: Bogner et al., 2021</p>
           </li>
-          <li class="entry" id="algorithm-debt" data-domain="technical" data-origin="td" data-search="algoritmskuld algorithm debt sub-optimal implementations of algorithm logic. liu m.fl., 2020 liu et al., 2020 could fit as a sub-category of code debt (implementation debt), since it concerns sub-optimal implementation. technical debt (traditional)">
+          <li class="entry" id="algorithm-debt" data-domain="technical" data-origin="td" data-search="algoritmskuld algorithm debt sub-optimal implementations of algorithm logic. liu m.fl., 2020 liu et al., 2020 concerns sub-optimal implementation of algorithm logic. code debt (implementation debt) sub-category technical debt (traditional)">
             <h4 class="entry-title">Algorithm debt <span class="entry-alt">(<span lang="sv">Algoritmskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Sub-optimal implementations of algorithm logic.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Could fit as a sub-category of <a href="#code-debt-implementation-debt">Code debt (implementation debt)</a>, since it concerns sub-optimal implementation.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#code-debt-implementation-debt">Code debt (implementation debt)</a>. Concerns sub-optimal implementation of algorithm logic.</p>
             <p class="entry-source">Source: Liu et al., 2020</p>
           </li>
-          <li class="entry" id="architectural-debt" data-domain="technical" data-origin="td" data-search="arkitekturskuld architectural debt problems encountered in product architecture that affect architectural requirements. it has a significant influence on system success and, left unchecked, can cause expensive repercussions. upgrades to systems with high architectural debt require three times the effort of well-structured architectures, and early architectural shortcuts increase brittleness and later rework costs. rios m.fl., 2018; besker m.fl., 2016; maccormack m.fl., 2012 rios et al., 2018; besker et al., 2016; maccormack et al., 2012  technical debt (traditional)">
+          <li class="entry" id="architectural-debt" data-domain="technical" data-origin="td" data-search="arkitekturskuld architectural debt problems encountered in product architecture that affect architectural requirements. it has a significant influence on system success and, left unchecked, can cause expensive repercussions. upgrades to systems with high architectural debt require three times the effort of well-structured architectures, and early architectural shortcuts increase brittleness and later rework costs. rios m.fl., 2018; besker m.fl., 2016; maccormack m.fl., 2012 rios et al., 2018; besker et al., 2016; maccormack et al., 2012   technical debt (traditional)">
             <h4 class="entry-title">Architectural debt <span class="entry-alt">(<span lang="sv">Arkitekturskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
@@ -1158,114 +1164,117 @@
             <p class="entry-desc">Problems encountered in product architecture that affect architectural requirements. It has a significant influence on system success and, left unchecked, can cause expensive repercussions. Upgrades to systems with high architectural debt require three times the effort of well-structured architectures, and early architectural shortcuts increase brittleness and later rework costs.</p>
             <p class="entry-source">Source: Rios et al., 2018; Besker et al., 2016; MacCormack et al., 2012</p>
           </li>
-          <li class="entry" id="automation-build-debt" data-domain="technical" data-origin="td" data-search="automatiseringsskuld automation (build) debt in today&#x27;s fast-paced, release-oriented development, almost any manual step in building a software system indicates automation debt. it is both a source of and a resolution approach to technical debt (also called build or devops debt). rosser &amp; norton, 2021 rosser &amp; norton, 2021 build debt and pipeline debt (new) could be seen as sub-categories of automation debt. technical debt (traditional)">
+          <li class="entry" id="automation-build-debt" data-domain="technical" data-origin="td" data-search="automatiseringsskuld automation (build) debt in today&#x27;s fast-paced, release-oriented development, almost any manual step in building a software system indicates automation debt. it is both a source of and a resolution approach to technical debt (also called build or devops debt). rosser &amp; norton, 2021 rosser &amp; norton, 2021 groups debts in build, delivery and deployment flows.  technical debt (traditional)">
             <h4 class="entry-title">Automation (build) debt <span class="entry-alt">(<span lang="sv">Automatiseringsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
             </ul>
             <p class="entry-desc">In today&#x27;s fast-paced, release-oriented development, almost any manual step in building a software system indicates automation debt. It is both a source of and a resolution approach to technical debt (also called build or DevOps debt).</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> <a href="#build-debt">Build debt</a> and <a href="#pipeline-debt">Pipeline debt</a> (new) could be seen as sub-categories of automation debt.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#build-debt">Build debt</a>, <a href="#pipeline-debt">Pipeline debt</a>. Groups debts in build, delivery and deployment flows.</p>
             <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="automation-test-debt" data-domain="technical" data-origin="td" data-search="testautomatiseringsskuld automation test debt the work involved in automating tests of previously developed functionality to support continuous integration and faster development cycles, plus the accumulation of issues such as poorly maintained test scripts, outdated test cases and lack of proper test coverage. rios m.fl., 2018; wiklund m.fl., 2012 rios et al., 2018; wiklund et al., 2012 could fit as a sub-category of test debt (testing debt). technical debt (traditional)">
+          <li class="entry" id="automation-test-debt" data-domain="technical" data-origin="td" data-search="testautomatiseringsskuld automation test debt the work involved in automating tests of previously developed functionality to support continuous integration and faster development cycles, plus the accumulation of issues such as poorly maintained test scripts, outdated test cases and lack of proper test coverage. rios m.fl., 2018; wiklund m.fl., 2012 rios et al., 2018; wiklund et al., 2012  test debt (testing debt) sub-category technical debt (traditional)">
             <h4 class="entry-title">Automation test debt <span class="entry-alt">(<span lang="sv">Testautomatiseringsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">The work involved in automating tests of previously developed functionality to support continuous integration and faster development cycles, plus the accumulation of issues such as poorly maintained test scripts, outdated test cases and lack of proper test coverage.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Could fit as a sub-category of <a href="#test-debt-testing-debt">Test debt (testing debt)</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#test-debt-testing-debt">Test debt (testing debt)</a>.</p>
             <p class="entry-source">Source: Rios et al., 2018; Wiklund et al., 2012</p>
           </li>
-          <li class="entry" id="build-debt" data-domain="technical" data-origin="td" data-search="byggskuld build debt issues that make the build task harder and unnecessarily time-consuming, for instance building and running unnecessary code and tests. rios m.fl., 2018; morgenthaler m.fl., 2012 rios et al., 2018; morgenthaler et al., 2012 overlaps automation (build) debt to a high degree and could be seen as a sub-category of it. technical debt (traditional)">
+          <li class="entry" id="build-debt" data-domain="technical" data-origin="td" data-search="byggskuld build debt issues that make the build task harder and unnecessarily time-consuming, for instance building and running unnecessary code and tests. rios m.fl., 2018; morgenthaler m.fl., 2012 rios et al., 2018; morgenthaler et al., 2012 overlaps automation debt to a high degree. automation (build) debt sub-category technical debt (traditional)">
             <h4 class="entry-title">Build debt <span class="entry-alt">(<span lang="sv">Byggskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Issues that make the build task harder and unnecessarily time-consuming, for instance building and running unnecessary code and tests.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Overlaps <a href="#automation-build-debt">Automation (build) debt</a> to a high degree and could be seen as a sub-category of it.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#automation-build-debt">Automation (build) debt</a>. Overlaps automation debt to a high degree.</p>
             <p class="entry-source">Source: Rios et al., 2018; Morgenthaler et al., 2012</p>
           </li>
-          <li class="entry" id="code-debt-implementation-debt" data-domain="technical" data-origin="td dd" data-search="kodskuld code debt (implementation debt) problems found in the source code, that is poorly written code that violates best coding practices or coding rules, which reduces legibility and makes the code harder to maintain. this is cunningham&#x27;s original 1992 metaphor: ‘shipping first-time code is like going into debt’. cunningham, 1992; rios m.fl., 2018 cunningham, 1992; rios et al., 2018  technical debt (traditional) digital debt">
+          <li class="entry" id="code-debt-implementation-debt" data-domain="technical" data-origin="td dd" data-search="kodskuld code debt (implementation debt) problems found in the source code, that is poorly written code that violates best coding practices or coding rules, which reduces legibility and makes the code harder to maintain. this is cunningham&#x27;s original 1992 metaphor: ‘shipping first-time code is like going into debt’. cunningham, 1992; rios m.fl., 2018 cunningham, 1992; rios et al., 2018   technical debt (traditional) digital debt">
             <h4 class="entry-title">Code debt (implementation debt) <span class="entry-alt">(<span lang="sv">Kodskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Digital debt">DD</abbr></li>
             </ul>
             <p class="entry-desc">Problems found in the source code, that is poorly written code that violates best coding practices or coding rules, which reduces legibility and makes the code harder to maintain. This is Cunningham&#x27;s original 1992 metaphor: ‘shipping first-time code is like going into debt’.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#algorithm-debt">Algorithm debt</a>.</p>
             <p class="entry-source">Source: Cunningham, 1992; Rios et al., 2018</p>
           </li>
-          <li class="entry" id="compatibility-debt" data-domain="technical" data-origin="td" data-search="kompatibilitetsskuld compatibility debt a project&#x27;s immature dependencies on other projects that cannot supply all qualified services, so that the current implementation is a temporary workaround. liu m.fl., 2020 liu et al., 2020 could fit as a sub-category of dependency debt (new), since it is defined by immature dependencies on other projects. technical debt (traditional)">
+          <li class="entry" id="compatibility-debt" data-domain="technical" data-origin="td" data-search="kompatibilitetsskuld compatibility debt a project&#x27;s immature dependencies on other projects that cannot supply all qualified services, so that the current implementation is a temporary workaround. liu m.fl., 2020 liu et al., 2020 defined by immature dependencies on other projects. dependency debt sub-category technical debt (traditional)">
             <h4 class="entry-title">Compatibility debt <span class="entry-alt">(<span lang="sv">Kompatibilitetsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">A project&#x27;s immature dependencies on other projects that cannot supply all qualified services, so that the current implementation is a temporary workaround.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Could fit as a sub-category of <a href="#dependency-debt">Dependency debt</a> (new), since it is defined by immature dependencies on other projects.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#dependency-debt">Dependency debt</a>. Defined by immature dependencies on other projects.</p>
             <p class="entry-source">Source: Liu et al., 2020</p>
           </li>
-          <li class="entry" id="configuration-debt" data-domain="technical" data-origin="td" data-search="konfigurationsskuld configuration debt incurred when configuration mechanisms are not controlled with the same rigour as the software, when differences between configurations cannot easily be determined, or when redundant or unused configuration data exists. rosser &amp; norton, 2021 rosser &amp; norton, 2021  technical debt (traditional)">
+          <li class="entry" id="configuration-debt" data-domain="technical" data-origin="td" data-search="konfigurationsskuld configuration debt incurred when configuration mechanisms are not controlled with the same rigour as the software, when differences between configurations cannot easily be determined, or when redundant or unused configuration data exists. rosser &amp; norton, 2021 rosser &amp; norton, 2021   technical debt (traditional)">
             <h4 class="entry-title">Configuration debt <span class="entry-alt">(<span lang="sv">Konfigurationsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
             </ul>
             <p class="entry-desc">Incurred when configuration mechanisms are not controlled with the same rigour as the software, when differences between configurations cannot easily be determined, or when redundant or unused configuration data exists.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#ai-configuration-debt">AI configuration debt</a>.</p>
             <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="database-debt" data-domain="technical" data-origin="td" data-search="databasskuld database debt accumulated through issues with data requirements, data architecture, database design, implementation and documentation, and through the typical dependence on a third party for the database package (commercial or open source). rosser &amp; norton, 2021 rosser &amp; norton, 2021  technical debt (traditional)">
+          <li class="entry" id="database-debt" data-domain="technical" data-origin="td" data-search="databasskuld database debt accumulated through issues with data requirements, data architecture, database design, implementation and documentation, and through the typical dependence on a third party for the database package (commercial or open source). rosser &amp; norton, 2021 rosser &amp; norton, 2021   technical debt (traditional)">
             <h4 class="entry-title">Database debt <span class="entry-alt">(<span lang="sv">Databasskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
             </ul>
             <p class="entry-desc">Accumulated through issues with data requirements, data architecture, database design, implementation and documentation, and through the typical dependence on a third party for the database package (commercial or open source).</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#database-design-debt">Database-design debt</a>.</p>
             <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="database-design-debt" data-domain="technical" data-origin="td" data-search="databasdesignskuld database-design debt immature or suboptimal database design decisions that lag behind the optimal or desirable ones. al-barak &amp; bahsoon, 2016 al-barak &amp; bahsoon, 2016 could fit as a sub-category of database debt, which already covers database design. technical debt (traditional)">
+          <li class="entry" id="database-design-debt" data-domain="technical" data-origin="td" data-search="databasdesignskuld database-design debt immature or suboptimal database design decisions that lag behind the optimal or desirable ones. al-barak &amp; bahsoon, 2016 al-barak &amp; bahsoon, 2016 database debt already covers database design. database debt sub-category technical debt (traditional)">
             <h4 class="entry-title">Database-design debt <span class="entry-alt">(<span lang="sv">Databasdesignskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Immature or suboptimal database design decisions that lag behind the optimal or desirable ones.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Could fit as a sub-category of <a href="#database-debt">Database debt</a>, which already covers database design.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#database-debt">Database debt</a>. Database debt already covers database design.</p>
             <p class="entry-source">Source: Al-Barak &amp; Bahsoon, 2016</p>
           </li>
-          <li class="entry" id="defect-debt" data-domain="technical" data-origin="td" data-search="defektskuld defect debt the trade-off between the short-term benefit of postponing bug-fixing and the long-term consequences of delaying it. known defects that the development team agrees should be fixed but that are deferred due to competing priorities and limited resources. akbarinasaji m.fl., 2016; rios m.fl., 2018 akbarinasaji et al., 2016; rios et al., 2018 could fit as a sub-category of quality debt, which concerns the total effort to fix defects. technical debt (traditional)">
+          <li class="entry" id="defect-debt" data-domain="technical" data-origin="td" data-search="defektskuld defect debt the trade-off between the short-term benefit of postponing bug-fixing and the long-term consequences of delaying it. known defects that the development team agrees should be fixed but that are deferred due to competing priorities and limited resources. akbarinasaji m.fl., 2016; rios m.fl., 2018 akbarinasaji et al., 2016; rios et al., 2018 quality debt concerns the total effort to fix defects; defect debt the known defects that have been deferred. quality debt sub-category technical debt (traditional)">
             <h4 class="entry-title">Defect debt <span class="entry-alt">(<span lang="sv">Defektskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">The trade-off between the short-term benefit of postponing bug-fixing and the long-term consequences of delaying it. Known defects that the development team agrees should be fixed but that are deferred due to competing priorities and limited resources.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Could fit as a sub-category of <a href="#quality-debt">Quality debt</a>, which concerns the total effort to fix defects.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#quality-debt">Quality debt</a>. Quality debt concerns the total effort to fix defects; defect debt the known defects that have been deferred.</p>
             <p class="entry-source">Source: Akbarinasaji et al., 2016; Rios et al., 2018</p>
           </li>
-          <li class="entry" id="dependency-debt" data-domain="technical" data-origin="ny" data-search="beroendeskuld dependency debt accumulated liabilities caused by external libraries, services, models, components, or data dependencies that become difficult, risky, or costly to change. sculley m.fl., 2015; arpteg m.fl., 2018 sculley et al., 2015; arpteg et al., 2018 assessed as a very strong candidate and a clear gap in figure 2 of the thesis. own assessment: compatibility debt could be seen as a sub-category. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="dependency-debt" data-domain="technical" data-origin="ny" data-search="beroendeskuld dependency debt accumulated liabilities caused by external libraries, services, models, components, or data dependencies that become difficult, risky, or costly to change. sculley m.fl., 2015; arpteg m.fl., 2018 sculley et al., 2015; arpteg et al., 2018 a category in its own right that fills a clear gap in figure 2 of the thesis.  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Dependency debt <span class="entry-alt">(<span lang="sv">Beroendeskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
             </ul>
             <p class="entry-desc">Accumulated liabilities caused by external libraries, services, models, components, or data dependencies that become difficult, risky, or costly to change.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Assessed as a very strong candidate and a clear gap in figure 2 of the thesis. Own assessment: <a href="#compatibility-debt">Compatibility debt</a> could be seen as a sub-category.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#compatibility-debt">Compatibility debt</a>. A category in its own right that fills a clear gap in figure 2 of the thesis.</p>
             <p class="entry-source">Source: Sculley et al., 2015; Arpteg et al., 2018</p>
           </li>
-          <li class="entry" id="deployment-debt" data-domain="technical" data-origin="dd" data-search="driftsättningsskuld deployment debt all the shortcuts, errors or mistakes that happen when deploying, for example rushed or incomplete deployment processes. more recent, mainly ai-related literature describes it as the accumulated engineering work created when prototypes or locally successful systems are repeatedly advanced without resolving the requirements for reliable production deployment and operation. ernst m.fl., 2021; asatiani &amp; torell, 2023; costa, 2026 ernst et al., 2021; asatiani &amp; torell, 2023; costa, 2026 pipeline debt (new) is closely related but concerns the pipeline itself rather than the transition to production. digital debt">
+          <li class="entry" id="deployment-debt" data-domain="technical" data-origin="dd" data-search="driftsättningsskuld deployment debt all the shortcuts, errors or mistakes that happen when deploying, for example rushed or incomplete deployment processes. more recent, mainly ai-related literature describes it as the accumulated engineering work created when prototypes or locally successful systems are repeatedly advanced without resolving the requirements for reliable production deployment and operation. ernst m.fl., 2021; asatiani &amp; torell, 2023; costa, 2026 ernst et al., 2021; asatiani &amp; torell, 2023; costa, 2026 pipeline debt is closely related but concerns the pipeline itself rather than the transition to production.  digital debt">
             <h4 class="entry-title">Deployment debt <span class="entry-alt">(<span lang="sv">Driftsättningsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Digital debt">DD</abbr></li>
             </ul>
             <p class="entry-desc">All the shortcuts, errors or mistakes that happen when deploying, for example rushed or incomplete deployment processes. More recent, mainly AI-related literature describes it as the accumulated engineering work created when prototypes or locally successful systems are repeatedly advanced without resolving the requirements for reliable production deployment and operation.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> <a href="#pipeline-debt">Pipeline debt</a> (new) is closely related but concerns the pipeline itself rather than the transition to production.</p>
+            <p class="entry-relation"><a href="#pipeline-debt">Pipeline debt</a> is closely related but concerns the pipeline itself rather than the transition to production.</p>
             <p class="entry-source">Source: Ernst et al., 2021; Asatiani &amp; Torell, 2023; Costa, 2026</p>
           </li>
-          <li class="entry" id="depreciation-debt" data-domain="technical" data-origin="td" data-search="föråldringsskuld depreciation debt software systems that have longevity incur depreciation debt because the rate of technology change often overtakes even a well-written software system. rosser &amp; norton, 2021 rosser &amp; norton, 2021  technical debt (traditional)">
+          <li class="entry" id="depreciation-debt" data-domain="technical" data-origin="td" data-search="föråldringsskuld depreciation debt software systems that have longevity incur depreciation debt because the rate of technology change often overtakes even a well-written software system. rosser &amp; norton, 2021 rosser &amp; norton, 2021   technical debt (traditional)">
             <h4 class="entry-title">Depreciation debt <span class="entry-alt">(<span lang="sv">Föråldringsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
@@ -1274,7 +1283,7 @@
             <p class="entry-desc">Software systems that have longevity incur depreciation debt because the rate of technology change often overtakes even a well-written software system.</p>
             <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="design-debt" data-domain="technical" data-origin="td dd" data-search="designskuld design debt tough time-to-market constraints and unanticipated integration or evolution issues lead to design trade-offs that cause flaws in the structure of a software system, such as violations of good object-oriented design principles or design shortcuts in customisation software. design issues accumulate over time, making later modifications up to three times as costly as addressing them early. marinescu, 2012; rios m.fl., 2018; rolland m.fl., 2018; zazworka m.fl., 2014 marinescu, 2012; rios et al., 2018; rolland et al., 2018; zazworka et al., 2014  technical debt (traditional) digital debt">
+          <li class="entry" id="design-debt" data-domain="technical" data-origin="td dd" data-search="designskuld design debt tough time-to-market constraints and unanticipated integration or evolution issues lead to design trade-offs that cause flaws in the structure of a software system, such as violations of good object-oriented design principles or design shortcuts in customisation software. design issues accumulate over time, making later modifications up to three times as costly as addressing them early. marinescu, 2012; rios m.fl., 2018; rolland m.fl., 2018; zazworka m.fl., 2014 marinescu, 2012; rios et al., 2018; rolland et al., 2018; zazworka et al., 2014   technical debt (traditional) digital debt">
             <h4 class="entry-title">Design debt <span class="entry-alt">(<span lang="sv">Designskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
@@ -1283,7 +1292,7 @@
             <p class="entry-desc">Tough time-to-market constraints and unanticipated integration or evolution issues lead to design trade-offs that cause flaws in the structure of a software system, such as violations of good object-oriented design principles or design shortcuts in customisation software. Design issues accumulate over time, making later modifications up to three times as costly as addressing them early.</p>
             <p class="entry-source">Source: Marinescu, 2012; Rios et al., 2018; Rolland et al., 2018; Zazworka et al., 2014</p>
           </li>
-          <li class="entry" id="documentation-debt" data-domain="technical" data-origin="td dd ntd" data-search="dokumentationsskuld documentation debt missing, inconsistent, outdated or incomplete documentation, including outdated design specifications and lack of code comments. the only category recognised under all three umbrella concepts: technical, digital and non-technical debt. rios m.fl., 2018; ernst m.fl., 2021; ahmad m.fl., 2024 rios et al., 2018; ernst et al., 2021; ahmad et al., 2024  technical debt (traditional) digital debt non-technical debt">
+          <li class="entry" id="documentation-debt" data-domain="technical" data-origin="td dd ntd" data-search="dokumentationsskuld documentation debt missing, inconsistent, outdated or incomplete documentation, including outdated design specifications and lack of code comments. the only category recognised under all three umbrella concepts: technical, digital and non-technical debt. rios m.fl., 2018; ernst m.fl., 2021; ahmad m.fl., 2024 rios et al., 2018; ernst et al., 2021; ahmad et al., 2024   technical debt (traditional) digital debt non-technical debt">
             <h4 class="entry-title">Documentation debt <span class="entry-alt">(<span lang="sv">Dokumentationsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
@@ -1292,37 +1301,37 @@
             <p class="entry-desc">Missing, inconsistent, outdated or incomplete documentation, including outdated design specifications and lack of code comments. The only category recognised under all three umbrella concepts: technical, digital and non-technical debt.</p>
             <p class="entry-source">Source: Rios et al., 2018; Ernst et al., 2021; Ahmad et al., 2024</p>
           </li>
-          <li class="entry" id="domain-debt" data-domain="technical" data-origin="td" data-search="domänskuld domain debt the mis-representation of the application domain by an actual system. störrle &amp; ciolkowski, 2019 störrle &amp; ciolkowski, 2019 could fit as a sub-category of requirements debt, since mis-representation of the domain usually originates in requirements work. technical debt (traditional)">
+          <li class="entry" id="domain-debt" data-domain="technical" data-origin="td" data-search="domänskuld domain debt the mis-representation of the application domain by an actual system. störrle &amp; ciolkowski, 2019 störrle &amp; ciolkowski, 2019 mis-representation of the domain usually originates in requirements work. placed under requirements debt although it sits on the technical side. requirements debt sub-category technical debt (traditional)">
             <h4 class="entry-title">Domain debt <span class="entry-alt">(<span lang="sv">Domänskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">The mis-representation of the application domain by an actual system.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Could fit as a sub-category of <a href="#requirements-debt">Requirements debt</a>, since mis-representation of the domain usually originates in requirements work.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#requirements-debt">Requirements debt</a> (social debt). Mis-representation of the domain usually originates in requirements work. Placed under requirements debt although it sits on the technical side.</p>
             <p class="entry-source">Source: Störrle &amp; Ciolkowski, 2019</p>
           </li>
-          <li class="entry" id="energy-debt" data-domain="technical" data-origin="ny" data-search="energiskuld energy debt accumulated energy inefficiency in software that increases the future effort required to bring energy consumption back to an acceptable level. couto m.fl., 2020 couto et al., 2020 proposed as a sub-category of sustainability debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="energy-debt" data-domain="technical" data-origin="ny" data-search="energiskuld energy debt accumulated energy inefficiency in software that increases the future effort required to bring energy consumption back to an acceptable level. couto m.fl., 2020 couto et al., 2020  sustainability debt sub-category added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Energy debt <span class="entry-alt">(<span lang="sv">Energiskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
+              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Accumulated energy inefficiency in software that increases the future effort required to bring energy consumption back to an acceptable level.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Proposed as a sub-category of <a href="#sustainability-debt">Sustainability debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#sustainability-debt">Sustainability debt</a>.</p>
             <p class="entry-source">Source: Couto et al., 2020</p>
           </li>
-          <li class="entry" id="explainability-debt" data-domain="technical" data-origin="ny" data-search="förklarbarhetsskuld explainability debt the accumulated gap between the explainability, auditability, and stakeholder understanding required from an ai system and what the deployed system actually provides. gandikota, jegathesan m.fl., 2026 gandikota, jegathesan et al., 2026 a new ai category. own assessment: could be seen as an ai-specific sub-category of transparency debt, and is closely related to ai ethics debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="explainability-debt" data-domain="technical" data-origin="ny" data-search="förklarbarhetsskuld explainability debt the accumulated gap between the explainability, auditability, and stakeholder understanding required from an ai system and what the deployed system actually provides. gandikota, jegathesan m.fl., 2026 gandikota, jegathesan et al., 2026 the ai-specific form of transparency debt. also closely related to ai ethics debt. transparency debt sub-category added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Explainability debt <span class="entry-alt">(<span lang="sv">Förklarbarhetsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
+              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">The accumulated gap between the explainability, auditability, and stakeholder understanding required from an AI system and what the deployed system actually provides.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> A new AI category. Own assessment: could be seen as an AI-specific sub-category of <a href="#transparency-debt">Transparency debt</a>, and is closely related to <a href="#ai-ethics-debt">AI ethics debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#transparency-debt">Transparency debt</a>. The AI-specific form of transparency debt. Also closely related to <a href="#ai-ethics-debt">AI ethics debt</a>.</p>
             <p class="entry-source">Source: Gandikota, Jegathesan et al., 2026</p>
           </li>
-          <li class="entry" id="infrastructure-debt" data-domain="technical" data-origin="td tyd" data-search="infrastrukturskuld infrastructure debt infrastructure issues that delay or hinder development activities, for example postponed upgrades. deficiencies in infrastructure lead to potentially long lead times for future changes and require modernisation and new investment before new innovation with concrete benefits can be delivered. rios m.fl., 2018; alves m.fl., 2014; magnusson m.fl., 2018 rios et al., 2018; alves et al., 2014; magnusson et al., 2018  technical debt (traditional) technology debt">
+          <li class="entry" id="infrastructure-debt" data-domain="technical" data-origin="td tyd" data-search="infrastrukturskuld infrastructure debt infrastructure issues that delay or hinder development activities, for example postponed upgrades. deficiencies in infrastructure lead to potentially long lead times for future changes and require modernisation and new investment before new innovation with concrete benefits can be delivered. rios m.fl., 2018; alves m.fl., 2014; magnusson m.fl., 2018 rios et al., 2018; alves et al., 2014; magnusson et al., 2018   technical debt (traditional) technology debt">
             <h4 class="entry-title">Infrastructure debt <span class="entry-alt">(<span lang="sv">Infrastrukturskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
@@ -1331,16 +1340,17 @@
             <p class="entry-desc">Infrastructure issues that delay or hinder development activities, for example postponed upgrades. Deficiencies in infrastructure lead to potentially long lead times for future changes and require modernisation and new investment before new innovation with concrete benefits can be delivered.</p>
             <p class="entry-source">Source: Rios et al., 2018; Alves et al., 2014; Magnusson et al., 2018</p>
           </li>
-          <li class="entry" id="integration-debt" data-domain="technical" data-origin="td" data-search="integrationsskuld integration debt the effort involved in connecting systems or components together to achieve desired functionality. non-standard connections, proprietary interfaces and niche standards increase the debt. rosser &amp; norton, 2021 rosser &amp; norton, 2021  technical debt (traditional)">
+          <li class="entry" id="integration-debt" data-domain="technical" data-origin="td" data-search="integrationsskuld integration debt the effort involved in connecting systems or components together to achieve desired functionality. non-standard connections, proprietary interfaces and niche standards increase the debt. rosser &amp; norton, 2021 rosser &amp; norton, 2021   technical debt (traditional)">
             <h4 class="entry-title">Integration debt <span class="entry-alt">(<span lang="sv">Integrationsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
             </ul>
             <p class="entry-desc">The effort involved in connecting systems or components together to achieve desired functionality. Non-standard connections, proprietary interfaces and niche standards increase the debt.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#service-debt">Service debt</a>.</p>
             <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="modelling-and-simulation-debt" data-domain="technical" data-origin="td" data-search="modellerings- och simuleringsskuld modelling and simulation debt as model-based engineering becomes standard practice, the models become part of the technical baseline and are themselves subject to technical debt. rosser &amp; norton, 2021 rosser &amp; norton, 2021  technical debt (traditional)">
+          <li class="entry" id="modelling-and-simulation-debt" data-domain="technical" data-origin="td" data-search="modellerings- och simuleringsskuld modelling and simulation debt as model-based engineering becomes standard practice, the models become part of the technical baseline and are themselves subject to technical debt. rosser &amp; norton, 2021 rosser &amp; norton, 2021   technical debt (traditional)">
             <h4 class="entry-title">Modelling and simulation debt <span class="entry-alt">(<span lang="sv">Modellerings- och simuleringsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
@@ -1349,46 +1359,47 @@
             <p class="entry-desc">As model-based engineering becomes standard practice, the models become part of the technical baseline and are themselves subject to technical debt.</p>
             <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="performance-debt" data-domain="technical" data-origin="ny" data-search="prestandaskuld performance debt accumulated future cost caused by deferred performance, scalability, latency, throughput, or resource-efficiency improvements. carvalho m.fl., 2026 carvalho et al., 2026 a good candidate, although the research base is smaller than for code and architectural debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="performance-debt" data-domain="technical" data-origin="ny" data-search="prestandaskuld performance debt accumulated future cost caused by deferred performance, scalability, latency, throughput, or resource-efficiency improvements. carvalho m.fl., 2026 carvalho et al., 2026 a category in its own right, with a smaller research base than code and architectural debt.  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Performance debt <span class="entry-alt">(<span lang="sv">Prestandaskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
             </ul>
             <p class="entry-desc">Accumulated future cost caused by deferred performance, scalability, latency, throughput, or resource-efficiency improvements.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> A good candidate, although the research base is smaller than for code and architectural debt.</p>
+            <p class="entry-relation">A category in its own right, with a smaller research base than code and architectural debt.</p>
             <p class="entry-source">Source: Carvalho et al., 2026</p>
           </li>
-          <li class="entry" id="pipeline-debt" data-domain="technical" data-origin="ny" data-search="pipelineskuld pipeline debt debt embedded in brittle, tightly coupled, poorly reproducible, or weakly governed build, data, ml, or deployment pipelines. brahmi m.fl., 2026 brahmi et al., 2026 a strong candidate, above all for ai/ml systems. own assessment: could fit as a sub-category of automation (build) debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="pipeline-debt" data-domain="technical" data-origin="ny" data-search="pipelineskuld pipeline debt debt embedded in brittle, tightly coupled, poorly reproducible, or weakly governed build, data, ml, or deployment pipelines. brahmi m.fl., 2026 brahmi et al., 2026 especially relevant for ai/ml systems. automation (build) debt sub-category added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Pipeline debt <span class="entry-alt">(<span lang="sv">Pipelineskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
+              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Debt embedded in brittle, tightly coupled, poorly reproducible, or weakly governed build, data, ML, or deployment pipelines.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> A strong candidate, above all for AI/ML systems. Own assessment: could fit as a sub-category of <a href="#automation-build-debt">Automation (build) debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#automation-build-debt">Automation (build) debt</a>. Especially relevant for AI/ML systems.</p>
             <p class="entry-source">Source: Brahmi et al., 2026</p>
           </li>
-          <li class="entry" id="privacy-debt" data-domain="technical" data-origin="td" data-search="integritetsskuld privacy debt the quantity of effort required for identifying, governing, controlling, communicating and protecting the software system with regard to data protection and regulatory compliance throughout the development lifecycle. larrucea m.fl., 2021 larrucea et al., 2021 could fit as a sub-category of compliance debt (new) or security debt, depending on whether the emphasis is on regulatory compliance or protection. technical debt (traditional)">
+          <li class="entry" id="privacy-debt" data-domain="technical" data-origin="td" data-search="integritetsskuld privacy debt the quantity of effort required for identifying, governing, controlling, communicating and protecting the software system with regard to data protection and regulatory compliance throughout the development lifecycle. larrucea m.fl., 2021 larrucea et al., 2021 placed under compliance debt since the emphasis is on regulated data protection. also closely related to security debt. compliance debt sub-category technical debt (traditional)">
             <h4 class="entry-title">Privacy debt <span class="entry-alt">(<span lang="sv">Integritetsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">The quantity of effort required for identifying, governing, controlling, communicating and protecting the software system with regard to data protection and regulatory compliance throughout the development lifecycle.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Could fit as a sub-category of <a href="#compliance-debt">Compliance debt</a> (new) or <a href="#security-debt">Security debt</a>, depending on whether the emphasis is on regulatory compliance or protection.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#compliance-debt">Compliance debt</a> (social debt). Placed under compliance debt since the emphasis is on regulated data protection. Also closely related to <a href="#security-debt">Security debt</a>.</p>
             <p class="entry-source">Source: Larrucea et al., 2021</p>
           </li>
-          <li class="entry" id="quality-debt" data-domain="technical" data-origin="td" data-search="kvalitetsskuld quality debt the measure of the effort to fix the defects, discovered or undiscovered, that exist within a system at a given point in time. rosser &amp; norton, 2021 rosser &amp; norton, 2021  technical debt (traditional)">
+          <li class="entry" id="quality-debt" data-domain="technical" data-origin="td" data-search="kvalitetsskuld quality debt the measure of the effort to fix the defects, discovered or undiscovered, that exist within a system at a given point in time. rosser &amp; norton, 2021 rosser &amp; norton, 2021   technical debt (traditional)">
             <h4 class="entry-title">Quality debt <span class="entry-alt">(<span lang="sv">Kvalitetsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
             </ul>
             <p class="entry-desc">The measure of the effort to fix the defects, discovered or undiscovered, that exist within a system at a given point in time.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#defect-debt">Defect debt</a>.</p>
             <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
           </li>
-          <li class="entry" id="security-debt" data-domain="technical" data-origin="td" data-search="säkerhetsskuld security debt a solution that compromises the security of the system, for example by introducing a particular breach of security. technical debt containing a security risk. silva m.fl., 2016; rindell m.fl., 2019 silva et al., 2016; rindell et al., 2019  technical debt (traditional)">
+          <li class="entry" id="security-debt" data-domain="technical" data-origin="td" data-search="säkerhetsskuld security debt a solution that compromises the security of the system, for example by introducing a particular breach of security. technical debt containing a security risk. silva m.fl., 2016; rindell m.fl., 2019 silva et al., 2016; rindell et al., 2019   technical debt (traditional)">
             <h4 class="entry-title">Security debt <span class="entry-alt">(<span lang="sv">Säkerhetsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
@@ -1397,66 +1408,67 @@
             <p class="entry-desc">A solution that compromises the security of the system, for example by introducing a particular breach of security. Technical debt containing a security risk.</p>
             <p class="entry-source">Source: Silva et al., 2016; Rindell et al., 2019</p>
           </li>
-          <li class="entry" id="semantic-debt" data-domain="technical" data-origin="ny" data-search="semantisk skuld semantic debt accumulated inconsistencies, ambiguity, and incompatible meanings in schemas, ontologies, and shared data concepts that make integration increasingly costly. mukherjee, 2026 mukherjee, 2026 emerging, but potentially very relevant for information infrastructure. own assessment: could fit as a sub-category of information debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="semantic-debt" data-domain="technical" data-origin="ny" data-search="semantisk skuld semantic debt accumulated inconsistencies, ambiguity, and incompatible meanings in schemas, ontologies, and shared data concepts that make integration increasingly costly. mukherjee, 2026 mukherjee, 2026 placed under information debt although it sits on the technical side. potentially very relevant for information infrastructure. information debt sub-category added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Semantic debt <span class="entry-alt">(<span lang="sv">Semantisk skuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
+              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">Accumulated inconsistencies, ambiguity, and incompatible meanings in schemas, ontologies, and shared data concepts that make integration increasingly costly.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> Emerging, but potentially very relevant for information infrastructure. Own assessment: could fit as a sub-category of <a href="#information-debt">Information debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#information-debt">Information debt</a> (social debt). Placed under information debt although it sits on the technical side. Potentially very relevant for information infrastructure.</p>
             <p class="entry-source">Source: Mukherjee, 2026</p>
           </li>
-          <li class="entry" id="service-debt" data-domain="technical" data-origin="td" data-search="tjänsteskuld service debt the inappropriate selection and substitution of web services that leads to a mismatch between the service features and the applications&#x27; requirements. relevant for service-oriented architectures. rios m.fl., 2018 rios et al., 2018 could fit as a sub-category of integration debt. technical debt (traditional)">
+          <li class="entry" id="service-debt" data-domain="technical" data-origin="td" data-search="tjänsteskuld service debt the inappropriate selection and substitution of web services that leads to a mismatch between the service features and the applications&#x27; requirements. relevant for service-oriented architectures. rios m.fl., 2018 rios et al., 2018  integration debt sub-category technical debt (traditional)">
             <h4 class="entry-title">Service debt <span class="entry-alt">(<span lang="sv">Tjänsteskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
-              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
+              <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-sub">Sub-category</li>
             </ul>
             <p class="entry-desc">The inappropriate selection and substitution of web services that leads to a mismatch between the service features and the applications&#x27; requirements. Relevant for service-oriented architectures.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> Could fit as a sub-category of <a href="#integration-debt">Integration debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-category of</strong> <a href="#integration-debt">Integration debt</a>.</p>
             <p class="entry-source">Source: Rios et al., 2018</p>
           </li>
-          <li class="entry" id="sustainability-debt" data-domain="technical" data-origin="ny" data-search="hållbarhetsskuld sustainability debt accumulated future cost and risk caused by architectural or design decisions that defer environmental, economic, social, individual, or technical sustainability requirements. ojameruaye m.fl., 2016 ojameruaye et al., 2016 a well-established candidate since 2016. proposed as the parent category of energy debt. added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+          <li class="entry" id="sustainability-debt" data-domain="technical" data-origin="ny" data-search="hållbarhetsskuld sustainability debt accumulated future cost and risk caused by architectural or design decisions that defer environmental, economic, social, individual, or technical sustainability requirements. ojameruaye m.fl., 2016 ojameruaye et al., 2016 well established since 2016.  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Sustainability debt <span class="entry-alt">(<span lang="sv">Hållbarhetsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
             </ul>
             <p class="entry-desc">Accumulated future cost and risk caused by architectural or design decisions that defer environmental, economic, social, individual, or technical sustainability requirements.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Literature review:</span> A well-established candidate since 2016. Proposed as the parent category of <a href="#energy-debt">Energy debt</a>.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#energy-debt">Energy debt</a>. Well established since 2016.</p>
             <p class="entry-source">Source: Ojameruaye et al., 2016</p>
           </li>
-          <li class="entry" id="test-debt-testing-debt" data-domain="technical" data-origin="td dd" data-search="testskuld test debt (testing debt) shortcuts, that is wrong or non-optimal decisions, related to testing, and issues found in testing activities that can affect the quality of those activities. samarthyam m.fl., 2017; rios m.fl., 2018 samarthyam et al., 2017; rios et al., 2018  technical debt (traditional) digital debt">
+          <li class="entry" id="test-debt-testing-debt" data-domain="technical" data-origin="td dd" data-search="testskuld test debt (testing debt) shortcuts, that is wrong or non-optimal decisions, related to testing, and issues found in testing activities that can affect the quality of those activities. samarthyam m.fl., 2017; rios m.fl., 2018 samarthyam et al., 2017; rios et al., 2018   technical debt (traditional) digital debt">
             <h4 class="entry-title">Test debt (testing debt) <span class="entry-alt">(<span lang="sv">Testskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Digital debt">DD</abbr></li>
             </ul>
             <p class="entry-desc">Shortcuts, that is wrong or non-optimal decisions, related to testing, and issues found in testing activities that can affect the quality of those activities.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#automation-test-debt">Automation test debt</a>.</p>
             <p class="entry-source">Source: Samarthyam et al., 2017; Rios et al., 2018</p>
           </li>
-          <li class="entry" id="transparency-debt" data-domain="technical" data-origin="td egen" data-search="transparensskuld transparency debt the fact that the code is closed leads to transparency issues regarding what data is stored about citizens and what algorithms are used when cases are evaluated. identified in the thesis&#x27;s first study of the building-permit systems of a swedish municipality. persson m.fl., 2023 (publikation i) persson et al., 2023 (publication i) explainability debt (new) is closely related and could be seen as an ai-specific sub-category of transparency debt. technical debt (traditional) identified in the thesis&#x27;s own studies">
+          <li class="entry" id="transparency-debt" data-domain="technical" data-origin="td egen" data-search="transparensskuld transparency debt the fact that the code is closed leads to transparency issues regarding what data is stored about citizens and what algorithms are used when cases are evaluated. identified in the thesis&#x27;s first study of the building-permit systems of a swedish municipality. persson m.fl., 2023 (publikation i) persson et al., 2023 (publication i) explainability debt is the ai-specific form.  technical debt (traditional) identified in the thesis&#x27;s own studies">
             <h4 class="entry-title">Transparency debt <span class="entry-alt">(<span lang="sv">Transparensskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li><li class="tag tag-origin"><abbr title="Identified in the thesis&#x27;s own studies">Own</abbr></li>
             </ul>
             <p class="entry-desc">The fact that the code is closed leads to transparency issues regarding what data is stored about citizens and what algorithms are used when cases are evaluated. Identified in the thesis&#x27;s first study of the building-permit systems of a Swedish municipality.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> <a href="#explainability-debt">Explainability debt</a> (new) is closely related and could be seen as an AI-specific sub-category of transparency debt.</p>
+            <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#explainability-debt">Explainability debt</a>. <a href="#explainability-debt">Explainability debt</a> is the AI-specific form.</p>
             <p class="entry-source">Source: Persson et al., 2023 (publication I)</p>
           </li>
-          <li class="entry" id="usability-debt" data-domain="technical" data-origin="td" data-search="användbarhetsskuld usability debt inappropriate usability decisions that will need to be adjusted later, such as lack of usability testing, poor interface design and complex navigation structures that increase users&#x27; cognitive load. in web applications, usability debt incurred early has been shown to increase redesign costs by 50 per cent. rios m.fl., 2018; alves m.fl., 2016; rodriguez m.fl., 2023 rios et al., 2018; alves et al., 2016; rodriguez et al., 2023 accessibility debt (new) is conceptually distinct and should be kept as its own category. technical debt (traditional)">
+          <li class="entry" id="usability-debt" data-domain="technical" data-origin="td" data-search="användbarhetsskuld usability debt inappropriate usability decisions that will need to be adjusted later, such as lack of usability testing, poor interface design and complex navigation structures that increase users&#x27; cognitive load. in web applications, usability debt incurred early has been shown to increase redesign costs by 50 per cent. rios m.fl., 2018; alves m.fl., 2016; rodriguez m.fl., 2023 rios et al., 2018; alves et al., 2016; rodriguez et al., 2023 accessibility debt is conceptually distinct and is kept as its own category.  technical debt (traditional)">
             <h4 class="entry-title">Usability debt <span class="entry-alt">(<span lang="sv">Användbarhetsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
               <li class="tag tag-origin"><abbr title="Technical debt (traditional)">TD</abbr></li>
             </ul>
             <p class="entry-desc">Inappropriate usability decisions that will need to be adjusted later, such as lack of usability testing, poor interface design and complex navigation structures that increase users&#x27; cognitive load. In web applications, usability debt incurred early has been shown to increase redesign costs by 50 per cent.</p>
-            <p class="entry-relation"><strong>Sub-category or own category?</strong> <span class="relation-label">Own assessment:</span> <a href="#accessibility-debt">Accessibility debt</a> (new) is conceptually distinct and should be kept as its own category.</p>
+            <p class="entry-relation"><a href="#accessibility-debt">Accessibility debt</a> is conceptually distinct and is kept as its own category.</p>
             <p class="entry-source">Source: Rios et al., 2018; Alves et al., 2016; Rodriguez et al., 2023</p>
           </li>
-          <li class="entry" id="variability-debt" data-domain="technical" data-origin="td" data-search="variabilitetsskuld variability debt defects and sub-optimal solutions in the implementation of variability management in software systems, for example opportunistic reuse that brings short-term benefits regardless of technical and architectural drawbacks in the medium and long term. wolfart m.fl., 2021 wolfart et al., 2021  technical debt (traditional)">
+          <li class="entry" id="variability-debt" data-domain="technical" data-origin="td" data-search="variabilitetsskuld variability debt defects and sub-optimal solutions in the implementation of variability management in software systems, for example opportunistic reuse that brings short-term benefits regardless of technical and architectural drawbacks in the medium and long term. wolfart m.fl., 2021 wolfart et al., 2021   technical debt (traditional)">
             <h4 class="entry-title">Variability debt <span class="entry-alt">(<span lang="sv">Variabilitetsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
@@ -1465,7 +1477,7 @@
             <p class="entry-desc">Defects and sub-optimal solutions in the implementation of variability management in software systems, for example opportunistic reuse that brings short-term benefits regardless of technical and architectural drawbacks in the medium and long term.</p>
             <p class="entry-source">Source: Wolfart et al., 2021</p>
           </li>
-          <li class="entry" id="versioning-debt" data-domain="technical" data-origin="td" data-search="versionshanteringsskuld versioning debt problems in source-code versioning, such as unnecessary code forks. rios m.fl., 2018 rios et al., 2018  technical debt (traditional)">
+          <li class="entry" id="versioning-debt" data-domain="technical" data-origin="td" data-search="versionshanteringsskuld versioning debt problems in source-code versioning, such as unnecessary code forks. rios m.fl., 2018 rios et al., 2018   technical debt (traditional)">
             <h4 class="entry-title">Versioning debt <span class="entry-alt">(<span lang="sv">Versionshanteringsskuld</span>)</span></h4>
             <ul class="tags" aria-label="Classification">
               <li class="tag tag-technical">Technical debt</li>
@@ -1631,7 +1643,7 @@
           <li>
             <span class="year">2026</span>
             <h3>The register is extended with post-thesis categories</h3>
-            <p>A review of literature published after the thesis, and of a few older categories not included in figure 2, adds further categories to the register tagged ‘New’. On the social side these include consensus, team, management, compliance, knowledge and institutional debt; on the technical side dependency, pipeline, performance, accessibility, sustainability, explainability and semantic debt, as well as agentic technical debt. Several of them are proposed in the literature as sub-categories of others, which is stated on the respective card.</p>
+            <p>A review of literature published after the thesis, and of a few older categories not included in figure 2, adds further categories to the register tagged ‘New’. On the social side these include consensus, team, management, compliance, knowledge and institutional debt; on the technical side dependency, pipeline, performance, accessibility, sustainability, explainability and semantic debt, as well as agentic technical debt. Several of them are arranged as sub-categories of others, which is stated on the respective card. At the same time, some of the thesis's original categories are arranged in the same way, for example database-design debt under database debt and shadow-IT debt under governance debt.</p>
           </li>
         </ol>
       </div>
