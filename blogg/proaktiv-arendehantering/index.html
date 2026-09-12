@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proaktiv och prediktiv ärendehantering – ett återbesök – Per Persson, Ph.D.</title>
+  <meta name="description" content="Fem år efter det första inlägget om proaktiv och prediktiv ärendehantering är ämnet mer aktuellt än någonsin: SKR:s initiativ GSIM, regeringens digitaliseringsstrategi och OECD:s mätningar pekar åt samma håll. Ett återbesök med några års erfarenhet, forskning och AI i beaktande – varför effektivisering och kvalitetshöjning fortfarande går hand i hand.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Proaktiv och prediktiv ärendehantering – ett återbesök">
+  <meta property="og:description" content="Fem år efter det första inlägget om proaktiv och prediktiv ärendehantering är ämnet mer aktuellt än någonsin: SKR:s initiativ GSIM, regeringens digitaliseringsstrategi och OECD:s mätningar pekar åt samma håll. Ett återbesök med några års erfarenhet, forskning och AI i beaktande – varför effektivisering och kvalitetshöjning fortfarande går hand i hand.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/proaktiv-arendehantering/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-09-12">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Digital transformation">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Illustration */
+    .article-figure {
+      margin: var(--space-lg) 0;
+    }
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+    .article-figure figcaption {
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-figure a {
+      display: block;
+      border-radius: var(--radius);
+    }
+    .article-figure a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+    .article-figure img {
+      border: 1px solid var(--color-border);
+    }
+    .references-heading {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1rem;
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Digital transformation</span>
+            <span><time datetime="2026-09-12">12 september 2026</time></span>
+          </p>
+          <h1>Proaktiv och prediktiv ärendehantering – ett återbesök</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+
+          <p>
+            Det finns ämnen man gärna återkommer till, och för min del är proaktiv och prediktiv ärendehantering ett sådant. Jag skrev om det första gången i april 2021 på utveckling.sundsvall.se (<a href="https://utveckling.sundsvall.se/inlagg/inlagg/2021-04-09-proaktiv-och-prediktiv-arendehantering---effektivisering-och-kvalitehojning-hand-i-hand" rel="noopener noreferrer" target="_blank"><em>Proaktiv och prediktiv ärendehantering – effektivisering och kvalitéhöjning hand i hand</em></a>) och återgav resonemanget, mer koncentrerat men med fler visualiseringar, i <a href="https://sundsvall.atlassian.net/wiki/spaces/SKA/blog/2023/01/18/1150976013/" rel="noopener noreferrer" target="_blank">ett inlägg på vår externa Confluence</a> i januari 2023. Sedan dess har jag hunnit disputera på i princip samma fråga (hur kommuner kan bygga medborgarcentrerade digitala tjänster utan att drunkna i sin egen tekniska skuld), AI har radikalt förändrat våra möjligheter och omvärlden har börjat hinna i kapp. Så här kommer ett återbesök – samma grundtanke, men med några års erfarenhet, forskning, AI ännu mer i beaktande, och ett nationellt sammanhang adderat som gör ämnet mer aktuellt än någonsin.
+          </p>
+
+          <h2>Varför just nu?</h2>
+          <p>
+            Tre saker gör att ämnet aktualiserats.
+          </p>
+          <p>
+            Den första är SKR:s initiativ <strong>GSIM – Grundläggande förutsättningar för ett samlat invånarmöte</strong>, inom ramen för Handslag för digitalisering. Närmare 230 kommuner har tackat ja, arbetet har precis startat, det planeras pågå till december 2028, och jag själv har på deltid blivit inlånad till SKR för att jobba i initiativet. GSIM planerar att ta fram gemensamma informationsstrukturer för hur kommunala ärenden, status och återkoppling beskrivs ur ett invånar- och företagarperspektiv, gemensamma API-specifikationer för att göra ärendedata tillgängliga från kommuners lösningar, samordnade behov/krav att nyttja vid anskaffning eller utveckling, anslutning till Mina ärenden och Mina ombud, samt en gemensam kanalstrategi för hur och när invånare och företag ska kontaktas. Mappar riktigt bra mot min beskrivning av de byggklossar jag efterfrågade 2021, och som jag sedan efterlyste i inlägget <a href="https://utveckling.sundsvall.se/inlagg/inlagg/2022-02-16-nationell-digital-infrastruktur-for-kommunsektorn-vart-ar-den" rel="noopener noreferrer" target="_blank"><em>Nationell digital infrastruktur för kommunsektorn, vart är den?!</em></a> i februari 2022.
+          </p>
+          <p>
+            Den andra är att staten nu uttryckligen pekar ut riktningen. I <em>Sveriges digitaliseringsstrategi 2025–2030</em> talar regeringen om "en proaktiv digital förvaltning", och den planerade gemensamma digitala ingången beskrivs som något som ska kunna "förutse användarnas behov och erbjuda proaktiva tjänster". SKR kopplar GSIM direkt till strategins mål om en mer sammanhållen, proaktiv och likvärdig service i hela landet. Delar av infrastrukturen finns också på plats i form av Ena, Sveriges digitala infrastruktur, där Mina ärenden är en nationell standard för digital ärendeåterkoppling, som till exempel Tjörns kommun redan använt för att gå från reaktiv till proaktiv service med skolskjuts som pilot. Just skolskjuts, alltså. Mer om det nedan.
+          </p>
+          <p>
+            Den tredje är att omvärlden mäter detta. I OECD:s <em>Digital Government Index 2023</em> är "proaktivitet" – förmågan att förutse användarnas behov och leverera tjänster utan att de behöver be om dem – den dimension där OECD-länderna presterar sämst. OECD:s <em>Digital Government Outlook 2026</em> ägnar ett helt kapitel åt invånarcentrerade och proaktiva tjänster, som i att agera på det förvaltningen redan vet, för-ifylla formulär, påminna i tid och automatiskt leverera resultat när villkoren är uppfyllda. Med andra ord, det jag pratade om 2021 är nu ett internationellt riktmärke, och det är fortfarande där glappet är som störst.
+          </p>
+
+          <h2>Vad menas egentligen med proaktiv och prediktiv ärendehantering?</h2>
+          <p>
+            Mitt påstående 2021 var, något tillspetsat, att om vi slutar fokusera på det förvaltningsspecifika tjänstemannaärendets livscykel och i stället lägger energin på att lösa intressentens behov – medborgarens, företagarens, den anställdes – så effektivt och så automatiserat som möjligt, så kan vi leverera bättre service <strong>samtidigt</strong> som vi effektiviserar administration och handläggning rejält (jag skrev då 50–80 procent, beroende på ärendetyp, och jag har inte ändrat mig nämnvärt). Effektivisering och kvalitetshöjning är alltså inte varandras motsatser – de går hand i hand.
+          </p>
+          <p>
+            För att förklara detta måste vi börja med att titta på hur en kommun traditionellt hanterar ärenden.
+          </p>
+
+          <h3>Den handläggarcentrerade processen</h3>
+          <figure class="article-figure">
+            <a href="../../images/proaktiv-fig1-handlaggarcentrerad.png" rel="noopener noreferrer" target="_blank" aria-label="Öppna figur 1 i full storlek i ny flik">
+              <img src="../../images/proaktiv-fig1-handlaggarcentrerad.png" alt="Processdiagram med tre simbanor – intressent, handläggare och verksamhetssystem. Intressenten skickar in ett ärende, väntar på svar, tar del av information om att ärendet är emottaget, väntar på beslut, tar del av beslutet och signerar vid behov. Handläggaren registrerar ärendet, meddelar att det är emottaget, utreder, beslutar, skriver ut dokument för signering, meddelar beslut, tar emot signerat dokument, uppdaterar och stänger ärendet, skapar underlag för arkivering och arkiverar. Varje steg speglas av manuella uppdateringar i en applikation för hantering av ärendetyp X samt e-arkivet." width="2400" height="924" loading="lazy">
+            </a>
+            <figcaption>Figur 1. Handläggarcentrerad ärendehantering (kraftigt förenklad). Klicka på bilden för att öppna den i full storlek.</figcaption>
+          </figure>
+          <p>
+            Processen börjar när ett ärende kommer in och slutar när ett beslut expedierats. Intressenten skickar in något, väntar, får ett mottagningsbevis, väntar igen, får ett beslut, skriver kanske ut och signerar ett dokument, skickar tillbaka det. Handläggaren registrerar, meddelar, utreder, beslutar, skriver ut, väntar, uppdaterar, stänger, skapar arkivunderlag. Varje pil mellan banorna är en manuell överlämning, och verksamhetssystemet är ett stuprör byggt för just den här ärendetypen. Ur intressentens perspektiv började ärendet långt tidigare – när behovet uppstod – och det är inte klart förrän intressenten faktiskt fått det den behövde.
+          </p>
+          <p>
+            I min avhandling kallar jag det här <em>ärendecentrering</em> (case-centricity), och en av mina tydligaste slutsatser är att ärendecentreringen inte är en trivial detalj inbyggd i verksamheten utan en bärande logik, inbyggd i strukturer, processer och system, som gör att kommuner bygger fast sig i sina silos och befäster sitt hindrande digitala arv även när de digitaliserar med de bästa avsikter. Det är också därför ärendecentrering står först, tätt följd av organisatoriska silos, bland de nio utmaningar jag beskrev i <a href="../nio-utmaningar/"><em>Nio utmaningar som bromsar kommunernas digitala transformation</em></a> tidigare i år. Ett belysande exempel från min avhandlings första delstudie (Persson et al., 2023) beskriver problemet – en restaurangägare kan behöva upp till 13 tillstånd från fem olika kommunala förvaltningar, alla med helt separata ansökningar, eftersom kommunens olika system och förvaltningarna inte pratar med varandra – "medborgare förväntar sig en sömlös upplevelse, men vi är organiserade för att hantera ärenden, inte människor" som en av de intervjuade digitala strategerna uttryckte sig i min avhandling.
+          </p>
+
+          <h3>Proaktiv ärendehantering</h3>
+          <p>
+            Proaktiv ärendehantering innebär att vi vänder på perspektivet och tittar på processen ur intressentens synvinkel – från att behovet uppstår tills det är löst. Baserat på det gör vi tre saker:
+          </p>
+          <ul>
+            <li>Vi <strong>publicerar relevant information i de kanaler där intressenten vill möta oss</strong> – information som kan lösa intressentens ärende utan någon ytterligare interaktion med kommunen. Vi vet vilken information våra intressenter behöver och var de vill ha den.</li>
+            <li>Vi <strong>skapar digitala assistenter</strong> som så långt som möjligt hjälper intressenten att lösa sitt ärende helt digitalt, med hjälp av AI i kombination med information från våra verksamhetssystem. Det förutsätter, som jag argumenterade för i <a href="../api-mcp-strategi/"><em>API- och MCP-strategier för offentlig sektor</em></a>, en mogen API-strategi i botten – en digital assistent blir aldrig bättre än de gränssnitt den får agera genom.</li>
+            <li>Vi <strong>automatiserar den övriga ärendehanteringen så långt som möjligt</strong> för att minimera manuell handläggning.</li>
+          </ul>
+          <figure class="article-figure">
+            <a href="../../images/proaktiv-fig2-proaktiv.png" rel="noopener noreferrer" target="_blank" aria-label="Öppna figur 2 i full storlek i ny flik">
+              <img src="../../images/proaktiv-fig2-proaktiv.png" alt="Processdiagram med sex simbanor – intressent, digital kanal, digital assistent, processmotor, mikrotjänster/applikationer och handläggare. Intressenten söker information i en digital kanal. Löser informationen ärendet är det klart. Annars ber intressenten den digitala assistenten om hjälp, och löser assistenten ärendet är det klart. Annars registrerar assistenten ett ärende som en processmotor driver med automatiserade processteg, digitalt beslut där det är tillåtet, digital signering, meddelande om beslut, stängning och arkivering. Handläggaren kopplas bara in för analoga processteg eller för analoga beslut med beslutsunderlag." width="2400" height="1359" loading="lazy">
+            </a>
+            <figcaption>Figur 2. Intressentcentrerad, proaktiv och digitalt driven ärendehantering (förenklad). Klicka på bilden för att öppna den i full storlek.</figcaption>
+          </figure>
+          <p>
+            Jämför figur 2 med figur 1. Till att börja med, varje ärende (ur intressentens perspektiv) som löses utan att ett ärende behöver registreras hos kommunen innebär en utebliven potentiell arbetsbörda, en besparing. Rätt information i rätt kanal möjliggör till exempel att företagaren som vill arrendera en fastighet själv kan se i kartan om den är ledig – och om den inte är det, avsluta sitt ärende på egen hand. För den anställde kan digitala assistenten svara på "hur mycket semester har jag kvar?", för föräldern svara på "har mitt barn rätt till skolskjuts?", för byggherren svara på "behöver jag söka bygglov för det här?" och för restaurangägaren svara på "när måste jag förnya mitt serveringstillstånd?", och dessutom uppdatera intressent-relaterade uppgifter som till exempel fakturaadresser och liknande.
+          </p>
+          <p>
+            När ett ärende ändå måste registreras minimeras den manuella hanteringen genom att:
+          </p>
+          <ul>
+            <li>registrering och återkoppling sker helt digitalt.</li>
+            <li>processteg automatiseras där så är möjligt, som till exempel att hämta data från X, skriva data till Y, besluta enligt regelverk Z. Endast i undantagsfall hanteras ett steg manuellt.</li>
+            <li>där automatiserade beslut är tillåtna så anammas det. Tas ett beslut manuellt sker det med ett tydligt beslutsunderlag, inklusive en rekommendation, som stöd till handläggaren.</li>
+            <li>signering och arkivering sker fullt ut automatiserat – ingen administration.</li>
+          </ul>
+          <p>
+            En sak har förändrats sedan 2021 som förtjänar att lyftas fram, och det är att när det första inlägget skrevs fick kommuner i praktiken inte fatta automatiserade beslut. Men sedan den 1 juli 2022 kan en nämnd, enligt 6 kap. 37–38 §§ i kommunallagen, delegera beslutanderätt till en automatiserad beslutsfunktion (med vissa undantag), så den rättsliga förutsättningen för "där automatiserade beslut är tillåtna" är alltså på plats – det som återstår är att faktiskt börja använda den.
+          </p>
+
+          <h3>Prediktiv ärendehantering</h3>
+          <p>
+            Adderar vi dessutom prediktiv ärendehantering kan vi nå ännu längre, både i service och i automation. Prediktiv ärendehantering innebär att <strong>kommunen upplyser intressenten om att ett ärende är aktualiserat, inklusive ett preliminärt beslut när det är möjligt.</strong>
+          </p>
+          <figure class="article-figure">
+            <a href="../../images/proaktiv-fig3-prediktiv.png" rel="noopener noreferrer" target="_blank" aria-label="Öppna figur 3 i full storlek i ny flik">
+              <img src="../../images/proaktiv-fig3-prediktiv.png" alt="Processdiagram med fyra simbanor – intressent, digital kanal, processmotor och mikrotjänster/applikationer. En aktualiserare bland mikrotjänsterna tar fram underlag för ärenden att aktualisera genom att hämta data från andra mikrotjänster och applikationer, och upplyser intressenterna. Intressenten tar emot information om länk till aktualiserat ärende, läser informationen i den digitala kanalen och väljer om ärendet ska registreras. Om ja startar processmotorn ärendeprocessen, meddelar beslut och stänger ärendet, och intressenten tar del av beslutet. Om nej är ärendet klart." width="2400" height="1911" loading="lazy">
+            </a>
+            <figcaption>Figur 3. Prediktiv ärendehantering – kommunen aktualiserar ärendet (förenklad). Klicka på bilden för att öppna den i full storlek.</figcaption>
+          </figure>
+          <p>
+            Skolskjuts är ett tydligt exempel på hur detta kan fungera. Inför en skolstart vet vi vilka elever som finns, var de bor och vilken skola de ska gå i. Vi kan alltså helt automatiskt fatta preliminära beslut om vem som har rätt till skolskjuts, meddela vårdnadshavaren det preliminära beslutet och gå vidare i processen när vårdnadshavaren accepterat. För vissa ärendetyper har vi då potential att ta bort i stort sett all administration och handläggning – nära 100 procent automatiseringsgrad alltså. Att Tjörn valde just skolskjuts som pilot för Mina ärenden är ingen slump då det är en ärendetyp där kommunen redan har all information som behövs.
+          </p>
+
+          <h2>Och vad säger forskningen?</h2>
+          <p>
+            När jag skrev om detta 2021 var det från en praktikers övertygelse. Nu vet jag också att det finns en hel del forskningslitteratur som säger ungefär samma sak, fast med lite andra ord.
+          </p>
+          <p>
+            Det jag kallar prediktiv ärendehantering kallar forskningen <em>proaktiva offentliga tjänster</em> eller <em>no-stop shop</em>. Scholta et al. (2019) beskriver en stegvis modell för e-förvaltning där "one-stop shop" (en ingång, ett Mina Sidor alltså) bara är ett mellansteg på vägen mot "no-stop shop", där förvaltningen levererar tjänsten utan att medborgaren behöver ansöka alls. Begreppet går tillbaka till Brüggemeiers <em>No-Stop-Verwaltung</em> (2010). Linders et al. (2018) beskriver samma sak som att vända servicemodellen "från pull till push", att i stället för att medborgaren ska söka upp förvaltningen förutser förvaltningen behovet och levererar. Scholta &amp; Lindgren (2023) – där Ida Lindgren vid Linköpings universitet står för det svenska perspektivet – reder ut vad proaktivitet egentligen betyder i digitala offentliga tjänster och kopplar det till minskad administrativ börda, och Pawlowski &amp; Scholta (2023) erbjuder en taxonomi som är direkt användbar när man ska designa en proaktiv tjänst:
+          </p>
+          <ul>
+            <li>När ska vi agera?</li>
+            <li>Behövs ytterligare data?</li>
+            <li>Får intressenten ändra det förifyllda?</li>
+            <li>Kan intressenten tacka nej?</li>
+            <li>I vilken kanal?</li>
+          </ul>
+          <p>
+            Litteraturen är också ärlig med svårigheterna. Kuhn et al. (2021) visar, utifrån nio offentliga processer och expertintervjuer, att det inte räcker att digitalisera befintliga processer – de måste designas om från grunden för att bli proaktiva, och de identifierar återkommande hinder och strategier för att komma förbi dem. Erlenheim et al. (2020) härleder designprinciper från ett spektrum mellan reaktiva och fullt proaktiva tjänster, byggt på erfarenheterna från Estland där föräldrar sedan 2019 inte längre ansöker om barnbidrag utan får ett förifyllt erbjudande att bekräfta när barnet registrerats i folkbokföringen. Och Ranerup &amp; Henriksen (2019) studerar Trelleborgs automatiserade beslut om ekonomiskt bistånd och påminner om att automation alltid är värdeladdad – effektivitet, service, professionalitet och rättssäkerhet måste balanseras, inte bara optimeras.
+          </p>
+          <p>
+            Min egen forskning landar i samma slutsats, men från ett annat håll. Min avhandling visar att teknisk skuld i kommuner till största delen är social snarare än teknisk, att fragmenterad styrning, leverantörsberoenden och organisatorisk tröghet håller den vid liv mer än dålig kod i dåliga system. I min andra delstudie (Persson et al., 2024) tog vi fram fem designprinciper för medborgarcentrerade tjänster – tillgänglighet, aktualitet (timing), handlingsbarhet, transparens och personalisering – och det är värt att notera att principen om handlingsbarhet uttryckligen kräver "en lösning som proaktivt föreslår nästa steg". Proaktivitet är alltså inte en extra finess ovanpå medborgarcentrering, det är en följd av den. Samtliga fjorton principer – för medborgarcentrering, överförbarhet och styrning – har jag beskrivit mer utförligt i <a href="../principer-digitala-arvet/"><em>Principer för hantering av det digitala arvet</em></a>. Av mina övriga delstudier ger den sista (Persson, 2026) kanske den viktigaste inputen till GSIM, att gemensamma standarder är nödvändiga, men de måste växa fram i samarbete med dem som ska använda dem, och det är något vi hela tiden måste tänka på, för alternativet är den nionde av mina nio utmaningar, att nationella initiativ riskerar byggas ovanpå befintliga strukturer (som vi vill komma bort ifrån) och förstärker dem i större skala.
+          </p>
+
+          <h2>Så vad krävs för att nå fram?</h2>
+          <p>
+            Slutsatsen från 2021 står sig, men jag skulle formulera den lite annorlunda i dag.
+          </p>
+          <p>
+            Vi behöver fortfarande ett ekosystem av applikationer och mikrotjänster – ett digitalt landskap av öppna, generiska lösningar, återanvändbara som byggklossar för alla verksamheter, med API:er som gör att ärendedata kan hämtas, uppdateras och återkopplas oavsett i vilket verksamhetssystem de råkar bo. Det är denna infrastruktur jag hoppas att GSIM i slutändan kommer att standardisera på nationell nivå, och det är den arkitektur som min avhandlings designprinciper för överförbarhet – modularitet, interoperabilitet, öppen källkod, hanterade beroenden – beskriver. Men den största förändringen är fortfarande inte teknisk. Den handlar om att vi i alla verksamheter börjar tänka utifrån och in – att vi tittar på ärenden ur intressentens perspektiv, ärenden som kan spänna över flera förvaltningar och bolag inom kommunkoncernen, och att vi lägger den verkligt stora insatsen på verksamhetsutveckling – att vi aktivt letar efter förenklingar och automatiseringar. Det är <a href="../20-80/"><em>20/80-tumregeln</em></a> igen – 20 procent digitala lösningar, 80 procent människor, processer och organisation. Med automatiserade beslut tillåtna i kommunallagen, Mina ärenden som nationell standard för återkoppling, GSIM som gemensam informationsstruktur och en digitaliseringsstrategi som uttryckligen efterfrågar proaktiv förvaltning, har vi bättre förutsättningar än någonsin. Det som saknas är inte längre verktygen. Det är modet att designa om processerna. Och, som jag tog upp i <a href="../nyttan-tappas-bort/"><em>När nyttan tappas bort</em></a>, att hålla ihop det vi bygger med den nytta vi ville skapa från början – annars stannar 50–80 procent vid att vara en siffra i ett beslutsunderlag.
+          </p>
+          <p>
+            Så, fem år senare, effektivisering och kvalitetshöjning går fortfarande hand i hand och är mer aktuellt än någonsin förut.
+          </p>
+
+          <h2>Referenser</h2>
+          <h3 class="references-heading">Egna tidigare inlägg</h3>
+          <ul class="references">
+            <li>Sundsvalls kommun (2021). <em>Proaktiv och prediktiv ärendehantering – effektivisering och kvalitéhöjning hand i hand.</em> utveckling.sundsvall.se, 9 april 2021. <a href="https://utveckling.sundsvall.se/inlagg/inlagg/2021-04-09-proaktiv-och-prediktiv-arendehantering---effektivisering-och-kvalitehojning-hand-i-hand" rel="noopener noreferrer" target="_blank">https://utveckling.sundsvall.se/inlagg/inlagg/2021-04-09-proaktiv-och-prediktiv-arendehantering---effektivisering-och-kvalitehojning-hand-i-hand</a></li>
+            <li>Sundsvalls kommun (2023). <em>Proaktiv och prediktiv ärendehantering.</em> Confluence, API Infrastruktur Sundsvalls kommun, 18 januari 2023. <a href="https://sundsvall.atlassian.net/wiki/spaces/SKA/blog/2023/01/18/1150976013/" rel="noopener noreferrer" target="_blank">https://sundsvall.atlassian.net/wiki/spaces/SKA/blog/2023/01/18/1150976013/</a></li>
+            <li>Persson, P. (2022). <em>Nationell digital infrastruktur för kommunsektorn, vart är den?!</em> utveckling.sundsvall.se, 16 februari 2022. <a href="https://utveckling.sundsvall.se/inlagg/inlagg/2022-02-16-nationell-digital-infrastruktur-for-kommunsektorn-vart-ar-den" rel="noopener noreferrer" target="_blank">https://utveckling.sundsvall.se/inlagg/inlagg/2022-02-16-nationell-digital-infrastruktur-for-kommunsektorn-vart-ar-den</a></li>
+            <li>Persson, P. (2026). <em>20/80-tumregeln i digital transformation.</em> phd-persson.se, 16 april 2026. <a href="../20-80/">https://www.phd-persson.se/blogg/20-80/</a></li>
+            <li>Persson, P. (2026). <em>Nio utmaningar som bromsar kommunernas digitala transformation.</em> phd-persson.se, 23 april 2026. <a href="../nio-utmaningar/">https://www.phd-persson.se/blogg/nio-utmaningar/</a></li>
+            <li>Persson, P. (2026). <em>När nyttan tappas bort: om Leman Isiks avhandling, digitalisering och socio-teknisk skuld.</em> phd-persson.se, 2 maj 2026. <a href="../nyttan-tappas-bort/">https://www.phd-persson.se/blogg/nyttan-tappas-bort/</a></li>
+            <li>Persson, P. (2026). <em>Principer för hantering av det digitala arvet.</em> phd-persson.se, 21 maj 2026. <a href="../principer-digitala-arvet/">https://www.phd-persson.se/blogg/principer-digitala-arvet/</a></li>
+            <li>Persson, P. (2026). <em>API- och MCP-strategier för offentlig sektor.</em> phd-persson.se, 25 juni 2026. <a href="../api-mcp-strategi/">https://www.phd-persson.se/blogg/api-mcp-strategi/</a></li>
+          </ul>
+
+          <h3 class="references-heading">Akademiska referenser</h3>
+          <ul class="references">
+            <li>Brüggemeier, M. (2010). Auf dem Weg zur No-Stop-Verwaltung. <em>Verwaltung &amp; Management</em>, 16(2), 93–101.</li>
+            <li>Erlenheim, R., Draheim, D., &amp; Taveter, K. (2020). Identifying design principles for proactive services through systematically understanding the reactivity-proactivity spectrum. <em>Proceedings of ICEGOV 2020</em>, 452–458.</li>
+            <li>Kuhn, P., Buchinger, M., &amp; Balta, D. (2021). How to redesign government processes for proactive public services? <em>Electronic Government (EGOV 2021)</em>, LNCS 12850, 29–40.</li>
+            <li>Linders, D., Liao, C. Z.-P., &amp; Wang, C.-M. (2018). Proactive e-governance: Flipping the service delivery model from pull to push in Taiwan. <em>Government Information Quarterly</em>, 35(4), S68–S76.</li>
+            <li>Pawlowski, C., &amp; Scholta, H. (2023). A taxonomy for proactive public services. <em>Government Information Quarterly</em>, 40(1), 101780.</li>
+            <li>Persson, P. (2026). <em>Managing Socio-Technical Debt: Causes and Design-Science Solutions for Citizen-Centred Digital Public Services.</em> Doktorsavhandling, Göteborgs universitet. Gothenburg Studies in Informatics, report 71.</li>
+            <li>Persson, P., Zhang, Y., Asatiani, A., Lindman, J., &amp; Rudmark, D. (2023). Technical debt in the municipality sector: The missing link with citizens and silofication. <em>Proceedings of the 14th Scandinavian Conference on Information Systems (SCIS).</em></li>
+            <li>Persson, P., Zhang, Y., Asatiani, A., Lindman, J., &amp; Rudmark, D. (2024). Toward citizen-centered digital government: Design principles guided legacy system renewal in a Swedish municipality. <em>Proceedings of the 57th HICSS</em>, 1963–1972.</li>
+            <li>Persson, P. (2026). System failure: How top-down IT project governance hampers local government operations. <em>Information Systems Practice Journal</em>, 1–18.</li>
+            <li>Ranerup, A., &amp; Henriksen, H. Z. (2019). Value positions viewed through the lens of automated decision-making: The case of social services. <em>Government Information Quarterly</em>, 36(4), 101377.</li>
+            <li>Scholta, H., &amp; Lindgren, I. (2023). Proactivity in digital public services: A conceptual analysis. <em>Government Information Quarterly</em>, 40(3), 101832.</li>
+            <li>Scholta, H., Mertens, W., Kowalkiewicz, M., &amp; Becker, J. (2019). From one-stop shop to no-stop shop: An e-government stage model. <em>Government Information Quarterly</em>, 36(1), 11–26.</li>
+          </ul>
+
+          <h3 class="references-heading">Nationella och internationella initiativ</h3>
+          <ul class="references">
+            <li>SKR (2026). <em>Grundläggande förutsättningar för ett samlat invånarmöte (GSIM).</em> Handslag för digitalisering. <a href="https://skr.se/digitaliseringivalfarden/handslagfordigitalisering/grundlaggandeforutsattningarforettsamlatinvanarmotegsim.9796.html" rel="noopener noreferrer" target="_blank">https://skr.se/digitaliseringivalfarden/handslagfordigitalisering/grundlaggandeforutsattningarforettsamlatinvanarmotegsim.9796.html</a></li>
+            <li>Regeringskansliet (2025). <em>Sveriges digitaliseringsstrategi 2025–2030.</em> <a href="https://www.regeringen.se/rapporter/2025/05/sveriges-digitaliseringsstrategi-20252030/" rel="noopener noreferrer" target="_blank">https://www.regeringen.se/rapporter/2025/05/sveriges-digitaliseringsstrategi-20252030/</a></li>
+            <li>Digg (2025). <em>Tjörns kommun visar vägen till Sveriges digitala infrastruktur via Mina ärenden.</em> 13 januari 2025. <a href="https://www.digg.se/om-oss/nyheter/ena---sveriges-digitala-infrastruktur/nyheter/2025-01-13-tjorns-kommun-visar-vagen-till-sveriges-digitala-infrastruktur-via-mina-arenden" rel="noopener noreferrer" target="_blank">https://www.digg.se/om-oss/nyheter/ena---sveriges-digitala-infrastruktur/nyheter/2025-01-13-tjorns-kommun-visar-vagen-till-sveriges-digitala-infrastruktur-via-mina-arenden</a></li>
+            <li>Digg. <em>Automatiserade beslut.</em> <a href="https://www.digg.se/kunskap-och-stod/automatisera-handlaggning-och-beslut/automatiserade-beslut" rel="noopener noreferrer" target="_blank">https://www.digg.se/kunskap-och-stod/automatisera-handlaggning-och-beslut/automatiserade-beslut</a></li>
+            <li>SFS 2022:638. <em>Lag om ändring i kommunallagen (2017:725).</em> I kraft 1 juli 2022 (prop. 2021/22:125 <em>Val och beslut i kommuner och regioner</em>).</li>
+            <li>OECD (2024). <em>2023 OECD Digital Government Index: Results and key findings.</em> OECD Publishing. <a href="https://doi.org/10.1787/1a89ed5e-en" rel="noopener noreferrer" target="_blank">https://doi.org/10.1787/1a89ed5e-en</a></li>
+            <li>OECD (2026). <em>Digital Government Outlook 2026: From Foundations to Transformational Impact.</em> OECD Publishing. <a href="https://doi.org/10.1787/0496b2bc-en" rel="noopener noreferrer" target="_blank">https://doi.org/10.1787/0496b2bc-en</a></li>
+            <li>ERR News (2019). <em>Parents no longer have to apply for family benefits.</em> 14 oktober 2019. <a href="https://news.err.ee/991789/parents-no-longer-have-to-apply-for-family-benefits" rel="noopener noreferrer" target="_blank">https://news.err.ee/991789/parents-no-longer-have-to-apply-for-family-benefits</a></li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
