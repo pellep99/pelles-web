@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Erfarenhetsbank: fokuserade sprintar – Per Persson, Ph.D.</title>
-  <meta name="description" content="Erfarenhetsbank för fokuserade sprintar i offentlig sektor: grundprinciper, olika sprinttyper och konkreta lärdomar från genomförda innovations-, prototyp-, teknik- och förankringssprintar i Sundsvalls kommun.">
+  <meta name="description" content="Erfarenhetsbank för fokuserade sprintar i offentlig sektor: grundprinciper, olika sprinttyper och konkreta lärdomar från genomförda innovations-, prototyp-, teknik-, förankrings- och utvecklingssprintar i Sundsvalls kommun.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
@@ -412,7 +412,7 @@
           En fokuserad sprint samlar rätt kompetenser under en kort och koncentrerad period för att bygga något verkligt, testa hypoteser och skapa underlag för beslut om nästa steg. Arbetssättet, och varför AI gör det möjligt på ett nytt sätt, beskrivs närmare i blogginlägget <a href="../../blogg/fokuserade-sprintar/">Från projekt till fokuserade sprintar</a>.
         </p>
         <p>
-          Den här sidan är en levande erfarenhetsbank som samlar principer, sprinttyper och konkreta lärdomar från genomförda sprintar. Innehållet bygger på fem sprintar genomförda under 2026, med Sundsvalls kommun som huvudsaklig arena, och är hämtat från sprintarnas egna dokumentationssidor och retrospektiv.
+          Den här sidan är en levande erfarenhetsbank som samlar principer, sprinttyper och konkreta lärdomar från genomförda sprintar. Innehållet bygger på sex sprintar genomförda under 2026, med Sundsvalls kommun som huvudsaklig arena, och är hämtat från sprintarnas egna dokumentationssidor och retrospektiv.
         </p>
       </div>
     </section>
@@ -569,7 +569,15 @@
           </li>
           <li class="card">
             <h3>Sprintlogg dag för dag</h3>
-            <p>Veckan dokumenteras medan den pågår – vad som byggts, beslutats och lärts. Loggen gör arbetet transparent och blir underlag för retro och erfarenhetsbank.</p>
+            <p>Veckan dokumenteras medan den pågår – vad som byggts, beslutats och lärts. Loggen gör arbetet transparent och blir underlag för retro och erfarenhetsbank. I utvecklingssprinten fick varje dag två delar: vad som sades på standupen och vad som faktiskt levererades i kod, per repo och utvecklare.</p>
+          </li>
+          <li class="card">
+            <h3>Tre beslutsnivåer och veto</h3>
+            <p>I utvecklingssprinten sorterades besluten i förväg: fältnamn, utformning och teknik avgörs i rummet samma dag; processregler och vem som ser vad avgörs på standupen med verksamhetens mandat; juridik och personuppgifter eskaleras och byggs runt tills svaret kommit. Sprintledaren kan stoppa ett beslut på alla nivåer men tar inte över frågan – den går tillbaka till den som äger den.</p>
+          </li>
+          <li class="card">
+            <h3>Frågelista med status</h3>
+            <p>Verksamhetens frågor och synpunkter samlas på sprintsidan med löpande nummer, status – hanterad eller under utredning – och hänvisning till raden i funktionslistan där beslutet skrivits in. Efter tio dagar i utvecklingssprinten stod där tjugofyra frågor, och alla kunde se vilka som var avgjorda.</p>
           </li>
         </ul>
       </div>
@@ -579,7 +587,7 @@
       <div class="container">
         <h2 id="sprinttyper-title">Olika sprintar för olika osäkerheter</h2>
         <p class="section-intro">
-          ”Sprint” behöver inte betyda samma sak varje gång. Varje sprint organiseras efter den osäkerhet som just då är dyrast att bära vidare – och längden anpassas efter frågan: två dagar kan räcka för en prototyp, tre dagar för att verifiera och estimera, medan tekniskt komplexa frågor kan kräva en eller två veckor.
+          ”Sprint” behöver inte betyda samma sak varje gång. Varje sprint organiseras efter den osäkerhet som just då är dyrast att bära vidare – och längden anpassas efter frågan: två dagar kan räcka för en prototyp, tre dagar för att verifiera och estimera, medan tekniskt komplexa frågor kan kräva en eller två veckor – och en lösning som ska hela vägen till produktion kan behöva två sprintar med ett uppehåll för test emellan.
         </p>
         <ul class="cards">
           <li class="card">
@@ -597,6 +605,10 @@
           <li class="card">
             <h3>Förankringssprint</h3>
             <p>Ett alternativ till den klassiska förstudien som växte fram ur retrospektiven och nu prövats skarpt: verksamhet och utveckling reder tillsammans ut process, teknik och osäkerheter innan bygget startar, i stället för att ett dokument produceras och lämnas över genom flera led. Formatet skiljer sig från de övriga genom att inget system byggs – leveransen är en överenskommen processmodell, dokumenterade lösningsmönster och en beslutslogg som blir bottenplatta för nästa sprint. Verksamheten deltar i halvdagsblock, utvecklingsteamet omsätter besluten till mönster och konfiguration under eftermiddagarna, och varje förmiddag inleds med att verksamheten verifierar gårdagens resultat.</p>
+          </li>
+          <li class="card">
+            <h3>Utvecklingssprint</h3>
+            <p>Bygger den lösning som ska driftsättas – inte en prototyp som värderas efteråt. Formatet är två sprintar om tio arbetsdagar med ett uppehåll på några veckor, där verksamheten testar det som byggts på riktigt och återkopplingen styr innehållet i den andra sprinten. Allt byggs i skarp miljö från dag ett med tester, CI och behörighet på riktigt, och ”klart” betyder fyra saker samtidigt: byggt i skarp miljö, verifierat med tester, visat på en standup – men inte driftsatt. Verksamheten deltar via den dagliga standupen och är nåbar samma dag, och arkitekt och UX sitter med i rummet så att tekniska val och gränssnittsfrågor inte behöver lämna sprinten för att avgöras.</p>
           </li>
         </ul>
       </div>
@@ -644,6 +656,13 @@
             <p>Den första sprinten i formatet där ingenting byggs: DigIT och verksamheten landade tillsammans processen för ett nytt handläggningsstöd som på sikt ersätter två äldre system. Sju block över tre dagar täckte ansökan, anmälan, tillsyn, åtgärd och förnyelse – verksamheten deltog i halvdagsblock, utvecklingsteamet omsatte besluten till lösningsmönster på eftermiddagarna, och varje block avslutades med att beslutsloggen lästes upp och bekräftades punkt för punkt. Sprinten sattes upp mot en uttalad förväntansbild i två listor: vad veckan skulle resultera i och vad den uttryckligen inte skulle resultera i. Leveransen var en processmodell, tolv lösningsmönster (elva var planerade – behörighet och sekretess tillkom under veckan) och en beslutslogg med knappt tvåhundra beslut, noteringar och öppna frågor, samtliga märkta med vilket block de kom upp i. Varje obesvarad fråga fördes vidare klassad efter ägare till den efterföljande tekniska sprinten. Slutdemon ersattes av dialog om tillsynsprocessen, vilket gjorde att bottenplattan inte hann stämmas av formellt med verksamheten – en avstämning som därför flyttades framåt.</p>
             <a class="card-link" href="https://aot.sundsvall.dev/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
+          <li class="card">
+            <span class="card-tag">Utvecklingssprint</span>
+            <h3>Avvikelsehantering i Draken, sprint 1 av 2</h3>
+            <p class="card-meta">Tio arbetsdagar · 31 augusti–11 september 2026 · vård och omsorg samt individ- och arbetsmarknad, Sundsvalls kommun</p>
+            <p>Den första sprinten med uttalat mål att bygga det som ska driftsättas: en avvikelsehantering som ersätter ett äldre system i två förvaltningar, produktionsfärdig när sprint 2 är slut i oktober. Den tekniska sprinten i augusti fungerade som fas 0, så att arbetet kunde börja i verksamhetens frågor – vem ser vad, vilka fält behövs, hur ska flödet kännas – i stället för i infrastruktur. Verksamhet, utveckling, arkitektur och UX möttes på en daglig standup klockan 08.15 som sprintens enda fasta möte, med demo av halvfärdig funktionalitet varje dag och beslut som skrevs in samma dag, antingen i sprintloggen eller på berörd rad i funktionslistan med 114 rader. Slutdemon följde en avvikelse genom hela kedjan från rapport till avslut, inklusive överlämning till LEX-ansvarig och tillbaka, med utredningar, beslut och handlingsplan som bilagor på ärendet. Sprinten prövade en hypotes i den lösning som ska driftsättas: att enkel rapportering och verklig återkoppling ger det underlag som saknas för att se mönster och arbeta förebyggande. Retrot lyfte två saker: morgonmötet krockar med verksamheter som behöver chefen just då, och skisser och miljöer hann glida isär så att synpunkter ibland gällde något inaktuellt. Under det tre veckor långa uppehållet testar verksamheten på riktigt, och det som kommer tillbaka styr sprint 2.</p>
+            <a class="card-link" href="https://avvikelsehantering.sundsvall.dev/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
+          </li>
         </ul>
       </div>
     </section>
@@ -671,6 +690,12 @@
               <li>Märk upp det som inte är byggt i prototypen och rensa död kod ur gränssnittet. Annars riskerar tomheten att tolkas som ett designbeslut.</li>
               <li>Besvara de rena teknikfrågorna före sprinten. I förankringssprinten fick frågor om processmotor och integrationsläge egna ägare och deadline innan dag ett, eftersom de annars äter av verksamhetens tid.</li>
               <li>Inled med en dragning av verksamhetens egen process. Att den saknades var en av de tydligaste invändningarna i förankringssprintens retro – förståelsegapet kostar mer än den halvtimme det tar att stänga det.</li>
+              <li>Låt en teknisk sprint vara fas 0 för verksamhetssprinten. I utvecklingssprinten var behörighetsmodell, schemadrivna formulär och platsval redan utredda och till stor del byggda, och arbetet kunde därför börja i verksamhetens frågor i stället för i infrastruktur. Ta samtidigt ut de frågor som inte är tekniska utan organisatoriska – som vem som ska äga och underhålla platsstrukturen – och ge dem en ägare i verksamheten.</li>
+              <li>Definiera ”klart” gemensamt innan sprinten börjar. I utvecklingssprinten betydde det fyra saker samtidigt: byggt i skarp miljö, verifierat med tester och CI, visat på en standup – men inte driftsatt. Utan en gemensam definition menar alla olika saker med samma ord.</li>
+              <li>Sortera besluten i nivåer i förväg och skriv ner var de dokumenteras. Utvecklingssprinten skilde på det som avgörs i rummet, det som kräver verksamhetens mandat på standupen och det som måste eskaleras juridiskt – och gav sprintledaren veto att stoppa beslut som drar iväg i omfattning. Ett beslut som inte går att hitta är inget beslut.</li>
+              <li>Boka informationssäkerhetsfrågorna innan dag ett. I utvecklingssprinten stod ett möte om vad klass 3-data kräver som att-göra-punkt från uppstartsmötet, men kunde hållas först efter sprintens slut – och frågan om vilken katalog personnummer får sökas mot hängde därför öppen alla tio dagarna.</li>
+              <li>Kontrollera nyckelrollernas tillgänglighet innan datumen sätts. Enhetscheferna, som äger det flöde som byggdes, kunde inte vara med på många standupar och var lediga halva första veckan, så andra fick bära deras perspektiv. Morgonmöten krockar dessutom med verksamheter som behöver chefen just på morgonen – lägg standupen när verksamheten faktiskt kan.</li>
+              <li>Skriv ner vad som får sprinten att tappa fart och gå igenom det på uppstarten. Utvecklingssprintens fyra risker var svar som dröjer, beslut som skjuts upp, omfattning som växer och testning som inte blir av – en obesvarad processfråga stoppar inte en utvecklare i en timme utan en funktion i flera dagar.</li>
             </ul>
           </div>
           <div class="lesson-group">
@@ -689,6 +714,15 @@
               <li>Rita mer. Begreppsförvirring och svårigheten att greppa relationerna mellan system och tjänster var de vanligaste invändningarna i förankringssprinten – fler skisser och mer visuellt stöd var deltagarnas eget åtgärdsförslag.</li>
               <li>Ge varje block en konkret ingång – ett verkligt ärende eller en befintlig konfiguration – i stället för en tom tavla, och håll isär behov och lösning: behoven beskrivs i verksamhetsblocken, de tekniska vägvalen görs i utvecklingsteamets egna block.</li>
               <li>Överväg att sprida ut dagarna. Tre dagar i streck var för tätt enligt förankringssprintens retro; förslaget var måndag, onsdag och fredag – och att lokalen faktiskt spelar roll för uthålligheten.</li>
+              <li>Vänta inte på testanvändare – skapa egna. I utvecklingssprinten slutade teamet vänta och satte upp flera användare med olika behörighet på dag tre, och hittade en bugg mellan rapportörens vy och lägre läsbehörighet samma dag. Kontrollera också att gränssnittet och backend låser samma saker: att styra vem som ser vad räckte inte, läsa och ändra måste gå att skilja åt.</li>
+              <li>Låt inte en hängande arkitekturfråga blockera i dagar. Hur åtgärder skulle modelleras för att bära för fler verksamheter än den aktuella diskuterades från torsdag till tisdag och stoppade gränssnittsarbetet under tiden – ”frågan blir inte enklare av att vänta”. Ge sådana vägval en uttalad deadline och ta dem på förmiddagen.</li>
+              <li>Bygg inte vidare på tillfälliga beslut i frågor som inte är teamets. När juridik eller personuppgifter är inblandade: flagga frågan, dokumentera vilket antagande arbetet utgår från, och bygg runt den tills svaret kommit. Utvecklingssprinten lämnade personnummerfrågan öppen i stället för att gissa, samtidigt som flödet byggdes klart.</li>
+              <li>Ge UX mandat över ordvalet och ta textfrågorna utanför standupen. I utvecklingssprinten bokades ett eget möte om hjälptexter, med regeln att teamet försöker komma överens och att UX annars avgör – och när verksamheten ville gömma förklaringarna bakom ett klick avgjorde tillgänglighetsargumentet: den som är osäker måste kunna jämföra alternativen innan valet görs.</li>
+              <li>Låt det som byggs vara referensen, inte skisserna. Retrot i utvecklingssprinten visade att skisser och flera miljöer hunnit glida isär, så att verksamheten ibland lämnade synpunkter på något inaktuellt. Skisserna används för avstämning, och var tydlig med att miljön verksamheten ser är en utvecklingsmiljö där saker ändras hela tiden, inte en miljö för acceptanstest.</li>
+              <li>Chattkanalen finns för transparens, inte för att alla ska läsa allt. Verksamheten hann inte följa teamchatten vid sidan av det vanliga arbetet – svaret var att behövs svar från en viss person hör teamet av sig direkt, gärna per telefon. Var på samma sätt sparsam med notiser i lösningen: de tappar värde när de blir för många.</li>
+              <li>Säg nej till det som inte ingår, även när svaret är obekvämt. Redan dag ett sköts AI-analys av fritext och rapporter i BI-verktyget utanför sprinten, och när verksamheten senare ville ha sökning mot verksamhetssystemet var beskedet att den integrationen hör hemma i ett större arbete. Omfattning som växer stoppas, den förhandlas inte.</li>
+              <li>Räkna med att beslut ersätts och logga båda. Anställningsform beslutades som ett val i formuläret på dag tre och ersattes dag fyra när uppgiften visade sig gå att härleda ur källan. Att något byggs om efter återkoppling är kvittot på att arbetssättet fungerar – men loggen ska visa vad som gällde när.</li>
+              <li>Parallella sprintar i samma kodbas kostar. Utvecklingssprinten hade en annan sprint att synka med i samma grund, vilket enligt retrot gav mer än planerat att hantera och bidrog till att verksamheten inte hann testa handläggningen under sprinten.</li>
             </ul>
           </div>
           <div class="lesson-group">
@@ -705,6 +739,9 @@
               <li>Låt inte slutdemon falla bort. I förankringssprinten ersattes den av en dialog om tillsynsprocessen, vilket innebar att bottenplattan aldrig blev formellt avstämd – statusen på lösningsmönstren vilar på veckans dokumentation, inte på ett godkännande. Avstämningen behöver då planeras in i nästa sprint i stället för att antas vara gjord.</li>
               <li>Klassa de öppna frågorna efter ägare innan de lämnar sprinten, och publicera dem som underlag för nästa steg. Skillnaden mellan en restlista och en parkeringslista är just den utpekade ägaren.</li>
               <li>Räkna med att beslut fortsätter fattas efter sprintveckan. I förankringssprintens logg är sådana poster märkta ”efter” i stället för att skrivas in som om de hade avgjorts i rummet – dokumentationen ska visa var överenskommelsen faktiskt uppstod.</li>
+              <li>Uppehållet mellan två sprintar är inte en paus. I utvecklingssprinten är de tre veckorna till sprint 2 där verksamheten testar det som byggts på riktigt och där gränssnittet finslipas utifrån verklig användning – men ingen ny funktionalitet påbörjas, och det som inte hanns med går tillbaka in i prioriteringen. Blir testningen inte av står nästa sprint utan riktning.</li>
+              <li>Släpp testmiljön med testinstruktioner och dokumentera de kända skillnaderna mot skisserna, så att verksamheten vet vad den tittar på. Utvecklingssprinten lade det som att-göra-punkt direkt från retrot, tillsammans med arbetsmöten om nästa sprints flöde redan veckan efter.</li>
+              <li>Publicera verksamhetens frågor med status. En numrerad lista med hanterad eller under utredning, och hänvisning till var beslutet står, gör att ingen behöver undra om en synpunkt tagits om hand – och ger nästa sprint en färdig lista över det som återstår.</li>
             </ul>
           </div>
         </div>
