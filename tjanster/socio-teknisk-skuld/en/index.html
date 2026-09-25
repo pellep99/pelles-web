@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register of Socio-Technical Debt – Per Persson, Ph.D.</title>
-  <meta name="description" content="Searchable register of all 78 categories of socio-technical debt (STeD), sorted into social and technical debt, with definitions, sources and the history of the concept from Cunningham's 1992 metaphor to today's unifying construct.">
+  <meta name="description" content="Searchable register of all 79 categories of socio-technical debt (STeD), sorted into social and technical debt, with definitions, sources and the history of the concept from Cunningham's 1992 metaphor to today's unifying construct.">
 
   <!-- Språkversioner -->
   <link rel="alternate" hreflang="sv" href="https://phd-persson.se/tjanster/socio-teknisk-skuld/">
@@ -20,7 +20,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Register of Socio-Technical Debt">
-  <meta property="og:description" content="All 78 categories of socio-technical debt in a searchable register, with definitions, sources and the history of the concept.">
+  <meta property="og:description" content="All 79 categories of socio-technical debt in a searchable register, with definitions, sources and the history of the concept.">
   <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://phd-persson.se/tjanster/socio-teknisk-skuld/en/">
@@ -751,10 +751,10 @@
           Socio-technical debt (STeD) occurs when past social and/or technical decisions lead to inefficiencies or increased risks in designing, building, maintaining, managing or using digital solutions, which in turn hampers the organisation's ability to create value and reach its goals. The register collects every category of debt identified in my <a href="https://gupea.ub.gu.se/items/01e1caf1-9259-4b74-aafa-ba75a306b06c" rel="noopener">doctoral thesis</a> and in literature published since, sorted by whether the debt resides in the technical artefact or in the social structures around it.
         </p>
         <ul class="hero-facts" aria-label="The register in numbers">
-          <li><strong>78</strong> categories</li>
+          <li><strong>79</strong> categories</li>
           <li class="fact-social"><strong>33</strong> social debt</li>
-          <li class="fact-technical"><strong>45</strong> technical debt</li>
-          <li><strong>33</strong> added after the thesis</li>
+          <li class="fact-technical"><strong>46</strong> technical debt</li>
+          <li><strong>34</strong> added after the thesis</li>
           <li><strong>26</strong> sub-categories</li>
           <li><strong>4</strong> umbrella concepts</li>
           <li><a href="./visualisation/">Visualisation of how it all fits together</a></li>
@@ -770,7 +770,7 @@
           Search by English or Swedish name, or by words in the description. Filter by domain (social or technical) and by the umbrella concept within which the category was originally defined. Each entry states the source of its definition.
         </p>
         <p class="section-intro">
-          The register covers the categories of the thesis plus 33 categories not included in the thesis, added in 2026 after a literature review and tagged <em>New</em>. 26 of the categories are arranged as sub-categories of another category, which is stated on the card with a link to the parent category. The arrangement is based on the literature review and my own assessment, and also applies to several of the thesis's original categories. All categories still have their own cards and can be searched.
+          The register covers the categories of the thesis plus 34 categories not included in the thesis, added in 2026 after a literature review and tagged <em>New</em>. 26 of the categories are arranged as sub-categories of another category, which is stated on the card with a link to the parent category. The arrangement is based on the literature review and my own assessment, and also applies to several of the thesis's original categories. All categories still have their own cards and can be searched.
         </p>
         <div class="naming-note" role="note">
           <h3>About the names: the English terms are the established ones</h3>
@@ -809,7 +809,7 @@
           </div>
         </form>
 
-        <p class="result-count" id="result-count" aria-live="polite" aria-atomic="true">Showing 78 of 78 categories.</p>
+        <p class="result-count" id="result-count" aria-live="polite" aria-atomic="true">Showing 79 of 79 categories.</p>
 
         <div class="domain domain-social" id="domain-social">
           <div class="domain-header">
@@ -1152,7 +1152,7 @@
         <div class="domain domain-technical" id="domain-technical">
           <div class="domain-header">
             <h3>Technical debt <span class="domain-alt">(<span lang="sv">teknisk skuld</span>)</span></h3>
-            <span class="domain-count" data-count-for="technical">45 categories</span>
+            <span class="domain-count" data-count-for="technical">46 categories</span>
           </div>
           <p class="domain-def">
             Technical debt is a collection of design or implementation constructs that are expedient in the short term but set up a technical context that can make future changes more costly or impossible. It presents an actual or contingent liability whose impact is limited to internal system qualities, primarily maintainability and evolvability. It resides in artefacts such as code, architecture, databases and testing frameworks.
@@ -1285,6 +1285,16 @@
             <p class="entry-desc">Incurred when configuration mechanisms are not controlled with the same rigour as the software, when differences between configurations cannot easily be determined, or when redundant or unused configuration data exists.</p>
             <p class="entry-relation"><strong>Sub-categories:</strong> <a href="#ai-configuration-debt">AI configuration debt</a>.</p>
             <p class="entry-source">Source: Rosser &amp; Norton, 2021</p>
+          </li>
+          <li class="entry" id="cost-debt-token-debt" data-domain="technical" data-origin="ny" data-search="kostnadsskuld (tokenskuld) cost debt (token debt) debt that arises when longer or inefficiently designed prompts increase token consumption and thereby the operating cost of systems built on large language models over time. aljohani &amp; do, 2025 aljohani &amp; do, 2025 a category in its own right. closely related to prompt debt but focuses on the financial operating cost rather than prompt quality. the term token debt also appears in grey literature (hackernoon).  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
+            <h4 class="entry-title">Cost debt (token debt) <span class="entry-alt">(<span lang="sv">Kostnadsskuld (tokenskuld)</span>)</span></h4>
+            <ul class="tags" aria-label="Classification">
+              <li class="tag tag-technical">Technical debt</li>
+              <li class="tag tag-origin"><abbr title="Added to the register after the thesis; not part of the thesis&#x27;s figure 2">New</abbr></li>
+            </ul>
+            <p class="entry-desc">Debt that arises when longer or inefficiently designed prompts increase token consumption and thereby the operating cost of systems built on large language models over time.</p>
+            <p class="entry-relation">A category in its own right. Closely related to <a href="#prompt-debt">Prompt debt</a> but focuses on the financial operating cost rather than prompt quality. The term token debt also appears in grey literature (HackerNoon).</p>
+            <p class="entry-source">Source: Aljohani &amp; Do, 2025</p>
           </li>
           <li class="entry" id="data-debt" data-domain="technical" data-origin="ny" data-search="dataskuld data debt technical debt in the data itself, separate from the software and the data storage system: quality issues such as missing values, biased distributions, poor metadata, untracked schema evolution or inconsistent preprocessing. later causes model drift, fairness violations, reduced robustness and increased cost of retraining and integration. foidl m.fl., 2019; tukur m.fl., 2026 foidl et al., 2019; tukur et al., 2026 distinguished from information debt, which concerns the information layer on the social side, and from database debt, which concerns the storage system. semantic debt is closely related.  added to the register after the thesis; not part of the thesis&#x27;s figure 2">
             <h4 class="entry-title">Data debt <span class="entry-alt">(<span lang="sv">Dataskuld</span>)</span></h4>
@@ -1760,7 +1770,7 @@
             <h3>The register is extended with post-thesis categories</h3>
             <p>A review of literature published after the thesis, and of a few older categories not included in figure 2, adds further categories to the register tagged ‘New’. On the social side these include consensus, team, management, compliance, knowledge and institutional debt; on the technical side dependency, pipeline, performance, accessibility, sustainability, explainability and semantic debt, as well as agentic technical debt. Several of them are arranged as sub-categories of others, which is stated on the respective card. At the same time, some of the thesis's original categories are arranged in the same way, for example database-design debt under database debt and shadow-IT debt under governance debt.</p>
             <p>In a second round, reproducibility, data, ethical and prompt debt were added from recent software research, together with interoperability, system evolution and organic debt from Yang's taxonomy for systems engineering and acquisition.</p>
-            <p>In a third round, four social categories were added from research on AI-assisted development: intent, comprehension and epistemic debt, all closely related to cognitive debt, together with agentic literacy debt, which operates at the societal level.</p>
+            <p>In a third round, four social categories were added from research on AI-assisted development: intent, comprehension and epistemic debt, all closely related to cognitive debt, together with agentic literacy debt, which operates at the societal level. On the technical side, cost debt (token debt) was added, concerning the operating cost of systems built on large language models.</p>
           </li>
         </ol>
       </div>
@@ -1857,7 +1867,7 @@
         <p class="section-intro">References for the categories added after the thesis.</p>
         <ul class="references">
           <li>Ahmad, M. O. (2026). Comprehension debt in GenAI-assisted software engineering projects. <i>International Conference on Evaluation and Assessment in Software Engineering (EASE 2026)</i>. arXiv:2604.13277.</li>
-          <li>Aljohani, A., &amp; Do, H. (2025). PromptDebt: A comprehensive study of technical debt across LLM projects. <i>Proceedings of the 29th International Conference on Evaluation and Assessment in Software Engineering (EASE '25)</i>. ACM.</li>
+          <li>Aljohani, A., &amp; Do, H. (2025). PromptDebt: A comprehensive study of technical debt across LLM projects. <i>Proceedings of the 29th International Conference on Evaluation and Assessment in Software Engineering (EASE '25)</i>. ACM. https://doi.org/10.1145/3756681.3756976</li>
           <li>Admile, A., Choudhari, M., Kakade, A., Bidve, O., Kulkarni, D., Patil, P., &amp; Jadhav, A. (2025). CodeGuardian: A multi-agent RAG framework for collaborative code understanding optimization and software engineering.</li>
           <li>Arpteg, A., Brinne, B., Crnkovic-Friis, L., &amp; Bosch, J. (2018). Software engineering challenges of deep learning. <i>2018 44th Euromicro Conference on Software Engineering and Advanced Applications (SEAA)</i>, Prague, Czech Republic, 50–59.</li>
           <li>Brahmi, Z., Ouni, A., Sayagh, M., &amp; Saied, M. A. (2026). Characterizing self-admitted technical debt generated by AI coding agents. ACM.</li>
@@ -1888,6 +1898,7 @@
           <li>Sculley, D., Holt, G., Golovin, D., et al. (2015). Hidden technical debt in machine learning systems. <i>Advances in Neural Information Processing Systems 28</i>.</li>
           <li>Storey, M.-A. (2026). From technical debt to cognitive and intent debt: Rethinking software health in the age of AI. <i>ACM Queue</i>. arXiv:2603.22106.</li>
           <li>The epistemic debt of generative AI. (2026). <i>Nature Machine Intelligence</i>. https://www.nature.com/articles/s42256-026-01294-w</li>
+          <li>Token debt is the new technical debt. (n.d.). <i>HackerNoon</i>. https://hackernoon.com/token-debt-is-the-new-technical-debt</li>
           <li>Tsai, S. (2026). Ghost intent: An effect of traceability collapse in GenAI-assisted SDLCs (March 5, 2026). Available at SSRN.</li>
           <li>Tukur, M., Adeyemo, H. B., Chen, T., Ali, N., Zarrad, A., et al. (2026). From AI technical debt to agentic technical debt: A systematic mapping of root causes and manifestations in agentic AI systems. arXiv:2608.01001.</li>
           <li>Tukur, M., Adeyemo, H. B., Chen, T., Ali, N., Zarrad, A., Kazman, R., Agus, M., &amp; Bahsoon, R. (2026). On AI safety and security technical debt in engineering AI-enabled systems. arXiv:2607.23365.</li>
