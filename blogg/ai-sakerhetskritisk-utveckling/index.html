@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-systemutveckling i säkerhetskritisk kommunal verksamhet – Per Persson, Ph.D.</title>
+  <meta name="description" content="Hur långt kan programvaruutveckling automatiseras för system i kommunal myndighetsutövning utan att ge avkall på informationssäkerhet, rättssäkerhet och spårbarhet? Om evidensen i oktober 2026, gällande regelverk, en referensarkitektur för kontrollerad AI-utveckling, styrning av AI-agenter och riskbaserad granskning.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI-systemutveckling i säkerhetskritisk kommunal verksamhet">
+  <meta property="og:description" content="Ett konkret underlag för den som ansvarar för utveckling i en kommun: var evidensen står, vilka regelverk som gäller, hur en kontrollerad utvecklingskedja kan se ut och hur AI-agenter styrs att följa vedertagna och lokala regler.">
+  <meta property="og:image" content="https://phd-persson.se/images/phd-persson-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/ai-sakerhetskritisk-utveckling/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-10-23">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="AI och systemutveckling">
+
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Citat */
+    .article-body blockquote {
+      margin: 0 0 var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+    .article-body blockquote p {
+      margin: 0 0 var(--space-xs);
+    }
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Underrubriker */
+    .article-body h4 {
+      margin: var(--space-md) 0 var(--space-xs);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* Kod */
+    .article-body code {
+      padding: 0.0625rem 0.25rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 0.25rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.875em;
+      word-break: break-word;
+    }
+
+    /* Tabeller */
+    .table-wrap {
+      margin: 0 0 var(--space-lg);
+      overflow-x: auto;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+    .table-wrap:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+    .table-wrap table {
+      width: 100%;
+      min-width: 36rem;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    .table-wrap th,
+    .table-wrap td {
+      padding: var(--space-xs) var(--space-sm);
+      border-bottom: 1px solid var(--color-border);
+      text-align: left;
+      vertical-align: top;
+    }
+    .table-wrap thead th {
+      background: var(--color-surface);
+      font-weight: 700;
+    }
+    .table-wrap tbody th {
+      font-weight: 600;
+    }
+    .table-wrap tbody tr:last-child th,
+    .table-wrap tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* Figur */
+    .article-figure {
+      margin: var(--space-lg) 0;
+    }
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: #ffffff;
+    }
+    .article-figure a {
+      display: block;
+      border-radius: var(--radius);
+    }
+    .article-figure a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+    .article-figure figcaption {
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Källhänvisningar */
+    .cite {
+      font-size: 0.875em;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    /* Notering */
+    .article-body .note {
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+
+    .references-heading {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1rem;
+    }
+    .references li:target {
+      background: #fff6dc;
+      border-radius: 0.25rem;
+    }
+    .ref-num {
+      color: var(--color-text-muted);
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">AI och systemutveckling</span>
+            <span><time datetime="2026-10-23">23 oktober 2026</time></span>
+          </p>
+          <h1>AI-systemutveckling i säkerhetskritisk kommunal verksamhet</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+
+          <p>
+            <strong>Hur långt kan programvaruutveckling automatiseras för system som används i kommunal myndighetsutövning, utan att ge avkall på informationssäkerhet, rättssäkerhet och spårbarhet? Detta är en fråga som är intressant ur många aspekter:</strong>
+          </p>
+          <ul>
+            <li>På ledningsnivå för att den avgör vilket ansvar nämnd och förvaltning kan ta för system som i praktiken byggs av maskiner: vem som godkänner, vad som kan delegeras och vad som behöver förklaras när ett beslut ifrågasätts.</li>
+            <li>På strategisk nivå för att svaret styr var en kommun ska lägga sina investeringar de närmaste åren; i egen utvecklingsförmåga, i upphandling, i kravkvalitet och verifiering, eller i agenterna själva, och i vilken takt befintliga system kan ersättas.</li>
+            <li>På utvecklingsteamsnivå för att flaskhalsen flyttar från att skriva kod till att specificera, granska och verifiera den, vilket förändrar vad ett team ägnar dagarna åt, vilka roller som behövs och hur arbetet mäts.</li>
+            <li>Och på individuell nivå för att det för varje utvecklare, arkitekt och handläggare behöver avgöras vad som ska behållas som egen kompetens och vad som kan lämnas till verktygen, när lärandet riskerar att gå förlorat tillsammans med det rutinarbete som försvinner.</li>
+          </ul>
+          <p>
+            Detta inlägg syftar till att ge den som ansvarar för utveckling i en kommun ett konkret underlag: var evidensen står i oktober 2026, vilka regelverk som faktiskt gäller, hur en kontrollerad utvecklingskedja kan se ut och hur man styr AI-agenter att följa både vedertagna och lokala regler. Det syftar alltså inte till att ge ett svar i procent på hur produktivitet kan öka, eftersom något sådant inte finns, utan ett sätt att resonera som håller även när verktygen byts ut.
+          </p>
+          <h2 id="sammanfattning-hur-langt-kan-vi-automatisera">Sammanfattning: hur långt kan vi automatisera?</h2>
+          <p>
+            AI kan idag användas långt i själva systemutvecklingen, även för myndighetssystem, men automatiserad programvaruutveckling måste skiljas från autonomt myndighetsbeslutsfattande.
+          </p>
+          <p>
+            Den rekommenderade modellen är <strong>AI-genererad utveckling + automatiserad, oberoende verifiering + riskbaserad mänsklig kontroll</strong>. Människor granskar i första hand juridiska tolkningar, krav, risker och avvikelser snarare än varje rad kod.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Tabell: Sammanfattning: hur långt kan vi automatisera?" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">Område</th><th scope="col">Kvalitativ automationspotential</th><th scope="col">Stöd i underlaget</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Kodgenerering och refaktorering</th><td>Hög</td><td>90 % av utvecklare använder AI; kopplat till högre genomströmning <span class="cite">[<a href="#ref-13">13</a>]</span></td></tr>
+                <tr><th scope="row">Enhetstester och dokumentation</th><td>Hög</td><td>Kravbaserad testgenerering är ett moget forskningsfält <span class="cite">[<a href="#ref-5">5</a>]</span></td></tr>
+                <tr><th scope="row">Integrationstester och kvalitetskontroller</th><td>Medelhög–hög</td><td>Exekveringsåterkoppling förbättrar funktionellt utfall <span class="cite">[<a href="#ref-1">1</a>]</span></td></tr>
+                <tr><th scope="row">Kravanalys och regelverifiering</th><td>Medel</td><td>Översättning av naturligt språk till formella specifikationer är flaskhalsen: 24–35 % semantisk korrekthet <span class="cite">[<a href="#ref-8">8</a>]</span></td></tr>
+                <tr><th scope="row">Säkerhets- och arkitekturgodkännande</th><td>Begränsad–medel</td><td>Endast 56 % av AI-genererad kod klarar säkerhetstest, oförändrat sedan 2025 <span class="cite">[<a href="#ref-11">11</a>]</span></td></tr>
+                <tr><th scope="row">Juridiskt ansvar för myndighetsbeslut</th><td>Beslutanderätt kan delegeras till en automatiserad beslutsfunktion, ansvaret kan det inte</td><td>Nämnd får delegera till automatiserad beslutsfunktion (6 kap. 37 § KL) men behåller ansvaret (6 kap. 6 §) och ska ha kontroll och manuella rutiner; undantag i 38 §. Lagen skiljer inte regelstyrd automation från AI; den gränsen sätts av FL och GDPR art. 22 <span class="cite">[<a href="#ref-16">16</a>]</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Potentialen ovan är en kvalitativ bedömning. Siffrorna i högerkolumnen är hämtade från enskilda studier och mätningar med olika metod och kan inte adderas till en samlad automationsgrad.
+          </p>
+          <h2 id="vad-visar-forskningen">1. Vad visar forskningen?</h2>
+          <p>
+            Forskningen om AI i systemutveckling har de senaste två åren gått från benchmarkstudier av enskilda modeller till studier av hela utvecklingskedjor med agenter som läser kodbaser, kör verktyg och itererar. Kapitlet sammanfattar vad den litteraturen säger på tre nivåer: vilka möjligheter som är belagda, vad empirin visar om effekten på säkerhet, produktivitet och organisation, och vilka risker som återkommer oavsett verktyg. Genomgående skiljs funktionell korrekthet från säkerhet och juridisk korrekthet, eftersom studierna visar att det ena inte följer av det andra.
+          </p>
+          <h3>Möjligheter</h3>
+          <ul>
+            <li>Snabbare implementation av kod, tester, API:er, integrationer och dokumentation från väl definierade specifikationer.</li>
+            <li>Autonoma utvecklingsagenter kan analysera kodbaser, föreslå ändringar, köra tester och iterera. Lin m.fl. visar att exekveringsåterkoppling och åtkomst till hela kodbasen förbättrar det tekniska utfallet, men inte i sig bevisar säkerhet <span class="cite">[<a href="#ref-1">1</a>]</span>.</li>
+            <li>AI kan generera fler testfall och identifiera extrema scenarier <span class="cite">[<a href="#ref-5">5</a>]</span>.</li>
+            <li>Spårbarhet mellan krav, kod, tester och dokumentation kan förbättras genom strukturerade processer, till exempel specifikationsdriven utveckling med verktyg som GitHub Spec Kit <span class="cite">[<a href="#ref-21">21</a>]</span>.</li>
+          </ul>
+          <h3>Vad empirin säger om effekten</h3>
+          <p>
+            Möjligheterna ovan är väl belagda i laboratoriemiljö. Hur de faller ut i verklig utveckling är en annan fråga, och här är underlaget både yngre och mer motsägelsefullt. Avsnitten nedan samlar de mätningar som finns på fyra områden: säkerheten i den kod som genereras, produktiviteten för erfarna utvecklare, effekten på organisationsnivå och den verifieringskostnad som uppstår när kod produceras snabbare än den kan granskas. Varje mätning är gjord med sina egna verktyg, sin egen tidsperiod och sitt eget mått, så de ska läsas som punktobservationer, inte som en kurva.
+          </p>
+          <h4>Säkerhet i genererad kod</h4>
+          <p>
+            Veracodes rapport 2026 (11 modeller, över 100 modeller följda sedan start): i genomsnitt 56 % av AI-genererad kod klarar säkerhetstest, praktiskt taget oförändrat från 2025. Spridningen är stor mellan språk (Java 30 %, Python 63 %) <span class="cite">[<a href="#ref-11">11</a>]</span>.
+          </p>
+          <h4>Produktivitet för erfarna utvecklare</h4>
+          <p>
+            Bilden är rörlig och beror på när, med vilka verktyg och med vilket mått man mätt. METR:s RCT från våren 2025 visade 19 % längre tid med AI; uppföljningen från 2026 pekar åt motsatt håll men är inte statistiskt säkerställd, och stora observationsstudier från 2026 visar 24 % till 2× fler sammanslagna ändringar. Se genomgången nedan <span class="cite">[<a href="#ref-12">12</a>, <a href="#ref-26">26</a>–<a href="#ref-32">32</a>]</span>.
+          </p>
+          <h4>Organisationsnivå</h4>
+          <p>
+            DORA 2025: 90 % av utvecklare använder AI och adoption är nu kopplad till högre genomströmning. AI beskrivs som en förstärkare som speglar organisationens befintliga styrkor och svagheter <span class="cite">[<a href="#ref-13">13</a>]</span>.
+          </p>
+          <h3>Verifieringsskatten</h3>
+          <p>
+            Bhati visar att flaskhalsen flyttas från kodskrivning till granskning, test, säkerhet och drift, och föreslår måttet produktionskvalificerad ändring per krona, granskartimme och riskenhet <span class="cite">[<a href="#ref-2">2</a>]</span>. Dantas m.fl. beskriver motsvarande fenomen för agenter: 94 % blockerade osäkra åtgärder kan ändå ge under 5 % säkert slutförda uppgifter <span class="cite">[<a href="#ref-8">8</a>]</span>.
+          </p>
+          <p>
+            Sammantaget pekar underlaget åt samma håll: AI ger störst nytta när specifikationen är tydlig och verifieringen är oberoende, och minst nytta när den sätts att lösa oklara uppgifter i komplexa, befintliga system utan kontrollram.
+          </p>
+          <h3>Produktivitet för erfarna utvecklare: en tidsstämplad genomgång</h3>
+          <p>
+            Det mest citerade resultatet, att erfarna utvecklare blev 19 % långsammare med AI, kommer från METR:s randomiserade studie med data insamlad februari–juni 2025, huvudsakligen med Cursor och Claude 3.5/3.7 Sonnet <span class="cite">[<a href="#ref-12">12</a>]</span>. Resultatet var giltigt under de förhållanden som studerades, men verktygen har bytts ut flera gånger sedan dess och METR har själva publicerat tre uppföljningar som förändrar bilden. Persson <span class="cite">[<a href="#ref-26">26</a>]</span> argumenterar för att varje sådan studie måste tidsstämplas och att antagandena bakom beslut ska omprövas när evidensen åldras. Tabellen nedan följer den principen.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Tabell: Produktivitet för erfarna utvecklare: en tidsstämplad genomgång" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">Studie (datainsamling)</th><th scope="col">Metod och urval</th><th scope="col">Resultat</th><th scope="col">Begränsning</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">GovTech Singapore, Ng m.fl. (okt 2023–jan 2024) <span class="cite">[<a href="#ref-27">27</a>]</span></th><td>Enkät, 70 utvecklare med Copilot, 40 svar</td><td>Mindre kodningstid rapporteras; över hälften såg ingen förbättring vid överlämningar mellan personer och team</td><td>Självrapporterat, inte randomiserat</td></tr>
+                <tr><th scope="row">GDS, brittisk offentlig sektor (nov 2024–feb 2025) <span class="cite">[<a href="#ref-28">28</a>]</span></th><td>Enkät, 424 svar från 31 myndigheter; telemetri</td><td>Upplevd besparing 56 min per arbetsdag; 15,8 % av Copilots föreslagna rader accepterades</td><td>Självrapporterat; acceptansgrad mäter inte tid eller kvalitet</td></tr>
+                <tr><th scope="row">METR RCT (feb–jun 2025) <span class="cite">[<a href="#ref-12">12</a>]</span></th><td>16 erfarna open source-utvecklare, 246 uppgifter, randomiserad tilldelning per uppgift</td><td>+19 % tid med AI (KI +2 % till +39 %); deltagarna trodde −20 %</td><td>Litet urval; verktyg från tidigt 2025</td></tr>
+                <tr><th scope="row">METR uppföljning (aug 2025–tidigt 2026) <span class="cite">[<a href="#ref-29">29</a>]</span></th><td>57 utvecklare, 143 repon, 800+ uppgifter, samma design</td><td>Ursprungliga deltagare −18 % tid (KI −38 % till +9 %); nya deltagare −4 % (KI −15 % till +9 %)</td><td>Alla intervall inkluderar noll; 30–50 % av utvecklarna hoppade över uppgifter de inte ville göra utan AI, vilket snedvrider urvalet. METR bedömer designen som inte längre tillförlitlig</td></tr>
+                <tr><th scope="row">Microsoft, Murphy-Hill m.fl. (okt 2025–apr 2026) <span class="cite">[<a href="#ref-30">30</a>]</span></th><td>Tiotusentals ingenjörer; syntetisk kontroll och fixed effects vid utrullning av Claude Code och Copilot CLI</td><td>+24 % sammanslagna PR per ingenjör och dag (KI +14,5 % till +33,7 %); effekten höll i sig; dos–respons upp till +50 % vid daglig användning; liknande lyft för alla erfarenhetsnivåer</td><td>Inte randomiserat; PR-antal mäter inte kvalitet. Författarna: "den brådskande öppna frågan är nu kvalitet"</td></tr>
+                <tr><th scope="row">He m.fl., "2×-mandatet" (jan 2024–apr 2026) <span class="cite">[<a href="#ref-31">31</a>]</span></th><td>Longitudinell studie, 802 utvecklare, 196 212 PR i ett B2B-företag; difference-in-differences</td><td>PR per utvecklare från 21 till 44 per månad (2,09×); lyftet lika över senioritetsnivåer, men koncentrerat till nya repon och nästan frånvarande i legacy-kod; granskningsbelastningen fördubblades och automatisk granskning gick om mänsklig</td><td>Beskrivs av författarna som ett närmast bästa fall; merge- och revert-frekvens oförändrade men korta kvalitetsmått</td></tr>
+                <tr><th scope="row">METR enkät (feb–apr 2026) <span class="cite">[<a href="#ref-32">32</a>]</span></th><td>349 tekniska arbetare, självrapporterat</td><td>Median upplevt värde 1,4–2×, upplevd hastighet 3×</td><td>Bekvämlighetsurval, 2 % svarsfrekvens; METR noterar att självskattning tidigare överskattat effekten med cirka 40 procentenheter</td></tr>
+                <tr><th scope="row">Stack Overflow Developer Survey 2026 (publ. okt 2026) <span class="cite">[<a href="#ref-33">33</a>]</span></th><td>30 000+ svar, 169 länder</td><td>66 % använder kodassistenter eller agenter; nära hälften litar på AI-utdata när den är lätt att verifiera, 6,6 % för viktiga beslut; endast 24 % har formell vägledning från arbetsgivaren</td><td>Enkät; inget produktivitetsmått</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Tre mönster framträder när studierna läses i tidsordning.
+          </p>
+          <ul>
+            <li><strong>Riktningen har vänt, men storleken är osäker.</strong> Den kontrollerade evidensen från 2025 visade inbromsning; den från 2026 visar sannolikt en vinst, men METR:s egen slutsats är att deras RCT-design inte längre fungerar eftersom utvecklare vägrar arbeta utan AI. De stora observationsstudierna från Microsoft och He m.fl. visar 24 % till 100 % fler sammanslagna ändringar, men mäter output, inte värde eller kvalitet.</li>
+            <li><strong>Flaskhalsen har flyttat till granskningen.</strong> När AI-författade ändringar närmar sig 90 % av flödet fördubblas granskarnas belastning och automatiserad granskning tar över <span class="cite">[<a href="#ref-31">31</a>]</span>. Det är samma fenomen som Bhati kallar verifieringsskatt <span class="cite">[<a href="#ref-2">2</a>]</span> och som referensarkitekturen i avsnitt 3 är byggd för att hantera.</li>
+            <li><strong>Vinsten är ojämnt fördelad över kodbaser.</strong> Lyftet är störst i ny kod och nästan frånvarande i legacy-system <span class="cite">[<a href="#ref-31">31</a>]</span>, vilket är den typ av system kommuner oftast förvaltar. Samtidigt visar Liu m.fl. att 22,7 % av de kvalitetsproblem AI-genererade commits introducerar finns kvar i kodbasen månader senare, och att säkerhetsproblem introduceras cirka 1,5 gånger oftare än de rättas <span class="cite">[<a href="#ref-34">34</a>]</span>.</li>
+          </ul>
+          <p>
+            Två effekter som sällan syns i produktivitetsmåtten bör följas särskilt. Shen &amp; Tamkin visar att utvecklare som lärde sig ett nytt bibliotek med AI-stöd presterade sämre på ett efterföljande kunskapstest (50 % mot 67 %) <span class="cite">[<a href="#ref-35">35</a>]</span>, och Storey beskriver hur teknisk skuld nu kompletteras av kognitiv skuld (gapet mellan systemets implementation och teamets förståelse) och intentionsskuld (gapet mellan vad som avsågs och vad som byggdes) <span class="cite">[<a href="#ref-36">36</a>]</span>. För en kommun som ska förvalta systemet i tio år är de skulderna lika viktiga som leveranstakten.
+          </p>
+          <p>
+            Slutsatsen för denna översikt: det finns ingen tillförlitlig trendlinje för erfarna utvecklares produktivitet med AI, och ingen enskild siffra bör ligga till grund för beslut. Mät i stället hela kedjan från behov till driftsatt och förvaltad tjänst, tidsstämpla evidensen bakom varje antagande och ompröva den när verktygen byts <span class="cite">[<a href="#ref-26">26</a>]</span>.
+          </p>
+          <h3>Begränsningar och risker</h3>
+          <p>
+            Riskerna med AI-genererad kod är i huvudsak kända och återkommer i studie efter studie. Det nya är att agenter med verktygsåtkomst förstärker dem: en felaktig kravtolkning blir en felaktig regel i drift, och en agent som kan ändra tester kan också dölja att den misslyckats. Tabellen listar de risker som är mest relevanta för myndighetssystem, vad de leder till om de inte hanteras och vilken motåtgärd som har stöd i litteraturen. Motåtgärderna är de byggstenar som referensarkitekturen i kapitel 3 sätter samman.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Tabell: Begränsningar och risker" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">Risk</th><th scope="col">Möjlig konsekvens</th><th scope="col">Motåtgärd</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Felaktig kravtolkning</th><td>Fel implementerad juridisk regel</td><td>Godkända, testbara krav; juridiskt granskad översättning från rättskälla <span class="cite">[<a href="#ref-10">10</a>]</span></td></tr>
+                <tr><th scope="row">Hallucinationer</th><td>Påhittade regler och API:er</td><td>Validering mot primärkällor</td></tr>
+                <tr><th scope="row">Osäker kod</th><td>Läckage eller obehörig åtkomst</td><td>SAST, DAST, SCA; styrd självrättning av sårbarheter <span class="cite">[<a href="#ref-7">7</a>]</span></td></tr>
+                <tr><th scope="row">Gemensamma fel i kod och test</th><td>Tester bekräftar en felaktig lösning</td><td>Oberoende testorakel; mutationstest</td></tr>
+                <tr><th scope="row">Bristande spårbarhet</th><td>Svårt att förklara beslut</td><td>Versionshanterade revisionsspår</td></tr>
+                <tr><th scope="row">Överprivilegierade agenter</th><td>Oönskade ändringar, missbruk av verktyg</td><td>Sandbox, minsta privilegium, OWASP ASI03 <span class="cite">[<a href="#ref-14">14</a>]</span></td></tr>
+                <tr><th scope="row">Målkapning via indata</th><td>Agenten styrs om av innehåll i kodbas, issues eller dokument</td><td>Separera instruktion från data; OWASP ASI01 <span class="cite">[<a href="#ref-14">14</a>]</span></td></tr>
+                <tr><th scope="row">Regeländringar</th><td>Tidigare korrekt funktion blir fel</td><td>Regelversionering och regressionstester</td></tr>
+                <tr><th scope="row">Lokal korrekthet som inte komponerar</th><td>Verifierade delar ger ett felaktigt helhetssystem</td><td>Verifiering på systemnivå, inte bara per funktion <span class="cite">[<a href="#ref-3">3</a>]</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Funktionell korrekthet är inte detsamma som informationssäkerhet eller juridisk korrekthet. Dessa egenskaper behöver bedömas oberoende. Lin m.fl. föreslår att förmågan hos en modell eller agent bedöms som ett <em>assurance case</em> med bevis för funktionell korrekthet, säkerhet, driftstabilitet, bevisens ursprung och agentens befogenheter, snarare än med ett enda benchmarkvärde <span class="cite">[<a href="#ref-1">1</a>]</span>.
+          </p>
+          <h2 id="tre-olika-anvandningsomraden">2. Tre olika användningsområden</h2>
+          <p>
+            Diskussionen om AI i kommunal verksamhet blandar ofta ihop tre saker som har helt olika risk och rättsläge: att AI bygger systemet, att AI hjälper handläggaren och att AI avgör ärendet. Det första är en fråga om utvecklingsmetod och kan hanteras med tekniska kontroller. Det andra är en fråga om faktakontroll och sekretess. Det tredje är en fråga om förvaltningsrätt, dataskydd och AI-förordningen. Resten av underlaget handlar nästan uteslutande om det första området, och tabellen visar varför den avgränsningen är rimlig.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Tabell: Tre olika användningsområden" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">Användning</th><th scope="col">Exempel</th><th scope="col">Bedömning</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">A. AI utvecklar systemet</th><td>AI skapar kod och tester; driften är deterministisk</td><td>Störst potential. AI-förordningen träffar i huvudsak inte utvecklingsverktyget utan det färdiga systemet.</td></tr>
+                <tr><th scope="row">B. AI stödjer handläggningen</th><td>Sammanfattning, kompletteringsförslag, underlag</td><td>Kräver faktakontroll och sekretesskydd; följ Digg/IMY:s riktlinjer för generativ AI <span class="cite">[<a href="#ref-19">19</a>]</span></td></tr>
+                <tr><th scope="row">C. AI fattar beslut</th><td>AI avgör rättigheter och skyldigheter</td><td>Högst juridisk och teknisk risk; kan vara högrisk-AI enligt bilaga III punkt 5 (tillgång till väsentliga offentliga tjänster och förmåner) <span class="cite">[<a href="#ref-17">17</a>]</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Exempel: För en kommunal tillståndsansökan kan AI hjälpa till att konvertera godkända regler till kod och tester. Systemet kan därefter hantera tydliga standardfall med deterministiska regler och lämna oklara fall till handläggare. Observera att ett regelstyrt, deterministiskt system som utvecklats med AI inte automatiskt är ett AI-system i AI-förordningens mening; bedömningen görs utifrån det system som sätts i drift.
+          </p>
+          <h2 id="referensarkitektur-for-kontrollerad-utveckling">3. Referensarkitektur för kontrollerad utveckling</h2>
+          <p>
+            Om AI ska producera huvuddelen av koden i ett myndighetssystem måste kontrollen flyttas från granskning av varje rad till kontroll av processen runt agenten. Referensarkitekturen beskriver en sådan process i fem steg: godkända krav går in, en agent arbetar i isolerad miljö, två oberoende verifieringsspår producerar bevis, en riskbaserad grind avgör vem som godkänner, och driftsättningen är signerad och spårbar. Arkitekturen är verktygsoberoende och bygger på en enda bärande regel: den som skriver koden får inte ändra måttstocken den mäts mot.
+          </p>
+          <figure class="article-figure">
+            <a href="../../images/referensarkitektur.svg" aria-label="Öppna figur 1 i full storlek">
+              <img src="../../images/referensarkitektur.svg" alt="Flödesdiagram i fem steg. Steg 1, verksamhetskrav: rättskällor och beslutskriterier omsatta till juridiskt godkända, testbara krav och förväntade resultat. Steg 2, en AI-agent i en isolerad miljö med minsta privilegium, läser kraven och producerar kod, tester, integrationer och dokumentation som en pull request. En orange spärr markerar att agenten saknar skrivbehörighet till krav och förväntade testresultat. Pull requesten går till två oberoende verifieringsspår: 3A teknisk verifiering med SAST, DAST, SCA, integrations-, mutations- och åtkomsttester, policy as code och signering, samt 3B kravverifiering med ett testorakel som härleds direkt från kraven i steg 1, kontraktstester, invarianta egenskaper och formell verifiering för ett urval. Båda spåren levererar bevis till steg 4, en riskbaserad grind, som antingen godkänner automatiskt vid låg risk eller skickar ändringen till mänsklig granskning vid medel till kritisk risk. Båda vägarna leder till steg 5, kontrollerad driftsättning med signerade artefakter, revisionslogg och återställning." width="1280" height="620" loading="lazy">
+            </a>
+            <figcaption>Figur 1. Referensarkitektur för AI-genererad utveckling under kontroll. AI-agenten arbetar i en isolerad miljö och producerar en pull request. Två oberoende verifieringsspår (tekniskt och kravmässigt) levererar bevis till en riskbaserad grind, som avgör om ändringen godkänns automatiskt eller går till mänsklig granskning. Den avgörande kontrollen är den orangea spärren: agenten saknar skrivbehörighet till godkända krav och förväntade testresultat, och testoraklet härleds från kraven, inte från agentens egen kod.</figcaption>
+          </figure>
+          <p class="step"><strong>1. Verksamhetskrav:</strong> rättskällor, beslutskriterier, informationsklassning och säkerhetskrav, omsatta till juridiskt godkända och testbara krav. Singhal &amp; Breaux visar att dekomposition av lagtext med stöd av LLM kan ge strukturerad juridisk metadata som underlag för kravspecifikation, men att den juridiska tolkningen måste godkännas av människa <span class="cite">[<a href="#ref-10">10</a>]</span>.</p>
+          <p class="step"><strong>2. AI-utvecklingsagenter:</strong> genererar kod, tester, integrationer och dokumentation i isolerad miljö med minsta privilegium. Agenten läser krav men får inte ändra dem.</p>
+          <p class="step"><strong>3A. Teknisk verifiering:</strong> SAST, DAST, SCA, integrations-, mutations- och åtkomsttester, samt policy as code och signerad leveranskedja.</p>
+          <p class="step"><strong>3B. Oberoende kravverifiering:</strong> juridiskt godkända testfall, kontraktstester och invarianta egenskaper, härledda från kraven i steg 1. Formell verifiering används för ett urval kritiska regler; Xu m.fl. visar att verifierade delkomponenter inte automatiskt ger ett verifierat helhetssystem, så systemnivån måste verifieras separat <span class="cite">[<a href="#ref-3">3</a>]</span>.</p>
+          <p class="step"><strong>4. Riskbaserad grind:</strong> automatisk hantering av tillåtna lågriskändringar och mänsklig granskning av kritiska avvikelser (se avsnitt 7).</p>
+          <p class="step"><strong>5. Kontrollerad driftsättning:</strong> signerade artefakter, revisionsloggar, övervakning och återställning. Här möts även cybersäkerhetslagens krav på säker utveckling, sårbarhetshantering och incidenthantering <span class="cite">[<a href="#ref-18">18</a>]</span>.</p>
+          <h3>Metoder med högst nytta</h3>
+          <p>
+            Verifieringsstegen i arkitekturen bygger på etablerade metoder som funnits långt före AI-agenterna men som får ny betydelse när koden inte längre skrivs av en människa som förstår den. Gemensamt för dem är att de härleder testet från något annat än implementationen: från specifikationen, från kontraktet, från en tillståndsmodell eller från en formellt uttryckt egenskap. Tabellen visar vad varje metod bidrar med i kedjan och var forskningen sätter gränsen för vad den kan garantera.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Tabell: Metoder med högst nytta" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">Metod</th><th scope="col">Bidrag</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Specification-driven development</th><td>Krav styr generering och verifiering; specifikationen är den primära artefakten, koden är härledd <span class="cite">[<a href="#ref-21">21</a>]</span></td></tr>
+                <tr><th scope="row">Contract testing</th><td>Kontrollerar gränssnitt och avtal mellan tjänster</td></tr>
+                <tr><th scope="row">Property-based testing</th><td>Genererar många försök att bryta invarianta regler</td></tr>
+                <tr><th scope="row">Model-based testing</th><td>Härleder tester från tillståndsmodeller</td></tr>
+                <tr><th scope="row">Mutation testing</th><td>Mäter hur väl tester upptäcker injicerade fel; skyddar mot gemensamma fel i kod och test</td></tr>
+                <tr><th scope="row">Formal verification</th><td>Bevisar vissa specificerade egenskaper; Verina-benchmarken visar att dagens modeller klarar att generera kod, specifikation och bevis tillsammans bara i en begränsad andel fall <span class="cite">[<a href="#ref-4">4</a>]</span></td></tr>
+                <tr><th scope="row">Continuous compliance</th><td>Kontrollerar kodifierade efterlevnadskrav vid varje ändring</td></tr>
+                <tr><th scope="row">Runtime monitoring av agenter</th><td>Den mest mogna metoden för att hindra osäkra agentåtgärder i drift (40–65 % reduktion i kontrollerade miljöer) <span class="cite">[<a href="#ref-8">8</a>]</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Den viktigaste principen är att den AI som skriver implementationen inte själv får ändra godkända krav eller förväntade testresultat för att få tester att passera.
+          </p>
+          <h3>Säkerhet för själva utvecklingsagenten</h3>
+          <p>
+            OWASP publicerade i december 2025 en Top 10 för agentiska applikationer <span class="cite">[<a href="#ref-14">14</a>]</span>. Flera av riskerna gäller direkt för AI-utvecklingsagenter som har åtkomst till kodbas, CI-pipeline och interna system:
+          </p>
+          <div class="table-wrap" role="region" aria-label="Tabell: Säkerhet för själva utvecklingsagenten" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">OWASP-risk</th><th scope="col">Betydelse för en utvecklingsagent</th><th scope="col">Kontroll i referensarkitekturen</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">ASI01 Agent Goal Hijack</th><td>Instruktioner gömda i issues, kommentarer, beroenden eller dokument styr om agenten</td><td>Behandla all kodbasinnehåll som data; godkända krav är enda instruktionskällan</td></tr>
+                <tr><th scope="row">ASI02 Tool Misuse</th><td>Agenten använder legitima verktyg (git, paketinstallation, shell) på skadligt sätt</td><td>Begränsad verktygsuppsättning, loggning av alla verktygsanrop</td></tr>
+                <tr><th scope="row">ASI03 Identity &amp; Privilege Abuse</th><td>Agentens identitet eller nycklar används utanför avsett syfte</td><td>Egen tjänsteidentitet per agent, kortlivade behörigheter, ingen skrivbehörighet till krav och huvudgren</td></tr>
+                <tr><th scope="row">ASI04 Agentic Supply Chain</th><td>Komprometterade verktyg, MCP-servrar, prompter eller modeller</td><td>SBOM även för agentens verktygskedja, signering (Sigstore, SLSA)</td></tr>
+                <tr><th scope="row">ASI05 Unexpected Code Execution</th><td>Genererad kod körs utan kontroll</td><td>Exekvering endast i sandbox utan åtkomst till produktionsdata</td></tr>
+                <tr><th scope="row">ASI09 Human-Agent Trust Exploitation</th><td>Granskare godkänner slentrianmässigt övertygande men felaktiga ändringar</td><td>Grinden kräver maskinella bevis, inte bara agentens egen beskrivning</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="verktyg-och-tekniker">4. Verktyg och tekniker</h2>
+          <p>
+            Referensarkitekturen kan realiseras med verktyg som till stor del redan finns i en modern utvecklingsmiljö. Det som är nytt är kodagenterna och verktygen för specifikationsdriven utveckling; resten är den säkerhets- och kvalitetskedja som en kommun bör ha oavsett om AI används. Tabellen ger exempel per område som utgångspunkt för en egen bedömning, inte som rekommendation av enskilda produkter. Fältet rör sig snabbt och flera av verktygen hade inte funnits ett år tidigare.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Tabell: Verktyg och tekniker" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">Område</th><th scope="col">Exempel</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Kodagenter</th><td>Claude Code, GitHub Copilot (agent mode), OpenHands, Aider</td></tr>
+                <tr><th scope="row">Specifikationsdriven utveckling</th><td>GitHub Spec Kit, Kiro, OpenSpec <span class="cite">[<a href="#ref-21">21</a>]</span></td></tr>
+                <tr><th scope="row">CI/CD</th><td>GitHub Actions, GitLab CI, Azure DevOps</td></tr>
+                <tr><th scope="row">Statisk analys</th><td>Semgrep, CodeQL, SonarQube</td></tr>
+                <tr><th scope="row">Beroendeanalys</th><td>OWASP Dependency-Check, Trivy, osv-scanner</td></tr>
+                <tr><th scope="row">Dynamisk säkerhet</th><td>OWASP ZAP, Burp Suite</td></tr>
+                <tr><th scope="row">Property-based testing</th><td>Hypothesis, jqwik, fast-check</td></tr>
+                <tr><th scope="row">Formell verifiering</th><td>TLA+, Alloy, Dafny, Lean, CBMC</td></tr>
+                <tr><th scope="row">Policy as Code</th><td>Open Policy Agent, Conftest</td></tr>
+                <tr><th scope="row">Infrastruktursäkerhet</th><td>Terraform, Checkov</td></tr>
+                <tr><th scope="row">Leveranskedja</th><td>SBOM, CycloneDX, Sigstore, SLSA</td></tr>
+                <tr><th scope="row">Test av AI-system i drift</th><td>promptfoo, garak, DeepEval</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Verktygen är exempel och måste bedömas avseende version, licens, databehandling, integration och myndighetens skyddskrav. För kodagenter som använder molnbaserade modeller krävs särskilt en bedömning av var kod och eventuella uppgifter i kodbasen behandlas, i linje med Digg/IMY:s riktlinjer <span class="cite">[<a href="#ref-19">19</a>]</span>.
+          </p>
+          <h2 id="styra-ai-mot-best-practice-vedertagen-och-lokal">5. Styra AI mot best practice: vedertagen och lokal</h2>
+          <p>
+            En utvecklingsagent följer de regler den känner till, och den följer dem probabilistiskt. Styrningen behöver därför två delar: ett sätt att ge agenten rätt kontext (vad som gäller här) och ett sätt att tvinga fram efterlevnad oavsett vad agenten gör (kontroller som inte går att prata sig förbi). Grundprincipen är enkel: <strong>allt som kan uttryckas som ett test eller en regel i ett verktyg ska uttryckas så; instruktioner i text är för det som inte kan kodifieras.</strong>
+          </p>
+          <h3>Fyra lager av styrning</h3>
+          <p>
+            Styrningen av en agent kan delas i fyra lager efter hur bindande de är. De tre första ger agenten kunskap: instruktioner som alltid läses, skills som laddas vid behov och verktyg som ger åtkomst till lokal sanning. Det fjärde lagret tvingar fram efterlevnad oavsett vad agenten gjort av kunskapen. Tabellen beskriver mekanismen i varje lager, vad det lämpar sig för och hur säker efterlevnaden är. Ordningen är också en arbetsordning: det som visar sig svårt att få agenten att följa i ett lager flyttas till nästa.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Tabell: Fyra lager av styrning" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">Lager</th><th scope="col">Mekanism</th><th scope="col">Används för</th><th scope="col">Efterlevnad</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">1. Projektinstruktioner</th><td><code>AGENTS.md</code> (öppen standard under Linux Foundation/AAIF), <code>CLAUDE.md</code>, <code>.github/copilot-instructions.md</code>, sökvägsstyrda <code>*.instructions.md</code> med <code>applyTo</code>-mönster. Läses automatiskt av Claude Code, Copilot, Cursor, Codex m.fl.; Copilot läser även <code>AGENTS.md</code> och <code>CLAUDE.md</code> direkt <span class="cite">[<a href="#ref-37">37</a>, <a href="#ref-39">39</a>]</span></td><td>Byggkommandon, kodstandard, mappstruktur, vad som inte får röras, hur tester körs, namngivning, språk i kommentarer och commit-meddelanden</td><td>Probabilistisk: agenten läser och väger in, men kan avvika</td></tr>
+                <tr><th scope="row">2. Skills</th><td>Mappar med <code>SKILL.md</code> (namn, beskrivning, instruktioner) plus skript, referensmaterial och mallar. Öppen standard (Agent Skills) som stöds av Claude Code, Copilot, VS Code, Cursor, Gemini CLI, Codex, OpenHands, Kiro m.fl. Laddas vid behov genom progressiv exponering: bara namn och beskrivning i kontexten tills uppgiften matchar <span class="cite">[<a href="#ref-38">38</a>]</span></td><td>Procedurer: "så gör vi en ny e-tjänst", "så skriver vi en ADR", "så integrerar vi mot ärendesystemet", tillgänglighetsgranskning, migrering av databasschema</td><td>Probabilistisk, men kan bära med sig skript som kör deterministiskt</td></tr>
+                <tr><th scope="row">3. Verktyg och kunskapskällor</th><td>MCP-servrar som ger agenten läsåtkomst till designsystem, API-kataloger, ADR-arkiv, ärendesystem och interna wikis. MCP-specifikationen 2026-07-28 skärpte auktorisation, spårbarhet och livscykelstyrning för företagsmiljöer <span class="cite">[<a href="#ref-40">40</a>]</span></td><td>Agenten slår upp lokal sanning i stället för att gissa: vilka komponenter finns, vilka API:er, vilka beslut är tagna</td><td>Beror på vad som exponeras; minsta privilegium gäller</td></tr>
+                <tr><th scope="row">4. Tvingande kontroller</th><td>Linters och formatterare (ESLint, Ruff, Spotless), arkitekturtester (ArchUnit, dependency-cruiser), tillgänglighetstester (axe-core, pa11y), kontrakts- och egenskapstester, policy as code (OPA), hooks i agenten som kör kontroller före och efter varje ändring, CI-grindar som blockerar sammanslagning</td><td>Allt som har ett rätt svar: formatering, beroenderiktning mellan lager, förbjudna API:er, WCAG-kriterier som kan mätas automatiskt, hemligheter i kod, licensvillkor</td><td>Deterministisk: ändringen stoppas oavsett vad agenten tycker</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Lager 1–3 är indata till steg 2 i referensarkitekturen (avsnitt 3); lager 4 är steg 3A. En mätning från AAIF visar att enstaka körningar ger missvisande bild av vad en instruktionsfil åstadkommer: i medianen över fem körningar minskade en <code>AGENTS.md</code> tid och kostnad med 24–27 % på en oklar uppgift, framför allt genom att agenten slutade lägga till ombedd kod, medan enskilda körningar kunde visa motsatsen <span class="cite">[<a href="#ref-37">37</a>]</span>. Instruktioner ska alltså utvärderas över flera körningar, inte genom att läsa ett resultat.
+          </p>
+          <h3>Vedertagen best practice att koda in</h3>
+          <p>
+            För UX, kod, arkitektur, informationshantering och säkerhet finns etablerade standarder som en kommun ändå är bunden av eller bör följa. Poängen är inte att skriva om dem för agenten utan att peka på dem och göra dem kontrollerbara. Tabellen går igenom sex områden och visar för varje område vilken källa man förankrar i, vad som bör uttryckas som instruktion eller skill och vad som bör uttryckas som en tvingande kontroll i bygget. Uppdelningen följer principen från kapitlets inledning: text för det som kräver omdöme, verktyg för det som har ett rätt svar.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Tabell: Vedertagen best practice att koda in" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">Område</th><th scope="col">Källa att förankra i</th><th scope="col">Instruktion (lager 1–2)</th><th scope="col">Tvingande kontroll (lager 4)</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">UX och tillgänglighet</th><td>WCAG 2.2 AA via EN 301 549 (v4.1.1), som DOS-lagen (2018:1937) och Diggs föreskrifter kräver för offentlig digital service; Diggs webbriktlinjer <span class="cite">[<a href="#ref-41">41</a>, <a href="#ref-42">42</a>]</span></td><td>Skill "tillgänglig e-tjänst": semantisk HTML, fokusordning, felmeddelanden i klartext, språk (<code>lang</code>), klarspråk enligt språklagen</td><td>axe-core/pa11y i CI med blockering på kritiska fynd; Lighthouse-trösklar; kontrastkontroll i designsystemets tokens</td></tr>
+                <tr><th scope="row">Designsystem</th><td>Kommunens eget designsystem (komponenter, tokens, mönster); gemensamma mönster i det samlade invånarmötet</td><td>Instruktion: "använd bara komponenter ur paketet X; skapa aldrig egna knappar eller formulärfält". MCP-server som exponerar komponentkatalogen</td><td>Lintregel som förbjuder råa HTML-formulärelement utanför designsystemet; visuell regressionstest</td></tr>
+                <tr><th scope="row">Kodningsregler</th><td>Språkets etablerade standard (PEP 8, Google Java Style, Airbnb/TS-strict), OWASP ASVS, Twelve-Factor App</td><td>Kort i <code>AGENTS.md</code>: vilken standard, vilka undantag, hur fel hanteras, inga hemligheter i kod</td><td>Formatterare och linter som hook; Semgrep-regler för förbjudna mönster; SAST i CI</td></tr>
+                <tr><th scope="row">Arkitektur</th><td>Architecture Decision Records (ADR) i repot <span class="cite">[<a href="#ref-43">43</a>]</span>; C4-modell; hexagonal/lagerarkitektur; API-riktlinjer (OpenAPI, REST-konventioner); Enas ramverk för digital samverkan</td><td>Skill "ny modul": läs relevanta ADR:er först, följ beroenderiktningen, generera OpenAPI-spec före implementation</td><td>ArchUnit/dependency-cruiser som bryter bygget vid otillåtna beroenden; OpenAPI-validering; kontraktstester mot konsumenter</td></tr>
+                <tr><th scope="row">Informationshantering</th><td>Informationsklassning, GDPR (dataskydd genom inbyggd design), OSL, arkivkrav</td><td>Instruktion: vilka datakategorier som finns, var de får lagras, loggningskrav, gallringsregler</td><td>Policy as code för infrastruktur (Checkov/OPA); test att personuppgifter inte loggas; schemakontroll för retention-fält</td></tr>
+                <tr><th scope="row">Säkerhet</th><td>OWASP ASVS, OWASP Top 10 for Agentic Applications, NIST SSDF/SP 800-218A <span class="cite">[<a href="#ref-14">14</a>, <a href="#ref-23">23</a>]</span></td><td>Instruktion om autentiseringsmönster, inparametervalidering, minsta privilegium</td><td>SAST/DAST/SCA, hemlighetsskanning, SBOM och signering i pipeline</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Lokala egna regler: var de ska bo</h3>
+          <p>
+            Det mesta av det som skiljer en kommun från en annan finns inte i någon standard: namngivning av ärendetyper, hur beslut motiveras, vilka integrationer som finns, hur handläggarflödet ser ut, vilka ord som används i gränssnittet. Det underlaget finns i dag ofta i huvudet på erfarna utvecklare, i Confluence eller i gammal kod. För att agenten ska följa det behöver det flyttas till repot, i versionshanterad och granskningsbar form.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Tabell: Lokala egna regler: var de ska bo" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">Lokal praxis</th><th scope="col">Lämplig plats</th><th scope="col">Exempel</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Regler som alltid gäller i repot</th><td><code>AGENTS.md</code> i roten (kort, under en sida); <code>AGENTS.md</code> i undermappar för avvikelser, närmaste fil vinner</td><td>"Alla texter mot invånare skrivs på klarspråk och granskas mot termlistan i <code>docs/termer.md</code>"</td></tr>
+                <tr><th scope="row">Återkommande procedurer</th><td>Skill-mapp (<code>.claude/skills/</code>, <code>.github/skills/</code> eller gemensam katalog) med <code>SKILL.md</code> + skript och mallar</td><td>"Skapa ny e-tjänst": mall för formulär, koppling till ärendesystemet, loggning, tillgänglighetschecklista</td></tr>
+                <tr><th scope="row">Arkitekturbeslut och deras skäl</th><td><code>docs/adr/</code> som ADR-filer; refererade från <code>AGENTS.md</code></td><td>ADR-0012: "Beslutsmotiveringar lagras som strukturerad data, inte fritext, för att kunna återges enligt 32 § FL"</td></tr>
+                <tr><th scope="row">Domänkunskap och termer</th><td>Referensfiler i skills eller <code>docs/</code>; MCP-server mot befintlig termbank eller informationsmodell</td><td>Ärendetyper, beslutskoder, roller, informationsklasser</td></tr>
+                <tr><th scope="row">Hårda förbud</th><td>Tvingande kontroll, inte text: lintregel, arkitekturtest, policy, hook</td><td>"Ingen direkt databasåtkomst från presentationslagret", "inga personnummer i loggar"</td></tr>
+                <tr><th scope="row">Rättsliga krav på funktionen</th><td>Godkända, testbara krav i steg 1 i referensarkitekturen; testorakel i steg 3B</td><td>Beslutskriterier per ärendetyp som kontraktstester</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Praktisk princip: skriv instruktionsfiler för en ny kollega som är skicklig men inte känner er verksamhet. Det som behöver sägas till den kollegan behöver sägas till agenten. Det som ni inte skulle lita på att en ny kollega kom ihåg ska in som en tvingande kontroll.
+          </p>
+          <h3>Hur man vet att styrningen fungerar</h3>
+          <ul>
+            <li>Mät efterlevnad per regel över flera körningar, inte per enstaka resultat <span class="cite">[<a href="#ref-37">37</a>]</span>. Behandla instruktionsfiler och skills som kod: de versionshanteras, granskas i pull requests och utvärderas mot en uppsättning typuppgifter när de ändras.</li>
+            <li>Flytta regler nedåt i lagren när de bryts. En regel som agenten ofta missar i <code>AGENTS.md</code> är en kandidat för en lintregel eller ett arkitekturtest.</li>
+            <li>Håll instruktionsfilerna korta. Långa filer trängs ut ur agentens kontext; det som är långt hör hemma i en skill som laddas vid behov eller i en referensfil.</li>
+            <li>Låt agenten använda samma kontroller som människor: samma linter, samma CI, samma granskningsregler. Särlösningar för AI-genererad kod skapar två standarder och döljer avvikelser.</li>
+            <li>Behandla skills och MCP-servrar som leveranskedja: de kan bära skadliga instruktioner (OWASP ASI04). Godkänn, signera och versionslås dem som vilket beroende som helst <span class="cite">[<a href="#ref-14">14</a>]</span>.</li>
+          </ul>
+          <h2 id="regeluppfyllnad-i-kommunal-verksamhet">6. Regeluppfyllnad i kommunal verksamhet</h2>
+          <p>
+            Ett system som används i myndighetsutövning möter en tätare regelmassa än de flesta andra programvaror, och flera av regelverken har ändrats eller tillkommit sedan 2022: kommunallagens delegationsregler, cybersäkerhetslagen, AI-förordningens omarbetade tidplan och Cyber Resilience Act. Kapitlet går igenom de regelverk som ställer krav på hur systemet utvecklas, inte bara på hur det används, och anger läget i oktober 2026. Det viktigaste budskapet är att inget av dem förbjuder AI-driven utveckling, men att flera av dem förutsätter exakt den spårbarhet och kontroll som referensarkitekturen bygger på.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Tabell: Regeluppfyllnad i kommunal verksamhet" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">Regelverk</th><th scope="col">Exempel på utvecklingskrav</th><th scope="col">Läge oktober 2026</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Förvaltningslagen (2017:900)</th><td>Legalitet, objektivitet, dokumentation, motivering, kommunicering</td><td>28 § tillåter automatiserade beslut för myndigheter; kraven på motivering och utredning gäller oavsett hur beslutet fattas</td></tr>
+                <tr><th scope="row">Kommunallagen 6 kap. 37–38 §§</th><td>Nämnd får delegera till automatiserad beslutsfunktion; nämnden behåller ansvaret, ska ha kontroll och manuella rutiner</td><td>Gäller sedan 1 juli 2022. Undantag: beslut som överklagas genom laglighetsprövning, beslut som inte får överklagas, upphandling, valfrihetssystem <span class="cite">[<a href="#ref-16">16</a>]</span></td></tr>
+                <tr><th scope="row">Speciallagstiftning</th><td>Särskilda beslutskriterier, befogenheter och krav på viss beslutsfattare</td><td>Prövas per ärendetyp (jämför Sundsvalls checklista <span class="cite">[<a href="#ref-20">20</a>]</span>)</td></tr>
+                <tr><th scope="row">GDPR art. 22</th><td>Rättslig grund, ändamål, säkerhet, skyddsåtgärder vid automatiserade beslut</td><td>Förvaltningslagens rättssäkerhetsgarantier anses normalt utgöra lämpliga skyddsåtgärder <span class="cite">[<a href="#ref-16">16</a>]</span></td></tr>
+                <tr><th scope="row">Offentlighets- och sekretesslagen</th><td>Sekretess och behörighetsstyrning</td><td>Oförändrat; gäller även för data som agenter får åtkomst till</td></tr>
+                <tr><th scope="row">Arkivlagen</th><td>Bevarande, gallring, allmänna handlingar</td><td>Omfattar även krav, testfall och revisionsloggar som styr beslut</td></tr>
+                <tr><th scope="row">EU:s AI-förordning (2024/1689)</th><td>Riskklassificering, dokumentation, mänsklig tillsyn, loggning för högrisksystem</td><td>Högriskkraven för bilaga III-system (bl.a. offentliga förmåner) framflyttade till 2 december 2027 genom Digital Omnibus (2026/1744). Transparenskrav (art. 50) gäller sedan 2 augusti 2026; krav på AI-kunnighet (art. 4) sedan februari 2025 <span class="cite">[<a href="#ref-17">17</a>]</span></td></tr>
+                <tr><th scope="row">Cybersäkerhetslagen (2025:1506)</th><td>Riskanalys, säker utveckling och sårbarhetshantering, leveranskedja, incidentrapportering 24 h / 72 h / 1 månad, utbildning för ledningen</td><td>I kraft 15 januari 2026, ersätter NIS-lagen. Kommuner och regioner omfattas som väsentliga verksamhetsutövare; Myndigheten för civilt försvar (f.d. MSB) är central tillsynsmyndighet <span class="cite">[<a href="#ref-18">18</a>]</span></td></tr>
+                <tr><th scope="row">Cyber Resilience Act (2024/2847)</th><td>Säkerhetskrav och SBOM för upphandlade produkter med digitala element</td><td>Rapporteringskrav för tillverkare från 11 september 2026, full tillämpning 11 december 2027; påverkar kravställning vid upphandling <span class="cite">[<a href="#ref-22">22</a>]</span></td></tr>
+                <tr><th scope="row">ISO/IEC 27001, 42001, OWASP ASVS, NIST SSDF</th><td>Ledningssystem för informationssäkerhet respektive AI, teknisk säkerhetsverifiering, säker utvecklingsprocess</td><td>NIST SP 800-218A kompletterar SSDF med praxis för generativ AI <span class="cite">[<a href="#ref-23">23</a>]</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Automatiserade beslut är inte generellt förbjudna i svensk förvaltning. Sedan 2022 kan kommunala nämnder delegera beslutanderätt till en automatiserad beslutsfunktion, men nämnden ska före delegationen bedöma de rättsliga förutsättningarna och riskerna, inrätta uppföljning och kontroll samt ha rutiner för manuell hantering, rättelse och återtagande <span class="cite">[<a href="#ref-16">16</a>]</span>. GDPR, speciallagstiftning och förvaltningsrätt måste prövas för varje användningsfall. Alla myndighetssystem är inte högrisk-AI enligt AI-förordningen, och ett deterministiskt regelsystem är normalt inte ett AI-system även om det utvecklats med AI-stöd.
+          </p>
+          <p>
+            Praktisk spårbarhetskedja: Rättskälla → juridiskt tolkat krav → systemregel → test → testresultat → versionshistorik → driftsatt artefakt. Kedjan är också det underlag som krävs för AI-förordningens dokumentations- och loggningskrav om systemet skulle klassas som högrisk, och för cybersäkerhetslagens krav på säker utveckling.
+          </p>
+          <h2 id="minimera-manuell-insats-genom-riskbaserad-granskning">7. Minimera manuell insats genom riskbaserad granskning</h2>
+          <p>
+            Om varje AI-genererad ändring ska granskas av en människa försvinner vinsten, och studierna i kapitel 1 visar att granskningen redan är den nya flaskhalsen. Alternativet är att låta ändringens risk avgöra vem som godkänner den: det mesta kan passera på maskinella bevis, en mindre del behöver teknisk granskning och en liten del behöver sakkunnig eller juridisk prövning. Kapitlet föreslår fyra riskklasser med tillhörande grind och avslutar med vilka mått som behövs för att veta om modellen fungerar.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Tabell: Minimera manuell insats genom riskbaserad granskning" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">Riskklass</th><th scope="col">Typisk ändring</th><th scope="col">Grind</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Låg</th><td>Dokumentation, avgränsad UI-funktion</td><td>Automatisk kontroll enligt godkänd policy</td></tr>
+                <tr><th scope="row">Medel</th><td>API:er, integrationslogik</td><td>Automattester och riktad teknisk granskning</td></tr>
+                <tr><th scope="row">Hög</th><td>Behörighet, sekretess, personuppgifter, regler</td><td>Sakkunnig kontroll och oberoende verifiering</td></tr>
+                <tr><th scope="row">Kritisk</th><td>Enskildas rättigheter, förmåner eller skyldigheter</td><td>Juridiskt och verksamhetsmässigt godkännande</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Följ genomloppstid, automatisk verifieringsgrad, produktionsfel, manuell granskningstid, kravspårbarhet och återställningsförmåga. Mät kvalitetsutfall per ändring för att undvika missvisande jämförelser. METR:s studier visar att självskattad tidsvinst är opålitlig: i 2025 års RCT trodde deltagarna att de gick 20 % snabbare när de gick 19 % långsammare, och METR uppskattar att självrapporter överskattat effekten med cirka 40 procentenheter <span class="cite">[<a href="#ref-12">12</a>, <a href="#ref-32">32</a>]</span>. Mät därför faktisk tid, faktiska fel och granskningsbelastning, inte upplevd produktivitet, och mät hela kedjan från behov till driftsatt tjänst snarare än antal sammanslagna ändringar <span class="cite">[<a href="#ref-26">26</a>, <a href="#ref-31">31</a>]</span>. Bhatis mått <em>produktionskvalificerad ändring</em> per granskartimme är ett lämpligt huvudmått <span class="cite">[<a href="#ref-2">2</a>]</span>.
+          </p>
+          <h2 id="slutsats">8. Slutsats</h2>
+          <p>
+            Den mest lovande strategin är en specifikations- och verifieringsstyrd process där AI producerar huvuddelen av programvaran, medan oberoende kontroller styr vilka ändringar som kan godkännas automatiskt. Formell verifiering kan ge starka garantier för uttryckligen specificerade egenskaper, men inte för hela den juridiska eller organisatoriska korrektheten.
+          </p>
+          <p>
+            Empirin från 2025–2026 nyanserar bilden: AI-genererad kod är inte säkrare än för ett år sedan, produktivitetsvinsten för erfarna utvecklare har sannolikt gått från negativ till positiv i takt med verktygen men är fortfarande osäker till sin storlek, störst i ny kod och minst i legacy-system, och flaskhalsen har flyttat från kodskrivning till granskning. Det talar för att investeringen i första hand ska göras i kravkvalitet, oberoende verifiering och grindar, inte i agenten själv, och för att evidensen bakom varje beslut tidsstämplas och omprövas.
+          </p>
+          <p>
+            Kärnfrågan är hur AI kan producera nästan allt samtidigt som systemet automatiskt kan visa att definierade funktionella, säkerhetsmässiga och rättsliga kontrollkrav är uppfyllda, och sakkunniga bara behöver ingripa där automatisering inte räcker. Rättsläget i Sverige ger utrymme för det: kommunallagen tillåter automatiserade beslut under nämndens ansvar, cybersäkerhetslagen ställer krav på just den typ av säker utveckling och spårbarhet som referensarkitekturen bygger på, och AI-förordningens högriskkrav har flyttats fram till december 2027, vilket ger tid att bygga rätt från början.
+          </p>
+          <p class="note">Underlaget är en översikt och ersätter inte juridisk bedömning i enskilda ärendetyper. Rättsläget för AI-förordningen och cybersäkerhetslagens föreskrifter kan ändras; kontrollera primärkällorna före beslut.</p>
+          <h2 id="forskningsunderlag-och-kallor">9. Forskningsunderlag och källor</h2>
+          <p>
+            Samtliga referenser kontrollerade mot källan 2026-10-20. Referenserna 27, 28, 35 och 36 är hämtade via Persson <span class="cite">[<a href="#ref-26">26</a>]</span> och inte öppnade på nytt här.
+          </p>
+          <h3 class="references-heading">Forskning</h3>
+          <ol class="references">
+            <li id="ref-1"><span class="ref-num">[1]</span> Lin, W., Zhou, T., Xie, Z. &amp; Hong, C. (2026). Large Language Models at the Intersection of Software Engineering and Software Security: An Evidence-Centered Structured Survey and Research Agenda. arXiv:2608.21107. <a href="https://arxiv.org/abs/2608.21107" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2608.21107</a></li>
+            <li id="ref-2"><span class="ref-num">[2]</span> Bhati, H. (2026). Beyond Code Generation: Reliability, Verification, and Cost Economics in the Agentic Software Development Lifecycle. arXiv:2609.04681. <a href="https://arxiv.org/abs/2609.04681" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2609.04681</a></li>
+            <li id="ref-3"><span class="ref-num">[3]</span> Xu m.fl. (2026). Local Success Does Not Compose: Benchmarking Large Language Models for Compositional Formal Verification. ICLR 2026. <a href="https://proceedings.iclr.cc/paper_files/paper/2026/hash/c04d37be05ba74419d2d5705972a9d64-Abstract-Conference.html" rel="noopener noreferrer" target="_blank">proceedings.iclr.cc</a> (förtryck: <a href="https://arxiv.org/abs/2509.23061" rel="noopener noreferrer" target="_blank">arXiv:2509.23061</a>)</li>
+            <li id="ref-4"><span class="ref-num">[4]</span> Ye m.fl. (2026). Verina: Benchmarking Verifiable Code Generation. ICLR 2026. <a href="https://proceedings.iclr.cc/paper_files/paper/2026/hash/41b8c80f9113b9f8e2e129447221682a-Abstract-Conference.html" rel="noopener noreferrer" target="_blank">proceedings.iclr.cc</a> (förtryck: <a href="https://arxiv.org/abs/2505.23135" rel="noopener noreferrer" target="_blank">arXiv:2505.23135</a>)</li>
+            <li id="ref-5"><span class="ref-num">[5]</span> Yang m.fl. (2026). Requirements-Based Test Generation: A Comprehensive Survey. ACM Computing Surveys. <a href="https://dl.acm.org/doi/10.1145/3771727" rel="noopener noreferrer" target="_blank">doi:10.1145/3771727</a> (förtryck: <a href="https://arxiv.org/abs/2505.02015" rel="noopener noreferrer" target="_blank">arXiv:2505.02015</a>)</li>
+            <li id="ref-6"><span class="ref-num">[6]</span> Dobslaw, F. m.fl. (2026). Challenges in Testing Large Language Model-Based Software: A Faceted Taxonomy. ACM. <a href="https://dl.acm.org/doi/10.1145/3806396" rel="noopener noreferrer" target="_blank">doi:10.1145/3806396</a> (förtryck: <a href="https://arxiv.org/abs/2503.00481" rel="noopener noreferrer" target="_blank">arXiv:2503.00481</a>)</li>
+            <li id="ref-7"><span class="ref-num">[7]</span> Yan m.fl. (2025). Guiding AI to Fix Its Own Flaws: An Empirical Study on LLM-Driven Secure Code Generation. ACM. <a href="https://dl.acm.org/doi/10.1145/3848030" rel="noopener noreferrer" target="_blank">doi:10.1145/3848030</a> (förtryck: <a href="https://arxiv.org/abs/2506.23034" rel="noopener noreferrer" target="_blank">arXiv:2506.23034</a>)</li>
+            <li id="ref-8"><span class="ref-num">[8]</span> Dantas, P., Cordeiro, L., Nowroozi, E. &amp; Tihanyi, N. (2026). Toward Safe LLM Agents: A Survey of Specification, Verification, and Enforcement. arXiv:2608.14590. <a href="https://arxiv.org/abs/2608.14590" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2608.14590</a></li>
+            <li id="ref-9"><span class="ref-num">[9]</span> Elumalai, P. &amp; Vijayakumar, R. O. (2026). Between Law and Code: Operationalizing Responsible AI in Public Administration. Cambridge Forum on AI: Law and Governance, 2, e14. <a href="https://www.cambridge.org/core/journals/cambridge-forum-on-ai-law-and-governance/article/between-law-and-code-operationalizing-responsible-ai-in-public-administration/8FEB61A54D46BB26DF11966E31EB11DF" rel="noopener noreferrer" target="_blank">cambridge.org</a></li>
+            <li id="ref-10"><span class="ref-num">[10]</span> Singhal, A. &amp; Breaux, T. (2026). Code Generation for Legal Metadata Extraction: A Decomposition-Based In-Context Learning Approach. Requirements Engineering. <a href="https://link.springer.com/article/10.1007/s00766-026-00468-7" rel="noopener noreferrer" target="_blank">doi:10.1007/s00766-026-00468-7</a> (konferensversion: <a href="https://arxiv.org/abs/2507.02846" rel="noopener noreferrer" target="_blank">Legal Requirements Translation from Law, RE 2025</a>)</li>
+            <li id="ref-11"><span class="ref-num">[11]</span> Veracode (2026). 2026 GenAI Code Security Report. 28 juli 2026. <a href="https://www.veracode.com/news/llms-are-getting-smarter-but-not-safer-veracode-2026-genai-code-security-report-finds-ai-generated-code-security-has-stalled-at-56%25-pass-rate/" rel="noopener noreferrer" target="_blank">veracode.com</a></li>
+            <li id="ref-12"><span class="ref-num">[12]</span> Becker, J., Rush, N., Barnes, E. &amp; Rein, D. (2025). Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. METR, 10 juli 2025. <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/" rel="noopener noreferrer" target="_blank">metr.org</a>; <a href="https://arxiv.org/abs/2507.09089" rel="noopener noreferrer" target="_blank">arXiv:2507.09089</a></li>
+            <li id="ref-13"><span class="ref-num">[13]</span> Google Cloud DORA (2025). State of AI-assisted Software Development. September 2025. <a href="https://blog.google/technology/developers/dora-report-2025/" rel="noopener noreferrer" target="_blank">blog.google</a></li>
+            <li id="ref-14"><span class="ref-num">[14]</span> OWASP GenAI Security Project (2025). OWASP Top 10 for Agentic Applications for 2026. 9 december 2025. <a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026" rel="noopener noreferrer" target="_blank">genai.owasp.org</a></li>
+            <li id="ref-15"><span class="ref-num">[15]</span> Regeringen (2024). AI-kommissionens Färdplan för Sverige. November 2024. <a href="https://regeringen.se/pressmeddelanden/2024/11/ai-kommissionen-overlamnar-sina-forslag-till-regeringen/" rel="noopener noreferrer" target="_blank">regeringen.se</a></li>
+          </ol>
+          <h3 class="references-heading">Svensk rätt och vägledningar</h3>
+          <ol class="references">
+            <li id="ref-16"><span class="ref-num">[16]</span> SKR (2022). Cirkulär 22:47 Automatiserat beslutsfattande. Om ändringarna i 6 kap. 37–38 §§ kommunallagen från 1 juli 2022. <a href="https://primarvardskvalitet.skr.se/download/18.7d6a84e01840e10660af29d1/1668584302115/CIRKULÄR%2022_47%20Automatiserat%20beslutsfattande.pdf" rel="noopener noreferrer" target="_blank">skr.se (PDF)</a></li>
+            <li id="ref-17"><span class="ref-num">[17]</span> Europaparlamentets och rådets förordning (EU) 2024/1689 (AI-förordningen). <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" rel="noopener noreferrer" target="_blank">eur-lex.europa.eu</a>.  Ändrad genom förordning (EU) 2026/1744 (Digital Omnibus on AI), i kraft 27 juli 2026; sammanfattning av ny tidplan: <a href="https://www.aiacto.eu/en/blog/digital-omnibus-ai-act-report-2027" rel="noopener noreferrer" target="_blank">aiacto.eu</a></li>
+            <li id="ref-18"><span class="ref-num">[18]</span> Cybersäkerhetslag (2025:1506). I kraft 15 januari 2026. <a href="https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/cybersakerhetslag-20251506_sfs-2025-1506/" rel="noopener noreferrer" target="_blank">riksdagen.se</a>; prop. 2025/26:28 Ett starkt skydd för nätverks- och informationssystem. <a href="https://www.riksdagen.se/sv/dokument-och-lagar/dokument/proposition/ett-starkt-skydd-for-natverks-och_hd0328/html/" rel="noopener noreferrer" target="_blank">riksdagen.se</a></li>
+            <li id="ref-19"><span class="ref-num">[19]</span> Digg &amp; IMY (2025). Riktlinjer för användning av generativ AI och kompetenshöjande insatser (Fi2024/01535). 20 januari 2025. <a href="https://digg.se/download/18.41bb5ce61939e3df66831ea/1737390380051/Rapport%20Riktlinjer%20för%20användning%20av%20generativ%20AI%20och%20kompetenshöjande%20insatser%20%28Fi2024-01535%29.pdf" rel="noopener noreferrer" target="_blank">digg.se (PDF)</a>; vägledning på <a href="https://www.digg.se/ai" rel="noopener noreferrer" target="_blank">digg.se/ai</a></li>
+            <li id="ref-20"><span class="ref-num">[20]</span> Sundsvalls kommun. Checklista för bedömning av automatiserat beslutsfattande. <a href="https://utveckling.sundsvall.se/metoder-och-riktlinjer/checklista-for-bedomning-av-automatiserat-beslutsfattande" rel="noopener noreferrer" target="_blank">utveckling.sundsvall.se</a></li>
+          </ol>
+          <h3 class="references-heading">Standarder och ramverk</h3>
+          <ol class="references">
+            <li id="ref-21"><span class="ref-num">[21]</span> GitHub (2025). Spec Kit: Spec-Driven Development. <a href="https://github.github.com/spec-kit/" rel="noopener noreferrer" target="_blank">github.github.com/spec-kit</a></li>
+            <li id="ref-22"><span class="ref-num">[22]</span> Europaparlamentets och rådets förordning (EU) 2024/2847 (Cyber Resilience Act). Tidplan: <a href="https://finitestate.io/blog/cyber-resilience-act-timeline-2026-2027" rel="noopener noreferrer" target="_blank">finitestate.io</a></li>
+            <li id="ref-23"><span class="ref-num">[23]</span> NIST (2024). SP 800-218A Secure Software Development Practices for Generative AI and Dual-Use Foundation Models. <a href="https://csrc.nist.gov/pubs/sp/800/218/a/final" rel="noopener noreferrer" target="_blank">csrc.nist.gov</a></li>
+            <li id="ref-24"><span class="ref-num">[24]</span> NIST AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="noopener noreferrer" target="_blank">nist.gov</a></li>
+            <li id="ref-25"><span class="ref-num">[25]</span> OWASP Application Security Verification Standard (ASVS). <a href="https://owasp.org/www-project-application-security-verification-standard/" rel="noopener noreferrer" target="_blank">owasp.org</a></li>
+          </ol>
+          <h3 class="references-heading">Produktivitet, lärande och skuld</h3>
+          <ol class="references">
+            <li id="ref-26"><span class="ref-num">[26]</span> Persson, P. (2026). AI och systemutveckling. phd-persson.se. <a href="../ai-systemutveckling/">phd-persson.se/blogg/ai-systemutveckling</a></li>
+            <li id="ref-27"><span class="ref-num">[27]</span> Ng, K. K. B., Fauzi, L., Leow, L. &amp; Ng, J. (2024). Harnessing the Potential of Gen-AI Coding Assistants in Public Sector Software Development. GovTech Singapore. <a href="https://arxiv.org/abs/2409.17434" rel="noopener noreferrer" target="_blank">arXiv:2409.17434</a></li>
+            <li id="ref-28"><span class="ref-num">[28]</span> Government Digital Service (2025). AI coding assistant trial: UK public sector findings report. <a href="https://www.gov.uk/government/publications/ai-coding-assistant-trial/ai-coding-assistant-trial-uk-public-sector-findings-report" rel="noopener noreferrer" target="_blank">gov.uk</a></li>
+            <li id="ref-29"><span class="ref-num">[29]</span> Becker, J. m.fl. (2026). We are Changing our Developer Productivity Experiment Design. METR, 24 februari 2026. <a href="https://metr.org/blog/2026-02-24-uplift-update/" rel="noopener noreferrer" target="_blank">metr.org</a>; se även Cunningham, T. &amp; Whitfill, P. (2026). Task Substitution and Uplift. METR, 8 maj 2026. <a href="https://metr.org/blog/2026-05-08-task-substitution-and-uplift/" rel="noopener noreferrer" target="_blank">metr.org</a></li>
+            <li id="ref-30"><span class="ref-num">[30]</span> Murphy-Hill, E., Butler, J. &amp; Savelieva, A. (2026). Adoption and Impact of Command-Line AI Coding Agents: A Study of Microsoft's Early 2026 Rollout of Claude Code and GitHub Copilot CLI. arXiv:2607.01418, 1 juli 2026. <a href="https://arxiv.org/abs/2607.01418" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2607.01418</a></li>
+            <li id="ref-31"><span class="ref-num">[31]</span> He, H., Agarwal, S., Denisov-Blanch, Y., Azaletskiy, P., Koyejo, S. &amp; Vasilescu, B. (2026). AI Writes Faster Than Humans Can Review: A Longitudinal Study of an Enterprise "2×" Mandate. arXiv:2607.01904, 2 juli 2026. <a href="https://arxiv.org/abs/2607.01904" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2607.01904</a></li>
+            <li id="ref-32"><span class="ref-num">[32]</span> METR (2026). Measuring the Self-Reported Impact of Early-2026 AI on Technical Worker Productivity. 11 maj 2026. <a href="https://metr.org/blog/2026-05-11-ai-usage-survey/" rel="noopener noreferrer" target="_blank">metr.org</a></li>
+            <li id="ref-33"><span class="ref-num">[33]</span> Stack Overflow (2026). 2026 Developer Survey. Oktober 2026. <a href="https://stackoverflow.blog/survey/" rel="noopener noreferrer" target="_blank">stackoverflow.blog/survey</a></li>
+            <li id="ref-34"><span class="ref-num">[34]</span> Liu, Y., Widyasari, R., Zhao, Y., Irsan, I. C., Chen, J. &amp; Lo, D. (2026). Debt Behind the AI Boom: A Large-Scale Empirical Study of AI-Generated Code in the Wild. arXiv:2603.28592v2, 26 april 2026. <a href="https://arxiv.org/abs/2603.28592" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2603.28592</a></li>
+            <li id="ref-35"><span class="ref-num">[35]</span> Shen, J. H. &amp; Tamkin, A. (2026). How AI Impacts Skill Formation. Anthropic. <a href="https://www.anthropic.com/research/AI-assistance-coding-skills" rel="noopener noreferrer" target="_blank">anthropic.com/research</a></li>
+            <li id="ref-36"><span class="ref-num">[36]</span> Storey, M.-A. (2026). From Technical Debt to Cognitive and Intent Debt. arXiv:2603.22106. <a href="https://arxiv.org/abs/2603.22106" rel="noopener noreferrer" target="_blank">arxiv.org/abs/2603.22106</a></li>
+          </ol>
+          <h3 class="references-heading">Styrning av agenter, tillgänglighet och arkitektur</h3>
+          <ol class="references">
+            <li id="ref-37"><span class="ref-num">[37]</span> Agentic AI Foundation (Linux Foundation). AGENTS.md, öppen standard för instruktioner till kodagenter. <a href="https://agents.md/" rel="noopener noreferrer" target="_blank">agents.md</a>; mätning: Measuring AGENTS.md: what five runs show that one doesn't, 22 juli 2026. <a href="https://aaif.io/blog/measuring-agents-md-what-five-runs-show-that-one-doesn-t" rel="noopener noreferrer" target="_blank">aaif.io</a></li>
+            <li id="ref-38"><span class="ref-num">[38]</span> Agent Skills, öppen specifikation för <code>SKILL.md</code> (ursprungligen från Anthropic). <a href="https://agentskills.io/" rel="noopener noreferrer" target="_blank">agentskills.io</a>; Claude Code-dokumentation: <a href="https://code.claude.com/docs/en/skills" rel="noopener noreferrer" target="_blank">code.claude.com/docs/en/skills</a></li>
+            <li id="ref-39"><span class="ref-num">[39]</span> GitHub Docs. Adding repository custom instructions for GitHub Copilot (<code>copilot-instructions.md</code>, <code>*.instructions.md</code>, <code>AGENTS.md</code>). <a href="https://docs.github.com/copilot/how-tos/custom-instructions/adding-repository-custom-instructions-for-github-copilot" rel="noopener noreferrer" target="_blank">docs.github.com</a></li>
+            <li id="ref-40"><span class="ref-num">[40]</span> Model Context Protocol. Specifikation, version 2026-07-28. <a href="https://modelcontextprotocol.io/specification/" rel="noopener noreferrer" target="_blank">modelcontextprotocol.io/specification</a></li>
+            <li id="ref-41"><span class="ref-num">[41]</span> Lag (2018:1937) om tillgänglighet till digital offentlig service. <a href="https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-20181937-om-tillganglighet-till-digital_sfs-2018-1937/" rel="noopener noreferrer" target="_blank">riksdagen.se</a>; Diggs föreskrifter om tillgänglighet till digital offentlig service. <a href="https://www.digg.se/download/18.129a4fef1939e2e1c1f21960/1653918115721/DIGGs-foreskrifter-om-tillganglighet-till-digital-offentlig-service.pdf" rel="noopener noreferrer" target="_blank">digg.se (PDF)</a>; Diggs webbriktlinjer. <a href="https://www.digg.se/webbriktlinjer" rel="noopener noreferrer" target="_blank">digg.se/webbriktlinjer</a></li>
+            <li id="ref-42"><span class="ref-num">[42]</span> W3C. Web Content Accessibility Guidelines (WCAG) 2.2. <a href="https://www.w3.org/TR/WCAG22/" rel="noopener noreferrer" target="_blank">w3.org/TR/WCAG22</a>; ETSI EN 301 549 V4.1.1 (inkluderar WCAG 2.2). <a href="https://en.wikipedia.org/wiki/EN_301_549" rel="noopener noreferrer" target="_blank">översikt</a></li>
+            <li id="ref-43"><span class="ref-num">[43]</span> Architecture Decision Records. <a href="https://adr.github.io/" rel="noopener noreferrer" target="_blank">adr.github.io</a></li>
+          </ol>
+
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>

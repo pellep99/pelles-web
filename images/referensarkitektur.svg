@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 620" width="1280" height="620" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+  <title>Referensarkitektur för kontrollerad AI-utveckling</title>
+  <defs>
+    <marker id="pil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a525c"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #ffffff; stroke: #1f4f8b; stroke-width: 2; }
+    .box-alt { fill: #eef3fa; stroke: #1f4f8b; stroke-width: 2; }
+    .title { font-size: 19px; font-weight: 700; fill: #1a1d22; }
+    .text { font-size: 15px; fill: #1a1d22; }
+    .label { font-size: 14px; fill: #4a525c; font-style: italic; }
+    .flow { stroke: #4a525c; stroke-width: 2; fill: none; marker-end: url(#pil); }
+    .spar { fill: #c2410c; }
+    .spar-text { font-size: 14px; font-weight: 700; fill: #9a3412; }
+  </style>
+
+  <rect x="0" y="0" width="1280" height="620" fill="#ffffff"/>
+
+  <!-- 1. Verksamhetskrav -->
+  <rect class="box-alt" x="20" y="225" width="220" height="170" rx="10"/>
+  <text class="title" x="36" y="258">1. Verksamhetskrav</text>
+  <text class="text" x="36" y="288">Rättskällor och</text>
+  <text class="text" x="36" y="308">beslutskriterier</text>
+  <text class="text" x="36" y="336">Juridiskt godkända,</text>
+  <text class="text" x="36" y="356">testbara krav och</text>
+  <text class="text" x="36" y="376">förväntade resultat</text>
+
+  <!-- Isolerad miljö -->
+  <rect x="320" y="40" width="250" height="260" rx="12" fill="#f6f7f9" stroke="#4a525c" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text class="label" x="336" y="66">Isolerad miljö, minsta privilegium</text>
+  <rect class="box" x="340" y="85" width="210" height="130" rx="10"/>
+  <text class="title" x="356" y="117">2. AI-agent</text>
+  <text class="text" x="356" y="146">Kod, tester,</text>
+  <text class="text" x="356" y="166">integrationer och</text>
+  <text class="text" x="356" y="186">dokumentation</text>
+  <text class="text" x="445" y="280" text-anchor="middle" font-weight="700">↓ pull request</text>
+
+  <!-- Läsflöde krav -> agent -->
+  <path class="flow" d="M240,260 C280,260 290,150 338,150"/>
+  <text class="label" x="252" y="206">läser</text>
+
+  <!-- Spärr -->
+  <rect class="spar" x="282" y="120" width="10" height="150" rx="3"/>
+  <text class="spar-text" x="36" y="440">Spärr: agenten saknar</text>
+  <text class="spar-text" x="36" y="460">skrivbehörighet till krav och</text>
+  <text class="spar-text" x="36" y="480">förväntade testresultat</text>
+  <path d="M190,425 L280,275" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+
+  <!-- 3A -->
+  <rect class="box" x="640" y="60" width="250" height="150" rx="10"/>
+  <text class="title" x="656" y="92">3A. Teknisk verifiering</text>
+  <text class="text" x="656" y="122">SAST, DAST, SCA</text>
+  <text class="text" x="656" y="144">Integrations-, mutations-</text>
+  <text class="text" x="656" y="164">och åtkomsttester</text>
+  <text class="text" x="656" y="186">Policy as code, signering</text>
+
+  <!-- 3B -->
+  <rect class="box" x="640" y="390" width="250" height="150" rx="10"/>
+  <text class="title" x="656" y="422">3B. Kravverifiering</text>
+  <text class="text" x="656" y="452">Testorakel härlett från krav</text>
+  <text class="text" x="656" y="474">Kontraktstester och</text>
+  <text class="text" x="656" y="494">invarianta egenskaper</text>
+  <text class="text" x="656" y="516">Formell verifiering (urval)</text>
+
+  <!-- Agent -> verifiering -->
+  <path class="flow" d="M570,170 C600,170 605,135 638,135"/>
+  <path class="flow" d="M570,250 C610,250 600,465 638,465"/>
+
+  <!-- Krav -> 3B (oberoende orakel) -->
+  <path class="flow" d="M130,395 L130,575 L765,575 L765,542"/>
+  <text class="label" x="300" y="566">testoraklet härleds från kraven, inte från agentens kod</text>
+
+  <!-- 4. Grind -->
+  <rect class="box-alt" x="950" y="235" width="140" height="150" rx="10"/>
+  <text class="title" x="1020" y="270" text-anchor="middle">4. Risk-</text>
+  <text class="title" x="1020" y="294" text-anchor="middle">baserad</text>
+  <text class="title" x="1020" y="318" text-anchor="middle">grind</text>
+  <text class="text" x="1020" y="350" text-anchor="middle">bevis in,</text>
+  <text class="text" x="1020" y="370" text-anchor="middle">beslut ut</text>
+  <path class="flow" d="M890,135 C930,135 920,280 948,280"/>
+  <path class="flow" d="M890,465 C930,465 920,340 948,340"/>
+  <text class="label" x="900" y="122">bevis</text>
+  <text class="label" x="900" y="490">bevis</text>
+
+  <!-- Utfall -->
+  <rect class="box" x="1120" y="60" width="145" height="90" rx="10"/>
+  <text class="text" x="1192" y="92" text-anchor="middle" font-weight="700">Automatiskt</text>
+  <text class="text" x="1192" y="112" text-anchor="middle" font-weight="700">godkännande</text>
+  <text class="label" x="1192" y="134" text-anchor="middle">låg risk</text>
+
+  <rect class="box" x="1120" y="470" width="145" height="90" rx="10"/>
+  <text class="text" x="1192" y="502" text-anchor="middle" font-weight="700">Mänsklig</text>
+  <text class="text" x="1192" y="522" text-anchor="middle" font-weight="700">granskning</text>
+  <text class="label" x="1192" y="544" text-anchor="middle">medel till kritisk</text>
+
+  <path class="flow" d="M1090,260 C1110,260 1100,105 1118,105"/>
+  <path class="flow" d="M1090,360 C1110,360 1100,515 1118,515"/>
+
+  <!-- 5. Driftsättning -->
+  <rect class="box-alt" x="1120" y="225" width="145" height="170" rx="10"/>
+  <text class="title" x="1192" y="256" text-anchor="middle">5. Drift-</text>
+  <text class="title" x="1192" y="280" text-anchor="middle">sättning</text>
+  <text class="text" x="1192" y="310" text-anchor="middle">Signerade</text>
+  <text class="text" x="1192" y="330" text-anchor="middle">artefakter,</text>
+  <text class="text" x="1192" y="350" text-anchor="middle">revisionslogg,</text>
+  <text class="text" x="1192" y="370" text-anchor="middle">återställning</text>
+  <path class="flow" d="M1192,150 L1192,223"/>
+  <path class="flow" d="M1192,470 L1192,397"/>
+</svg>
