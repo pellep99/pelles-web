@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital skönmålning – när berättelsen om förändring springer före verkligheten – Per Persson, Ph.D.</title>
+  <meta name="description" content="Ett förslag till begreppet digital skönmålning: när kommunikationen om digitala satsningar ger en mer långtgående eller fördelaktig bild av förändring och nytta än det finns stöd för. Fem exempel från verkligheten, vad skönmålningen gör med styrningen och fem frågor för bättre uppföljning.">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Digital skönmålning – när berättelsen om förändring springer före verkligheten">
+  <meta property="og:description" content="Ett förslag till begreppet digital skönmålning: när kommunikationen om digitala satsningar ger en mer långtgående eller fördelaktig bild av förändring och nytta än det finns stöd för. Fem exempel från verkligheten, vad skönmålningen gör med styrningen och fem frågor för bättre uppföljning.">
+  <meta property="og:image" content="https://phd-persson.se/images/digital-skonmalning-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/digital-skonmalning/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-11-10">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Digital transformation">
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body blockquote {
+      margin: 0 0 var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+    .article-body blockquote p {
+      margin: 0;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-body ul {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Illustration */
+    .article-figure {
+      margin: 0 0 var(--space-md);
+    }
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+    .article-figure figcaption {
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    @media (min-width: 640px) {
+      .article-figure-right {
+        float: right;
+        width: 18rem;
+        max-width: 50%;
+        margin: 0 0 var(--space-md) var(--space-lg);
+      }
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Digital transformation</span>
+            <span><time datetime="2026-11-10">10 november 2026</time></span>
+          </p>
+          <h1>Digital skönmålning – när berättelsen om förändring springer före verkligheten</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+          <p>
+            Det finns en välbekant situation i offentlig digitalisering. En verksamhet har infört e-tjänster, ansökningarna kommer in digitalt och pappersblanketterna är borta. När någon frågar hur digitaliseringen går blir svaret att den går bra, att man har arbetat med detta i flera år eller att man i princip är klar. Samtidigt fungerar stora delar av ärendehanteringen som den alltid har gjort, med manuella kontroller, uppgifter som manuellt flyttas mellan system och manuella överlämningar mellan organisatoriska stuprör. Ingången har förändrats, men processen bakom den är densamma.
+          </p>
+          <figure class="article-figure">
+            <img src="../../images/digital-skonmalning-svartvit.jpg" alt="Svartvit tecknad illustration med rubriken Digital skönmålning. En man på en stege målar fasaden på en kontorsbyggnad blank och glänsande och utropar ”Nu är vi digitaliserade!”, medan en medborgare framför byggnaden använder en e-tjänst på en skärm. Inne i byggnaden, bakom fasaden, arbetar personalen som förr: i Förvaltning A stämplar en handläggare papper, i Förvaltning B lämnas pärmar över genom en lucka, på IT står gamla servrar med trassliga kablar och ett hänglås, och två handläggare skriver av uppgifter mellan varsin gammal datorskärm bland högar av papper, en telefon och en skrivmaskin. På övervåningen tittar ledningen nöjt på ett diagram med stigande staplar." width="1400" height="788">
+          </figure>
+          <p>
+            Jag har länge saknat ett specifikt begrepp för det här, och det fick jag anledning att fundera vidare på när jag läste Antonio Molins utmärkta artikel <em>Public Sector Machinewashing: A Double-edged Sword</em> (2026), som handlar om hur en myndighets kommunikation om AI kan ge en mer fördelaktig bild än resultaten motiverar. Mönstret känner jag igen från min egen avhandling (Persson, 2025), fast där handlar det sällan om AI utan om e-tjänster, verksamhetssystem och processer. Det här inlägget är ett försök att sätta ett begrepp på fenomenet, visa hur det ser ut i verkligheten och, framför allt, diskutera vad det får för praktiska konsekvenser.
+          </p>
+
+          <h2>Ett begrepp: digital skönmålning</h2>
+          <p>
+            <em>Machinewashing</em>, som Molin använder, betecknar kommunikation som ger en missvisande bild av AI:s användning, nytta eller ansvarsfullhet. Det sker genom långtgående påståenden, selektivt valda framgångsexempel, utelämnad information eller bilder som signalerar större framsteg än det finns belägg för. På svenska tycker jag att <strong>AI-skönmålning</strong> fungerar bra som benämning.
+          </p>
+          <p>
+            Men problemet är inte begränsat till AI. En organisation kan kalla sig digitalt transformerad för att den har infört en e-tjänsteplattform, beskriva en process som digitaliserad trots att handläggningen är manuell, eller tala om medborgarcentrering medan tjänsterna fortsätter att följa den interna organisationens gränser. De lösningar vi i branschen brukar kalla <em>tomtebloss</em>, snygga lösningar som egentligen inte förändrar något i grunden, premieras dessutom ofta externt, vilket förstärker problemet att en begränsad förändring får representera en betydligt större förflyttning som inte har skett.
+          </p>
+          <p>
+            Mitt förslag är därför ett övergripande begrepp, där AI-skönmålning blir en särskild variant:
+          </p>
+          <blockquote>
+            <p><strong>Digital skönmålning</strong> är när kommunikation om digitala satsningar ger en mer långtgående eller fördelaktig bild av verksamhetens förändring och nytta än vad det finns stöd för i praktiken.</p>
+          </blockquote>
+          <p>
+            Två saker i definitionen är viktiga att hålla i minnet. För det första handlar den om glappet mellan <em>bild</em> och <em>belägg</em>, inte nödvändigtvis om avsikt. Skönmålning kan vara strategisk, ett sätt att skapa legitimitet, säkra finansiering eller visa handlingskraft, men den kan lika gärna uppstå för att människor uppriktigt tycker att de har nått långt. Har målet varit att ersätta blanketten är en fungerande e-tjänst ett tydligt resultat, även om någon annan förväntade sig att hela tjänsten skulle göras om. Avsikten spelar roll när vi fördelar ansvar, men för styrningen är konsekvensen densamma, att ett beslutsunderlag ger intrycket av att mer har förändrats än vad som är fallet.
+          </p>
+          <p>
+            För det andra är begreppet relativt till vilken måttstock som används. Den som jämför med pappersblanketten ser en konkret förbättring, den som utgår från medborgarens behov av sammanhängande service ser att det mesta återstår. Båda betraktar samma verklighet, och skönmålningen uppstår när den första beskrivningen får stå för helheten, så att "vi har infört e-tjänster" gradvis blir liktydigt med "vi har genomfört vår digitala transformation".
+          </p>
+          <p>
+            Nog med teori, låt oss titta på hur det ser ut i praktiken.
+          </p>
+
+          <h2>Fem exempel från verkligheten</h2>
+
+          <h3>1. Kommunen som "har digitaliserat i flera år"</h3>
+          <p>
+            I min avhandling finns ett fall från en kommun där verksamhet och ledning hade tydligt olika bilder av hur långt digitaliseringen hade kommit. På verksamhetsnivå uppfattade många övergången från papper till digital lagring som en genomförd digitalisering, och handläggare framhöll att de hade digitaliserat i flera år genom att erbjuda e-tjänster för att registrera ärenden. På ledningsnivå konstaterade man i stället att processerna var oförändrade och att medborgarna fortfarande mötte ärendecentrerade tjänster snarare än en sammanhållen service (Persson, 2025, avsnitt 4.2.3).
+          </p>
+          <p>
+            Ingen i det fallet försökte vilseleda någon. Men när verksamhetens beskrivning var den som nådde politiken och omvärlden blev bilden av kommunens digitalisering betydligt ljusare än vad ledningens egen analys gav stöd för, och det blev svårare att argumentera för att det grundläggande förändringsarbetet faktiskt återstod.
+          </p>
+
+          <h3>2. Verksamt.se: 83 procent digitalt in, manuellt bakom</h3>
+          <p>
+            Riksrevisionen granskade 2019 de statliga insatserna för att förenkla företagsstart med hjälp av digitalisering (RiR 2019:14). På ytan ser det ut som en framgång: 83 procent av nybildningsärendena till Bolagsverket och drygt 60 procent av nyregistreringarna hos Skatteverket kom in via e-tjänsterna på verksamt.se, och nästan nio av tio blivande företagare uppgav att verksamt.se gjorde det enklare.
+          </p>
+          <p>
+            Bakom gränssnittet såg det annorlunda ut. Granskningen visade att handläggare matade in uppgifter manuellt och kontrollerade dem i flera system, bland annat för att de äldre ärendehanteringssystemen försvårade ett helt digitalt flöde. Det saknades säker digital tvåvägskommunikation, så post, e-post och telefon spelade fortsatt en viktig roll, och företagare kunde inte följa sitt ärende. Bastjänsten för grundläggande uppgifter hämtade bara vissa uppgifter från tre myndigheter och fick inte användas i kommunernas övriga handläggning, vilket innebar att principen om att lämna en uppgift en gång inte uppfylldes.
+          </p>
+          <p>
+            Det här är digital skönmålning i sin mest vardagliga form, där andelen digitala ansökningar är ett sant och relevant mått, men när det får representera "en digital process" döljer att processen till största delar är densamma som förut.
+          </p>
+
+          <h3>3. Roboten som fick ett namn</h3>
+          <p>
+            En kommun blev omkring 2017 först i landet med helautomatiserade beslut om ekonomiskt bistånd. Roboten döptes till Ernst och presenterades som en digital medarbetare, och blev ett nationellt föredöme som flera kommuner ville kopiera. Tekniskt sett handlade det om processautomation (RPA) som utförde samma steg som en handläggare skulle ha gjort, fast snabbare, i de befintliga verksamhetssystemen.
+          </p>
+          <p>
+            Berättelsen om roboten gjorde dock mer än att beskriva tekniken. När en annan kommun införde motsvarande lösning 2018 lämnade 12 av 16 socialsekreterare sina tjänster i protest. En journalist begärde ut källkoden, kommunen hävdade att den var en affärshemlighet men kammarrätten slog fast att den var en allmän handling. Det visade sig då att roboten i allt väsentligt var en uppsättning regler i konfigurationsfiler. Frågor om rättssäkerhet och om vilka organisatoriska förändringar lösningen förutsatte (den flyttar ansvaret för försörjningsstöd från socialtjänsten till arbetsmarknadsförvaltningen) hamnade i skuggan av bilden av en kommun som låg i framkant.
+          </p>
+          <p>
+            Poängen är inte att automatiseringen var fel. Poängen är att ordet "robot" och den digitala medarbetaren gav en bild av något mer avancerat och mer färdigt än en regelstyrd automation av ett befintligt arbetssätt, och att den bilden försvårade granskningen av vad som faktiskt hade byggts.
+          </p>
+
+          <h3>4. Myndigheternas service: digitalt först, men telefonerna ringer fortfarande</h3>
+          <p>
+            Flera statliga myndigheter har under 2010-talet drivit linjen "digitalt först", ofta med argumentet att digitala kanaler frigör resurser och minskar trycket på bemannad service. Riksrevisionens granskning av myndigheternas service till enskilda som inte kan eller vill vara digitala (redovisad i regeringens skrivelse 2021/22:12) visade dock att efterfrågan på service per telefon i stort var oförändrad hos de 22 granskade myndigheterna, och att digitaliseringen alltså ännu inte lett till minskad efterfrågan på bemannad service. Riksrevisionen kunde inte heller se något samband mellan ökat fokus på digitalisering och förändrad tillgänglighet i telefonkundtjänsten, och konstaterade att uppföljningen av de icke-digitala kanalerna brast.
+          </p>
+          <p>
+            Här är det inte själva lösningarna som ämnar lösa "digitalt först" som skönmålas, utan den nytta de förväntas ge. När "frigjorda resurser" används som argument för att skala ned annan service innan effekten har visat sig leder till en förväntan som behandlas som ett resultat, och hårdare tryck på de som är kvar och fortfarande ska serva medborgarna via telefon.
+          </p>
+
+          <h3>5. Staten i stort: 40 miljarder, 15 procent utvärderade</h3>
+          <p>
+            Det mest systematiska belägget kommer från Riksrevisionens granskning av statliga strategiska digitaliseringsprojekt (RiR 2025:8). Den omfattar 1&nbsp;094 projekt hos 136 myndigheter under åren 2013–2024, med en sammanlagd budget på omkring 40 miljarder kronor. Av de 722 avslutade projekten hade bara omkring 15 procent en före- och efterutvärdering som kunde visa om den avsedda nyttan uppnåtts. Ungefär två tredjedelar av myndigheterna arbetar inte systematiskt med nyttoanalys eller uppföljning av realiserade nyttor. Minst 120 avslutade projekt nådde inte sina mål fullt ut, och 31 avbröts utan leverans till en kostnad av 1,6 miljarder kronor. Riksrevisionens slutsats är att det inte går att avgöra om lösningarna ger det värde de var tänkta att ge.
+          </p>
+          <p>
+            Det här är inte ett exempel på en enskild organisation som skönmålar. Det är ett exempel på hur förutsättningarna för skönmålning byggs in i systemet då, om nästan inget utvärderas efteråt så är det leveransen som blir det enda som går att visa upp, och då blir det också leveransen som får representera en eventuell framgång.
+          </p>
+
+          <h2>Vad skönmålningen gör med styrningen</h2>
+          <p>
+            Exemplen ovan är olika, men de har en gemensam mekanik, och det är den som gör begreppet praktiskt användbart.
+          </p>
+          <p>
+            <strong>Berättelsen blir beslutsunderlag.</strong> Molin visar hur en myndighets kommunikation om AI under 2023–2025 använde ett återkommande framgångsexempel vars nytta enligt analysen inte kunde tillskrivas AI, och hur tillämpningar som inte var i drift ingick i bilden av organisationens förmåga. Sådana berättelser stannar inte i presentationen. När AI kopplas till effektivare administration, bättre brottsbekämpning och hållbar välfärd skapas argument för investeringar, prioriteringar och ändrade regler för datadelning. Detsamma gäller andelen digitala ansökningar på verksamt.se eller löftet om frigjorda resurser hos myndigheterna. Beskrivningen av vad som har uppnåtts avgör vad som uppfattas som nästa rimliga steg. Här ligger Molins tveeggade svärd, att organisationer måste kunna formulera ambitioner och skapa stöd för långsiktiga satsningar, men om möjliga framtida nyttor får fungera som belägg för att den nuvarande inriktningen redan är framgångsrik så bekräftar organisationen bara sina antaganden i stället för att pröva dem.
+          </p>
+          <p>
+            <strong>Skulden blir osynlig.</strong> I min avhandling beskriver jag hur offentlig digitalisering begränsas av ett arv av både teknik och organisation, med gamla system som hänger ihop med tidigare upphandlingar, ansvarsfördelning, kompetens och invanda arbetssätt. När nya lösningar byggs inom dessa ramar förs begränsningarna vidare och blir dyrare att hantera senare. Verksamt.se är ett skolboksexempel – e-tjänsten förbättrade kontakten med företagaren men befäste en handläggning i äldre system bakom gränssnittet. Riksrevisionen konstaterade samma år (RiR 2019:28) att föråldrade verksamhetskritiska IT-system fanns hos ett stort antal myndigheter och att regeringen tycktes omedveten om den samlade risken. Digital skönmålning gör den här socio-tekniska skulden svårare att upptäcka. När förändringen beskrivs som genomförd krymper utrymmet att diskutera dess begränsningar, samtidigt som fortsatt utveckling blir beroende av just de strukturer som lämnats orörda. Berättelsen och skulden förstärker varandra eftersom vi säger att vi har förändrat verksamheten, men i praktiken fortsätter vi bygga vidare på den gamla ordningen och får allt svårare att genomföra den förändring som återstår.
+          </p>
+          <p>
+            <strong>Lärandet uteblir.</strong> Om varje initiativ måste presenteras som en framgång finns inget tillförlitligt underlag för nästa beslut. Kommunexemplet ovan om roboten som fick ett namn hade kunnat bli ett lärande exempel om rättssäkerhet och organisationsförändring vid automatisering, men i stället blev det en modell att kopiera tills protesterna kom. När bara 15 procent av statens digitaliseringsprojekt utvärderas efter leverans är det inte konstigt att samma misstag kan upprepas i 136 myndigheter.
+          </p>
+
+          <h2>Vad behöver vi följa upp?</h2>
+          <p>
+            För praktiker innebär detta att vi behöver bli mer precisa när vi beskriver framsteg och mer nyfikna på vad de faktiskt har inneburit. Antalet e-tjänster, införda system eller genomförda AI-piloter är relevant information, men säger egentligen ingenting om verksamhetsförändring om den inte kopplas till användning, arbetssätt och effekter.
+          </p>
+          <p>
+            Jag skulle vilja se att uppföljningen oftare samlas kring fem frågor:
+          </p>
+          <ul>
+            <li><strong>Vad har förändrats i hela tjänsten?</strong> Beskriv både det nya gränssnittet och vad som händer i handläggningen, inklusive de manuella moment som finns kvar (verksamt.se hade fått ett annat betyg med den frågan).</li>
+            <li><strong>Vilken nytta har vi belägg för?</strong> Skilj mellan förväntningar, upplevda förbättringar och effekter som faktiskt har följts upp (frigjorda resurser som ännu inte syns i telefonkön är en förväntan, inte ett resultat).</li>
+            <li><strong>För vem har det blivit bättre?</strong> Undersök om förbättringen gäller medborgaren, handläggaren, en enskild förvaltning eller organisationen som helhet, och om arbete samtidigt har flyttats till någon annan.</li>
+            <li><strong>Vad återstår, och vem ansvarar för det?</strong> Gör kvarvarande utvecklingsbehov synliga även när projektet är avslutat och lösningen överlämnad till förvaltning (kommunen i avhandlingen som exemplifieras ovan saknade en gemensam bild av just detta).</li>
+            <li><strong>Vilka framtida begränsningar bygger vi in?</strong> Bedöm hur dagens lösning påverkar möjligheten att senare förändra processer, dela information och skapa mer sammanhängande service.</li>
+          </ul>
+          <p>
+            För att sådana frågor ska få ärliga svar behöver organisationen också tåla att en satsning har gett viss nytta, att andra effekter uteblivit och att några antaganden visat sig vara fel. Det är en kulturfråga lika mycket som en metodfråga.
+          </p>
+
+          <h2>Låt berättelsen rymma det arbete som återstår</h2>
+          <p>
+            Hur vi beskriver digitaliseringen påverkar vad vi ser som ett problem, vilka investeringar vi bedömer som nödvändiga och vilket förändringsarbete vi anser vara avslutat. Därför behöver vi granska både de stora löftena om AI och de mer vardagliga påståendena om att en verksamhet redan är digitaliserad.
+          </p>
+          <p>
+            Digital skönmålning är mitt förslag till ett begrepp som hjälper oss att se detta. Det ska användas för att undersöka när kommunikationen ger en alltför positiv bild, men behöver kombineras med en förståelse för varför bilden uppstår, vilket ibland handlar om strategiska intressen, ibland om olika föreställningar om vad digitalisering är, och ibland om en uppföljning som fångar leveranser bättre än förändring.
+          </p>
+          <p>
+            Vi behöver kunna berätta om framsteg på ett sätt som också gör nästa steg begripligt. En införd e-tjänst kan vara en framgång och samtidigt vara början på ett betydligt större arbete med processer, organisation och medborgarservice. Den beskrivningen ger bättre stöd för fortsatt utveckling än ett allmänt konstaterande om att digitaliseringen går som tåget. Och den gör det lättare att besvara den fråga som borde följa med varje framgångsberättelse:
+          </p>
+          <blockquote>
+            <p>Vad har faktiskt blivit bättre, för vem – och hur vet vi det?</p>
+          </blockquote>
+
+          <h2>Referenser</h2>
+          <ul class="references">
+            <li>Molin, A. (2026). <a href="https://aisel.aisnet.org/pacis2026/di_entren/di_entren/10/" rel="noopener noreferrer">Public Sector Machinewashing: A Double-edged Sword</a>. PACIS 2026 Proceedings, 10.</li>
+            <li>Persson, P. (2025). <em>Managing Socio-Technical Debt: Causes and Design-Science Solutions for Citizen-Centred Digital Public Services</em>. Doktorsavhandling, Göteborgs universitet. Särskilt avsnitt 4.2.3, s. 90–91.</li>
+            <li>Regeringen (2021). <a href="https://data.riksdagen.se/dokument/H90312" rel="noopener noreferrer">Riksrevisionens rapport om myndigheters service till enskilda som inte kan eller vill vara digitala</a>. Skr. 2021/22:12.</li>
+            <li>Riksrevisionen (2019). <a href="https://data.riksdagen.se/dokument/H7B514.html" rel="noopener noreferrer">Enklare att starta företag – statliga insatser för en digital process</a>. RiR 2019:14.</li>
+            <li>Riksrevisionen (2019). <a href="https://www.riksrevisionen.se/en/audits/audit-reports/2019/obsolescent-it-systems---an-obstacle-to-effective-digitalisation.html" rel="noopener noreferrer">Föråldrade it-system – hinder för en effektiv digitalisering</a>. RiR 2019:28.</li>
+            <li>Riksrevisionen (2025). <a href="https://www.riksrevisionen.se/download/18.572f3faf1966b8b95936aea/1746452855623/RiR-2025-8-rapport.pdf" rel="noopener noreferrer">Statliga strategiska digitaliseringsprojekt – stora gemensamma utmaningar</a>. RiR 2025:8.</li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
