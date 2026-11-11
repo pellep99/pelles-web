@@ -385,6 +385,51 @@
       border-color: var(--color-primary);
       background: var(--color-surface);
     }
+    /* Flikar */
+    .tabs-bar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .tablist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      padding: var(--space-xs) 0;
+    }
+    .tab {
+      flex: 0 0 auto;
+      min-height: var(--touch-target);
+      padding: var(--space-xs);
+      font: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    @media (min-width: 640px) {
+      .tablist { gap: var(--space-xs); }
+      .tab { padding: var(--space-xs) var(--space-md); font-size: 1rem; }
+    }
+    .tab:hover {
+      color: var(--color-text);
+      background: var(--color-surface);
+    }
+    .tab[aria-selected="true"] {
+      color: #fff;
+      background: var(--color-primary);
+    }
+    .tab:focus-visible,
+    .tab-panel:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+    .tab-panel[hidden] { display: none; }
   </style>
 </head>
 <body>
@@ -417,6 +462,17 @@
       </div>
     </section>
 
+    <div class="tabs-bar" data-tabs hidden>
+      <div class="container">
+        <div class="tablist" role="tablist" aria-label="Erfarenhetsbankens delar">
+          <button class="tab" type="button" role="tab" id="tab-metodik" aria-controls="panel-metodik" aria-selected="true">Metodik</button>
+          <button class="tab" type="button" role="tab" id="tab-sprintar" aria-controls="panel-sprintar" aria-selected="false" tabindex="-1">Genomförda sprintar</button>
+          <button class="tab" type="button" role="tab" id="tab-lardomar" aria-controls="panel-lardomar" aria-selected="false" tabindex="-1">Lärdomar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-metodik" role="tabpanel" aria-labelledby="tab-metodik" tabindex="0">
     <section aria-labelledby="principer-title">
       <div class="container">
         <h2 id="principer-title">Grundprinciper</h2>
@@ -621,147 +677,137 @@
         </ul>
       </div>
     </section>
+    </div>
 
+    <div class="tab-panel" id="panel-sprintar" role="tabpanel" aria-labelledby="tab-sprintar" tabindex="0">
     <section aria-labelledby="sprintar-title">
       <div class="container">
         <h2 id="sprintar-title">Genomförda sprintar</h2>
         <p class="section-intro">
-          Varje genomförd sprint har en egen dokumentationssida med upplägg, resultat och retrospektiv. Erfarenhetsbanken byggs på med lärdomar från varje ny sprint.
+          En kort sammanfattning av varje sprint. Upplägg, dagliga loggar, resultat och retrospektiv finns på respektive sprints dokumentationssida.
         </p>
-        <ul class="cards">
+        <ul class="cards cards-3">
           <li class="card">
             <span class="card-tag">Innovationssprint</span>
             <h3>Dokumenthantering</h3>
-            <p class="card-meta">Två veckor (tio arbetsdagar) · våren 2026 · Sundsvalls kommun</p>
-            <p>Både metodtest och produktbygge: ett tvärfunktionellt team byggde en dokumenthanteringsapplikation och prövade samtidigt arbetssättet, som svar på en utveckling som lätt fragmenteras mellan roller, specialistteam och överlämningar. Av 60 planerade funktioner hann en stor del byggas eller påbörjas på tio arbetsdagar, i tre kodrepon och med två verksamhetsdemos. Kärnan kom på plats tidigt, vecka två prioriterades om utifrån verksamhetens reaktioner, sökningen växte från stödfunktion till huvudvärde, och AI-stödet kopplades in sist – när grunddata och sökförmåga bar. Slutdemon landade i ett enhälligt ja till att gå vidare. Motsvarande arbete hade tidigare bedömts kräva ett projektupplägg på omkring fyra månader.</p>
+            <p class="card-meta">Två veckor · våren 2026 · Sundsvalls kommun</p>
+            <p>Ett tvärfunktionellt team byggde en dokumenthanteringsapplikation och prövade samtidigt arbetssättet. En stor del av 60 planerade funktioner byggdes på tio arbetsdagar, och slutdemon gav ett enhälligt ja till att gå vidare – för ett arbete som tidigare bedömts kräva omkring fyra månader.</p>
             <a class="card-link" href="https://innovation.sundsvall.dev/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
             <span class="card-tag">Innovationsdagar</span>
             <h3>Ekonomiskt bistånd</h3>
             <p class="card-meta">Tre dagar · 2026 · Sundsvalls kommun</p>
-            <p>Tre innovationsdagar med tio personer för att designa, verifiera och estimera automatiseringen av ekonomiskt bistånd – ett verifieringsmoment före ett större bygge, med digital ansökan, processmotor och myndighetsintegration på plats redan i fas 0. Utfall: fyra av fem leverabler klara, tre beslut fattade och åtta MVP-krav definierade. När det stod klart att flera frågor krävde tillgång till faktiska API:er valde teamet att inte utveckla vidare i blindo, utan flyttade fokus till problemförståelse och preciserade åtta öppna frågor inför nästa sprint – enligt retrospektivet mer värdefullt än att pressa fram en ofullständigt verifierad POC.</p>
+            <p>Tio personer designade, verifierade och estimerade automatiseringen av ekonomiskt bistånd före ett större bygge. Fyra av fem leverabler blev klara. När frågorna krävde riktiga API:er valde teamet att inte bygga vidare i blindo, utan preciserade åtta öppna frågor inför nästa sprint.</p>
             <a class="card-link" href="https://innovation-ekbistand.lovable.app/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
             <span class="card-tag">Prototypsprint</span>
             <h3>Egensotning</h3>
             <p class="card-meta">Två dagar · 2–3 juni 2026 · med Räddningstjänsten Medelpad och Jämtland</p>
-            <p>Ett byggmoment snarare än ett designmöte: en körbar prototyp av hela kedjan från medborgarens ansökan till handläggarens beslut, som ersättning för en manuell process genom flera system. Sprinten utgick från en uttalad hypotes och fyra frågor – bland annat om AI kan läsa utbildningsbevis och hur tidsbegränsade beslut byggs utan administrativ börda. Dag ett byggdes medborgarflödet och beslut fattades i rummet; dag två byggdes handläggarvyn och hela kedjan testades, med slutdemo där räddningstjänsten själv klickade igenom flödet. På två sprintdagar plus förberedelser producerades cirka 26 400 rader kod, och tvådagarsformatet tvingade fram fokus på det ”glada flödet” – undantagen flyttades till en prioriterad restlista.</p>
+            <p>En körbar prototyp av hela kedjan från medborgarens ansökan till handläggarens beslut, byggd på två dagar. Räddningstjänsten klickade själv igenom flödet på slutdemon, och det korta formatet tvingade fram fokus på det glada flödet medan undantagen hamnade på en restlista.</p>
             <a class="card-link" href="https://sprint-egen-sotning-app.lovable.app/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
             <span class="card-tag">Teknisk sprint</span>
             <h3>Avvikelsehantering</h3>
             <p class="card-meta">10–14 augusti 2026 · välfärdssektorn, Sundsvalls kommun</p>
-            <p>Sprinten startade inte från blankt papper: registreringsdelen fanns i testmiljö och en AI-byggd demo var godkänd som funktionell målbild. Uppgiften var att isolera de svåra tekniska frågorna – framför allt behörighetsstyrning och datasäkerhet – innan kommande verksamhetssprintar. Kärnteamet (processledare, två backend- och två frontendutvecklare) satt tillsammans hela veckan, medan verksamhetsexperten deltog vid uppstart, standups och demos och var tillgänglig däremellan. Resultatet blev bland annat auktoriseringskontroll per resurs över hela API:et med rollbaserade attributrestriktioner, allt konfigurerbart och täckt av automatiska tester, mergat bakom featureflaggor – plus en dokumenterad restlista och öppna frågor med utpekat ägaransvar.</p>
+            <p>En vecka för att isolera de svåra tekniska frågorna – behörighetsstyrning och datasäkerhet – före verksamhetssprintarna. Resultatet blev auktoriseringskontroll per resurs över hela API:et, täckt av automatiska tester, och en restlista med utpekade ägare.</p>
             <a class="card-link" href="https://tech-sprint-avvikelser.sundsvall.dev/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
             <span class="card-tag">Förankringssprint</span>
             <h3>Alkohol- och tobaksärenden</h3>
             <p class="card-meta">Tre dagar · 25–27 augusti 2026 · Sundsvalls kommun</p>
-            <p>Den första sprinten i formatet där ingenting byggs: DigIT och verksamheten landade tillsammans processen för ett nytt handläggningsstöd som på sikt ersätter två äldre system. Sju block över tre dagar täckte ansökan, anmälan, tillsyn, åtgärd och förnyelse – verksamheten deltog i halvdagsblock, utvecklingsteamet omsatte besluten till lösningsmönster på eftermiddagarna, och varje block avslutades med att beslutsloggen lästes upp och bekräftades punkt för punkt. Sprinten sattes upp mot en uttalad förväntansbild i två listor: vad veckan skulle resultera i och vad den uttryckligen inte skulle resultera i. Leveransen var en processmodell, tolv lösningsmönster (elva var planerade – behörighet och sekretess tillkom under veckan) och en beslutslogg med knappt tvåhundra beslut, noteringar och öppna frågor, samtliga märkta med vilket block de kom upp i. Varje obesvarad fråga fördes vidare klassad efter ägare till den efterföljande tekniska sprinten. Slutdemon ersattes av dialog om tillsynsprocessen, vilket gjorde att bottenplattan inte hann stämmas av formellt med verksamheten – en avstämning som därför flyttades framåt och gjordes vid den tekniska sprintens demo två veckor senare.</p>
+            <p>Den första sprinten där ingenting byggdes: DigIT och verksamheten landade processen för ett nytt handläggningsstöd i sju block. Leveransen blev en processmodell, tolv lösningsmönster och en beslutslogg med knappt tvåhundra poster, som bekräftades punkt för punkt efter varje block.</p>
             <a class="card-link" href="https://aot.sundsvall.dev/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
             <span class="card-tag">Teknisk sprint</span>
             <h3>Alkohol- och tobaksärenden</h3>
             <p class="card-meta">Fem dagar · 7–11 september 2026 · Sundsvalls kommun</p>
-            <p>Mellansteget mellan förankringssprinten och utvecklingssprinten i vecka 39–40: bottenplattan från förankringen omsattes till lösningsmönster och färdiga miljöer, processmotorn kom på plats med fastställd ansvarsfördelning, en ny tjänst för tillståndsdata byggdes från datamodell till CSV-import, och underliggande tjänster prövades mot flödet. Dokumentationen delades i två: en sida med det som låg fast över hela sprinten – verksamhetens frågor med DigIT:s förslag och verksamhetens ställningstagande, material verksamheten ska leverera, avgränsningar och kriterier för klart – och en <a href="https://aot.sundsvall.dev/teknisk-sprint-logg.html" rel="noopener noreferrer" target="_blank">daglig logg<span class="visually-hidden"> (öppnas i ny flik)</span></a> med Jira-ärenden och status per dag. Dag två hölls ett verksamhetsmöte om de frågor som följt med från förankringen. Dag tre visade sig kundbilden vara större än sprinten: Draken är ärendecentrerat och saknar kundkort. Dag fyra fattades ett beslut i två delar – ärendecentrerad kundbild med förenklad startvy nu, en CRM-tjänst som långsiktigt spår med egen workshop. Dag fem gick verksamheten igenom hela flödet på demon och stabschefen godkände processen. Demon gav sex bekräftade beslut, sex nya krav och tre processer som rymde mer än vad som var dokumenterat, och allt samlades på en <a href="https://aot.sundsvall.dev/utvecklingssprint-forberedelser.html" rel="noopener noreferrer" target="_blank">sida inför utvecklingssprinten<span class="visually-hidden"> (öppnas i ny flik)</span></a> med fem blockerande punkter och en checklista i elva steg. Retrot pekade på verksamheten i rummet som starkaste framgångsfaktor och tidsbrist som tydligaste förbättringsområde – svaret blev ett passchema för verksamhetens medverkan, känt i förväg.</p>
+            <p>Mellansteget före utvecklingssprinten: processmotorn kom på plats och en ny tjänst för tillståndsdata byggdes. Kundbilden visade sig större än sprinten och fick ett beslut i två delar – en enkel lösning nu och ett långsiktigt spår. På demon godkände verksamheten processen.</p>
             <a class="card-link" href="https://aot.sundsvall.dev/teknisk-sprint-oversikt.html" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
             <span class="card-tag">Utvecklingssprint</span>
             <h3>Avvikelsehantering i Draken, sprint 1 av 2</h3>
-            <p class="card-meta">Tio arbetsdagar · 31 augusti–11 september 2026 · vård och omsorg samt individ- och arbetsmarknad, Sundsvalls kommun</p>
-            <p>Den första sprinten med uttalat mål att bygga det som ska driftsättas: en avvikelsehantering som ersätter ett äldre system i två förvaltningar, produktionsfärdig när sprint 2 är slut i oktober. Den tekniska sprinten i augusti fungerade som fas 0, så att arbetet kunde börja i verksamhetens frågor – vem ser vad, vilka fält behövs, hur ska flödet kännas – i stället för i infrastruktur. Verksamhet, utveckling, arkitektur och UX möttes på en daglig standup klockan 08.15 som sprintens enda fasta möte, med demo av halvfärdig funktionalitet varje dag och beslut som skrevs in samma dag, antingen i sprintloggen eller på berörd rad i funktionslistan med 114 rader. Slutdemon följde en avvikelse genom hela kedjan från rapport till avslut, inklusive överlämning till LEX-ansvarig och tillbaka, med utredningar, beslut och handlingsplan som bilagor på ärendet. Sprinten prövade en hypotes i den lösning som ska driftsättas: att enkel rapportering och verklig återkoppling ger det underlag som saknas för att se mönster och arbeta förebyggande. Retrot lyfte två saker: morgonmötet krockar med verksamheter som behöver chefen just då, och skisser och miljöer hann glida isär så att synpunkter ibland gällde något inaktuellt. Under det tre veckor långa uppehållet hölls inga standupar: den första veckan gick åt till att slutföra det slutdemon visade och få in ärendelagrets del i huvudgrenen, medan webbens del låg kvar på sprintgrenen med konflikter och fallerande tester. Verksamheten testade, men fastnade delvis på texter den redan lämnat synpunkter på, eftersom de ändrade texterna ännu inte låg i testmiljön. Sprint 2 startade den 5 oktober och beskrivs i nästa kort.</p>
+            <p class="card-meta">Tio arbetsdagar · 31 augusti–11 september 2026 · Sundsvalls kommun</p>
+            <p>Den första sprinten med mål att bygga det som ska driftsättas. Med den tekniska sprinten som fas 0 kunde arbetet börja i verksamhetens frågor, och slutdemon följde en avvikelse genom hela kedjan. Retrot pekade på skisser och testmiljö som gled isär.</p>
             <a class="card-link" href="https://avvikelsehantering.sundsvall.dev/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
             <span class="card-tag">Utvecklingssprint</span>
             <h3>Avvikelsehantering i Draken, sprint 2 av 2</h3>
-            <p class="card-meta">Tio arbetsdagar · 5–16 oktober 2026 · vård och omsorg samt individ- och arbetsmarknad, Sundsvalls kommun</p>
-            <p>Andra sprinten startade efter tre veckors uppehåll med en planering vid tavlan där fjorton krav fördelades på sprintens två veckor och på det som tas efter sprinten – prodsättning med härdning och utrullning ligger efter sprint 2. Efter första veckan låstes enhetschefens flöde som version 1.0, och Lex Sarah- och HSL-flödena testades av verksamhet och team med var sin roll, från rapporten till avslutat ärende. Fynden sorterades i beslutade ändringar, frågor där teamet återkom med tidskostnad och en förbättringslista för senare, och de nio beslutade ändringarna från Lex Sarah-testet var gjorda dagen efter. Andra veckan gav verksamhetsuppföljning med filter som kan svara IVO på antalet polisanmälningar, notiser via e-post och sms styrda av profiler per roll, och beslutet att det som testats ligger fast medan gränssnittstillägg kommer senare. Slutdemon riktade sig till digitaliseringen, IT och andra intressenter och visade version 1.0 som tre flöden – avvikelse, HSL-utredning och missförhållande – som alla börjar med en rapport i Katla och går genom samma faser. Retrot lyfte att gå igenom flödena live tillsammans och att spela in och transkribera mötena, men pekade på bristande förarbete från verksamheten, att AI-skisserna inte visade helheten och ett sent tekniskt beslut: lösningen skilde sig för mycket från den gemensamma Draken, så många önskemål om gränssnittet fick nej. Avvikelsehanteringen blir därför en egen applikation, med utrymme för avvikelse i vårdkedjan och synpunkter och klagomål, och en fortsättning är föreslagen till kvartal 2.</p>
+            <p class="card-meta">Tio arbetsdagar · 5–16 oktober 2026 · Sundsvalls kommun</p>
+            <p>Enhetschefens flöde låstes som version 1.0, och Lex Sarah- och HSL-flödena testades av verksamhet och team tillsammans. Slutdemon visade tre flöden från rapport till avslut. Ett sent tekniskt vägval gjorde att avvikelsehanteringen blir en egen applikation.</p>
             <a class="card-link" href="https://avvikelsehantering.sundsvall.dev/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
             <span class="card-tag">Utvecklingssprint</span>
             <h3>Alkohol- och tobaksärenden</h3>
             <p class="card-meta">Två veckor · 21 september–2 oktober 2026 · Sundsvalls kommun</p>
-            <p>Tredje steget efter förankringssprinten och den tekniska sprinten: att bygga Draken för alkohol och tobak till en produktionsklar applikation. Målen delades per vecka – vecka 39 registrering och handläggning till beslut, vecka 40 assets, tillsyn och presentation – med ett minimimål för första veckan: ett bifallsbeslut och ett asset-id, där skalet räcker. Uppstartsmötet spikade labelstrukturen och arbetsordningen: först ett tomt ärende genom hela processkalet, därefter data fas för fas. Varje dag följdes laget runt av ett pass med verksamheten om en konkret fråga, och flera av dem landade i beslut samma dag. Vecka 39 nådde målet: ärenden kunde registreras i Katla, stegas genom processmotorn och avslutas, och folköl gick som semi-automatiskt flöde hela vägen till tillstånd. Demon dag sex bröts av en rollbugg som genrepet redan visat, men gav en rad synpunkter som blev Jira-ärenden samma eftermiddag. Vecka 40 gav automatiskt genererade tillståndsbevis med förhandsgranskning, serveringsställen på adressen, en första kundbild och en byggtidsfix som kortade byggtiden med 57 procent, och verksamheten testade registreringsformulären själv. Sista dagen visade verksamheten hur remisser hanteras i dag – med blanketter på upp till 28 sidor – vilket ändrade bilden av vad som behöver byggas. Enligt <a href="https://aot.sundsvall.dev/utvecklingssprint-lage.html" rel="noopener noreferrer" target="_blank">läget efter sprinten<span class="visually-hidden"> (öppnas i ny flik)</span></a> nådde sprinten ungefär halvvägs in i vecka 40: flödet går att ta sig igenom, men utredningssteget, tillsyn och åtgärd och visningen på Mina sidor återstod. Arbetet fortsätter fyra veckor till – två i samma arbetsform och två som svans för fix och städning – styrt av en restlista i tre prioritetsnivåer. Retrot i den <a href="https://aot.sundsvall.dev/utvecklingssprint-logg.html" rel="noopener noreferrer" target="_blank">dagliga loggen<span class="visually-hidden"> (öppnas i ny flik)</span></a> lyfte närheten till verksamheten – frågor besvarades samma dag i stället för efter de två till tre veckor som är normal ledtid – och pekade på mer förarbete om verksamhetens processer, mer tid i samma rum och mindre chatt som förbättringar.</p>
+            <p>Bygget av en produktionsklar applikation, med ett tomt ärende genom hela processen först och data fas för fas. Första veckans mål nåddes, men sprinten kom ungefär halvvägs in i vecka två och fick fyra veckor till. Frågor besvarades samma dag i stället för efter två till tre veckor.</p>
             <a class="card-link" href="https://aot.sundsvall.dev/utvecklingssprint-upplagg.html" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
             <span class="card-tag">Innovationssprint</span>
             <h3>Upphandlingsstöd för företagare</h3>
-            <p class="card-meta">En dag · 14 oktober 2026 · med Picea Bygg, Näringsliv och tillväxt och inköpsenheten, Sundsvalls kommun</p>
-            <p>Den kortaste sprinten hittills: en dag i Stadshuset med tre behovsägare – ett byggföretag, näringslivsfunktionen och inköpsenheten – för att göra det lättare för mindre företag att hitta kommunens upphandlingar och förstå vad som krävs för att lämna anbud. Inför dagen byggdes en bottenplatta på ungefär en arbetsdag utifrån antaganden om företagens behov, med publicerade annonser från e-Avrop, lagen om offentlig upphandling och kommunens styrdokument som underlag, så att deltagarna hade något konkret att reagera på. Bottenplattan stämde relativt väl och krävde inga större förändringar. Den centrala frågan blev var gränsen går mellan att informera och att vägleda, eftersom kravet på likabehandling i LOU begränsar hur mycket stöd kommunen kan ge enskilda företag inför en specifik upphandling. Gruppen landade i att tjänsten verifierar att underlagen är kompletta men inte bedömer innehållet, ger generella tips när ett krav inte uppfylls och länkar vidare till e-Avrop för själva anbudet – och att checklistan för varje upphandling visas för företagen först när inköpsenheten har granskat den mot källan. Efter omkring fem timmar, där den första delen gick till dialog och den senare till parutveckling på storskärm, fanns Anbudshjälpen som fungerande applikation i kommunens utvecklingsmiljö, med AI-förslag på CPV-koder, matchning mot e-Avrop och TED, påminnelser och uppladdning och verifiering av underlag. Koden är öppen. Demon avbröts innan dokumentverifieringen hann visas, och ingen gemensam utvärdering hann hållas. Lärdomarna: dela upp arbetet i två steg – först behoven, sedan gemensam utveckling – eftersom dialogen tog mycket av utvecklarnas tid, stäm av förväntningarna mellan deltagarna före dagen, och planera in tid för hela demon och utvärderingen med marginal mot nästa programpunkt. Hur stor nyttan blir är svårt att veta innan några företag har testat tjänsten.</p>
+            <p class="card-meta">En dag · 14 oktober 2026 · Sundsvalls kommun</p>
+            <p>En dag med ett byggföretag, näringslivsfunktionen och inköpsenheten för att göra kommunens upphandlingar lättare att hitta och svara på. Efter omkring fem timmar fanns Anbudshjälpen som fungerande applikation, med gränsen mellan att informera och att vägleda dragen utifrån LOU.</p>
             <a class="card-link" href="https://inkopsstod.sundsvall.dev/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
           <li class="card">
             <span class="card-tag">Innovationssprint</span>
             <h3>AI-stöd för att söka statlig finansiering</h3>
-            <p class="card-meta">Fem dagar · 19–23 oktober 2026 · Vinnova, inom regeringsuppdraget om ett gemensamt ansöknings- och ärendehanteringssystem</p>
-            <p>Den första sprinten genomförd utanför Sundsvalls kommun, men på samma principer: Vinnova provade arbetssättet i sitt regeringsuppdrag tillsammans med Vetenskapsrådet, med Kreativa zonen på Vinnova som byggarbetsplats under en vecka. Målet var en testbar AI-driven lösning som stödjer den sökande från att hitta relevant finansiering hos olika finansiärer till en ansökan redo att lämnas in, prövad mot tre hypoteser om upplevelse, teknik och arbetssätt. Förberedelserna gav sprinten en flygande start – rekryterade sökande, samlade utlysningar och anvisningar och en labbmiljö i Berget AI med färdig testdata, där teamet kunde arbeta som om det befann sig tre år in i framtiden – och de första prototyperna visades redan vid demon dag ett. Dag två gick handläggare in i sökanderoller som nydisputerad forskare och startupgrundare, och värdet av att visa det ofärdiga tidigt blev konkret. Dag tre började lösningarna brytas ner i återanvändbara byggblock, och en agent-till-agent-lösning där sökandens egen AI hämtar utlysningar, krav och kriterier direkt från finansiären väckte störst intresse. Dag fyra fanns en startsida, 18 lösningar igång och tre prototyper, men många idéer krävde gemensamma vägval som fattades och omprövades flera gånger, och energin dippade. Fredagens slutdemo nådde sprintmålet med tre vägar till en färdig ansökan – stegvis stöd, samarbete kring befintligt material och sökandens egen AI-agent – byggda med riktig kod, fungerande API:er och data. Lärdomarna pekar åt två håll: finansiärens information och tjänster behöver vara åtkomliga både för sökandens egen agent och finansiärens, bland annat via MCP, och friheten att experimentera gav flera likartade helhetslösningar där arkitekturprinciperna inte fick tillräckligt genomslag – högt tempo behöver balanseras med gemensam riktning och modet att välja bort. En andra sprint är planerad till 30 november–4 december.</p>
+            <p class="card-meta">Fem dagar · 19–23 oktober 2026 · Vinnova</p>
+            <p>Vinnova provade arbetssättet i regeringsuppdraget om ett gemensamt ansöknings- och ärendehanteringssystem. Sprintmålet nåddes med tre vägar till en färdig ansökan, byggda med riktig kod och fungerande API:er – stegvis stöd, samarbete kring befintligt material och sökandens egen AI-agent.</p>
             <a class="card-link" href="https://gemensamfinansiering2026.lovable.app/" rel="noopener noreferrer" target="_blank">Till sprintens dokumentation<span class="visually-hidden"> (öppnas i ny flik)</span></a>
           </li>
         </ul>
       </div>
     </section>
+    </div>
 
+    <div class="tab-panel" id="panel-lardomar" role="tabpanel" aria-labelledby="tab-lardomar" tabindex="0">
     <section aria-labelledby="lardomar-title">
       <div class="container">
         <h2 id="lardomar-title">Lärdomar hittills</h2>
         <p class="section-intro">
-          Det deltagarna framför allt lyft som framgångsfaktorer är inte ett visst AI-verktyg – det är förutsättningarna runt teamet. Lärdomarna nedan är sammanfattade från sprintarnas retrospektiv och loggar och ordnade efter hur ofta de återkommer: det som lyfts i flest sprintar står först. Detaljerna finns på respektive sprints dokumentationssida.
+          Det deltagarna framför allt lyft som framgångsfaktorer är inte ett visst AI-verktyg – det är förutsättningarna runt teamet. Lärdomarna är sammanfattade från sprintarnas retrospektiv och loggar och ordnade efter hur ofta de återkommer: det som lyfts i flest sprintar står först.
         </p>
         <div class="lessons">
           <div class="lesson-group">
             <h3>Före sprinten</h3>
             <ul>
-              <li><strong>Gör fas 0 på riktigt och provkör hela kedjan i förväg.</strong> Deploykedja, miljöer, AI-nycklar, testanvändare och behörigheter ska fungera före dag ett – det är den lärdom som återkommer i flest sprintar. Där förarbetet fanns, som i egensotningen, avvikelsesprinten och de utvecklingssprintar som hade en teknisk sprint som fas 0, kunde arbetet börja i verksamhetens frågor. Hos Vinnova gav rekryterade sökande, samlade utlysningar och en labbmiljö med färdig testdata att bygga i de första prototyperna redan vid demon dag ett. Där det saknades gick dagar åt till uppsättning – och på avvikelsesprintens slutdemo kunde behörighetslösningen inte visas eftersom testanvändaren saknade riktiga AD-grupper. Inför utvecklingssprinten för alkohol och tobak var regeln att ett ärende skulle köras genom hela kedjan veckan innan, ”inte på måndag morgon”.</li>
-              <li><strong>Säkra verksamhetens medverkan – och mandatet.</strong> Verksamheten i rummet är den framgångsfaktor som lyfts oftast, och verksamhetens tidsbrist det vanligaste förbättringsområdet. Kontrollera nyckelrollernas tillgänglighet innan datumen sätts, lägg standupen när verksamheten faktiskt kan och planera medverkan i pass som är kända i förväg. Ta också reda på vem som har mandatet: i alkohol- och tobakssprintarna hade deltagarna olika uppfattningar utifrån hur de själva arbetar, medan mandatet låg hos andra.</li>
-              <li><strong>Börja i verksamhetens egen process.</strong> Inled med en dragning av hur arbetet går till i dag, och kartlägg detaljerna innan bygget – det är där arbetet avgörs och där estimaten spricker. Att förarbetet borde ha varit djupare kom upp i tre retron – förankringssprinten och utvecklingssprinten för alkohol och tobak, och avvikelsehanteringens andra sprint, där det var oklart vilka som skulle delta och ingen hade gått igenom kraven från början. Deltagarna behöver vara pålästa om beställning, omfattning och förarbete före start. I alkohol- och tobakssprinten fanns till exempel inte dokumenterat vad som får ändras på ett utfärdat tillstånd, och hur remisser faktiskt hanteras visades först sista dagen. Kopiera samtidigt inte det gamla systemet: ta med det som är bra och tänk nytt i stället för att behålla något för att det känns bekant. Märk också upp det som inte är byggt i prototypen, så att tomheten inte tolkas som ett designbeslut.</li>
-              <li><strong>Be om underlag, inte bara beslut.</strong> Exempeldokument, beslutsmallar, testdata, regelverk, verkliga tillståndsbevis och listor över bilagor per ärendetyp. Saknat underlag har blockerat hela lösningsmönster och tvingat fram egna sammanställningar mitt i sprinten.</li>
-              <li><strong>Sätt målbilden i delar och definiera ”klart”.</strong> Skriv ner vad som ska byggas, vad sprinten ska lära organisationen och vad den uttryckligen inte ska resultera i – och vad ”klart” betyder, så att alla menar samma sak. Utvecklingssprinten för alkohol och tobak delade målen per vecka med ett minimimål för vecka ett – ett bifallsbeslut och ett asset-id – och skrev ut hur veckorna hänger ihop: halkar vecka ett påverkar det hela vecka två.</li>
-              <li><strong>Lös det blockerande före start och lyft principfrågor ur sprinten.</strong> Sortera det som återstår i blockerande, nya krav och okartlagt, och ge rena teknikfrågor och informationssäkerhetsfrågor ägare och deadline före dag ett – annars hänger de öppna hela sprinten. Principfrågor som gäller flera sprintar, som behörighetsmodellen för sekretessbelagda uppgifter som följt med från förankringen genom tre sprintar, kräver ett gemensamt lösningsmönster utanför sprinten.</li>
-              <li><strong>Planera för den faktiska omfattningen.</strong> Både förankringssprinten och den tekniska sprinten för alkohol och tobak blev mer än dubbelt så omfattande som planerat och spillde över till heltid, och utvecklingssprinten nådde ungefär halvvägs in i sin andra vecka och fick fyra veckor till. Räkna med frånvaro, estimera i två steg, säg till tidigt om två veckor egentligen är tre – och planera en svans för fix och städning i stället för att låta den äta upp utvecklingstiden.</li>
-              <li><strong>Sortera besluten i nivåer och skriv ner riskerna.</strong> Bestäm i förväg vad som avgörs i rummet, vad som kräver verksamhetens mandat och vad som måste eskaleras – och var besluten dokumenteras. Gå igenom på uppstarten vad som får sprinten att tappa fart: svar som dröjer, beslut som skjuts upp, omfattning som växer och testning som inte blir av.</li>
-              <li><strong>Välj format, bemanning och arkitektur efter osäkerheten.</strong> Organisera sprinten efter det som är dyrast att bära vidare – verksamhetslogik, teknik eller förankring – och bemanna därefter, med en kort teknisk brief före dag ett. Ta in arkitekten tidigt och planera grundarkitekturen i stället för att lita på att AI syr ihop den. Ta de stora tekniska vägvalen tidigt: i avvikelsehanteringen insåg man sent att lösningen skilde sig för mycket från den gemensamma plattformen, och många önskemål om gränssnittet fick därför nej. Säg hellre för mycket än för lite om helheten från start, så att grunden byggs för det som kommer senare.</li>
+              <li><strong>Gör fas 0 på riktigt och provkör hela kedjan i förväg.</strong> Miljöer, AI-nycklar, testanvändare och behörigheter ska fungera före dag ett. Där förarbetet fanns kunde arbetet börja i verksamhetens frågor – där det saknades gick dagar åt till uppsättning.</li>
+              <li><strong>Säkra verksamhetens medverkan – och mandatet.</strong> Verksamheten i rummet är den framgångsfaktor som lyfts oftast, och dess tidsbrist det vanligaste förbättringsområdet. Planera medverkan i pass som är kända i förväg och ta reda på vem som har mandatet.</li>
+              <li><strong>Börja i verksamhetens egen process.</strong> Inled med hur arbetet går till i dag och kartlägg detaljerna innan bygget – det är där estimaten spricker. Kopiera inte det gamla systemet.</li>
+              <li><strong>Be om underlag, inte bara beslut.</strong> Exempeldokument, mallar, testdata och regelverk. Saknat underlag har blockerat hela lösningsmönster mitt i sprinten.</li>
+              <li><strong>Sätt målbilden i delar och definiera ”klart”.</strong> Skriv ner vad som ska byggas, vad sprinten uttryckligen inte ska resultera i och vad ”klart” betyder. Ett minimimål för första veckan gör det tydligt om sprinten är i fas.</li>
+              <li><strong>Planera för den faktiska omfattningen.</strong> Flera sprintar blev mer än dubbelt så omfattande som planerat. Räkna med frånvaro, säg till tidigt om två veckor egentligen är tre och planera en svans för fix och städning.</li>
             </ul>
           </div>
           <div class="lesson-group">
             <h3>Under sprinten</h3>
             <ul>
-              <li><strong>Sitt tillsammans och skydda fokuset.</strong> Samma rum, daglig avstämning och inga andra möten är det som oftast hamnar under ”fortsätt” i retrospektiven – och ”ännu närmare” under förbättringar när avstämningarna skett digitalt. Det mest lärorika i avvikelsehanteringens andra sprint var när verksamhet och utvecklare gick igenom flödena live tillsammans. Prata direkt: att gå via någon som tolkar och återberättar ger missförstånd och extra varv. Med AI-stöd blir stegen större och ett felsteg dyrare, och tät avstämning fångar det tidigt.</li>
-              <li><strong>Bygg hela kedjan tunt först.</strong> Fokusera på det glada flödet och flytta undantag till restlistan. I utvecklingssprinten för alkohol och tobak drevs först ett tomt ärende genom alla processteg och data fylldes på fas för fas – hellre alla faser med tomt skal än en färdig utredningsdel, eftersom verksamhetens input ändå skulle ändra fälten. Vecka ett nådde sitt mål.</li>
-              <li><strong>Visa körande funktionalitet och låt verksamheten klicka själv.</strong> Det som byggs är referensen, inte skisserna – när de glider isär lämnas synpunkter på något inaktuellt. I avvikelsehanteringens andra sprint blev det ett uttalat beslut – testmiljön är sanningen – och en lärdom i retrot: släpp AI-skissen när utvecklingen börjar, eftersom helheten blev begriplig först i testmiljön. Demonstrera i testmiljön snarare än lokalt, och rätta det genrepet visar: demon i alkohol- och tobakssprinten bröts av samma bugg som genrepet dagen innan. Var tydlig med att testmiljön är en utvecklingsmiljö där saker ändras. Bjud in användarna tidigt och våga visa det ofärdiga: i Vinnovas sprint gick handläggare in i sökanderoller redan dag två, och samtalen gav konkreta förbättringar samma eftermiddag.</li>
-              <li><strong>Använd mandatet och låt inte stora frågor stoppa bygget.</strong> Någon ska kunna bryta en metadiskussion och fatta beslutet. Hängande arkitekturfrågor får en uttalad deadline. Frågor som visar sig större än sprinten – kundbilden har gjort det i två sprintar – avgörs i två delar: en enkel lösning nu och ett långsiktigt spår med egen ägare. Juridik och personuppgifter flaggas och byggs runt, inte gissas.</li>
-              <li><strong>Behandla verksamhetens tid som sprintens knappaste resurs.</strong> Ta de öppna frågorna tidigt i veckan, ge varje pass en konkret ingång – ett verkligt ärende eller en befintlig konfiguration – och avsluta när innehållet är klart. Retrots förslag från alkohol- och tobakssprintarna: presentera ett färdigt förslag att stresstesta i stället för öppna frågor, och kom överens om en svarstid för blockerande frågor. I endagssprinten för upphandlingsstöd tog dialogen så mycket av utvecklarnas tid att retrot föreslog två steg: först behoven, sedan gemensam utveckling.</li>
-              <li><strong>Bekräfta och logga besluten löpande.</strong> Läs upp beslutsloggen och bekräfta den, dokumentera varje verksamhetsfråga som förslag plus ställningstagande med status, och för loggen mot ärendehanteringen. Beslut som ersätts loggas båda – det ska gå att se vad som gällde när. Det gäller även textsynpunkter: i avvikelsehanteringen visste verksamheten inte vilka av de inskickade ändringarna som var införda, förrän en genomgång sorterade dem i gjorda, delvis gjorda och ej gjorda. Spela in och transkribera genomgångar och testrundor, och gå igenom transkriberingen tillsammans med utvecklarna – det lyftes i retrot från både alkohol- och tobakssprinten och avvikelsehanteringen, och minskade behovet av frågor i chatten.</li>
-              <li><strong>Säg nej och skjut upp uttryckligen.</strong> Omfattning som växer stoppas, den förhandlas inte. Det som skjuts upp läggs i en lista som verksamheten bekräftar punkt för punkt – en avgränsning som inte är bekräftad återkommer som krav. Lås ett flöde som version 1.0 när det håller och låt det testade ligga fast, så att det inte rivs upp av gränssnittstillägg som kan komma senare. Förklara varför när svaret är nej eller när en ändring tar tid.</li>
-              <li><strong>Skilj tes från beslut.</strong> Märk det som ännu inte är prövat som en tes och bestäm hur den ska prövas. I utvecklingssprinten för alkohol och tobak noterades färdiga fraser i tillsynsprotokollet och ett tillståndsbevis utan underskrift som teser, inte som fastställda krav.</li>
-              <li><strong>Undvik parallella sprintar i samma grund.</strong> Beroenden mellan samtidiga sprintar pekades ut som en kostnad i retrot från både avvikelsehanteringens utvecklingssprint och den tekniska sprinten för alkohol och tobak – det ger mer synk än planerat och tar tid från testningen.</li>
-              <li><strong>Låt verksamheten testa under sprinten, med ett tydligt uppdrag.</strong> Registreringsformulären släpptes till verksamheten dag sju: en testperson, uppdelning på tobak och alkohol, fokus på om frågorna är rätt, en gemensam sida för kommentarer och uppföljning dagen efter. Nästa testomgång förbereddes med en rensad testmiljö, tre till fem ärenden av olika typ och en lista över kända brister, så att verksamheten vet vad den inte ska testa. I avvikelsehanteringen testades Lex Sarah-flödet med en roll per deltagare genom hela kedjan, och fynden sorterades i beslutade ändringar, frågor där teamet återkommer med tidskostnad och en förbättringslista för senare. Testa tillsammans, kortare och oftare – verksamheten ska inte sitta och testa själv – och boka tillfällena långt i förväg. Skapa egna testanvändare i stället för att vänta, och kontrollera att gränssnitt och backend låser samma saker.</li>
-              <li><strong>Håll koll på verktygskedjan när tempot stiger.</strong> Byggtiden i en central tjänst växte till 30 minuter mitt i sprinten och granskningskön växte med tempot. Byggtiden fick ett eget ärende och kortades med 57 procent. Samla små ändringar – nya attribut togs i ett svep i stället för en ny API-version per tillägg – och merga bakom featureflaggor när fler ska in i samma kod.</li>
-              <li><strong>Få UX-resursen att räcka.</strong> Ge UX mandat över ordval och ta textfrågorna utanför standupen. När UX-resursen är hårt belastad kan AI ta fram en bruttolista ur skärmbilder som UX sedan prioriterar – men ändringar i gemensamma komponenter slår mot andra appar i produktion och behöver en leveransplan.</li>
-              <li><strong>Rita mer och håll tempot hållbart.</strong> Begreppsförvirring kring system och tjänster löses bäst visuellt. Planera fler och kortare pauser, överväg att sprida ut dagarna, och använd chattkanalen för transparens snarare än som huvudkanal – svaren dröjer och det blir kontextbyten. Behövs svar från en viss person, ring.</li>
-              <li><strong>Låt arkitekturprinciperna styra även när experimenten är fria.</strong> Friheten att experimentera i Vinnovas sprint gav flera likartade helhetslösningar, och när gemensamma funktioner skulle lyftas ut och återanvändas var det inte enkelt – principerna fanns med från start men fick för litet genomslag i hur man faktiskt byggde. Bryt ner i återanvändbara byggblock och öppna gränssnitt tidigt, i stället för att sy ihop helheterna i efterhand.</li>
-              <li><strong>Balansera tempot med gemensam riktning och modet att välja bort.</strong> Dag fyra hos Vinnova fanns 18 lösningar igång och tre prototyper, och vägvalen fattades och omprövades flera gånger samma eftermiddag medan energin dippade. Retrot drog slutsatsen att hög fart och kreativitet behöver balanseras med gemensam riktning, reflektion och beslut om vad som inte ska byggas – och att ett tydligt mål om ett sammanhängande flöde, som sattes på morgonen dag fyra, hjälper teamet att samla sig inför slutdemon.</li>
+              <li><strong>Sitt tillsammans och skydda fokuset.</strong> Samma rum, daglig avstämning och inga andra möten hamnar oftast under ”fortsätt” i retrospektiven. Prata direkt i stället för via någon som återberättar – med AI-stöd blir stegen större och ett felsteg dyrare.</li>
+              <li><strong>Bygg hela kedjan tunt först.</strong> Driv ett tomt ärende genom alla processteg och fyll på fas för fas. Fokusera på det glada flödet och flytta undantagen till restlistan.</li>
+              <li><strong>Visa körande funktionalitet och testa tillsammans tidigt.</strong> Testmiljön är referensen, inte skisserna. Våga visa det ofärdiga och låt verksamhet och användare klicka själva – kortare och oftare, med ett tydligt uppdrag.</li>
+              <li><strong>Behandla verksamhetens tid som sprintens knappaste resurs.</strong> Ta de öppna frågorna tidigt i veckan, ge varje pass en konkret ingång och presentera färdiga förslag att stresstesta i stället för öppna frågor.</li>
+              <li><strong>Fatta, bekräfta och logga besluten löpande.</strong> Någon ska kunna bryta en diskussion och fatta beslutet. Läs upp och bekräfta beslutsloggen, och ge frågor som är större än sprinten ett eget spår med ägare.</li>
+              <li><strong>Säg nej och välj bort i tid.</strong> Omfattning som växer stoppas, och det som skjuts upp bekräftas av verksamheten. Lås det som testats som version 1.0 – högt tempo och många idéer behöver balanseras med gemensam riktning.</li>
             </ul>
           </div>
           <div class="lesson-group">
             <h3>Efter sprinten</h3>
             <ul>
-              <li><strong>Håll retrospektiv direkt och dokumentera öppet.</strong> Erfarenhetsbanken är en del av arbetssättet, och retrots fortsätt–börja–sluta blir nästa sprints arbetssätt – som när den tekniska sprintens retro skrevs in i upplägget för utvecklingssprinten.</li>
-              <li><strong>Låt slutdemon vara ett formellt godkännande.</strong> Skriv ner vem som godkände. Där demon föll bort blev bottenplattan aldrig avstämd, och i endagssprinten för upphandlingsstöd avbröts demon av nästa programpunkt innan allt hunnit visas, och ingen utvärdering hann hållas – planera in tid för hela demon och retrot med marginal. Räkna med att en bra demo producerar backlog och lägg in den direkt – i alkohol- och tobakssprinten blev demons synpunkter Jira-ärenden samma eftermiddag.</li>
-              <li><strong>Ge varje öppen fråga en ägare.</strong> Skillnaden mellan en restlista och en parkeringslista är den utpekade ägaren. Publicera frågorna med status, skilj på besvarat och utfört, och märk beslut som fattats efter sprintveckan som just det.</li>
-              <li><strong>Avsluta med en sida inför nästa steg.</strong> Bekräftat, blockerande, nya krav, okartlagt, medverkan och checklista – det som kommer tillbaka från demon ska stå där bygget börjar. När sprinten inte når hela vägen: sortera restlistan efter vad som blockerar, vad som måste finnas och vad som kan vänta, som i läget efter utvecklingssprinten för alkohol och tobak. Släpp testmiljön med testinstruktioner och de kända skillnaderna mot skisserna.</li>
-              <li><strong>Uppehållet mellan två sprintar är inte en paus.</strong> Det är där verksamheten testar på riktigt, och blir testningen inte av står nästa sprint utan riktning. Se till att det verksamheten testar är aktuellt: i avvikelsehanteringen låg de ändrade texterna inte i testmiljön under uppehållet, så testarna fastnade på sådant de redan lämnat synpunkter på.</li>
-              <li><strong>Planera för kontinuitet och återhämtning.</strong> Mycket av förståelsen sitter i huvudet på dem som varit med – ett helt nytt team i nästa sprint fungerar inte. Gå igenom och dokumentera det som byggts, som processhanteringen, så att fler än den som byggt det kan felsöka – avvikelsehanteringen använde veckan efter sprinten till att stabilisera koden, skriva dokumentationen och ta fram utbildningsmaterial. Växla med lugnare ”gråa veckor” och se upp för förväntningsraketen: extrem takt under en sprint är inte ett hållbart normalläge.</li>
-              <li><strong>Återför snabba val till ordinarie arkitektur och förvaltning.</strong> Lokal frihet får inte bli ny teknisk skuld: i alkohol- och tobakssprinten byggdes en egen integration mellan ärendehanteringen och processmotorn, som fungerar för en verksamhet men inte skalar när fler ansluts och därför fått ett eget spår mot en gemensam meddelandekö. Det som går snabbt att bygga med AI kan bli tungt att förvalta: koden behöver underhållas även innan den används skarpt, eftersom beroenden ändras inom ungefär tre kvartal. Förenkla samtidigt administrationen runt sprinten – listor räcker som bokföring av arbetet, och komplexa AI-genererade lösningsdokument eller tunga stories med tidsuppskattningar behövs inte.</li>
-              <li><strong>Fatta beslut om nästa steg medan kunskapen är färsk.</strong> Och låt teamet fortsätta direkt medan allt sitter i huvudet. Ta också ställning till utrullningen i tid: börja med en liten grupp så att lösning och utbildning kan justeras – tidpunkten avgör hur mycket arbete som återstår efter sprinten.</li>
+              <li><strong>Håll retrospektiv direkt och dokumentera öppet.</strong> Retrots fortsätt–börja–sluta blir nästa sprints arbetssätt, och erfarenhetsbanken är en del av metoden.</li>
+              <li><strong>Låt slutdemon vara ett formellt godkännande.</strong> Skriv ner vem som godkände och planera tid för hela demon med marginal. En bra demo producerar backlog – lägg in den samma dag.</li>
+              <li><strong>Ge varje öppen fråga en ägare och samla nästa steg på en sida.</strong> Skillnaden mellan en restlista och en parkeringslista är ägaren. Sortera det som återstår i blockerande, måste finnas och kan vänta.</li>
+              <li><strong>Uppehållet mellan två sprintar är inte en paus.</strong> Det är där verksamheten testar på riktigt – och då måste det som testas vara aktuellt.</li>
+              <li><strong>Planera för kontinuitet och återhämtning.</strong> Förståelsen sitter i huvudet på dem som var med, så låt samma team fortsätta och dokumentera det som byggts. Extrem takt är inte ett hållbart normalläge.</li>
+              <li><strong>Håll ihop arkitekturen.</strong> Fri experimentlusta gav flera likartade lösningar som var svåra att återanvända. Bygg i gemensamma byggblock och öppna gränssnitt, och återför snabba lokala val till ordinarie arkitektur och förvaltning.</li>
             </ul>
           </div>
         </div>
@@ -781,6 +827,7 @@
         </div>
       </div>
     </section>
+    </div>
 
     <section>
       <div class="container">
@@ -803,5 +850,53 @@
       <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
     </div>
   </footer>
+  <script>
+    (function () {
+      var bar = document.querySelector('[data-tabs]');
+      if (!bar) return;
+      var tabs = Array.prototype.slice.call(bar.querySelectorAll('[role="tab"]'));
+      var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+      var slugs = tabs.map(function (t) { return t.id.replace('tab-', ''); });
+
+      function select(i, focus, updateHash) {
+        tabs.forEach(function (t, j) {
+          var on = i === j;
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          panels[j].hidden = !on;
+        });
+        if (focus) tabs[i].focus();
+        if (updateHash && window.pageYOffset > bar.offsetTop) window.scrollTo(0, bar.offsetTop);
+        if (updateHash && history.replaceState) history.replaceState(null, '', '#' + slugs[i]);
+      }
+
+      function fromHash() {
+        var i = slugs.indexOf(location.hash.slice(1));
+        return i < 0 ? 0 : i;
+      }
+
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { select(i, false, true); });
+        t.addEventListener('keydown', function (e) {
+          var n = tabs.length, k = null;
+          if (e.key === 'ArrowRight') k = (i + 1) % n;
+          else if (e.key === 'ArrowLeft') k = (i - 1 + n) % n;
+          else if (e.key === 'Home') k = 0;
+          else if (e.key === 'End') k = n - 1;
+          if (k === null) return;
+          e.preventDefault();
+          select(k, true, true);
+        });
+      });
+
+      window.addEventListener('hashchange', function () { select(fromHash(), false, false); window.scrollTo(0, bar.offsetTop); });
+      bar.hidden = false;
+      select(fromHash(), false, false);
+      if (slugs.indexOf(location.hash.slice(1)) >= 0) {
+        window.scrollTo(0, bar.offsetTop);
+        window.addEventListener('load', function () { window.scrollTo(0, bar.offsetTop); });
+      }
+    })();
+  </script>
 </body>
 </html>
