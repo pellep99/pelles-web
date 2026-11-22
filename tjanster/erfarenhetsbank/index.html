@@ -225,6 +225,8 @@
     .principle-quote p { margin: 0; }
 
     /* Kortlistor */
+    .cards-heading { margin: var(--space-xl) 0 var(--space-md); font-size: 1.25rem; }
+
     .cards {
       list-style: none;
       margin: 0;
@@ -457,7 +459,7 @@
           En fokuserad sprint samlar rätt kompetenser under en kort och koncentrerad period för att bygga något verkligt, testa hypoteser och skapa underlag för beslut om nästa steg. Arbetssättet, och varför AI gör det möjligt på ett nytt sätt, beskrivs närmare i blogginlägget <a href="../../blogg/fokuserade-sprintar/">Från projekt till fokuserade sprintar</a>.
         </p>
         <p>
-          Den här sidan är en levande erfarenhetsbank som samlar principer, sprinttyper och konkreta lärdomar från genomförda sprintar. Innehållet bygger på elva sprintar genomförda under 2026, med Sundsvalls kommun som huvudsaklig arena och en sprint hos Vinnova som byggde på samma principer, och är hämtat från sprintarnas egna dokumentationssidor och retrospektiv.
+          Den här sidan är en levande erfarenhetsbank som samlar principer, sprinttyper och konkreta lärdomar från genomförda sprintar. Innehållet bygger på elva sprintar genomförda under 2026, med Sundsvalls kommun som huvudsaklig arena och en sprint hos Vinnova som byggde på samma principer, och är hämtat från sprintarnas egna dokumentationssidor och retrospektiv. Ett nytt initiativ med flera sprintar – Draken för Näring och tillväxt – har startat och följs här allteftersom sprintarna genomförs.
         </p>
       </div>
     </section>
@@ -466,7 +468,7 @@
       <div class="container">
         <div class="tablist" role="tablist" aria-label="Erfarenhetsbankens delar">
           <button class="tab" type="button" role="tab" id="tab-metodik" aria-controls="panel-metodik" aria-selected="true">Metodik</button>
-          <button class="tab" type="button" role="tab" id="tab-sprintar" aria-controls="panel-sprintar" aria-selected="false" tabindex="-1">Genomförda sprintar</button>
+          <button class="tab" type="button" role="tab" id="tab-sprintar" aria-controls="panel-sprintar" aria-selected="false" tabindex="-1">Sprintar</button>
           <button class="tab" type="button" role="tab" id="tab-lardomar" aria-controls="panel-lardomar" aria-selected="false" tabindex="-1">Lärdomar</button>
         </div>
       </div>
@@ -643,6 +645,10 @@
             <h3>Överlämningssida till nästa sprint</h3>
             <p>Den tekniska sprinten för alkohol och tobak avslutades med en egen sida inför utvecklingssprinten: vad demon bekräftade, vad som blockerar bygget, nya krav ur genomgången, processer som visade sig vara okartlagda, hur verksamheten ska medverka – och en numrerad checklista över vad som ska vara gjort före sprintstart. Sidan är underlaget som nästa sprint börjar i.</p>
           </li>
+          <li class="card">
+            <h3>Beslutspunkter mellan sprintarna</h3>
+            <p>I initiativet för Näring och tillväxt planeras hela kedjan från förankring till version 1.0 som en tidplan med numrerade demos och beslutspunkter. Varje beslutspunkt kan ändra planen: den tekniska kan förlänga den tekniska sprinten, nästa fastställer innehållet i version 1.0 med ansvariga chefer, och oplanerade behov under bygget hänvisas till version 1.1.</p>
+          </li>
         </ul>
       </div>
     </section>
@@ -682,10 +688,21 @@
     <div class="tab-panel" id="panel-sprintar" role="tabpanel" aria-labelledby="tab-sprintar" tabindex="0">
     <section aria-labelledby="sprintar-title">
       <div class="container">
-        <h2 id="sprintar-title">Genomförda sprintar</h2>
+        <h2 id="sprintar-title">Sprintar</h2>
         <p class="section-intro">
-          En kort sammanfattning av varje sprint. Upplägg, dagliga loggar, resultat och retrospektiv finns på respektive sprints dokumentationssida.
+          En kort sammanfattning av varje pågående initiativ och genomförd sprint. Upplägg, dagliga loggar, resultat och retrospektiv finns på respektive sprints dokumentationssida.
         </p>
+        <h3 class="cards-heading">Pågående initiativ</h3>
+        <ul class="cards cards-3">
+          <li class="card">
+            <span class="card-tag">Förankring till version 1.0</span>
+            <h3>Draken för Näring och tillväxt</h3>
+            <p class="card-meta">Fyra faser · vecka 46 2026–vecka 5 2027 · Sundsvalls kommun</p>
+            <p>DigIT och verksamheten tar Draken från förankring till en stabil version 1.0: förankringssprint vecka 47, teknisk sprint vecka 48–49, därefter en utvecklingssprint och en period för att stabilisera koden. Fem demos och tre beslutspunkter styr vägen, och planen efter den tekniska sprinten är preliminär.</p>
+            <a class="card-link" href="https://claude.ai/artifact/FfCJKYXqabsiLhcibPRdLA" rel="noopener noreferrer" target="_blank">Till initiativets tidplan<span class="visually-hidden"> (öppnas i ny flik)</span></a>
+          </li>
+        </ul>
+        <h3 class="cards-heading">Genomförda sprintar</h3>
         <ul class="cards cards-3">
           <li class="card">
             <span class="card-tag">Innovationssprint</span>
