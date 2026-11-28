@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rådighet – mer aktuellt än någonsin, men hur går vi från ord till handling? – Per Persson, Ph.D.</title>
+  <meta name="description" content="Att ha rätt att bestämma är inte detsamma som att kunna bestämma. Om rådighet som förmågan att hålla samman kapacitet och mandat i handling, varför frågan om digitala beroenden blivit mer aktuell än någonsin och sex konkreta steg för att stärka rådigheten i offentlig sektor.">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rådighet – mer aktuellt än någonsin, men hur går vi från ord till handling?">
+  <meta property="og:description" content="Att ha rätt att bestämma är inte detsamma som att kunna bestämma. Om rådighet som förmågan att hålla samman kapacitet och mandat i handling, varför frågan om digitala beroenden blivit mer aktuell än någonsin och sex konkreta steg för att stärka rådigheten i offentlig sektor.">
+  <meta property="og:image" content="https://phd-persson.se/images/radighet-og.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phd-persson.se/blogg/radighet/">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="article:published_time" content="2026-11-28">
+  <meta property="article:author" content="Per Persson">
+  <meta property="article:section" content="Digital transformation">
+  <style>
+    :root {
+      /* Färger – WCAG 2.1 AA */
+      --color-bg: #ffffff;
+      --color-surface: #f6f7f9;
+      --color-text: #1a1d22;
+      --color-text-muted: #4a525c;
+      --color-primary: #1f4f8b;
+      --color-primary-hover: #163a66;
+      --color-border: #d8dde3;
+      --color-focus: #ffbf47;
+
+      /* Typografi */
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 1rem;
+      --line-height-base: 1.6;
+
+      /* Avstånd */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Layout */
+      --content-max-width: 72rem;
+      --article-max-width: 44rem;
+      --radius: 0.5rem;
+      --touch-target: 2.75rem; /* 44px */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    a { color: var(--color-primary); text-decoration: underline; }
+    a:hover { color: var(--color-primary-hover); }
+    a:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Sidhuvud */
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .site-header .container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .site-title a { color: var(--color-text); text-decoration: none; }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+    .site-nav a:hover { background: var(--color-surface); }
+    .site-nav a[aria-current="page"] {
+      background: var(--color-surface);
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .site-header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-title { font-size: 1.5rem; }
+    }
+
+    /* Artikel-hjälte */
+    .article-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--color-surface);
+    }
+    .article-hero .container {
+      max-width: var(--article-max-width);
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .article-category {
+      display: inline-block;
+      padding: 0.125rem var(--space-sm);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .article-hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .article-hero h1 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .article-hero h1 { font-size: 2.75rem; }
+    }
+
+    /* Artikel-innehåll */
+    .article-body {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .article-body .container {
+      max-width: var(--article-max-width);
+    }
+    .article-body h2 {
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+    .article-body h3 {
+      margin: var(--space-lg) 0 var(--space-sm);
+      font-size: 1.1875rem;
+      line-height: 1.3;
+    }
+    .article-body blockquote {
+      margin: 0 0 var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-surface);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+    .article-body blockquote p {
+      margin: 0;
+    }
+    .article-body p {
+      margin: 0 0 var(--space-md);
+    }
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+    .article-lead {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+    }
+    .article-body sup {
+      line-height: 0;
+    }
+    .article-body sup a {
+      text-decoration: none;
+    }
+    .article-body ul {
+      margin: 0 0 var(--space-md);
+      padding-left: var(--space-lg);
+    }
+    .article-body li {
+      margin-bottom: var(--space-xs);
+    }
+    .article-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Illustration */
+    .article-figure {
+      margin: 0 0 var(--space-md);
+    }
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+    .article-figure figcaption {
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    @media (min-width: 640px) {
+      .article-figure-right {
+        float: right;
+        width: 18rem;
+        max-width: 50%;
+        margin: 0 0 var(--space-md) var(--space-lg);
+      }
+    }
+
+    /* Referenser */
+    .references {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .references li {
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-lg);
+      text-indent: calc(-1 * var(--space-lg));
+    }
+    .references li:last-child {
+      margin-bottom: 0;
+    }
+    .references li:target {
+      background: var(--color-surface);
+    }
+    .references a {
+      word-break: break-word;
+    }
+
+    /* Tillbaka-länk */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+
+    /* Sidfot */
+    .site-footer {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+    }
+    .social-links {
+      list-style: none;
+      margin: 0 0 var(--space-md);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--touch-target);
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-primary);
+      text-decoration: none;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg);
+    }
+    .social-links a:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till huvudinnehåll</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="site-title"><a href="../../" aria-label="Per Persson, Ph.D. – startsida">Per Persson, Ph.D.</a></p>
+      <nav class="site-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../../">Hem</a></li>
+          <li><a href="../../publikationer/">Publikationer</a></li>
+          <li><a href="../../blogg/" aria-current="page">Blogg</a></li>
+          <li><a href="../../tjanster/">Tjänster</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="article-hero">
+        <div class="container">
+          <p class="article-meta">
+            <span class="article-category">Digital transformation</span>
+            <span><time datetime="2026-11-28">28 november 2026</time></span>
+          </p>
+          <h1>Rådighet – mer aktuellt än någonsin, men hur går vi från ord till handling?</h1>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="container">
+          <p class="article-lead">
+            <em>Att ha rätt att bestämma är inte detsamma som att kunna bestämma. När allt fler av offentlig sektors verksamheter blir beroende av digital infrastruktur som vi själva har begränsade möjligheter att påverka så blir denna skillnad allt viktigare. Rådighet handlar ytterst om vår förmåga att fullgöra vårt samhällsuppdrag även när omvärlden förändras. Men vad innebär rådighet egentligen, och vad behöver vi göra för att stärka den?</em>
+          </p>
+          <figure class="article-figure">
+            <img src="../../images/radighet-svartvit.jpg" alt="Svartvit illustration. Till vänster ett trassel av kablar, kedjor och hänglås som binder samman ett moln med hänglås, servrar och ikoner för inloggning, inställningar och appar. I mitten står ett kommunhus med klocktorn och svensk flagga framför en stadssiluett vid vatten. I förgrunden betraktar två personer utsikten bredvid en stor kompass på en karta, och den ena pekar längs en ljus stig bort från trasslet. Stigen leder till höger, mot en genomskinlig kupol med en ordnad, skiktad arkitektur: ett moln med server överst och lager med ikoner för kod, inställningar, data, identitet, säkerhet och verksamheter som omsorg, utbildning och miljö." width="1400" height="788">
+          </figure>
+
+          <h2>Vad menar vi med rådighet?</h2>
+          <p>
+            I sin utmärkta doktorsavhandling <a href="https://hdl.handle.net/2077/93411" rel="noopener noreferrer"><em>Rådighet i omställning</em></a> (2026) definierar Carl Heath rådighet som:
+          </p>
+          <blockquote>
+            <p>En organisations institutionaliserade förmåga att hålla samman kapacitet och mandat i ändamålsenligt handlande.</p>
+          </blockquote>
+          <p>
+            Heath gör en viktig distinktion mellan <strong>kapacitet</strong>, att veta vad som behöver göras och att kunna göra det, och <strong>mandat</strong>, att ha rätt att göra det. Först när dessa omsätts i faktiskt handlande uppstår rådighet. Med andra ord, att vi vet vad vi behöver göra, att vi kan göra det, att vi har rätt att göra det och att vi får det gjort.
+          </p>
+          <p>
+            Avhandlingen, som bygger på bland annat 103 intervjuer med kommunala ledare i nio kommuner, beskriver tre dimensioner av rådighet:
+          </p>
+          <ul>
+            <li><strong>Kompass</strong> – att kunna orientera sig strategiskt och förstå vart organisationen behöver röra sig.</li>
+            <li><strong>Möjliggörande</strong> – att skapa de organisatoriska förutsättningar som krävs för att kunna agera.</li>
+            <li><strong>Framdrift</strong> – att i praktiken omsätta ambitioner och beslut i handling.</li>
+          </ul>
+          <p>
+            Det intressanta är att rådighet inte är en egenskap som kan tilldelas någon genom ett beslut i en ledningsgrupp. Den uppstår i stället i samspelet mellan dessa dimensioner. Heath beskriver hur organisationer kan hamna i strategisk förlamning, trots att de har både kompetenta medarbetare och formella mandat, när kapaciteten och mandaten frikopplas från varandra.<sup><a href="#kalla-1" aria-label="Källa 1">[1]</a></sup>
+          </p>
+          <p>
+            Översätter vi detta till den digitala kontexten blir det särskilt intressant. En kommun har exempelvis ett lagstadgat ansvar för sin myndighetsutövning, men om informationen som krävs för myndighetsutövningen är inlåst i ett verksamhetssystem, om reglerna för automatiserade beslut inte går att granska eller om förändringar endast kan genomföras när en leverantör väljer att prioritera dem, hur stor är då kommunens faktiska rådighet? Det formella ansvaret finns kvar, men handlingsförmågan har däremot delvis flyttats någon annanstans.
+          </p>
+          <p>
+            Jag ser här en tydlig koppling till min egen forskning om socioteknisk skuld. De tekniska beroenden vi bygger upp över tid samverkar med organisatoriska beroenden, kompetensbrister och styrmodeller som försvårar förändring och resultatet blir att vårt framtida handlingsutrymme successivt krymper. Rådighet ger oss ett språk för att beskriva vilken förmåga vi behöver bygga upp för att motverka detta.
+          </p>
+
+          <h2>Varför är frågan mer aktuell än någonsin?</h2>
+          <p>
+            Leverantörsinlåsning är inget nytt fenomen. Det som förändrats är omfattningen av våra beroenden, hur sammanflätade de blivit och den omvärld i vilken de existerar. Försäkringskassan och myndighetssamverkan NITIS (Nationell it-drift i samverkan) beskriver i kunskapspromemorian <em>Europas förhållning till moln och digital suveränitet</em> från oktober 2025 hur pandemin och framväxten av AI accelererat övergången till molntjänster, framför allt från amerikanska leverantörer. Promemorian pekar samtidigt på en bristande samsyn i Europa kring vad digital suveränitet innebär, svårigheter att hitta mogna alternativ och de målkonflikter som uppstår när organisationer behöver investera i ökad självständighet.<sup><a href="#kalla-2" aria-label="Källa 2">[2]</a></sup>
+          </p>
+          <p>
+            Det är värt att stanna upp vid vad som egentligen har hänt. Vi har inte enbart flyttat servrar från egna datacenter till någon annans datacenter. I allt större utsträckning har vi också överlåtit funktioner som identitetshantering, behörighetsstyrning, säkerhetsövervakning, informationshantering, integration och utveckling till ett sammanhängande amerikanskt ekosystem. Varje enskilt beslut kan ha varit rationellt, men tillsammans kan besluten ha skapat ett beroende som ingen enskild beslutsfattare haft för avsikt att skapa.
+          </p>
+
+          <h3>Från leverantörsrisk till samhällsrisk</h3>
+          <p>
+            Den geopolitiska utvecklingen har gjort det allt svårare att utgå från att de förutsättningar som gäller idag också kommer att gälla imorgon. Lagstiftning i andra länder, sanktioner, handelskonflikter, förändrade ägarförhållanden och kommersiella beslut kan påverka vår tillgång till digital infrastruktur. Det behöver inte ens handla om att en tjänst stängs av. Kraftigt förändrade licensvillkor, en produkt som avvecklas eller ett förändrat API kan vara fullt tillräckligt för att begränsa en organisations handlingsförmåga. Att informationen lagras i Sverige eller inom EU är dessutom inte liktydigt med att vi har rådighet över den. Vi behöver också veta vilken jurisdiktion leverantören omfattas av, vem som kontrollerar krypteringsnycklar och administrativa funktioner, vilka underleverantörer som används och om vi kan fortsätta driva verksamheten om leverantören inte längre kan eller vill leverera.
+          </p>
+          <p>
+            En tjänst kan alltså vara både funktionellt utmärkt och väl skyddad mot traditionella cyberhot, men ändå utgöra ett strategiskt beroende.
+          </p>
+
+          <h3>EU har börjat agera</h3>
+          <p>
+            Den 3 juni 2026 presenterade EU-kommissionen sitt <a href="https://digital-strategy.ec.europa.eu/en/library/communication-european-tech-sovereignty-accompanied-eu-open-source-strategy" rel="noopener noreferrer">teknologiska suveränitetspaket</a>. Paketet omfattar bland annat Chips Act 2.0, Cloud and AI Development Act (CADA), en strategi för öppen källkod samt en färdplan för digitalisering och AI inom energisektorn.<sup><a href="#kalla-3" aria-label="Källa 3">[3]</a></sup> I <a href="https://digital-strategy.ec.europa.eu/en/library/proposal-cloud-and-ai-development-act-cada" rel="noopener noreferrer">förslaget till CADA</a> är problembilden tydlig, att Europa har begränsad egen kapacitet inom moln och AI samtidigt som beroendet av ett fåtal leverantörer från tredjeland är stort. Detta är inte längre enbart en konkurrenskraftsfråga utan också en fråga om ekonomisk säkerhet, motståndskraft och operativ kontinuitet. I sin analys av förslaget från juli 2026 lyfter NITIS bland annat fram ett gemensamt ramverk med fyra nivåer för bedömning av molntjänsters suveränitet, riskanalyser, behovsbedömningar i offentlig sektor, gemensamma upphandlingar och tillgängliggörande av öppen källkod.<sup><a href="#kalla-4" aria-label="Källa 4">[4]</a></sup> Det innebär en förflyttning mot att kunna bedöma och kravställa suveränitet utifrån mer konkreta och verifierbara kriterier.
+          </p>
+          <p>
+            CADA är fortfarande ett lagstiftningsförslag, inte ett redan gällande regelverk. Men riktningen är viktig även innan regleringen är på plats. EU:s nya strategi för öppen källkod pekar i samma riktning, att offentlig sektor i större utsträckning behöver använda öppna lösningar, bidra till dem och bygga långsiktig förmåga att förvalta dem.<sup><a href="#kalla-5" aria-label="Källa 5">[5]</a></sup> I Sverige beslutade regeringen den 28 maj 2026 om en <a href="https://www.regeringen.se/informationsmaterial/2026/05/en-molnpolicy-for-sverige--for-okad-sakerhet-effektivitet-och-innovation-i-den-offentliga-forvaltningen/" rel="noopener noreferrer">molnpolicy för Sverige</a>. Den betonar bland annat riskbaserade val, kontroll och möjligheten att byta leverantör. För kommuner och regioner är policyn vägledande och den ersätter inte behovet av egna beslut och riskbedömningar.<sup><a href="#kalla-6" aria-label="Källa 6">[6]</a></sup>
+          </p>
+          <p>
+            Det finns således en allt tydligare riktning såväl europeiskt som nationellt. Men att invänta att någon annan ska omsätta denna riktning i konkret handling är knappast en strategi för ökad rådighet.
+          </p>
+
+          <h2>Det är inte Word och Excel som är det stora problemet</h2>
+          <p>
+            När diskussionen handlar om att minska beroendet av exempelvis Microsoft hamnar fokus ofta på de produkter som medarbetarna ser och använder varje dag. Kan vi ersätta Word med LibreOffice? Kan vi ersätta Teams med något annat? Det är relevanta frågor, men de riskerar att skymma de verkligt kritiska beroendena. Föreningen Sambruk presenterade i september 2026 analysen <em>Rådig – från beroende till rådighet</em>. Den beskriver en offentlig organisations digitala arkitektur i åtta lager, från hårdvara och nätverk via drift, identitet, klienter och digital arbetsplats till utveckling, AI, verksamhetssystem och data.<sup><a href="#kalla-7" aria-label="Källa 7">[7]</a></sup> En av analysens viktigaste poänger är att identitet och katalogtjänster utgör ett nav för stora delar av infrastrukturen. Inloggning i verksamhetssystem, behörigheter, flerfaktorsautentisering och tillgång till andra tjänster kan alla vara knutna till samma ekosystem. Byter vi en synlig applikation men behåller samtliga underliggande beroenden har vi kanske inte stärkt vår rådighet särskilt mycket.
+          </p>
+          <p>
+            AI är ytterligare ett område där vi riskerar att bygga in nya beroenden i snabb takt. Om våra assistenter, verksamhetsprocesser, kunskapskällor och integrationer byggs direkt mot en specifik AI-leverantörs proprietära tjänster kan det bli mycket svårt att byta modell eller plattform när behoven förändras. Modelloberoende, kontroll över data och öppna gränssnitt bör därför vara strategiska designprinciper redan från början (vilket är precis det jag och Yixin beskrev i <a href="https://scholarspace.manoa.hawaii.edu/server/api/core/bitstreams/1408a5f4-cad9-4dec-932e-eb249f057ba8/content" rel="noopener noreferrer"><em>Openness and transparency by design: crafting an open generative AI platform for the public sector</em></a>).
+          </p>
+
+          <h2>Rådighet är inte detsamma som att göra allt själv</h2>
+          <p>
+            Det är viktigt att inte hamna i den andra ytterligheten. Digital rådighet betyder inte att varje kommun måste driva egna datacenter, utveckla alla sina verksamhetssystem eller enbart använda programvara som utvecklats inom Sveriges gränser. Vi kommer alltid att ha beroenden. Frågan är vilka beroenden vi kan acceptera, vilka vi kan hantera och vilka vi måste förändra.
+          </p>
+          <p>
+            Öppen källkod är här ett viktigt verktyg. En öppet licensierad lösning kan i princip granskas, vidareutvecklas och förvaltas av andra än den ursprungliga leverantören. Men tillgång till källkod är inte detsamma som faktisk förmåga att göra detta. Om vi saknar kompetens, dokumentation, finansiering eller fungerande förvaltning har vi i Heaths terminologi möjligen ett mandat, men inte den kapacitet som krävs för att utöva det. Omvänt kan en upphandlad tjänst bidra till god rådighet om den har öppna gränssnitt, tydliga rättigheter till informationen, fungerande exitmöjligheter och en marknad med alternativa leverantörer. Det viktiga är den reella handlingsfriheten, inte etiketten på lösningen.
+          </p>
+          <p>
+            För en liten kommun kan gemensamt ägd och förvaltad infrastruktur dessutom ge betydligt större rådighet än en egen installation som kommunen saknar resurser att underhålla. Kommunalt självstyre behöver inte innebära att 290 kommuner var för sig bygger upp samma tekniska förmågor. Gemensam infrastruktur kan tvärtom stärka den lokala förmågan att fatta och genomföra sina egna verksamhetsbeslut.
+          </p>
+
+          <h2>Vad behöver vi göra konkret?</h2>
+          <p>
+            Den 23 november 2026 genomfördes NOSAD-workshoppen <a href="https://nosad.se/digital-radighet-genom-oppenhet" rel="noopener noreferrer"><em>Digital rådighet genom öppenhet i det offentliga Sverige</em></a>, där Sundsvalls kommun var en av medarrangörerna. Omkring 80 personer deltog på plats och ungefär lika många följde den inledande delen digitalt. Diskussionerna kretsade kring tre konkreta områden: gemensam infrastruktur för kodsamverkan, rådighetskrav vid anskaffning och arkitekturval för öppen digital infrastruktur.<sup><a href="#kalla-8" aria-label="Källa 8">[8]</a></sup>
+          </p>
+          <p>
+            För mig illustrerar det att diskussionen håller på att förflyttas från varför vi behöver rådighet till hur vi faktiskt åstadkommer den. Följande är de åtgärder jag skulle vilja se att fler organisationer tar tag i.
+          </p>
+
+          <h3>1. Gör rådighet till en styrande princip</h3>
+          <p>
+            Ledningen behöver besluta om vilken grad av rådighet organisationen eftersträvar. Utgå från verksamheternas kritikalitet, informationsklassning och behov av kontinuitet. Alla lösningar behöver inte samma nivå, men avsteg från målnivån bör vara medvetna, dokumenterade och tidsbegränsade. Ge arkitektur- och verksamhetsansvariga mandat att omsätta principen i konkreta beslut.
+          </p>
+
+          <h3>2. Kartlägg beroendena – även de som inte syns</h3>
+          <p>
+            Inventera inte bara system och avtal utan även identitetslösningar, integrationer, underleverantörer, driftmiljöer, licenser, administrativa åtkomster och kompetensberoenden. Vilka verksamheter påverkas om en gemensam tjänst försvinner? Identifiera de beroenden som har störst konsekvenser och de som är möjliga att förändra först.
+          </p>
+
+          <h3>3. Sluta bygga in nya onödiga beroenden</h3>
+          <p>
+            Det är ofta enklare och billigare att undvika ett beroende än att avveckla ett befintligt. Kravställ öppna standarder, dokumenterade API:er, maskinläsbar export av data och metadata, rättigheter till egenutvecklad kod och möjlighet att byta driftmiljö eller leverantör. Vid nyanskaffning måste egenutveckling och gemensam utveckling också vara naturliga alternativ till upphandling.
+          </p>
+
+          <h3>4. Säkerställ att exit fungerar i praktiken</h3>
+          <p>
+            En exitklausul i ett avtal räcker inte. Pröva om information faktiskt kan exporteras och återläsas, om integrationer kan kopplas om och om en alternativ driftmiljö fungerar. Bestäm hur länge verksamheten får vara utan tjänsten, vem som ansvarar för omställningen och vilka resurser som behövs. En testad exitplan är ett betydligt bättre mått på rådighet än en utfästelse i ett avtal.
+          </p>
+
+          <h3>5. Bygg kompetens och finansiera omställningen</h3>
+          <p>
+            Ökad rådighet kan kräva investeringar i kompetens, migrering och perioder med parallell drift. Det behöver finnas långsiktig finansiering för förvaltning, säkerhet och vidareutveckling, inte bara projektmedel för att införa något nytt. Ett OSPO (Open Source Program Office), eget eller gemensamt, kan hjälpa till att omsätta öppen källkod i hållbar praktik.
+          </p>
+
+          <h3>6. Förändra i rätt ordning och tillsammans med andra</h3>
+          <p>
+            Sambruks analys pekar på en stegvis förflyttning där kartläggning och grundläggande driftförmåga behöver komma tidigt, och där identitetshanteringen behöver hanteras innan stora delar av arbetsplatsen kan göras oberoende. Det är inte en uppmaning att byta allt på en gång. Använd avtalsförnyelser, tekniska generationsskiften och nya behov som tillfällen att successivt minska beroendena. Samverka om kravställning, gemensamma komponenter, säkerhetsgranskning och långsiktig förvaltning.
+          </p>
+          <p>
+            Följ också upp resultatet. Hur många kritiska tjänster har en testad exitplan? Hur många informationsmängder kan exporteras och användas i alternativa lösningar? Hur många nya beroenden har vi tillåtit? Det är först när vi mäter den faktiska förmågan att agera som vi kan avgöra om rådigheten har ökat.
+          </p>
+
+          <h2>Rådig – en praktisk vägledning som vi behöver utveckla tillsammans</h2>
+          <p>
+            För den som vill gå från diskussion till konkret arbete finns nu <a href="https://radig.codefloe.page/radig/" rel="noopener noreferrer">Rådig – från beroende till rådighet</a>, ett öppet samverkansprojekt som vidareutvecklar Föreningen Sambruks analys från september 2026.
+          </p>
+          <p>
+            Där finns en referensarkitektur, en färdplan för stegvis omställning, en katalog över alternativa lösningar, fallstudier från andra europeiska länder, juridiska genomgångar och mallar för bland annat beroendekartläggning, kravställning, exitplaner och beslutsunderlag till ledningen. Materialet behöver naturligtvis anpassas till den egna organisationens förutsättningar och riskbild.
+          </p>
+          <p>
+            Det som jag tycker är minst lika viktigt är att materialet utvecklas öppet. Den som har genomfört en migrering, testat en alternativ lösning, utformat rådighetskrav eller identifierat ett problem kan bidra med sina erfarenheter. Även det som inte fungerade är värdefull kunskap. Se <a href="https://radig.codefloe.page/radig/bidra/" rel="noopener noreferrer">hur du kan bidra</a>. Vi behöver inte 290 separata utredningar om samma beroenden. Vi behöver bygga en gemensam kunskapsbas och en gemensam förmåga att agera utifrån den.
+          </p>
+          <p>
+            Jag avslutar med att återknyta vi till Carl Heaths definition, för att lyckas behöver vi alltså både en kompass, organisatoriska förutsättningar och faktisk framdrift. Det räcker inte att vi vet vad vi behöver göra. Det räcker inte heller att vi fattar beslut om att göra det.
+          </p>
+          <blockquote>
+            <p><strong>Rådighet är verklig först när vi faktiskt kan agera. Och vår förmåga att agera imorgon avgörs till stor del av de beslut vi fattar idag.</strong></p>
+          </blockquote>
+
+          <h2>Källor och vidare läsning</h2>
+          <ul class="references">
+            <li id="kalla-1">1. Heath, C. (2026). <a href="https://hdl.handle.net/2077/93411" rel="noopener noreferrer"><em>Rådighet i omställning</em></a>. Doktorsavhandling, Göteborgs universitet. Sammanfattning, s. 5–6.</li>
+            <li id="kalla-2">2. NITIS/Försäkringskassan (2025). <em>Europas förhållning till moln och digital suveränitet</em>. Kunskapspromemoria, 7 oktober 2025, FK 2025/016432, särskilt s. 2–3.</li>
+            <li id="kalla-3">3. EU-kommissionen (2026). <a href="https://digital-strategy.ec.europa.eu/en/library/communication-european-tech-sovereignty-accompanied-eu-open-source-strategy" rel="noopener noreferrer"><em>Communication on European Tech Sovereignty, accompanied by an EU Open Source Strategy</em></a>, 3 juni 2026.</li>
+            <li id="kalla-4">4. NITIS/Försäkringskassan (2026). <em>Analys av förslaget till Cloud and AI Development Act (CADA)</em>, 7 juli 2026, FK 2026/018040. Se även <a href="https://digital-strategy.ec.europa.eu/en/library/proposal-cloud-and-ai-development-act-cada" rel="noopener noreferrer">EU-kommissionens förslag COM(2026) 502</a>.</li>
+            <li id="kalla-5">5. Försäkringskassan (2026). <em>Det europeiska teknologiska suveränitetspaketet</em>, promemoria, 3 juni 2026.</li>
+            <li id="kalla-6">6. Regeringskansliet (2026). <a href="https://www.regeringen.se/informationsmaterial/2026/05/en-molnpolicy-for-sverige--for-okad-sakerhet-effektivitet-och-innovation-i-den-offentliga-forvaltningen/" rel="noopener noreferrer"><em>En molnpolicy för Sverige – för ökad säkerhet, effektivitet och innovation i den offentliga förvaltningen</em></a>, beslutad 28 maj 2026.</li>
+            <li id="kalla-7">7. Föreningen Sambruk (2026). <em>Rådig – från beroende till rådighet</em>, ledningsunderlag, september 2026, särskilt s. 4–8. Vidareutvecklat i <a href="https://radig.codefloe.page/radig/" rel="noopener noreferrer">det öppna Rådig-projektet</a>.</li>
+            <li id="kalla-8">8. NOSAD (2026). <a href="https://nosad.se/digital-radighet-genom-oppenhet" rel="noopener noreferrer"><em>Digital rådighet genom öppenhet i det offentliga Sverige</em></a>, workshop 23 november 2026, samt tillhörande transkription (deltagaruppgifter från inledningen, ca 04:42).</li>
+          </ul>
+
+          <a class="back-link" href="../">← Tillbaka till bloggen</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Externa profiler">
+        <ul class="social-links">
+          <li><a href="https://www.linkedin.com/in/per-persson-48aa0059" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2Fz8UZoAAAAJ&amp;hl=sv" rel="noopener noreferrer" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0009-0006-0369-8311" rel="noopener noreferrer" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/pellep99" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://matrix.to/#/@phd-persson:matrix.org" rel="noopener noreferrer" target="_blank">Matrix</a></li>
+        </ul>
+      </nav>
+      <p>&copy; Per Persson. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
